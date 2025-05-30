@@ -6,7 +6,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation, getMultiLanguageContent } from "@/lib/i18n";
 import { Link } from "wouter";
 import { NewsArticle, GalleryImage } from "@shared/schema";
-import { Play, ChevronDown, Target, Eye, Heart, TrendingUp, Users, Globe, Award } from "lucide-react";
+import { Play, ChevronDown, Target, Eye, Heart, Award } from "lucide-react";
 
 export function Home() {
   const { language, getLanguageRoute } = useLanguage();
@@ -44,7 +44,8 @@ export function Home() {
             </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-              {getTranslation('hero.title1', language)}<br>
+              {getTranslation('hero.title1', language)}
+              <br />
               <span className="text-yellow-300">{getTranslation('hero.title2', language)}</span>
             </h1>
             

@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Menu } from "lucide-react";
+import technopiaLogo from "@assets/technopia_logo.png";
 
 export function Navigation() {
   const [location] = useLocation();
@@ -35,9 +36,11 @@ export function Navigation() {
           {/* Logo */}
           <Link href={getLanguageRoute('/')}>
             <div className="flex items-center">
-              <div className="h-8 w-32 bg-corporate-blue rounded flex items-center justify-center text-white text-sm font-bold">
-                GlobalCorp
-              </div>
+              <img 
+                src={technopiaLogo} 
+                alt="Technopia" 
+                className="h-10 w-auto"
+              />
             </div>
           </Link>
 
