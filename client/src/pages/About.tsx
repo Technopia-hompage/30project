@@ -27,15 +27,15 @@ export function About() {
               <div className="text-slate-600">{getTranslation('company.stats.years', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">2,500+</div>
+              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">50+</div>
               <div className="text-slate-600">{getTranslation('company.stats.employees', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">15</div>
+              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">10+</div>
               <div className="text-slate-600">{getTranslation('company.stats.locations', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">500+</div>
+              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">100+</div>
               <div className="text-slate-600">{getTranslation('company.stats.partners', language)}</div>
             </div>
           </div>
@@ -217,7 +217,7 @@ export function About() {
                       {language === 'en' && 'Founded'}
                       {language === 'zh' && '成立年份'}
                     </div>
-                    <div className="text-slate-600">1994年</div>
+                    <div className="text-slate-600">1995年</div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -230,10 +230,10 @@ export function About() {
                       {language === 'zh' && '总部及分公司'}
                     </div>
                     <div className="text-slate-600">
-                      {language === 'jp' && '〒100-0001 東京都千代田区千代田1-1-1 グローバルタワー 30F'}
-                      {language === 'ko' && '〒100-0001 도쿄도 치요다구 치요다1-1-1 글로벌 타워 30F'}
-                      {language === 'en' && '〒100-0001 1-1-1 Chiyoda, Chiyoda-ku, Tokyo Global Tower 30F'}
-                      {language === 'zh' && '〒100-0001 东京都千代田区千代田1-1-1 全球大厦30F'}
+                      {language === 'jp' && '〒101-0065 東京都千代田区西神田3-1-2 ウインド西神田ビル3F'}
+                      {language === 'ko' && '〒101-0065 도쿄도 치요다구 니시칸다3-1-2 윈드 니시칸다 빌딩 3F'}
+                      {language === 'en' && '〒101-0065 3F Wind Nishikanda Building, 3-1-2 Nishikanda, Chiyoda-ku, Tokyo'}
+                      {language === 'zh' && '〒101-0065 东京都千代田区西神田3-1-2 风神田大厦3F'}
                     </div>
                   </div>
                 </div>
@@ -251,37 +251,37 @@ export function About() {
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
-                    {language === 'jp' && '製造・技術開発'}
-                    {language === 'ko' && '제조·기술 개발'}
-                    {language === 'en' && 'Manufacturing & Technology Development'}
-                    {language === 'zh' && '制造·技术开发'}
+                    {language === 'jp' && 'オルソケラトロジーレンズの製造・販売'}
+                    {language === 'ko' && '오르토케라톨로지 렌즈 제조·판매'}
+                    {language === 'en' && 'Orthokeratology Lens Manufacturing & Sales'}
+                    {language === 'zh' && '角膜塑形镜制造·销售'}
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
-                    {language === 'jp' && '環境・エネルギーソリューション'}
-                    {language === 'ko' && '환경·에너지 솔루션'}
-                    {language === 'en' && 'Environmental & Energy Solutions'}
-                    {language === 'zh' && '环境·能源解决方案'}
+                    {language === 'jp' && '医療機器・ヘルスケア製品'}
+                    {language === 'ko' && '의료기기·헬스케어 제품'}
+                    {language === 'en' && 'Medical Devices & Healthcare Products'}
+                    {language === 'zh' && '医疗器械·健康护理产品'}
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
-                    {language === 'jp' && 'デジタルトランスフォーメーション'}
-                    {language === 'ko' && '디지털 트랜스포메이션'}
-                    {language === 'en' && 'Digital Transformation'}
-                    {language === 'zh' && '数字化转型'}
+                    {language === 'jp' && '環境・エネルギー関連機器'}
+                    {language === 'ko' && '환경·에너지 관련 기기'}
+                    {language === 'en' && 'Environmental & Energy Equipment'}
+                    {language === 'zh' && '环境·能源相关设备'}
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
-                    {language === 'jp' && 'グローバルコンサルティング'}
-                    {language === 'ko' && '글로벌 컨설팅'}
-                    {language === 'en' && 'Global Consulting'}
-                    {language === 'zh' && '全球咨询'}
+                    {language === 'jp' && '技術コンサルティングサービス'}
+                    {language === 'ko' && '기술 컨설팅 서비스'}
+                    {language === 'en' && 'Technical Consulting Services'}
+                    {language === 'zh' && '技术咨询服务'}
                   </span>
                 </li>
               </ul>
