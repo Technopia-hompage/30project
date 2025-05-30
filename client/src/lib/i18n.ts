@@ -20,33 +20,33 @@ export const translations = {
     admin: { jp: '管理', ko: '관리', en: 'Admin', zh: '管理' }
   },
   hero: {
-    badge: { jp: '30周年記念', ko: '30주년 기념', en: '30th Anniversary', zh: '30周年纪念' },
-    title1: { jp: '信頼と革新で', ko: '신뢰와 혁신으로', en: 'Building the Future with', zh: '以信任与创新' },
-    title2: { jp: '未来を築く', ko: '미래를 구축', en: 'Trust and Innovation', zh: '构建未来' },
-    subtitle: { jp: '1994年の創立から30年。私たちは常にお客様と社会の期待を超える価値を提供し続けてまいりました。これからも変わらぬ信頼をお約束いたします。', ko: '1994년 창립부터 30년. 저희는 항상 고객과 사회의 기대를 뛰어넘는 가치를 제공해왔습니다. 앞으로도 변함없는 신뢰를 약속드립니다.', en: 'For 30 years since our founding in 1994, we have continuously provided value that exceeds the expectations of our customers and society. We promise continued trust.', zh: '自1994年成立以来的30年里，我们始终为客户和社会提供超越期望的价值。我们承诺持续的信任。' },
+    badge: { jp: '創立30周年記念', ko: '30주년 기념', en: '30th Anniversary', zh: '30周年纪念' },
+    title1: { jp: '技術で未来を創る', ko: '신뢰와 혁신으로', en: 'Building the Future with', zh: '以信任与创新' },
+    title2: { jp: '株式会社テクノピア', ko: '미래를 구축', en: 'Trust and Innovation', zh: '构建未来' },
+    subtitle: { jp: '1995年の創立以来、革新的な技術ソリューションで社会に貢献してまいりました。これからもお客様と共に歩み続けます。', ko: '1994년 창립부터 30년. 저희는 항상 고객과 사회의 기대를 뛰어넘는 가치를 제공해왔습니다. 앞으로도 변함없는 신뢰를 약속드립니다.', en: 'For 30 years since our founding in 1994, we have continuously provided value that exceeds the expectations of our customers and society. We promise continued trust.', zh: '自1994年成立以来的30年里，我们始终为客户和社会提供超越期望的价值。我们承诺持续的信任。' },
     ceoMessage: { jp: 'CEOメッセージを見る', ko: 'CEO 메시지 보기', en: 'View CEO Message', zh: '查看CEO信息' },
     learnMore: { jp: '会社紹介', ko: '회사 소개', en: 'Learn More', zh: '了解更多' }
   },
   company: {
-    title: { jp: '会社紹介', ko: '회사 소개', en: 'About Our Company', zh: '关于我们公司' },
-    subtitle: { jp: 'グローバルに展開する私たちの企業理念と、お客様・社会への約束をご紹介いたします。', ko: '글로벌하게 전개하는 우리의 기업 이념과 고객, 사회에 대한 약속을 소개합니다.', en: 'Introducing our global corporate philosophy and promises to customers and society.', zh: '介绍我们全球展开的企业理念以及对客户和社会的承诺。' },
+    title: { jp: 'テクノピアについて', ko: '회사 소개', en: 'About Our Company', zh: '关于我们公司' },
+    subtitle: { jp: '革新的な技術ソリューションで社会に貢献し、お客様と共に成長し続ける企業です。', ko: '글로벌하게 전개하는 우리의 기업 이념과 고객, 사회에 대한 약속을 소개합니다.', en: 'Introducing our global corporate philosophy and promises to customers and society.', zh: '介绍我们全球展开的企业理念以及对客户和社会的承诺。' },
     stats: {
-      years: { jp: '年', ko: '년', en: 'Years', zh: '年' },
+      years: { jp: '年の歴史', ko: '년', en: 'Years', zh: '年' },
       employees: { jp: '従業員数', ko: '직원 수', en: 'Employees', zh: '员工数' },
-      locations: { jp: 'グローバル拠点', ko: '글로벌 거점', en: 'Global Locations', zh: '全球据点' },
+      locations: { jp: '事業拠点', ko: '글로벌 거점', en: 'Global Locations', zh: '全球据点' },
       partners: { jp: 'パートナー企業', ko: '파트너 기업', en: 'Partner Companies', zh: '合作伙伴企业' }
     },
     mission: {
       title: { jp: 'ミッション', ko: '미션', en: 'Mission', zh: '使命' },
-      content: { jp: '技術革新とサービス向上を通じて、お客様の成功と社会の発展に貢献し、持続可能な未来を創造します。', ko: '기술 혁신과 서비스 향상을 통해 고객의 성공과 사회 발전에 기여하고 지속 가능한 미래를 창조합니다.', en: 'Through technological innovation and service improvement, we contribute to customer success and social development, creating a sustainable future.', zh: '通过技术创新和服务改进，为客户成功和社会发展做出贡献，创造可持续的未来。' }
+      content: { jp: '最先端の技術ソリューションを通じて、お客様のビジネス成功を支援し、社会の持続的発展に貢献します。', ko: '기술 혁신과 서비스 향상을 통해 고객의 성공과 사회 발전에 기여하고 지속 가능한 미래를 창조합니다.', en: 'Through technological innovation and service improvement, we contribute to customer success and social development, creating a sustainable future.', zh: '通过技术创新和服务改进，为客户成功和社会发展做出贡献，创造可持续的未来。' }
     },
     vision: {
       title: { jp: 'ビジョン', ko: '비전', en: 'Vision', zh: '愿景' },
-      content: { jp: 'グローバルリーダーとして、業界の変革を牽引し、すべてのステークホルダーから信頼される企業を目指します。', ko: '글로벌 리더로서 업계 변혁을 이끌고 모든 이해관계자로부터 신뢰받는 기업을 목표로 합니다.', en: 'As a global leader, we aim to drive industry transformation and become a company trusted by all stakeholders.', zh: '作为全球领导者，我们致力于推动行业变革，成为所有利益相关者信赖的企业。' }
+      content: { jp: '技術革新のリーディングカンパニーとして、世界中のお客様に信頼される企業になります。', ko: '글로벌 리더로서 업계 변혁을 이끌고 모든 이해관계자로부터 신뢰받는 기업을 목표로 합니다.', en: 'As a global leader, we aim to drive industry transformation and become a company trusted by all stakeholders.', zh: '作为全球领导者，我们致力于推动行业变革，成为所有利益相关者信赖的企业。' }
     },
     values: {
-      title: { jp: 'コアバリュー', ko: '핵심 가치', en: 'Core Values', zh: '核心价值' },
-      content: { jp: '誠実性、革新性、協働性を軸に、お客様第一の精神で高品質なソリューションを提供します。', ko: '성실성, 혁신성, 협력성을 축으로 고객 우선의 정신으로 고품질 솔루션을 제공합니다.', en: 'Based on integrity, innovation, and collaboration, we provide high-quality solutions with a customer-first mindset.', zh: '以诚信、创新、协作为核心，以客户至上的精神提供高质量的解决方案。' }
+      title: { jp: '価値観', ko: '핵심 가치', en: 'Core Values', zh: '核心价值' },
+      content: { jp: '誠実、革新、品質、お客様第一の精神で、長期的なパートナーシップを築きます。', ko: '성실성, 혁신성, 협력성을 축으로 고객 우선의 정신으로 고품질 솔루션을 제공합니다.', en: 'Based on integrity, innovation, and collaboration, we provide high-quality solutions with a customer-first mindset.', zh: '以诚信、创新、协作为核心，以客户至上的精神提供高质量的解决方案。' }
     }
   },
   contact: {

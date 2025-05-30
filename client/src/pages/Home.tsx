@@ -76,19 +76,19 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">30</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">29</div>
               <div className="text-slate-600">{getTranslation('company.stats.years', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">2,500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">50+</div>
               <div className="text-slate-600">{getTranslation('company.stats.employees', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">15</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">3</div>
               <div className="text-slate-600">{getTranslation('company.stats.locations', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">100+</div>
               <div className="text-slate-600">{getTranslation('company.stats.partners', language)}</div>
             </div>
           </div>

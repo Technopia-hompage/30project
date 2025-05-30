@@ -281,16 +281,16 @@ export function Contact() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">
-                        {language === 'jp' && '本社および支社'}
-                        {language === 'ko' && '본사 및 지사'}
-                        {language === 'en' && 'Headquarters & Branches'}
-                        {language === 'zh' && '总部及分公司'}
+                        {language === 'jp' && '株式会社テクノピア'}
+                        {language === 'ko' && '주식회사 테크노피아'}
+                        {language === 'en' && 'Technopia Corporation'}
+                        {language === 'zh' && '技术乌托邦株式会社'}
                       </h4>
-                      <p className="text-slate-600">
-                        {language === 'jp' && '〒100-0001\n東京都千代田区千代田1-1-1\nグローバルタワー 30F'}
-                        {language === 'ko' && '〒100-0001\n도쿄도 치요다구 치요다1-1-1\n글로벌 타워 30F'}
-                        {language === 'en' && '〒100-0001\n1-1-1 Chiyoda, Chiyoda-ku, Tokyo\nGlobal Tower 30F'}
-                        {language === 'zh' && '〒100-0001\n东京都千代田区千代田1-1-1\n全球大厦 30F'}
+                      <p className="text-slate-600 whitespace-pre-line">
+                        {language === 'jp' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                        {language === 'ko' && '〒101-0065\n도쿄도 치요다구 니시칸다 3-1-2\n윈드 니시칸다 빌딩 3F'}
+                        {language === 'en' && '〒101-0065\n3F Wind Nishi-Kanda Building\n3-1-2 Nishi-Kanda, Chiyoda-ku, Tokyo'}
+                        {language === 'zh' && '〒101-0065\n东京都千代田区西神田3-1-2\nWind西神田大厦3F'}
                       </p>
                     </div>
                   </div>
@@ -306,7 +306,7 @@ export function Contact() {
                         {language === 'en' && 'Phone Number'}
                         {language === 'zh' && '电话号码'}
                       </h4>
-                      <p className="text-slate-600">03-1234-5678</p>
+                      <p className="text-slate-600">03-3221-4761</p>
                     </div>
                   </div>
 
@@ -321,7 +321,7 @@ export function Contact() {
                         {language === 'en' && 'Email Address'}
                         {language === 'zh' && '邮箱地址'}
                       </h4>
-                      <p className="text-slate-600">info@globalcorp.com</p>
+                      <p className="text-slate-600">info@technopia.co.jp</p>
                     </div>
                   </div>
 
