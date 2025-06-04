@@ -21,9 +21,9 @@ export const translations = {
   },
   hero: {
     badge: { jp: '創立30周年記念', ko: '30주년 기념', en: '30th Anniversary', zh: '30周年纪念' },
-    title1: { jp: '技術で未来を創る', ko: '신뢰와 혁신으로', en: 'Building the Future with', zh: '以信任与创新' },
-    title2: { jp: '株式会社テクノピア', ko: '미래를 구축', en: 'Trust and Innovation', zh: '构建未来' },
-    subtitle: { jp: '1995年の創立以来、革新的な技術ソリューションで社会に貢献してまいりました。これからもお客様と共に歩み続けます。', ko: '1994년 창립부터 30년. 저희는 항상 고객과 사회의 기대를 뛰어넘는 가치를 제공해왔습니다. 앞으로도 변함없는 신뢰를 약속드립니다.', en: 'For 30 years since our founding in 1994, we have continuously provided value that exceeds the expectations of our customers and society. We promise continued trust.', zh: '自1994年成立以来的30年里，我们始终为客户和社会提供超越期望的价值。我们承诺持续的信任。' },
+    title1: { jp: 'IMPOSSIBLEを', ko: 'IMPOSSIBLE을', en: 'Transforming IMPOSSIBLE', zh: '将不可能' },
+    title2: { jp: 'I\'m POSSIBLEに変える企業', ko: 'I\'m POSSIBLE로 바꾸는 기업', en: 'to I\'m POSSIBLE', zh: '变为可能的企业' },
+    subtitle: { jp: 'テクノピアはオルソケラトロジーレンズ「マイエメラルド」やアルミホイール、AI顔認証検温測定機「TOLLGATE」などを取り扱う企業です。', ko: '테크노피아는 오르토케라톨로지 렌즈 "마이에메랄드"와 알루미늄 휠, AI 안면인식 검온기 "TOLLGATE" 등을 취급하는 기업입니다.', en: 'Technopia handles orthokeratology lenses "My Emerald", aluminum wheels, and AI facial recognition thermometer "TOLLGATE".', zh: '技术乌托邦经营角膜塑形镜"My Emerald"、铝合金轮毂和AI人脸识别测温仪"TOLLGATE"等产品。' },
     ceoMessage: { jp: 'CEOメッセージを見る', ko: 'CEO 메시지 보기', en: 'View CEO Message', zh: '查看CEO信息' },
     learnMore: { jp: '会社紹介', ko: '회사 소개', en: 'Learn More', zh: '了解更多' }
   },

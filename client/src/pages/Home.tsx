@@ -6,7 +6,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation, getMultiLanguageContent } from "@/lib/i18n";
 import { Link } from "wouter";
 import { NewsArticle, GalleryImage } from "@shared/schema";
-import { Play, ChevronDown, Target, Eye, Heart, Award } from "lucide-react";
+import { Play, ChevronDown, Target, Eye, Heart, Award, Stethoscope, Car, Lightbulb } from "lucide-react";
 
 export function Home() {
   const { language, getLanguageRoute } = useLanguage();
