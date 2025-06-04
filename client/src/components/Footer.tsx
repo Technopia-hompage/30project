@@ -70,38 +70,30 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">
-              {language === 'jp' && 'お問い合わせ先'}
-              {language === 'ko' && '연락처'}
-              {language === 'en' && 'Contact Info'}
-              {language === 'zh' && '联系信息'}
-            </h4>
+            {language !== 'jp' && (
+              <h4 className="text-lg font-semibold mb-6">
+                {language === 'ko' && '연락처'}
+                {language === 'en' && 'Contact Info'}
+                {language === 'zh' && '联系信息'}
+              </h4>
+            )}
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-slate-400 mt-0.5" />
-                <span className="text-slate-300 text-sm">
-                  {language === 'jp' && '〒100-0001\n東京都千代田区千代田1-1-1\nグローバルタワー 30F'}
-                  {language === 'ko' && '〒100-0001\n도쿄도 치요다구 치요다1-1-1\n글로벌 타워 30F'}
-                  {language === 'en' && '〒100-0001\n1-1-1 Chiyoda, Chiyoda-ku, Tokyo\nGlobal Tower 30F'}
-                  {language === 'zh' && '〒100-0001\n东京都千代田区千代田1-1-1\n全球大厦 30F'}
+                <span className="text-slate-300 text-sm whitespace-pre-line">
+                  {language === 'jp' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                  {language === 'ko' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                  {language === 'en' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                  {language === 'zh' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">03-1234-5678</span>
+                <span className="text-slate-300 text-sm">03-3221-4761</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">info@globalcorp.com</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Clock className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">
-                  {language === 'jp' && '平日 9:00 - 18:00'}
-                  {language === 'ko' && '평일 9:00 - 18:00'}
-                  {language === 'en' && 'Weekdays 9:00 - 18:00'}
-                  {language === 'zh' && '工作日 9:00 - 18:00'}
-                </span>
+                <span className="text-slate-300 text-sm">info@technopia.co.jp</span>
               </li>
             </ul>
           </div>
@@ -110,7 +102,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm">
-            © 2024 GlobalCorp. All rights reserved.
+            © 2024 Technopia Corporation. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
