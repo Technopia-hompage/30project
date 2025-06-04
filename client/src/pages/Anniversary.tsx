@@ -14,9 +14,9 @@ export function Anniversary() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section 
-        className="py-16 lg:py-24 bg-gradient-to-br from-corporate-blue to-blue-700 text-white relative"
+        className="py-16 lg:py-24 text-white relative"
         style={{
-          backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.8), rgba(37, 99, 235, 0.8)), url(${bgImage})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
