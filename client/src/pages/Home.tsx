@@ -88,7 +88,7 @@ export function Home() {
               <div className="text-slate-600">{getTranslation('company.stats.locations', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">100+</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">1000+</div>
               <div className="text-slate-600">{getTranslation('company.stats.partners', language)}</div>
             </div>
           </div>
