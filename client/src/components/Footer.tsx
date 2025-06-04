@@ -12,7 +12,6 @@ export function Footer() {
     { key: 'business', path: '/business' },
     { key: 'careers', path: '/careers' },
     { key: 'contact', path: '/contact' },
-    { key: 'privacy', path: '/privacy' },
   ];
 
   return (
@@ -61,14 +60,7 @@ export function Footer() {
                 <li key={item.key}>
                   <Link href={getLanguageRoute(item.path)}>
                     <span className="text-slate-300 hover:text-white transition-colors duration-200">
-                      {item.key === 'privacy' ? (
-                        language === 'jp' ? 'プライバシーポリシー' :
-                        language === 'ko' ? '개인정보 보호정책' :
-                        language === 'en' ? 'Privacy Policy' :
-                        '隐私政策'
-                      ) : (
-                        getTranslation(`nav.${item.key}`, language)
-                      )}
+                      {getTranslation(`nav.${item.key}`, language)}
                     </span>
                   </Link>
                 </li>
