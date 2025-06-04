@@ -14,17 +14,17 @@ export function Anniversary() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section 
-        className="py-16 lg:py-24 bg-gradient-to-br from-anniversary-red to-red-600 text-white relative"
+        className="py-16 lg:py-24 bg-gradient-to-br from-corporate-blue to-blue-700 text-white relative"
         style={{
-          backgroundImage: `linear-gradient(rgba(220, 38, 38, 0.8), rgba(220, 38, 38, 0.8)), url(${bgImage})`,
+          backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.8), rgba(37, 99, 235, 0.8)), url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge className="bg-white text-anniversary-red px-6 py-2 text-lg font-bold mb-8">
+          <div className="text-left">
+            <Badge className="bg-white text-corporate-blue px-6 py-2 text-lg font-bold mb-8">
               <Award className="mr-2 h-5 w-5" />
               {getTranslation('hero.badge', language)}
             </Badge>
@@ -37,12 +37,12 @@ export function Anniversary() {
               Just the Beginning
             </h2>
             
-            <p className="text-xl text-white font-semibold mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-white font-semibold mb-12 max-w-3xl">
               2025年10月3日、テクノピアは創立30周年を迎えました。
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-anniversary-red hover:bg-slate-100">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
                 <Star className="mr-2 h-5 w-5" />
                 {language === 'jp' && '30年のあゆみを見る'}
                 {language === 'ko' && '30년의 발걸음 보기'}
