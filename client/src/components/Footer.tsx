@@ -21,9 +21,11 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href={getLanguageRoute('/')}>
-              <div className="h-8 w-32 bg-white rounded flex items-center justify-center text-slate-900 text-sm font-bold mb-6">
-                Technopia
-              </div>
+              <img 
+                src="/assets/technopia-logo-1980x599.jpg" 
+                alt="Technopia" 
+                className="h-8 w-auto mb-6"
+              />
             </Link>
             <p className="text-slate-300 mb-6 max-w-md">
               {language === 'jp' && '30年の経験と信頼で、グローバルに革新的なソリューションを提供し続けています。'}

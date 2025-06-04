@@ -6,7 +6,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Menu } from "lucide-react";
-import technopiaLogo from "@assets/technopia_logo.png";
+import technopiaLogo from "@assets/technopia-logo-1980x599.jpg";
 
 export function Navigation() {
   const [location] = useLocation();
