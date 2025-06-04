@@ -49,13 +49,7 @@ export function Anniversary() {
                 {language === 'en' && 'View 30 Years Journey'}
                 {language === 'zh' && '查看30年历程'}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-anniversary-red">
-                <Trophy className="mr-2 h-5 w-5" />
-                {language === 'jp' && '記念イベント情報'}
-                {language === 'ko' && '기념 이벤트 정보'}
-                {language === 'en' && 'Anniversary Events'}
-                {language === 'zh' && '纪念活动信息'}
-              </Button>
+
             </div>
           </div>
         </div>
