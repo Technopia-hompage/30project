@@ -36,10 +36,10 @@ export function Anniversary() {
             </h2>
             
             <p className="text-xl text-red-100 mb-12 max-w-3xl mx-auto">
-              {language === 'jp' && '1994年の創立から30年。多くの皆様に支えられ、ここまで歩んでまいりました。心より感謝申し上げるとともに、次の30年に向けて新たな挑戦を続けてまいります。'}
-              {language === 'ko' && '1994년 창립부터 30년. 많은 분들의 지원으로 여기까지 걸어왔습니다. 진심으로 감사드리며, 다음 30년을 향해 새로운 도전을 계속해 나가겠습니다.'}
-              {language === 'en' && '30 years since our founding in 1994. We have come this far with the support of many. We express our heartfelt gratitude and will continue new challenges towards the next 30 years.'}
-              {language === 'zh' && '自1994年创立以来30年。在众多人士的支持下走到了今天。我们由衷感谢，并将继续朝着下一个30年的新挑战前进。'}
+              {language === 'jp' && '1995年の創立から30年。多くの皆様に支えられ、ここまで歩んでまいりました。心より感謝申し上げるとともに、次の30年に向けて新たな挑戦を続けてまいります。'}
+              {language === 'ko' && '1995년 창립부터 30년. 많은 분들의 지원으로 여기까지 걸어왔습니다. 진심으로 감사드리며, 다음 30년을 향해 새로운 도전을 계속해 나가겠습니다.'}
+              {language === 'en' && '30 years since our founding in 1995. We have come this far with the support of many. We express our heartfelt gratitude and will continue new challenges towards the next 30 years.'}
+              {language === 'zh' && '自1995年创立以来30年。在众多人士的支持下走到了今天。我们由衷感谢，并将继续朝着下一个30年的新挑战前进。'}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
