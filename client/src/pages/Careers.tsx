@@ -445,7 +445,7 @@ export function Careers() {
                   {language === 'en' && 'Email'}
                   {language === 'zh' && '邮箱'}
                 </h3>
-                <p className="text-slate-600">careers@globalcorp.com</p>
+                <p className="text-slate-600">info@technopia.co.jp</p>
               </CardContent>
             </Card>
 
@@ -458,7 +458,7 @@ export function Careers() {
                   {language === 'en' && 'Phone'}
                   {language === 'zh' && '电话'}
                 </h3>
-                <p className="text-slate-600">03-1234-5679</p>
+                <p className="text-slate-600">03-3221-4761</p>
               </CardContent>
             </Card>
 
