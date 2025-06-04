@@ -383,17 +383,22 @@ export function Contact() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="w-full h-64 bg-slate-100 rounded-lg flex items-center justify-center">
-                    <div className="text-center text-slate-500">
-                      <MapPin className="h-12 w-12 mx-auto mb-2" />
-                      <p className="font-medium">Google Maps</p>
-                      <p className="text-sm">
-                        {language === 'jp' && '地図を表示'}
-                        {language === 'ko' && '지도 표시'}
-                        {language === 'en' && 'Map Display'}
-                        {language === 'zh' && '地图显示'}
-                      </p>
-                    </div>
+                  <div className="w-full h-64 rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.171335146281!2d139.75162021555133!3d35.69740113669189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c151f4a3ddb%3A0x1167894949498a06!2z44CSMTAxLTAwNjUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy66KW_56We55Sw77yT5LiB55uu77yR4oiS77ySIOOCpuOCpOODs-ODieilv-elnueUsOODk-ODqyAzRg!5e0!3m2!1sja!2sjp!4v1607925607535!5m2!1sja!2sjp"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={
+                        language === 'jp' ? 'テクノピア所在地' :
+                        language === 'ko' ? '테크노피아 위치' :
+                        language === 'en' ? 'Technopia Location' :
+                        '技术乌托邦位置'
+                      }
+                    />
                   </div>
                   <div className="mt-4 text-sm text-slate-600">
                     <p>
