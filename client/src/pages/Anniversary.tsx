@@ -22,20 +22,22 @@ export function Anniversary() {
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="text-yellow-300">30</span>
-              {language === 'jp' && '周年'}
-              {language === 'ko' && '주년'}
-              {language === 'en' && 'th Anniversary'}
-              {language === 'zh' && '周年'}
+              <span className="text-yellow-300">
+                {language === 'jp' && '周年'}
+                {language === 'ko' && '주년'}
+                {language === 'en' && 'th Anniversary'}
+                {language === 'zh' && '周年'}
+              </span>
             </h1>
             
-            <h2 className="text-2xl md:text-4xl font-semibold mb-8">
+            <h2 className="text-2xl md:text-4xl font-semibold mb-8 text-yellow-300">
               {language === 'jp' && '感謝と共に、新たな未来へ'}
               {language === 'ko' && '감사와 함께, 새로운 미래로'}
               {language === 'en' && 'With Gratitude, Towards a New Future'}
               {language === 'zh' && '怀着感恩，迈向新未来'}
             </h2>
             
-            <p className="text-xl text-red-100 mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-pink-400 font-semibold mb-12 max-w-3xl mx-auto">
               {language === 'jp' && '1995年の創立から30年。多くの皆様に支えられ、ここまで歩んでまいりました。心より感謝申し上げるとともに、次の30年に向けて新たな挑戦を続けてまいります。'}
               {language === 'ko' && '1995년 창립부터 30년. 많은 분들의 지원으로 여기까지 걸어왔습니다. 진심으로 감사드리며, 다음 30년을 향해 새로운 도전을 계속해 나가겠습니다.'}
               {language === 'en' && '30 years since our founding in 1995. We have come this far with the support of many. We express our heartfelt gratitude and will continue new challenges towards the next 30 years.'}
