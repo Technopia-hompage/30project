@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Target, Eye, Heart, Building, Users, Globe, Award } from "lucide-react";
+import ceoImage from "@assets/スクリーンショット 2025-06-04 150711.png";
 
 export function About() {
   const { language } = useLanguage();
@@ -100,7 +101,7 @@ export function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <img 
-                src="/images/ceo-photo.jpg" 
+                src={ceoImage} 
                 alt="CEO Portrait" 
                 className="rounded-2xl shadow-2xl w-full"
               />
