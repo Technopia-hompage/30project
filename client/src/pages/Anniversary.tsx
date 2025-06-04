@@ -162,7 +162,244 @@ export function Anniversary() {
             </p>
           </div>
 
-          <Timeline />
+          {/* Detailed Company History Timeline */}
+          <div className="bg-white">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">1995 - 2025</h3>
+              <h4 className="text-xl font-semibold text-corporate-blue mb-8">Technopia's History</h4>
+            </div>
+
+            <div className="space-y-12">
+              {/* 2023~ */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2023~</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2025.01</span>
+                    <span>大阪支店 開設</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2023.06</span>
+                    <span>福岡支店 開設</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2021~2022 */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2021~2022</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2022.04</span>
+                    <span>韓国 C＆V Tech Co., Ltd. と総代理店契約締結</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2022.03</span>
+                    <span>中国 MEDI WORKS と総代理店契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2021.10</span>
+                    <span>DENBA HEALTH 販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2021.10</span>
+                    <span>DENBA HEALTH 韓国向け輸出</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2021.05</span>
+                    <span>キセノン光線治療器「AQUA CEL」厚労省製造販売認証取得<br />（認証番号303ADBZX00049000）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2021.03</span>
+                    <span>Tollgate Nano Air Brusher 発売</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2021.01</span>
+                    <span>Tollgate Nano Spray 発売</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2016~2020 */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2016~2020</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2020.12</span>
+                    <span>Hanita Lenses「Intensity」独占契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2020.10</span>
+                    <span>Tollgate Mini 販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2020.02</span>
+                    <span>Tollgate 検温器／Handgel 販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2019.12</span>
+                    <span>スイス BIOTECH 独占代理店契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2019.12</span>
+                    <span>韓国 KBM と業務提携</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2018.12</span>
+                    <span>フランス LCS 社独占代理店契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2018.06</span>
+                    <span>韓国 Plasmapp Co., Ltd. と独占契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2018.05</span>
+                    <span>韓国 EHL BIO社と幹細胞研究業務協約締結</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2017.04</span>
+                    <span>イタリアSIFI 社と独占契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2016.12</span>
+                    <span>英国 IOL AMD と MOU 提携</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2011~2015 */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2011~2015</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2015.06</span>
+                    <span>本社移転（東京都千代田区西神田3-1-2）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2015.04</span>
+                    <span>韓国チャ病院グループ TCC と業務提携契約締結</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2015.01</span>
+                    <span>ベルギー PhysIOL 社と MOU 提携</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2014.03</span>
+                    <span>ゴルフ用品 販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2013.04</span>
+                    <span>新聞用紙 輸入販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2013.03</span>
+                    <span>自社ビル（8階建て）購入（東京都千代田区西神田）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2012.10</span>
+                    <span>自動車用バッテリー 販売</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2012.10</span>
+                    <span>カーボンナノーチューブ（CNT）販売</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2012.05</span>
+                    <span>エメラルドレンズ ケース 発売</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2012.02</span>
+                    <span>ピュアエメラルド発売（オルソケラトロジーレンズ洗浄液）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2011.10</span>
+                    <span>太陽光パネル 販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2011.04</span>
+                    <span>逆浸透膜 IGUASSU 浄水器 販売開始</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2006~2010 */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2006~2010</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2010.09</span>
+                    <span>オルソケラトロジーレンズ「マイエメラルドレンズ」製造販売承認取得<br />（承認番号2200BZX00790000）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2010.06</span>
+                    <span>NEVIS MEDICAL、TPV と包括業務提携契約</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2009.08</span>
+                    <span>本社移転（東京都千代田区九段南3-3-4）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2008.11</span>
+                    <span>韓国貿易協会より「対日本輸出専門商社」に認定</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2007.04</span>
+                    <span>特定福祉用具販売・特定介護予防福祉用具販売事業所指定<br />（認定番号1370100941）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2006.05</span>
+                    <span>韓国 NEXEN TIRE 輸入総代理店契約</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2000~2005 */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2000~2005</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2005.03</span>
+                    <span>高度管理医療機器等販売業賃貸業 許可取得<br />（許可番号4501010400046）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2004.05</span>
+                    <span>オーストラリア子会社 TECHNOIA PTE. LTD. 設立</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">2000.11</span>
+                    <span>米国 EUCLID SYSTEMS CORPORATION と日本輸入総代理店契約締結</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 1995~1999 */}
+              <div className="timeline-section">
+                <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">1995~1999</h4>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">1999.02</span>
+                    <span>本社移転（東京都千代田区九段南4-6-13）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">1996.05</span>
+                    <span>化粧品輸入販売業 許可取得（許可番号13CY9145）</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">1995.11</span>
+                    <span>自動車用アルミホイール 販売開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">1995.10</span>
+                    <span>医療用具販売業 開始</span>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <span className="font-semibold text-corporate-blue min-w-[100px]">1995.10</span>
+                    <span className="font-bold text-anniversary-red">株式会社テクノピア 設立（東京都豊島区池袋2-43-1）</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
