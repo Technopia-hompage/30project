@@ -27,7 +27,7 @@ export function About() {
               <div className="text-slate-600">{getTranslation('company.stats.years', language)}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">50+</div>
+              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">25</div>
               <div className="text-slate-600">{getTranslation('company.stats.employees', language)}</div>
             </div>
             <div className="text-center">
