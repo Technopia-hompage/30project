@@ -61,7 +61,14 @@ export function Footer() {
                 <li key={item.key}>
                   <Link href={getLanguageRoute(item.path)}>
                     <span className="text-slate-300 hover:text-white transition-colors duration-200">
-                      {getTranslation(`nav.${item.key}`, language)}
+                      {item.key === 'privacy' ? (
+                        language === 'jp' ? 'プライバシーポリシー' :
+                        language === 'ko' ? '개인정보 보호정책' :
+                        language === 'en' ? 'Privacy Policy' :
+                        '隐私政策'
+                      ) : (
+                        getTranslation(`nav.${item.key}`, language)
+                      )}
                     </span>
                   </Link>
                 </li>
