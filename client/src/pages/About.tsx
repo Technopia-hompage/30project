@@ -160,10 +160,10 @@ export function About() {
               </div>
               <div>
                 <div className="text-xl font-semibold text-slate-900 mb-1">
-                  {language === 'jp' && '朴 榮文'}
-                  {language === 'ko' && '박 영문'}
-                  {language === 'en' && 'Young Moon Park'}
-                  {language === 'zh' && '朴榮文'}
+                  {language === 'jp' && '朴 栽世'}
+                  {language === 'ko' && '박 재세'}
+                  {language === 'en' && 'JS. Park'}
+                  {language === 'zh' && '朴 栽世'}
                 </div>
                 <div className="text-slate-600">
                   {language === 'jp' && '代表取締役社長'}
