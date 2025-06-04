@@ -95,61 +95,103 @@ export function Home() {
         </div>
       </section>
 
-      {/* Mission, Vision, Values */}
+      {/* Business Divisions */}
       <section className="py-16 lg:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              {getTranslation('company.title', language)}
+              {language === 'jp' && '事業部紹介'}
+              {language === 'ko' && '사업부 소개'}
+              {language === 'en' && 'Business Divisions'}
+              {language === 'zh' && '事业部介绍'}
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              {getTranslation('company.subtitle', language)}
+              {language === 'jp' && 'テクノピアの3つの事業部が提供する革新的なソリューション'}
+              {language === 'ko' && '테크노피아의 3개 사업부가 제공하는 혁신적인 솔루션'}
+              {language === 'en' && 'Innovative solutions provided by Technopia\'s three business divisions'}
+              {language === 'zh' && '技术乌托邦三个事业部提供的创新解决方案'}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Mission Card */}
-            <Card className="hover:shadow-lg transition-shadow duration-200">
+            {/* Medical Division */}
+            <Card className="hover:shadow-lg transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-corporate-blue rounded-lg flex items-center justify-center mb-6">
-                  <Target className="text-white h-6 w-6" />
+                <div className="w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center mb-6">
+                  <Stethoscope className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('company.mission.title', language)}
+                  {language === 'jp' && 'メディカル事業部'}
+                  {language === 'ko' && '메디컬 사업부'}
+                  {language === 'en' && 'Medical Division'}
+                  {language === 'zh' && '医疗事业部'}
                 </h3>
-                <p className="text-slate-600">
-                  {getTranslation('company.mission.content', language)}
+                <p className="text-slate-600 mb-4">
+                  {language === 'jp' && '各種眼科用の手術機械、検査機械、眼内レンズ、コンタクトレンズ等の製造販売'}
+                  {language === 'ko' && '각종 안과용 수술기계, 검사기계, 안내렌즈, 콘택트렌즈 등의 제조판매'}
+                  {language === 'en' && 'Manufacturing and sales of various ophthalmic surgical and examination equipment, intraocular lenses, contact lenses, etc.'}
+                  {language === 'zh' && '各种眼科手术设备、检查设备、人工晶体、隐形眼镜等的制造销售'}
                 </p>
+                <Button variant="outline" size="sm">
+                  {language === 'jp' && '詳しく見る'}
+                  {language === 'ko' && '자세히 보기'}
+                  {language === 'en' && 'Learn More'}
+                  {language === 'zh' && '了解更多'}
+                </Button>
               </CardContent>
             </Card>
 
-            {/* Vision Card */}
-            <Card className="hover:shadow-lg transition-shadow duration-200">
+            {/* Auto Division */}
+            <Card className="hover:shadow-lg transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-6">
-                  <Eye className="text-white h-6 w-6" />
+                <div className="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-6">
+                  <Car className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('company.vision.title', language)}
+                  {language === 'jp' && 'AUTO事業部'}
+                  {language === 'ko' && 'AUTO 사업부'}
+                  {language === 'en' && 'AUTO Division'}
+                  {language === 'zh' && 'AUTO事业部'}
                 </h3>
-                <p className="text-slate-600">
-                  {getTranslation('company.vision.content', language)}
+                <p className="text-slate-600 mb-4">
+                  {language === 'jp' && 'アルミホイールの製造、販売'}
+                  {language === 'ko' && '알루미늄 휠의 제조, 판매'}
+                  {language === 'en' && 'Manufacturing and sales of aluminum wheels'}
+                  {language === 'zh' && '铝合金轮毂的制造、销售'}
                 </p>
+                <Button variant="outline" size="sm">
+                  {language === 'jp' && '詳しく見る'}
+                  {language === 'ko' && '자세히 보기'}
+                  {language === 'en' && 'Learn More'}
+                  {language === 'zh' && '了解更多'}
+                </Button>
               </CardContent>
             </Card>
 
-            {/* Values Card */}
-            <Card className="hover:shadow-lg transition-shadow duration-200">
+            {/* New Business Division */}
+            <Card className="hover:shadow-lg transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-success-green rounded-lg flex items-center justify-center mb-6">
-                  <Heart className="text-white h-6 w-6" />
+                <div className="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-6">
+                  <Lightbulb className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('company.values.title', language)}
+                  {language === 'jp' && '新規事業部'}
+                  {language === 'ko' && '신규 사업부'}
+                  {language === 'en' && 'New Business Division'}
+                  {language === 'zh' && '新业务事业部'}
                 </h3>
-                <p className="text-slate-600">
-                  {getTranslation('company.values.content', language)}
+                <p className="text-slate-600 mb-4">
+                  {language === 'jp' && 'AI顔認証検温測定器「TOLLGATE」の製造・販売'}
+                  {language === 'ko' && 'AI 안면인식 검온기 "TOLLGATE"의 제조·판매'}
+                  {language === 'en' && 'Manufacturing and sales of AI facial recognition thermometer "TOLLGATE"'}
+                  {language === 'zh' && 'AI人脸识别测温仪"TOLLGATE"的制造·销售'}
                 </p>
+                <Button variant="outline" size="sm">
+                  {language === 'jp' && '詳しく見る'}
+                  {language === 'ko' && '자세히 보기'}
+                  {language === 'en' && 'Learn More'}
+                  {language === 'zh' && '了解更多'}
+                </Button>
               </CardContent>
             </Card>
           </div>

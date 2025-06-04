@@ -15,7 +15,11 @@ import {
   ArrowRight,
   Building,
   TrendingUp,
-  Shield
+  Shield,
+  Stethoscope,
+  Car,
+  Lightbulb,
+  Eye
 } from "lucide-react";
 
 const iconMap = {
@@ -86,32 +90,32 @@ export function Business() {
           </div>
 
           {/* Business Overview Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">6+</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">3</div>
               <div className="text-slate-600">
                 {language === 'jp' && '事業部門'}
                 {language === 'ko' && '사업 부문'}
-                {language === 'en' && 'Business Units'}
+                {language === 'en' && 'Business Divisions'}
                 {language === 'zh' && '业务部门'}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">50+</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">13+</div>
               <div className="text-slate-600">
-                {language === 'jp' && '主要製品'}
-                {language === 'ko' && '주요 제품'}
-                {language === 'en' && 'Key Products'}
-                {language === 'zh' && '主要产品'}
+                {language === 'jp' && '主要製品カテゴリー'}
+                {language === 'ko' && '주요 제품 카테고리'}
+                {language === 'en' && 'Product Categories'}
+                {language === 'zh' && '主要产品类别'}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">15</div>
+              <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">30年</div>
               <div className="text-slate-600">
-                {language === 'jp' && '対象市場'}
-                {language === 'ko' && '대상 시장'}
-                {language === 'en' && 'Target Markets'}
-                {language === 'zh' && '目标市场'}
+                {language === 'jp' && '創業からの歴史'}
+                {language === 'ko' && '창업부터의 역사'}
+                {language === 'en' && 'Years of Experience'}
+                {language === 'zh' && '创业以来的历史'}
               </div>
             </div>
             <div className="text-center">
@@ -171,26 +175,42 @@ export function Business() {
               })}
             </div>
           ) : (
-            // Default divisions when no data is available
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="hover:shadow-xl transition-shadow duration-200">
+            // Actual Technopia Business Divisions
+            <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Medical Division */}
+              <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
-                    <Cog className="text-white h-8 w-8" />
+                  <div className="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center mb-6">
+                    <Stethoscope className="text-white h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">
-                    {language === 'jp' && '製造・技術部門'}
-                    {language === 'ko' && '제조·기술 부문'}
-                    {language === 'en' && 'Manufacturing & Technology'}
-                    {language === 'zh' && '制造·技术部门'}
+                    {language === 'jp' && 'メディカル事業部'}
+                    {language === 'ko' && '메디컬 사업부'}
+                    {language === 'en' && 'Medical Division'}
+                    {language === 'zh' && '医疗事业部'}
                   </h3>
                   <p className="text-slate-600 mb-6">
-                    {language === 'jp' && '最先端の製造技術と品質管理により、業界最高水準の製品を提供しています。'}
-                    {language === 'ko' && '최첨단 제조 기술과 품질 관리로 업계 최고 수준의 제품을 제공하고 있습니다.'}
-                    {language === 'en' && 'We provide industry-leading products through cutting-edge manufacturing technology and quality control.'}
-                    {language === 'zh' && '通过尖端制造技术和质量控制，提供行业领先水平的产品。'}
+                    {language === 'jp' && '各種眼科用の手術機械、検査機械、眼内レンズ、コンタクトレンズ等の製造販売。オルソケラトロジーレンズ「マイエメラルド」、IPL機器、トポグラフィー、エキシマレーザー、フェムトセカンドレーザーなど最先端の眼科医療機器を取り扱っています。'}
+                    {language === 'ko' && '각종 안과용 수술기계, 검사기계, 안내렌즈, 콘택트렌즈 등의 제조판매. 오르토케라톨로지 렌즈 "마이에메랄드", IPL 기기, 토포그래피, 엑시머 레이저, 펨토세컨드 레이저 등 최첨단 안과 의료기기를 취급합니다.'}
+                    {language === 'en' && 'Manufacturing and sales of various ophthalmic surgical and examination equipment, intraocular lenses, contact lenses, etc. We handle cutting-edge ophthalmic medical devices including orthokeratology lens "My Emerald", IPL devices, topography, excimer laser, and femtosecond laser.'}
+                    {language === 'zh' && '各种眼科手术设备、检查设备、人工晶体、隐形眼镜等的制造销售。取扱角膜塑形镜"My Emerald"、IPL设备、地形图、准分子激光、飞秒激光等尖端眼科医疗设备。'}
                   </p>
-                  <Button variant="ghost" className="text-corporate-blue hover:text-blue-700 p-0">
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-slate-800 mb-2">
+                      {language === 'jp' && '主要取扱品目:'}
+                      {language === 'ko' && '주요 취급 품목:'}
+                      {language === 'en' && 'Main Products:'}
+                      {language === 'zh' && '主要经营品目:'}
+                    </h4>
+                    <div className="text-sm text-slate-600 grid grid-cols-1 gap-1">
+                      <span>• {language === 'jp' ? 'オルソケラトロジーレンズ' : language === 'ko' ? '오르토케라톨로지 렌즈' : language === 'en' ? 'Orthokeratology Lens' : '角膜塑形镜'}</span>
+                      <span>• {language === 'jp' ? '白内障用眼内レンズ' : language === 'ko' ? '백내장용 안내렌즈' : language === 'en' ? 'Cataract Intraocular Lens' : '白内障人工晶体'}</span>
+                      <span>• {language === 'jp' ? 'IPL（インテンス・パルス・ライト）' : language === 'ko' ? 'IPL (인텐스 펄스 라이트)' : language === 'en' ? 'IPL (Intense Pulsed Light)' : 'IPL (强脉冲光)'}</span>
+                      <span>• {language === 'jp' ? 'エキシマレーザー' : language === 'ko' ? '엑시머 레이저' : language === 'en' ? 'Excimer Laser' : '准分子激光'}</span>
+                      <span>• {language === 'jp' ? 'フェムトセカンドレーザー' : language === 'ko' ? '펨토세컨드 레이저' : language === 'en' ? 'Femtosecond Laser' : '飞秒激光'}</span>
+                    </div>
+                  </div>
+                  <Button variant="ghost" className="text-red-600 hover:text-red-700 p-0">
                     {language === 'jp' && '詳細を見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}
@@ -200,24 +220,38 @@ export function Business() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-xl transition-shadow duration-200">
+              {/* AUTO Division */}
+              <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-success-green rounded-xl flex items-center justify-center mb-6">
-                    <Leaf className="text-white h-8 w-8" />
+                  <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
+                    <Car className="text-white h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">
-                    {language === 'jp' && '環境・エネルギー部門'}
-                    {language === 'ko' && '환경·에너지 부문'}
-                    {language === 'en' && 'Environmental & Energy'}
-                    {language === 'zh' && '环境·能源部门'}
+                    {language === 'jp' && 'AUTO事業部'}
+                    {language === 'ko' && 'AUTO 사업부'}
+                    {language === 'en' && 'AUTO Division'}
+                    {language === 'zh' && 'AUTO事业部'}
                   </h3>
                   <p className="text-slate-600 mb-6">
-                    {language === 'jp' && '持続可能な社会の実現に向けて、環境に配慮したソリューションを開発しています。'}
-                    {language === 'ko' && '지속 가능한 사회 실현을 위해 환경을 고려한 솔루션을 개발하고 있습니다.'}
-                    {language === 'en' && 'We develop environmentally conscious solutions for the realization of a sustainable society.'}
-                    {language === 'zh' && '为了实现可持续社会，开发环保解决方案。'}
+                    {language === 'jp' && 'アルミホイールの製造、販売を行っています。高品質で耐久性に優れたアルミホイールを提供し、自動車業界のニーズに応えています。'}
+                    {language === 'ko' && '알루미늄 휠의 제조, 판매를 하고 있습니다. 고품질이고 내구성이 뛰어난 알루미늄 휠을 제공하여 자동차 업계의 니즈에 부응하고 있습니다.'}
+                    {language === 'en' && 'We manufacture and sell aluminum wheels. We provide high-quality and durable aluminum wheels to meet the needs of the automotive industry.'}
+                    {language === 'zh' && '进行铝合金轮毂的制造、销售。提供高质量、耐久性优秀的铝合金轮毂，满足汽车行业的需求。'}
                   </p>
-                  <Button variant="ghost" className="text-corporate-blue hover:text-blue-700 p-0">
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-slate-800 mb-2">
+                      {language === 'jp' && '特徴:'}
+                      {language === 'ko' && '특징:'}
+                      {language === 'en' && 'Features:'}
+                      {language === 'zh' && '特点:'}
+                    </h4>
+                    <div className="text-sm text-slate-600 grid grid-cols-1 gap-1">
+                      <span>• {language === 'jp' ? '高品質アルミニウム素材' : language === 'ko' ? '고품질 알루미늄 소재' : language === 'en' ? 'High-quality aluminum material' : '高质量铝合金材料'}</span>
+                      <span>• {language === 'jp' ? '優れた耐久性と軽量性' : language === 'ko' ? '뛰어난 내구성과 경량성' : language === 'en' ? 'Excellent durability and lightweight' : '优秀的耐久性和轻量性'}</span>
+                      <span>• {language === 'jp' ? 'カスタムデザイン対応' : language === 'ko' ? '커스텀 디자인 대응' : language === 'en' ? 'Custom design support' : '定制设计对应'}</span>
+                    </div>
+                  </div>
+                  <Button variant="ghost" className="text-blue-600 hover:text-blue-700 p-0">
                     {language === 'jp' && '詳細を見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}
@@ -227,24 +261,39 @@ export function Business() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-xl transition-shadow duration-200">
+              {/* New Business Division */}
+              <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
-                    <Cpu className="text-white h-8 w-8" />
+                  <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center mb-6">
+                    <Lightbulb className="text-white h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">
-                    {language === 'jp' && 'デジタル・IT部門'}
-                    {language === 'ko' && '디지털·IT 부문'}
-                    {language === 'en' && 'Digital & IT'}
-                    {language === 'zh' && '数字·IT部门'}
+                    {language === 'jp' && '新規事業部'}
+                    {language === 'ko' && '신규 사업부'}
+                    {language === 'en' && 'New Business Division'}
+                    {language === 'zh' && '新业务事业部'}
                   </h3>
                   <p className="text-slate-600 mb-6">
-                    {language === 'jp' && 'デジタル変革をリードし、AI・IoTを活用した革新的なサービスを展開しています。'}
-                    {language === 'ko' && '디지털 변혁을 주도하며 AI·IoT를 활용한 혁신적인 서비스를 전개하고 있습니다.'}
-                    {language === 'en' && 'We lead digital transformation and deploy innovative services utilizing AI and IoT.'}
-                    {language === 'zh' && '引领数字化转型，开展利用AI·IoT的创新服务。'}
+                    {language === 'jp' && 'AI顔認証検温測定器「TOLLGATE」の製造・販売を行っています。先進的なAI技術を活用して、非接触での体温測定と顔認証を同時に実現する革新的なソリューションです。'}
+                    {language === 'ko' && 'AI 안면인식 검온기 "TOLLGATE"의 제조·판매를 하고 있습니다. 첨단 AI 기술을 활용하여 비접촉 체온 측정과 안면 인식을 동시에 실현하는 혁신적인 솔루션입니다.'}
+                    {language === 'en' && 'We manufacture and sell the AI facial recognition thermometer "TOLLGATE". This innovative solution utilizes advanced AI technology to simultaneously achieve non-contact temperature measurement and facial recognition.'}
+                    {language === 'zh' && '进行AI人脸识别测温仪"TOLLGATE"的制造·销售。利用先进的AI技术，同时实现非接触体温测定和人脸识别的创新解决方案。'}
                   </p>
-                  <Button variant="ghost" className="text-corporate-blue hover:text-blue-700 p-0">
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-slate-800 mb-2">
+                      {language === 'jp' && 'TOLLGATE の特徴:'}
+                      {language === 'ko' && 'TOLLGATE의 특징:'}
+                      {language === 'en' && 'TOLLGATE Features:'}
+                      {language === 'zh' && 'TOLLGATE的特点:'}
+                    </h4>
+                    <div className="text-sm text-slate-600 grid grid-cols-1 gap-1">
+                      <span>• {language === 'jp' ? 'AI顔認証技術' : language === 'ko' ? 'AI 안면인식 기술' : language === 'en' ? 'AI facial recognition technology' : 'AI人脸识别技术'}</span>
+                      <span>• {language === 'jp' ? '非接触体温測定' : language === 'ko' ? '비접촉 체온 측정' : language === 'en' ? 'Non-contact temperature measurement' : '非接触体温测定'}</span>
+                      <span>• {language === 'jp' ? '高精度検温システム' : language === 'ko' ? '고정밀 검온 시스템' : language === 'en' ? 'High-precision temperature system' : '高精度测温系统'}</span>
+                      <span>• {language === 'jp' ? 'リアルタイム監視機能' : language === 'ko' ? '실시간 모니터링 기능' : language === 'en' ? 'Real-time monitoring function' : '实时监控功能'}</span>
+                    </div>
+                  </div>
+                  <Button variant="ghost" className="text-green-600 hover:text-green-700 p-0">
                     {language === 'jp' && '詳細を見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}
