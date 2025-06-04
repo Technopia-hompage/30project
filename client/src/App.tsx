@@ -19,6 +19,7 @@ import { News } from "@/pages/News";
 import { Admin } from "@/pages/Admin";
 import { Privacy } from "@/pages/Privacy";
 import { SitePolicy } from "@/pages/SitePolicy";
+import { CeoMessage } from "@/pages/CeoMessage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/:lang/admin" component={Admin} />
       <Route path="/:lang/privacy" component={Privacy} />
       <Route path="/:lang/site-policy" component={SitePolicy} />
+      <Route path="/:lang/ceo-message" component={CeoMessage} />
       
       {/* Default language routes */}
       <Route path="/about" component={About} />
