@@ -100,13 +100,6 @@ export function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <img 
-                src={ceoImage} 
-                alt="CEO Portrait" 
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </div>
-            <div>
               <h3 className="text-3xl font-bold text-slate-900 mb-6">
                 {language === 'jp' && '社長メッセージ｜創業30周年に寄せて'}
                 {language === 'ko' && '사장 메시지 | 창업 30주년을 맞이하여'}
@@ -159,7 +152,14 @@ export function About() {
                   </>
                 )}
               </div>
-              <div>
+            </div>
+            <div className="flex flex-col items-center">
+              <img 
+                src={ceoImage} 
+                alt="CEO Portrait" 
+                className="rounded-2xl shadow-2xl w-64 h-auto mb-6"
+              />
+              <div className="text-center">
                 <div className="text-xl font-semibold text-slate-900 mb-1">
                   {language === 'jp' && '朴 栽世'}
                   {language === 'ko' && '박 재세'}
