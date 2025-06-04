@@ -155,10 +155,10 @@ export function Anniversary() {
               {language === 'zh' && '30年历程'}
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              {language === 'jp' && '1994年の創立から現在まで、私たちの成長の軌跡をご覧ください。'}
-              {language === 'ko' && '1994년 창립부터 현재까지 우리의 성장 궤적을 보시기 바랍니다.'}
-              {language === 'en' && 'Please see our growth trajectory from our founding in 1994 to the present.'}
-              {language === 'zh' && '请查看我们从1994年创立至今的成长轨迹。'}
+              {language === 'jp' && '1995年の創立から現在まで、私たちの成長の軌跡をご覧ください。'}
+              {language === 'ko' && '1995년 창립부터 현재까지 우리의 성장 궤적을 보시기 바랍니다.'}
+              {language === 'en' && 'Please see our growth trajectory from our founding in 1995 to the present.'}
+              {language === 'zh' && '请查看我们从1995年创立至今的成长轨迹。'}
             </p>
           </div>
 
