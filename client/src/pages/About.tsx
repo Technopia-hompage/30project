@@ -260,6 +260,15 @@ export function About() {
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
+                    {language === 'jp' && 'アルミホイールの製造、販売'}
+                    {language === 'ko' && '알루미늄 휠의 제조, 판매'}
+                    {language === 'en' && 'Aluminum Wheel Manufacturing & Sales'}
+                    {language === 'zh' && '铝合金轮毂制造·销售'}
+                  </span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Award className="h-4 w-4 text-corporate-blue" />
+                  <span>
                     {language === 'jp' && '医療機器・ヘルスケア製品'}
                     {language === 'ko' && '의료기기·헬스케어 제품'}
                     {language === 'en' && 'Medical Devices & Healthcare Products'}
