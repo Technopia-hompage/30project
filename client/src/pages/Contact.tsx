@@ -306,7 +306,32 @@ export function Contact() {
                         {language === 'en' && 'Phone Number'}
                         {language === 'zh' && '电话号码'}
                       </h4>
-                      <p className="text-slate-600">03-3221-4761</p>
+                      <div className="text-slate-600 space-y-1">
+                        <p>
+                          {language === 'jp' && '本社代表 : 03-3221-4761'}
+                          {language === 'ko' && '본사대표 : 03-3221-4761'}
+                          {language === 'en' && 'Head Office : 03-3221-4761'}
+                          {language === 'zh' && '总部代表 : 03-3221-4761'}
+                        </p>
+                        <p>
+                          {language === 'jp' && 'メディカル事業部 : 03-3221-5177'}
+                          {language === 'ko' && '메디컬사업부 : 03-3221-5177'}
+                          {language === 'en' && 'Medical Division : 03-3221-5177'}
+                          {language === 'zh' && '医疗事业部 : 03-3221-5177'}
+                        </p>
+                        <p>
+                          {language === 'jp' && 'AUTO事業部 : 03-3221-7100'}
+                          {language === 'ko' && 'AUTO사업부 : 03-3221-7100'}
+                          {language === 'en' && 'AUTO Division : 03-3221-7100'}
+                          {language === 'zh' && 'AUTO事业部 : 03-3221-7100'}
+                        </p>
+                        <p>
+                          {language === 'jp' && '新規事業部 : 03-3221-4761'}
+                          {language === 'ko' && '신규사업부 : 03-3221-4761'}
+                          {language === 'en' && 'New Business Division : 03-3221-4761'}
+                          {language === 'zh' && '新业务事业部 : 03-3221-4761'}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
