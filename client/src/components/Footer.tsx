@@ -12,6 +12,7 @@ export function Footer() {
     { key: 'business', path: '/business' },
     { key: 'careers', path: '/careers' },
     { key: 'contact', path: '/contact' },
+    { key: 'privacy', path: '/privacy' },
   ];
 
   return (
@@ -22,7 +23,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href={getLanguageRoute('/')}>
               <div className="h-8 w-32 bg-white rounded flex items-center justify-center text-slate-900 text-sm font-bold mb-6">
-                GlobalCorp
+                Technopia
               </div>
             </Link>
             <p className="text-slate-300 mb-6 max-w-md">

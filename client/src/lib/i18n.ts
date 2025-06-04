@@ -60,7 +60,8 @@ export const translations = {
       message: { jp: 'メッセージ', ko: '메시지', en: 'Message', zh: '信息' },
       submit: { jp: '送信する', ko: '전송', en: 'Send Message', zh: '发送消息' }
     }
-  }
+  },
+  privacy: { jp: 'プライバシーポリシー', ko: '개인정보 보호정책', en: 'Privacy Policy', zh: '隐私政策' }
 };
 
 export function getTranslation(key: string, language: Language): string {
