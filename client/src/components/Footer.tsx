@@ -119,12 +119,12 @@ export function Footer() {
               {language === 'en' && 'Terms of Service'}
               {language === 'zh' && '使用条款'}
             </a>
-            <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href={getLanguageRoute('/privacy')} className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
               {language === 'jp' && 'プライバシーポリシー'}
               {language === 'ko' && '개인정보처리방침'}
               {language === 'en' && 'Privacy Policy'}
               {language === 'zh' && '隐私政策'}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
