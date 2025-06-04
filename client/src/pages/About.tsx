@@ -229,11 +229,11 @@ export function About() {
                       {language === 'en' && 'Headquarters & Branches'}
                       {language === 'zh' && '总部及分公司'}
                     </div>
-                    <div className="text-slate-600">
-                      {language === 'jp' && '〒101-0065 東京都千代田区西神田3-1-2 ウインド西神田ビル3F'}
-                      {language === 'ko' && '〒101-0065 도쿄도 치요다구 니시칸다3-1-2 윈드 니시칸다 빌딩 3F'}
-                      {language === 'en' && '〒101-0065 3F Wind Nishikanda Building, 3-1-2 Nishikanda, Chiyoda-ku, Tokyo'}
-                      {language === 'zh' && '〒101-0065 东京都千代田区西神田3-1-2 风神田大厦3F'}
+                    <div className="text-slate-600 whitespace-pre-line">
+                      {language === 'jp' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                      {language === 'ko' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                      {language === 'en' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                      {language === 'zh' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
                     </div>
                   </div>
                 </div>

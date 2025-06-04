@@ -288,9 +288,9 @@ export function Contact() {
                       </h4>
                       <p className="text-slate-600 whitespace-pre-line">
                         {language === 'jp' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
-                        {language === 'ko' && '〒101-0065\n도쿄도 치요다구 니시칸다 3-1-2\n윈드 니시칸다 빌딩 3F'}
-                        {language === 'en' && '〒101-0065\n3F Wind Nishi-Kanda Building\n3-1-2 Nishi-Kanda, Chiyoda-ku, Tokyo'}
-                        {language === 'zh' && '〒101-0065\n东京都千代田区西神田3-1-2\nWind西神田大厦3F'}
+                        {language === 'ko' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                        {language === 'en' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
+                        {language === 'zh' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
                       </p>
                     </div>
                   </div>
