@@ -39,7 +39,7 @@ export function Navigation() {
               <img 
                 src={technopiaLogo} 
                 alt="Technopia" 
-                className="h-10 w-auto"
+                className="h-12 w-auto"
               />
             </div>
           </Link>
