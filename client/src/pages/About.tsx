@@ -224,10 +224,10 @@ export function About() {
                   <Globe className="h-5 w-5 text-corporate-blue mt-1" />
                   <div>
                     <div className="font-medium text-slate-900">
-                      {language === 'jp' && '本社および支社'}
-                      {language === 'ko' && '본사 및 지사'}
-                      {language === 'en' && 'Headquarters & Branches'}
-                      {language === 'zh' && '总部及分公司'}
+                      {language === 'jp' && '本社'}
+                      {language === 'ko' && '본사'}
+                      {language === 'en' && 'Headquarters'}
+                      {language === 'zh' && '总部'}
                     </div>
                     <div className="text-slate-600 whitespace-pre-line">
                       {language === 'jp' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
