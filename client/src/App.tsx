@@ -53,6 +53,7 @@ function Router() {
       <Route path="/admin" component={Admin} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/site-policy" component={SitePolicy} />
+      <Route path="/ceo-message" component={CeoMessage} />
       
       {/* Fallback to 404 */}
       <Route component={NotFound} />

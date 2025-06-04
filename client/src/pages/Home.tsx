@@ -54,10 +54,12 @@ export function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
-              <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
-                <Play className="mr-2 h-5 w-5" />
-                {getTranslation('hero.ceoMessage', language)}
-              </Button>
+              <Link href={getLanguageRoute('/ceo-message')}>
+                <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
+                  <Play className="mr-2 h-5 w-5" />
+                  {getTranslation('hero.ceoMessage', language)}
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-corporate-blue">
                 {getTranslation('hero.learnMore', language)}
               </Button>
