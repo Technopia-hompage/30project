@@ -278,15 +278,6 @@ export function About() {
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
-                    {language === 'jp' && '環境・エネルギー関連機器'}
-                    {language === 'ko' && '환경·에너지 관련 기기'}
-                    {language === 'en' && 'Environmental & Energy Equipment'}
-                    {language === 'zh' && '环境·能源相关设备'}
-                  </span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Award className="h-4 w-4 text-corporate-blue" />
-                  <span>
                     {language === 'jp' && 'AI顔認証検温測定器「TOLLGATE」の製造・販売'}
                     {language === 'ko' && 'AI 안면인증 체온측정기「TOLLGATE」제조·판매'}
                     {language === 'en' && 'AI Face Recognition Temperature Measurement Device "TOLLGATE" Manufacturing & Sales'}
@@ -309,15 +300,6 @@ export function About() {
                     {language === 'ko' && '신용카드 단말기 결제 서비스'}
                     {language === 'en' && 'Credit Card Terminal Payment Services'}
                     {language === 'zh' && '信用卡终端支付服务'}
-                  </span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Award className="h-4 w-4 text-corporate-blue" />
-                  <span>
-                    {language === 'jp' && '技術コンサルティングサービス'}
-                    {language === 'ko' && '기술 컨설팅 서비스'}
-                    {language === 'en' && 'Technical Consulting Services'}
-                    {language === 'zh' && '技术咨询服务'}
                   </span>
                 </li>
               </ul>
