@@ -18,6 +18,7 @@ import { Gallery } from "@/pages/Gallery";
 import { News } from "@/pages/News";
 import { Admin } from "@/pages/Admin";
 import { Privacy } from "@/pages/Privacy";
+import { SitePolicy } from "@/pages/SitePolicy";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/:lang/news/:id" component={News} />
       <Route path="/:lang/admin" component={Admin} />
       <Route path="/:lang/privacy" component={Privacy} />
+      <Route path="/:lang/site-policy" component={SitePolicy} />
       
       {/* Default language routes */}
       <Route path="/about" component={About} />
@@ -48,6 +50,7 @@ function Router() {
       <Route path="/news/:id" component={News} />
       <Route path="/admin" component={Admin} />
       <Route path="/privacy" component={Privacy} />
+      <Route path="/site-policy" component={SitePolicy} />
       
       {/* Fallback to 404 */}
       <Route component={NotFound} />

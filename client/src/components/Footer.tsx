@@ -105,12 +105,12 @@ export function Footer() {
             © 2025 Technopia Corporation. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
-              {language === 'jp' && '利用規約'}
-              {language === 'ko' && '이용약관'}
-              {language === 'en' && 'Terms of Service'}
-              {language === 'zh' && '使用条款'}
-            </a>
+            <Link href={getLanguageRoute('/site-policy')} className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
+              {language === 'jp' && 'サイトポリシー'}
+              {language === 'ko' && '사이트 정책'}
+              {language === 'en' && 'Site Policy'}
+              {language === 'zh' && '网站政策'}
+            </Link>
             <Link href={getLanguageRoute('/privacy')} className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
               {language === 'jp' && 'プライバシーポリシー'}
               {language === 'ko' && '개인정보처리방침'}
