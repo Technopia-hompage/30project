@@ -50,8 +50,8 @@ export function Navigation() {
               <Link key={item.key} href={getLanguageRoute(item.path)}>
                 <span className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActivePath(item.path)
-                    ? 'text-corporate-blue'
-                    : 'text-slate-600 hover:text-corporate-blue'
+                    ? 'text-corporate-blue font-semibold'
+                    : 'text-slate-700 hover:text-corporate-blue'
                 }`}>
                   {getTranslation(`nav.${item.key}`, language)}
                 </span>
@@ -77,8 +77,8 @@ export function Navigation() {
                       <span 
                         className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
                           isActivePath(item.path)
-                            ? 'text-corporate-blue'
-                            : 'text-slate-600 hover:text-corporate-blue'
+                            ? 'text-corporate-blue font-semibold'
+                            : 'text-slate-700 hover:text-corporate-blue'
                         }`}
                         onClick={() => setMobileMenuOpen(false)}
                       >
