@@ -23,7 +23,7 @@ export function Footer() {
             <Link href={getLanguageRoute('/')}>
               <div className="flex items-center mb-6 hover:opacity-80 transition-opacity duration-200">
                 <img 
-                  src="/assets/technopia_logo_1749111221610.png" 
+                  src="/assets/technopia-logo_1749111397772.png" 
                   alt="Technopia Logo" 
                   className="h-8 w-auto mr-3"
                 />
