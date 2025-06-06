@@ -27,7 +27,7 @@ export function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-corporate-blue to-blue-700 overflow-hidden min-h-[70vh]">
+      <section className="relative bg-gradient-to-br from-corporate-blue to-blue-700 overflow-hidden min-h-[60vh]">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
