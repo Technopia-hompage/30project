@@ -44,11 +44,7 @@ export function Home() {
               <span className="text-corporate-blue">{getTranslation('hero.title2', language)}</span>
             </h1>
             
-            <p className="text-xl text-slate-200 mb-8 max-w-3xl mx-auto animate-slide-up">
-              {getTranslation('hero.subtitle', language)}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up mt-8">
               <Link href={getLanguageRoute('/ceo-message')}>
                 <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
                   <Play className="mr-2 h-5 w-5" />
