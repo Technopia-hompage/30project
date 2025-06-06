@@ -61,6 +61,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "corporate-blue": "hsl(var(--corporate-blue))",
+        "corporate-light": "hsl(var(--corporate-light))",
+        "corporate-gray": "hsl(var(--corporate-gray))",
+        "anniversary-red": "hsl(var(--anniversary-red))",
+        "success-green": "hsl(var(--success-green))",
       },
       keyframes: {
         "accordion-down": {
