@@ -170,6 +170,33 @@ export function Careers() {
         </div>
       </section>
 
+      {/* Global Business Section */}
+      <section className="py-16 lg:py-24 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6">
+              {language === 'jp' && 'グローバルな事業展開'}
+              {language === 'ko' && '글로벌 사업 전개'}
+              {language === 'en' && 'Global Business Expansion'}
+              {language === 'zh' && '全球业务拓展'}
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              {language === 'jp' && '世界9拠点でのビジネス展開により、グローバルなキャリア機会を提供しています。'}
+              {language === 'ko' && '전 세계 9개 거점에서의 비즈니스 전개로 글로벌 커리어 기회를 제공하고 있습니다.'}
+              {language === 'en' && 'With business operations in 9 locations worldwide, we provide global career opportunities.'}
+              {language === 'zh' && '通过在全球9个据点的业务拓展，我们提供全球职业发展机会。'}
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img 
+              src="/attached_assets/ChatGPT Image 2025年6月6日 10_02_00.png" 
+              alt="Global Business Network"
+              className="max-w-full h-auto rounded-lg shadow-xl"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Job Openings */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
