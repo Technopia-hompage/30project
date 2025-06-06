@@ -90,12 +90,13 @@ export function Careers() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section 
-        className="py-16 lg:py-24 relative overflow-hidden"
+        className="py-16 lg:py-24 relative overflow-hidden min-h-[70vh]"
         style={{
           backgroundImage: `url(${careersBgImage})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
         }}
       >
         <div className="absolute inset-0 bg-slate-900/70"></div>
