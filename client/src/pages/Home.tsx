@@ -124,7 +124,7 @@ export function Home() {
             {/* Medical Division */}
             <Card className="hover:shadow-lg transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-lg flex items-center justify-center mb-6">
                   <Stethoscope className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
@@ -151,7 +151,7 @@ export function Home() {
             {/* Auto Division */}
             <Card className="hover:shadow-lg transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-lg flex items-center justify-center mb-6">
                   <Car className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
@@ -178,7 +178,7 @@ export function Home() {
             {/* New Business Division */}
             <Card className="hover:shadow-lg transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-lg flex items-center justify-center mb-6">
                   <Lightbulb className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">

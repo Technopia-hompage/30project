@@ -138,7 +138,7 @@ export function Careers() {
 
             <Card className="text-center hover:shadow-lg transition-shadow duration-200">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-success-green rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
                   <Scale3d className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
@@ -158,7 +158,7 @@ export function Careers() {
 
             <Card className="text-center hover:shadow-lg transition-shadow duration-200">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
                   <Users className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">

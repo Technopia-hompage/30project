@@ -180,7 +180,7 @@ export function Business() {
               {/* Medical Division */}
               <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
                     <Stethoscope className="text-white h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">
