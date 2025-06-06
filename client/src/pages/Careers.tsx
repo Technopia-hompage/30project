@@ -114,68 +114,7 @@ export function Careers() {
             </p>
           </div>
 
-          {/* Benefits Section */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                  <GraduationCap className="text-white h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {language === 'jp' && '成長機会'}
-                  {language === 'ko' && '성장 기회'}
-                  {language === 'en' && 'Growth Opportunities'}
-                  {language === 'zh' && '成长机会'}
-                </h3>
-                <p className="text-slate-600">
-                  {language === 'jp' && '継続的な学習とスキル向上をサポート'}
-                  {language === 'ko' && '지속적인 학습과 스킬 향상을 지원'}
-                  {language === 'en' && 'Supporting continuous learning and skill development'}
-                  {language === 'zh' && '支持持续学习和技能提升'}
-                </p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Scale3d className="text-white h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {language === 'jp' && 'ワークライフバランス'}
-                  {language === 'ko' && '워크라이프 밸런스'}
-                  {language === 'en' && 'Work-Life Balance'}
-                  {language === 'zh' && '工作生活平衡'}
-                </h3>
-                <p className="text-slate-600">
-                  {language === 'jp' && '柔軟な働き方と充実した福利厚生'}
-                  {language === 'ko' && '유연한 근무 방식과 충실한 복리후생'}
-                  {language === 'en' && 'Flexible working styles and comprehensive benefits'}
-                  {language === 'zh' && '灵活的工作方式和完善的福利待遇'}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="text-white h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {language === 'jp' && '多様性'}
-                  {language === 'ko' && '다양성'}
-                  {language === 'en' && 'Diversity'}
-                  {language === 'zh' && '多样性'}
-                </h3>
-                <p className="text-slate-600">
-                  {language === 'jp' && 'グローバルで多様なチーム環境'}
-                  {language === 'ko' && '글로벌하고 다양한 팀 환경'}
-                  {language === 'en' && 'Global and diverse team environment'}
-                  {language === 'zh' && '全球化多元团队环境'}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </section>
 
@@ -276,6 +215,80 @@ export function Careers() {
               </CardContent>
             </Card>
           )}
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 lg:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
+            {language === 'jp' && '働く環境・福利厚生'}
+            {language === 'ko' && '근무 환경 및 복리후생'}
+            {language === 'en' && 'Work Environment & Benefits'}
+            {language === 'zh' && '工作环境和福利待遇'}
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                  <GraduationCap className="text-white h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                  {language === 'jp' && '成長機会'}
+                  {language === 'ko' && '성장 기회'}
+                  {language === 'en' && 'Growth Opportunities'}
+                  {language === 'zh' && '成长机会'}
+                </h3>
+                <p className="text-slate-600">
+                  {language === 'jp' && '継続的な学習とスキル向上をサポート'}
+                  {language === 'ko' && '지속적인 학습과 스킬 향상을 지원'}
+                  {language === 'en' && 'Supporting continuous learning and skill development'}
+                  {language === 'zh' && '支持持续学习和技能提升'}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Scale3d className="text-white h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                  {language === 'jp' && 'ワークライフバランス'}
+                  {language === 'ko' && '워크라이프 밸런스'}
+                  {language === 'en' && 'Work-Life Balance'}
+                  {language === 'zh' && '工作生活平衡'}
+                </h3>
+                <p className="text-slate-600">
+                  {language === 'jp' && '柔軟な働き方と充実した福利厚生'}
+                  {language === 'ko' && '유연한 근무 방식과 충실한 복리후생'}
+                  {language === 'en' && 'Flexible working styles and comprehensive benefits'}
+                  {language === 'zh' && '灵活的工作方式和完善的福利待遇'}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="text-white h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                  {language === 'jp' && '多様性'}
+                  {language === 'ko' && '다양성'}
+                  {language === 'en' && 'Diversity'}
+                  {language === 'zh' && '多样性'}
+                </h3>
+                <p className="text-slate-600">
+                  {language === 'jp' && 'グローバルで多様なチーム環境'}
+                  {language === 'ko' && '글로벌하고 다양한 팀 환경'}
+                  {language === 'en' && 'Global and diverse team environment'}
+                  {language === 'zh' && '全球化多元团队环境'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
