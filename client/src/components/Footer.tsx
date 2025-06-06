@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export function Footer() {
   const { language, getLanguageRoute } = useLanguage();
@@ -49,7 +49,7 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
-                <Youtube className="h-5 w-5" />
+                <Instagram className="h-5 w-5" />
               </a>
             </div>
           </div>
