@@ -30,9 +30,9 @@ export function CeoMessage() {
               <CardContent className="p-8 text-center">
                 <div className="mb-6">
                   <img 
-                    src="/assets/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202025-06-04%20150711.png" 
+                    src="/assets/スクリーンショット 2025-06-04 150711.png" 
                     alt="CEO Park Jae-se" 
-                    className="w-56 h-auto object-contain mx-auto mb-6 rounded-lg"
+                    className="w-56 h-auto object-cover mx-auto mb-6 rounded-lg"
                   />
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">朴 栽世</h3>
                   <p className="text-lg text-slate-600 mb-4">代表取締役社長</p>
