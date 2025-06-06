@@ -7,7 +7,7 @@ import { getTranslation, getMultiLanguageContent } from "@/lib/i18n";
 import { Link } from "wouter";
 import { NewsArticle, GalleryImage } from "@shared/schema";
 import { Play, ChevronDown, Target, Eye, Heart, Award, Stethoscope, Car, Lightbulb } from "lucide-react";
-import homeBgImage from "@assets/ChatGPT Image 2025年6月6日 11_35_33.png";
+import homeBgImage from "@assets/ChatGPT Image 2025年6月6日 11_50_37.png";
 
 export function Home() {
   const { language, getLanguageRoute } = useLanguage();
@@ -30,7 +30,10 @@ export function Home() {
       <section className="relative bg-gradient-to-br from-corporate-blue to-blue-700 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${homeBgImage})`
+          }}
         ></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
