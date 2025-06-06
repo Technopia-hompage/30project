@@ -61,7 +61,7 @@ export function Home() {
                 </Button>
               </Link>
               <Link href={getLanguageRoute('/about')}>
-                <Button size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-corporate-blue font-medium">
+                <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
                   {language === 'jp' && '会社紹介'}
                   {language === 'ko' && '회사 소개'}
                   {language === 'en' && 'About Us'}
