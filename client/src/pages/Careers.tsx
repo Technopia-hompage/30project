@@ -24,7 +24,7 @@ import {
   Mail,
   Phone
 } from "lucide-react";
-import careersBgImage from "@assets/ChatGPT Image 2025年6月6日 11_35_33.png";
+import careersBgImage from "@assets/ChatGPT Image 2025年6月6日 11_13_45.png";
 
 export function Careers() {
   const { language } = useLanguage();
@@ -103,36 +103,16 @@ export function Careers() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center min-h-[50vh]">
           <div className="text-left">
             <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
-              {language === 'jp' && (
-                <>
-                  IMPOSSIBLE<span className="text-red-500">を</span><br />
-                  I'm POSSIBLE<span className="text-blue-400">に変える企業</span>
-                </>
-              )}
-              {language === 'ko' && (
-                <>
-                  IMPOSSIBLE<span className="text-red-500">을</span><br />
-                  I'm POSSIBLE<span className="text-blue-400">로 바꾸는 기업</span>
-                </>
-              )}
-              {language === 'en' && (
-                <>
-                  Turning IMPOSSIBLE<br />
-                  <span className="text-blue-400">into I'm POSSIBLE</span>
-                </>
-              )}
-              {language === 'zh' && (
-                <>
-                  将IMPOSSIBLE<br />
-                  <span className="text-blue-400">变为I'm POSSIBLE的企业</span>
-                </>
-              )}
+              {language === 'jp' && '採用情報'}
+              {language === 'ko' && '채용 정보'}
+              {language === 'en' && 'Careers'}
+              {language === 'zh' && '招聘信息'}
             </h1>
             <p className="text-xl md:text-2xl text-slate-200 max-w-4xl leading-relaxed">
-              {language === 'jp' && 'テクノピアはオルソケラトロジーレンズ「マイエメラルド」やアルミホイール、AI顔認証検温測定機「TOLLGATE」などを取り扱う企業です。'}
-              {language === 'ko' && '테크노피아는 오르토케라톨로지 렌즈 "마이에메랄드"와 알루미늄 휠, AI 얼굴 인식 체온 측정기 "TOLLGATE" 등을 취급하는 기업입니다.'}
-              {language === 'en' && 'Technopia is a company that handles orthokeratology lenses "My Emerald", aluminum wheels, AI face recognition temperature measurement device "TOLLGATE" and more.'}
-              {language === 'zh' && 'Technopia是一家经营角膜塑形镜"My Emerald"、铝合金轮毂、AI人脸识别体温检测设备"TOLLGATE"等产品的企业。'}
+              {language === 'jp' && '共に成長し、未来を創造するメンバーを募集しています。'}
+              {language === 'ko' && '함께 성장하고 미래를 창조할 멤버를 모집하고 있습니다.'}
+              {language === 'en' && 'We are looking for members who will grow together and create the future.'}
+              {language === 'zh' && '我们正在寻找共同成长、创造未来的成员。'}
             </p>
           </div>
 
