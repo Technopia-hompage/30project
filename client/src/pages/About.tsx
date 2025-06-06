@@ -308,6 +308,150 @@ export function About() {
           </div>
         </div>
       </section>
+
+      {/* Detailed Business Information */}
+      <section className="py-16 lg:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
+            {language === 'jp' && '詳細企業情報'}
+            {language === 'ko' && '상세 기업 정보'}
+            {language === 'en' && 'Detailed Corporate Information'}
+            {language === 'zh' && '详细企业信息'}
+          </h2>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Banking Partners */}
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-slate-900 mb-6 flex items-center">
+                  <Building className="h-5 w-5 text-corporate-blue mr-2" />
+                  {language === 'jp' && '取引銀行'}
+                  {language === 'ko' && '거래 은행'}
+                  {language === 'en' && 'Banking Partners'}
+                  {language === 'zh' && '合作银行'}
+                </h3>
+                <ul className="space-y-2 text-slate-600">
+                  <li>三井住友銀行</li>
+                  <li>みずほ銀行</li>
+                  <li>三菱UFJ銀行</li>
+                  <li>りそな銀行</li>
+                  <li>SBJ銀行</li>
+                  <li>城南信用金庫</li>
+                  <li>商工組合中央金庫</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Trading Countries */}
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-slate-900 mb-6 flex items-center">
+                  <Globe className="h-5 w-5 text-corporate-blue mr-2" />
+                  {language === 'jp' && '取引国'}
+                  {language === 'ko' && '거래국'}
+                  {language === 'en' && 'Trading Countries'}
+                  {language === 'zh' && '贸易国家'}
+                </h3>
+                <div className="grid grid-cols-2 gap-2 text-slate-600">
+                  <div>
+                    <ul className="space-y-2">
+                      <li>アメリカ</li>
+                      <li>中国</li>
+                      <li>韓国</li>
+                      <li>ドイツ</li>
+                      <li>ベルギー</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul className="space-y-2">
+                      <li>イスラエル</li>
+                      <li>フランス</li>
+                      <li>イタリア</li>
+                      <li>INDIA</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Major Clients */}
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-slate-900 mb-6 flex items-center">
+                  <Users className="h-5 w-5 text-corporate-blue mr-2" />
+                  {language === 'jp' && '主要取引先'}
+                  {language === 'ko' && '주요 거래처'}
+                  {language === 'en' && 'Major Clients'}
+                  {language === 'zh' && '主要客户'}
+                </h3>
+                <ul className="space-y-2 text-slate-600">
+                  <li>伊藤忠商事株式会社</li>
+                  <li>丸紅株式会社</li>
+                  <li>SAMSUNG</li>
+                  <li>LG</li>
+                  <li>株式会社フジ・コーポレーション</li>
+                  <li>全国の大学病院</li>
+                  <li>眼科クリニック　1000カ所</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Products */}
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-slate-900 mb-6 flex items-center">
+                  <Award className="h-5 w-5 text-corporate-blue mr-2" />
+                  {language === 'jp' && '取扱製品'}
+                  {language === 'ko' && '취급 제품'}
+                  {language === 'en' && 'Products & Services'}
+                  {language === 'zh' && '产品与服务'}
+                </h3>
+                <ul className="space-y-2 text-slate-600">
+                  <li>自動車用アルミホイール製造及び販売</li>
+                  <li>コンタクトレンズの製造販売(オルソケラトロジーレンズ)</li>
+                  <li>医療機器の製造販売</li>
+                  <li>TOLLGATEの販売</li>
+                  <li>コロナ関連製品の販売</li>
+                  <li>不動産賃貸</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Group Companies */}
+          <div className="mt-12">
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-slate-900 mb-6 flex items-center">
+                  <Building className="h-5 w-5 text-corporate-blue mr-2" />
+                  {language === 'jp' && 'グループ子会社'}
+                  {language === 'ko' && '그룹 자회사'}
+                  {language === 'en' && 'Group Subsidiaries'}
+                  {language === 'zh' && '集团子公司'}
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white rounded-lg p-6 border border-slate-200">
+                    <h4 className="font-semibold text-slate-900 mb-2">株式会社メニテック</h4>
+                    <p className="text-slate-600 text-sm">(Tokyo)</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 border border-slate-200">
+                    <h4 className="font-semibold text-slate-900 mb-2">株式会社プライスドットコム</h4>
+                    <p className="text-slate-600 text-sm">(Tokyo)</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 border border-slate-200">
+                    <h4 className="font-semibold text-slate-900 mb-2">Cross M Corporation</h4>
+                    <p className="text-slate-600 text-sm">(Korea)</p>
+                    <div className="mt-2 text-xs text-slate-500">
+                      <p>TEL: 82-2-6961-5454</p>
+                      <p>FAX: 82-2-6961-5477</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
