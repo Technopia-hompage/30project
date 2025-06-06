@@ -91,7 +91,7 @@ export function Careers() {
       <section 
         className="py-16 lg:py-24 relative overflow-hidden"
         style={{
-          backgroundImage: `url('/attached_assets/ChatGPT Image 2025年6月6日 10_02_00.png')`,
+          backgroundImage: `url('/attached_assets/ChatGPT Image 2025年6月6日 11_13_45.png')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
