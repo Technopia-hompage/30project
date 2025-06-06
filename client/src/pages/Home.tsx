@@ -98,18 +98,6 @@ export function Home() {
               <div className="text-3xl md:text-4xl font-bold text-corporate-blue mb-2">1000+</div>
               <div className="text-slate-600">{getTranslation('company.stats.partners', language)}</div>
             </div>
-            
-            {/* 30年のあゆみを見る Button */}
-            <div className="text-center mt-12">
-              <Link href={getLanguageRoute('/anniversary')}>
-                <Button size="lg" className="bg-corporate-blue hover:bg-blue-700 text-white px-8 py-3">
-                  {language === 'jp' && '30年のあゆみを見る'}
-                  {language === 'ko' && '30년의 발걸음 보기'}
-                  {language === 'en' && 'View 30 Years Journey'}
-                  {language === 'zh' && '查看30年历程'}
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
