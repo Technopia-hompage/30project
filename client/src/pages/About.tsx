@@ -3,6 +3,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Target, Eye, Heart, Building, Users, Globe, Award } from "lucide-react";
 import ceoImage from "@assets/スクリーンショット 2025-06-04 150711.png";
+import organizationChart from "@assets/ChatGPT Image 2025年6月6日 16_11_29.png";
 
 export function About() {
   const { language } = useLanguage();
@@ -306,13 +307,13 @@ export function About() {
                     {language === 'en' && 'Organizational Chart'}
                     {language === 'zh' && '组织图'}
                   </h3>
-                  <div className="bg-slate-100 rounded-lg p-8 min-h-[200px] flex items-center justify-center">
-                    <p className="text-slate-500">
-                      {language === 'jp' && '組織図はこちらに表示されます'}
-                      {language === 'ko' && '조직도가 여기에 표시됩니다'}
-                      {language === 'en' && 'Organizational chart will be displayed here'}
-                      {language === 'zh' && '组织图将在此处显示'}
-                    </p>
+                  <div className="bg-white rounded-lg p-4 border border-slate-200">
+                    <img 
+                      src={organizationChart} 
+                      alt="Technopia Organizational Chart"
+                      className="w-full h-auto rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
+                      onClick={() => window.open(organizationChart, '_blank')}
+                    />
                   </div>
                 </CardContent>
               </Card>
