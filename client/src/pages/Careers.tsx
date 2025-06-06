@@ -24,6 +24,7 @@ import {
   Mail,
   Phone
 } from "lucide-react";
+import careersBgImage from "@assets/ChatGPT Image 2025年6月6日 11_13_45.png";
 
 export function Careers() {
   const { language } = useLanguage();
@@ -91,7 +92,7 @@ export function Careers() {
       <section 
         className="py-16 lg:py-24 relative overflow-hidden"
         style={{
-          backgroundImage: `url('/attached_assets/ChatGPT Image 2025年6月6日 11_13_45.png')`,
+          backgroundImage: `url(${careersBgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
