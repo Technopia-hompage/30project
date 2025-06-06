@@ -46,7 +46,7 @@ export function Home() {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
               {getTranslation('hero.title1', language)}
               <br />
-              <span className="text-yellow-300">{getTranslation('hero.title2', language)}</span>
+              <span className="text-corporate-blue">{getTranslation('hero.title2', language)}</span>
             </h1>
             
             <p className="text-xl text-slate-200 mb-8 max-w-3xl mx-auto animate-slide-up">
