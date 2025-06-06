@@ -213,12 +213,36 @@ export function About() {
                   <Users className="h-5 w-5 text-corporate-blue mt-1" />
                   <div>
                     <div className="font-medium text-slate-900">
-                      {language === 'jp' && '設立年'}
-                      {language === 'ko' && '설립년도'}
+                      {language === 'jp' && '創業'}
+                      {language === 'ko' && '창업'}
                       {language === 'en' && 'Founded'}
-                      {language === 'zh' && '成立年份'}
+                      {language === 'zh' && '创业'}
                     </div>
-                    <div className="text-slate-600">1995年</div>
+                    <div className="text-slate-600">1995年10月3日</div>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Users className="h-5 w-5 text-corporate-blue mt-1" />
+                  <div>
+                    <div className="font-medium text-slate-900">
+                      {language === 'jp' && '代表取締役社長'}
+                      {language === 'ko' && '대표이사 사장'}
+                      {language === 'en' && 'President & CEO'}
+                      {language === 'zh' && '董事长兼总裁'}
+                    </div>
+                    <div className="text-slate-600">朴 栽世</div>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Building className="h-5 w-5 text-corporate-blue mt-1" />
+                  <div>
+                    <div className="font-medium text-slate-900">
+                      {language === 'jp' && '資本金(連結)'}
+                      {language === 'ko' && '자본금(연결)'}
+                      {language === 'en' && 'Capital (Consolidated)'}
+                      {language === 'zh' && '资本金(合并)'}
+                    </div>
+                    <div className="text-slate-600">7000万円</div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
