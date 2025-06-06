@@ -38,12 +38,6 @@ export function Home() {
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
-            {/* Anniversary Badge */}
-            <Badge className="bg-anniversary-red text-white px-6 py-2 text-sm font-semibold mb-6">
-              <Award className="mr-2 h-4 w-4" />
-              {getTranslation('hero.badge', language)}
-            </Badge>
-            
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
               {getTranslation('hero.title1', language)}
               <br />
