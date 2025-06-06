@@ -41,16 +41,7 @@ export function Anniversary() {
               2025年10月3日、テクノピアは創立30周年を迎えました。
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
-                <Star className="mr-2 h-5 w-5" />
-                {language === 'jp' && '30年のあゆみを見る'}
-                {language === 'ko' && '30년의 발걸음 보기'}
-                {language === 'en' && 'View 30 Years Journey'}
-                {language === 'zh' && '查看30年历程'}
-              </Button>
 
-            </div>
           </div>
         </div>
       </section>
