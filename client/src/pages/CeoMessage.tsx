@@ -36,9 +36,6 @@ export function CeoMessage() {
                   />
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">朴 栽世</h3>
                   <p className="text-lg text-slate-600 mb-4">代表取締役社長</p>
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto">
-                    <Award className="text-amber-600 h-8 w-8" />
-                  </div>
                 </div>
               </CardContent>
             </Card>
