@@ -108,7 +108,7 @@ export function Careers() {
               {language === 'en' && 'Careers'}
               {language === 'zh' && '招聘信息'}
             </h1>
-            <p className="text-xl text-slate-200 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-200 max-w-3xl text-left">
               {language === 'jp' && '共に成長し、未来を創造するメンバーを募集しています。'}
               {language === 'ko' && '함께 성장하고 미래를 창조할 멤버를 모집하고 있습니다.'}
               {language === 'en' && 'We are looking for members who will grow together and create the future.'}
