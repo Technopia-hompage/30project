@@ -60,9 +60,14 @@ export function Home() {
                   {getTranslation('hero.ceoMessage', language)}
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-corporate-blue">
-                {getTranslation('hero.learnMore', language)}
-              </Button>
+              <Link href={getLanguageRoute('/about')}>
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-corporate-blue">
+                  {language === 'jp' && '会社紹介'}
+                  {language === 'ko' && '회사 소개'}
+                  {language === 'en' && 'About Us'}
+                  {language === 'zh' && '公司介绍'}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
