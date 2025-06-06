@@ -100,15 +100,15 @@ export function Careers() {
         }}
       >
         <div className="absolute inset-0 bg-slate-900/70"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-left mb-16">
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center min-h-[50vh]">
+          <div className="text-left">
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
               {language === 'jp' && '採用情報'}
               {language === 'ko' && '채용 정보'}
               {language === 'en' && 'Careers'}
               {language === 'zh' && '招聘信息'}
             </h1>
-            <p className="text-lg md:text-xl text-slate-200 max-w-3xl">
+            <p className="text-xl md:text-2xl text-slate-200 max-w-4xl leading-relaxed">
               {language === 'jp' && '共に成長し、未来を創造するメンバーを募集しています。'}
               {language === 'ko' && '함께 성장하고 미래를 창조할 멤버를 모집하고 있습니다.'}
               {language === 'en' && 'We are looking for members who will grow together and create the future.'}
