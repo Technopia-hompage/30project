@@ -178,6 +178,168 @@ export function About() {
         </div>
       </section>
 
+      {/* Quality Policy Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              {language === 'jp' && '品質方針'}
+              {language === 'ko' && '품질 방침'}
+              {language === 'en' && 'Quality Policy'}
+              {language === 'zh' && '质量方针'}
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-8">
+                <div className="space-y-6">
+                  {/* Main Quality Policy Statement */}
+                  <div className="bg-gradient-to-r from-corporate-blue/5 to-blue-50 rounded-lg p-6 border-l-4 border-corporate-blue">
+                    <p className="text-lg leading-relaxed text-slate-700">
+                      {language === 'jp' && (
+                        <>
+                          当社の品質方針は、<br />
+                          <strong className="text-corporate-blue">「顧客の要求事項を満足させる製品を継続的かつ安定的に提供し、医療機器業界ならびに医療を必要としている人々をとおして社会に貢献する」</strong><br />
+                          ことである。
+                        </>
+                      )}
+                      {language === 'ko' && (
+                        <>
+                          당사의 품질 방침은<br />
+                          <strong className="text-corporate-blue">「고객의 요구사항을 만족시키는 제품을 지속적이고 안정적으로 제공하여, 의료기기 업계 및 의료를 필요로 하는 사람들을 통해 사회에 기여한다」</strong><br />
+                          는 것입니다.
+                        </>
+                      )}
+                      {language === 'en' && (
+                        <>
+                          Our quality policy is to<br />
+                          <strong className="text-corporate-blue">"continuously and stably provide products that satisfy customer requirements, contributing to society through the medical device industry and people who need medical care."</strong>
+                        </>
+                      )}
+                      {language === 'zh' && (
+                        <>
+                          我公司的质量方针是<br />
+                          <strong className="text-corporate-blue">「持续稳定地提供满足客户要求的产品，通过医疗器械行业以及需要医疗的人们为社会做贡献」</strong>
+                        </>
+                      )}
+                    </p>
+                  </div>
+
+                  {/* Quality Implementation Details */}
+                  <div className="space-y-4">
+                    <p className="text-slate-600 leading-relaxed">
+                      {language === 'jp' && '顧客の要求事項とは、コスト、納期を含んだ「品質」に具体化されるために工程を見直し改善し安定した「品質」を維持できるようにする。'}
+                      {language === 'ko' && '고객의 요구사항은 비용, 납기를 포함한 「품질」로 구체화되기 때문에 공정을 재검토하고 개선하여 안정된 「품질」을 유지할 수 있도록 합니다.'}
+                      {language === 'en' && 'Customer requirements are embodied in "quality" including cost and delivery time, so we review and improve processes to maintain stable "quality".'}
+                      {language === 'zh' && '客户要求体现在包括成本、交期在内的「质量」中，因此要重新审视改善工程，以便能够维持稳定的「质量」。'}
+                    </p>
+
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                        {language === 'jp' && '顧客の要求に応えるために'}
+                        {language === 'ko' && '고객의 요구에 응하기 위해'}
+                        {language === 'en' && 'To Meet Customer Requirements'}
+                        {language === 'zh' && '为了满足客户要求'}
+                      </h3>
+                      <ol className="space-y-3 text-slate-600">
+                        <li className="flex items-start space-x-3">
+                          <span className="flex-shrink-0 w-6 h-6 bg-corporate-blue text-white text-sm rounded-full flex items-center justify-center font-semibold">1</span>
+                          <span>
+                            {language === 'jp' && '顧客の要求事項を確実に理解する。'}
+                            {language === 'ko' && '고객의 요구사항을 확실히 이해한다.'}
+                            {language === 'en' && 'Understand customer requirements accurately.'}
+                            {language === 'zh' && '确实理解客户的要求事项。'}
+                          </span>
+                        </li>
+                        <li className="flex items-start space-x-3">
+                          <span className="flex-shrink-0 w-6 h-6 bg-corporate-blue text-white text-sm rounded-full flex items-center justify-center font-semibold">2</span>
+                          <span>
+                            {language === 'jp' && '顧客からの反応及び業界の動向、監督官庁の施政方針を確認する。'}
+                            {language === 'ko' && '고객의 반응 및 업계 동향, 감독관청의 시정방침을 확인한다.'}
+                            {language === 'en' && 'Monitor customer feedback, industry trends, and regulatory policies.'}
+                            {language === 'zh' && '确认客户反应以及行业动向、监管部门的施政方针。'}
+                          </span>
+                        </li>
+                        <li className="flex items-start space-x-3">
+                          <span className="flex-shrink-0 w-6 h-6 bg-corporate-blue text-white text-sm rounded-full flex items-center justify-center font-semibold">3</span>
+                          <span>
+                            {language === 'jp' && '不具合品の発生防止のために品質確認体制を確立する。'}
+                            {language === 'ko' && '불량품 발생 방지를 위해 품질 확인 체제를 확립한다.'}
+                            {language === 'en' && 'Establish quality assurance systems to prevent defective products.'}
+                            {language === 'zh' && '为防止不良品的发生建立质量确认体制。'}
+                          </span>
+                        </li>
+                        <li className="flex items-start space-x-3">
+                          <span className="flex-shrink-0 w-6 h-6 bg-corporate-blue text-white text-sm rounded-full flex items-center justify-center font-semibold">4</span>
+                          <span>
+                            {language === 'jp' && '従業員のレベルアップを図るために「教育・訓練」を行う。'}
+                            {language === 'ko' && '직원의 레벨업을 위해 「교육·훈련」을 실시한다.'}
+                            {language === 'en' && 'Conduct "education and training" to improve employee capabilities.'}
+                            {language === 'zh' && '为提高员工水平进行「教育·培训」。'}
+                          </span>
+                        </li>
+                      </ol>
+                    </div>
+
+                    {/* Management Commitment */}
+                    <div className="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                      <p className="text-slate-700 leading-relaxed">
+                        {language === 'jp' && '経営者である私は、本品質システムの管理監督者として、本品質システムの履行に関してすべての責任を負うとともに従業員に本品質管理マニュアルの趣旨・内容を理解・認識させ、遵守させる。'}
+                        {language === 'ko' && '경영자인 나는, 본 품질시스템의 관리감독자로서, 본 품질시스템의 이행에 관해 모든 책임을 지는 동시에 직원들에게 본 품질관리 매뉴얼의 취지·내용을 이해·인식시키고, 준수하게 한다.'}
+                        {language === 'en' && 'As the management supervisor of this quality system, I take full responsibility for the implementation of this quality system and ensure that employees understand, recognize, and comply with the purpose and content of this quality management manual.'}
+                        {language === 'zh' && '作为经营者的我，作为本质量系统的管理监督者，对本质量系统的履行承担全部责任，同时让员工理解认识本质量管理手册的宗旨内容，并遵守执行。'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Organizational Chart and Certifications */}
+            <div className="grid md:grid-cols-2 gap-8 mt-12">
+              <Card className="hover:shadow-lg transition-shadow duration-200">
+                <CardContent className="p-8 text-center">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-6">
+                    {language === 'jp' && '組織図'}
+                    {language === 'ko' && '조직도'}
+                    {language === 'en' && 'Organizational Chart'}
+                    {language === 'zh' && '组织图'}
+                  </h3>
+                  <div className="bg-slate-100 rounded-lg p-8 min-h-[200px] flex items-center justify-center">
+                    <p className="text-slate-500">
+                      {language === 'jp' && '組織図はこちらに表示されます'}
+                      {language === 'ko' && '조직도가 여기에 표시됩니다'}
+                      {language === 'en' && 'Organizational chart will be displayed here'}
+                      {language === 'zh' && '组织图将在此处显示'}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow duration-200">
+                <CardContent className="p-8 text-center">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-6">
+                    {language === 'jp' && '業許可及び認証'}
+                    {language === 'ko' && '업허가 및 인증'}
+                    {language === 'en' && 'Licenses & Certifications'}
+                    {language === 'zh' && '业务许可及认证'}
+                  </h3>
+                  <div className="bg-slate-100 rounded-lg p-8 min-h-[200px] flex items-center justify-center">
+                    <p className="text-slate-500 text-sm">
+                      {language === 'jp' && '画像をクリックすると、拡大することができます。'}
+                      {language === 'ko' && '이미지를 클릭하면 확대할 수 있습니다.'}
+                      {language === 'en' && 'Click on images to enlarge them.'}
+                      {language === 'zh' && '点击图片可以放大。'}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Company Information */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
