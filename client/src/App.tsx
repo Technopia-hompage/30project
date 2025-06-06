@@ -20,7 +20,6 @@ import { Admin } from "@/pages/Admin";
 import { Privacy } from "@/pages/Privacy";
 import { SitePolicy } from "@/pages/SitePolicy";
 import { CeoMessage } from "@/pages/CeoMessage";
-import { MilestoneExplorer } from "@/components/MilestoneExplorer";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -41,7 +40,6 @@ function Router() {
       <Route path="/:lang/privacy" component={Privacy} />
       <Route path="/:lang/site-policy" component={SitePolicy} />
       <Route path="/:lang/ceo-message" component={CeoMessage} />
-      <Route path="/:lang/milestone-explorer" component={MilestoneExplorer} />
       
       {/* Default language routes */}
       <Route path="/about" component={About} />
@@ -56,7 +54,6 @@ function Router() {
       <Route path="/privacy" component={Privacy} />
       <Route path="/site-policy" component={SitePolicy} />
       <Route path="/ceo-message" component={CeoMessage} />
-      <Route path="/milestone-explorer" component={MilestoneExplorer} />
       
       {/* Fallback to 404 */}
       <Route component={NotFound} />
