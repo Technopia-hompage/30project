@@ -88,16 +88,25 @@ export function Careers() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section 
+        className="py-16 lg:py-24 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('/attached_assets/ChatGPT Image 2025年6月6日 10_02_00.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-slate-900/70"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {language === 'jp' && '採用情報'}
               {language === 'ko' && '채용 정보'}
               {language === 'en' && 'Careers'}
               {language === 'zh' && '招聘信息'}
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto">
               {language === 'jp' && '共に成長し、未来を創造するメンバーを募集しています。'}
               {language === 'ko' && '함께 성장하고 미래를 창조할 멤버를 모집하고 있습니다.'}
               {language === 'en' && 'We are looking for members who will grow together and create the future.'}
@@ -170,32 +179,6 @@ export function Careers() {
         </div>
       </section>
 
-      {/* Global Business Section */}
-      <section className="py-16 lg:py-24 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {language === 'jp' && 'グローバルな事業展開'}
-              {language === 'ko' && '글로벌 사업 전개'}
-              {language === 'en' && 'Global Business Expansion'}
-              {language === 'zh' && '全球业务拓展'}
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              {language === 'jp' && '世界9拠点でのビジネス展開により、グローバルなキャリア機会を提供しています。'}
-              {language === 'ko' && '전 세계 9개 거점에서의 비즈니스 전개로 글로벌 커리어 기회를 제공하고 있습니다.'}
-              {language === 'en' && 'With business operations in 9 locations worldwide, we provide global career opportunities.'}
-              {language === 'zh' && '通过在全球9个据点的业务拓展，我们提供全球职业发展机会。'}
-            </p>
-          </div>
-          <div className="flex justify-center">
-            <img 
-              src="/attached_assets/ChatGPT Image 2025年6月6日 10_02_00.png" 
-              alt="Global Business Network"
-              className="max-w-full h-auto rounded-lg shadow-xl"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Job Openings */}
       <section className="py-16 lg:py-24 bg-white">
