@@ -23,21 +23,9 @@ export function CeoMessage() {
         </div>
 
         {/* CEO Message Content */}
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* CEO Photo and Info */}
-          <div className="lg:col-span-1">
-            <Card className="shadow-xl">
-              <CardContent className="p-8 text-center">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">朴 栽世</h3>
-                  <p className="text-lg text-slate-600 mb-4">代表取締役社長</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
+        <div className="max-w-4xl mx-auto">
           {/* Message Content */}
-          <div className="lg:col-span-2">
+          <div>
             <Card className="shadow-xl">
               <CardContent className="p-8 lg:p-12">
                 <div className="prose prose-lg max-w-none text-slate-700">
