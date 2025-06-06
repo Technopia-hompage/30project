@@ -65,7 +65,7 @@ export function About() {
             {/* Vision Card */}
             <Card className="hover:shadow-xl transition-shadow duration-200">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
                   <Eye className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
@@ -80,7 +80,7 @@ export function About() {
             {/* Values Card */}
             <Card className="hover:shadow-xl transition-shadow duration-200">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-success-green rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
                   <Heart className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
