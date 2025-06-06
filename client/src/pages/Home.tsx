@@ -7,6 +7,7 @@ import { getTranslation, getMultiLanguageContent } from "@/lib/i18n";
 import { Link } from "wouter";
 import { NewsArticle, GalleryImage } from "@shared/schema";
 import { Play, ChevronDown, Target, Eye, Heart, Award, Stethoscope, Car, Lightbulb } from "lucide-react";
+import homeBgImage from "@assets/ChatGPT Image 2025年6月6日 11_35_33.png";
 
 export function Home() {
   const { language, getLanguageRoute } = useLanguage();
@@ -31,7 +32,7 @@ export function Home() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
+            backgroundImage: `url(${homeBgImage})`
           }}
         ></div>
         
