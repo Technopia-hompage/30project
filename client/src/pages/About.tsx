@@ -3,7 +3,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Target, Eye, Heart, Building, Users, Globe, Award } from "lucide-react";
 import ceoImage from "@assets/スクリーンショット 2025-06-04 150711.png";
-import organizationChart from "@assets/ChatGPT Image 2025年6月6日 16_11_29.png";
+import organizationChart from "@assets/organization-chart.svg";
 
 export function About() {
   const { language } = useLanguage();
