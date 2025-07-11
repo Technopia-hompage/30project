@@ -294,6 +294,4 @@ export const newsCategories = [
   { key: 'all', label: { jp: 'すべて', ko: '전체', en: 'All', zh: '全部' }},
   { key: 'announcement', label: { jp: 'お知らせ', ko: '공지사항', en: 'Announcements', zh: '公告' }},
   { key: 'medical', label: { jp: '医療関係者向け', ko: '의료진 대상', en: 'Medical Professionals', zh: '医疗专业人员' }},
-  { key: 'press', label: { jp: 'プレスリリース', ko: '보도자료', en: 'Press Releases', zh: '新闻稿' }},
-  { key: 'events', label: { jp: 'イベント', ko: '이벤트', en: 'Events', zh: '活动' }},
 ];
