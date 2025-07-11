@@ -196,97 +196,143 @@ export function Home() {
         </div>
       </section>
 
-      {/* お知らせ Section */}
+      {/* Main Content with Sidebar */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* General Announcements */}
-            <div>
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-                  {language === 'jp' && 'お知らせ'}
-                  {language === 'ko' && '공지사항'}
-                  {language === 'en' && 'Announcements'}
-                  {language === 'zh' && '公告'}
+          <div className="grid lg:grid-cols-4 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-3">
+              {/* Company Overview */}
+              <div className="mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
+                  {language === 'jp' && '会社概要'}
+                  {language === 'ko' && '회사 개요'}
+                  {language === 'en' && 'Company Overview'}
+                  {language === 'zh' && '公司概要'}
                 </h2>
-                <Link href={getLanguageRoute('/news')}>
-                  <Button variant="outline" size="sm">
-                    {language === 'jp' && 'お知らせ一覧'}
-                    {language === 'ko' && '공지사항 목록'}
-                    {language === 'en' && 'All Announcements'}
-                    {language === 'zh' && '所有公告'}
-                  </Button>
-                </Link>
+                <div className="prose max-w-none">
+                  <p className="text-lg text-slate-600 leading-relaxed">
+                    {language === 'jp' && '株式会社テクノピアは1995年創業以来、全世界を舞台に絶えなく無から有を創造してきました。これからも顧客から得た信頼をもとに最高、最新の製品を開発して顧客に感動を与える企業となりますよう最善をつくしていきます。'}
+                    {language === 'ko' && '㈜테크노피아는 1995년 창업 이래, 전 세계를 무대로 끊임없이 무에서 유를 창조해왔습니다. 앞으로도 고객으로부터 얻은 신뢰를 바탕으로 최고, 최신의 제품을 개발하여 고객에게 감동을 주는 기업이 되도록 최선을 다하겠습니다.'}
+                    {language === 'en' && 'Since its founding in 1995, Technopia Corporation has been continuously creating value from nothing on the global stage. We will continue to do our best to become a company that develops the best and latest products based on the trust gained from customers and impresses customers.'}
+                    {language === 'zh' && '株式会社Technopia自1995年创业以来，一直在全世界舞台上不断地从无到有进行创造。今后我们也将基于从客户那里获得的信赖，全力以赴开发最好、最新的产品，成为给客户带来感动的企业。'}
+                  </p>
+                </div>
               </div>
-              
-              <div className="space-y-4">
-                {news?.filter(article => article.category === 'announcement').slice(0, 3).map((article) => (
-                  <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
-                    <div className="p-4 border border-slate-200 rounded-lg hover:border-corporate-blue hover:shadow-md transition-all duration-200 cursor-pointer">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm text-slate-500">
-                              {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
-                            </span>
-                          </div>
-                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-corporate-blue transition-colors">
-                            {getMultiLanguageContent(article.title, language)}
-                          </h3>
-                        </div>
-                        <FileText className="h-5 w-5 text-slate-400 flex-shrink-0" />
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+
+              {/* Business Stats */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
+                  <div className="text-3xl font-bold text-corporate-blue mb-2">30</div>
+                  <div className="text-slate-600">
+                    {language === 'jp' && '周年記念'}
+                    {language === 'ko' && '주년 기념'}
+                    {language === 'en' && 'Years Anniversary'}
+                    {language === 'zh' && '周年纪念'}
+                  </div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
+                  <div className="text-3xl font-bold text-green-600 mb-2">3</div>
+                  <div className="text-slate-600">
+                    {language === 'jp' && '事業部'}
+                    {language === 'ko' && '사업부'}
+                    {language === 'en' && 'Business Divisions'}
+                    {language === 'zh' && '事业部'}
+                  </div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">9</div>
+                  <div className="text-slate-600">
+                    {language === 'jp' && '貿易国'}
+                    {language === 'ko' && '무역국'}
+                    {language === 'en' && 'Trading Countries'}
+                    {language === 'zh' && '贸易国'}
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Medical Professionals Announcements */}
-            <div>
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-                  {language === 'jp' && '医療関係者の皆様へのお知らせ'}
-                  {language === 'ko' && '의료진 여러분께 안내'}
-                  {language === 'en' && 'For Medical Professionals'}
-                  {language === 'zh' && '致医疗专业人员'}
-                </h2>
-                <Link href={getLanguageRoute('/news')}>
-                  <Button variant="outline" size="sm">
-                    {language === 'jp' && '一覧を見る'}
-                    {language === 'ko' && '목록 보기'}
-                    {language === 'en' && 'View All'}
-                    {language === 'zh' && '查看全部'}
-                  </Button>
-                </Link>
-              </div>
-              
-              <div className="space-y-4">
-                {news?.filter(article => article.category === 'medical').slice(0, 3).map((article) => (
-                  <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
-                    <div className="p-4 border border-slate-200 rounded-lg hover:border-green-500 hover:shadow-md transition-all duration-200 cursor-pointer">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm text-slate-500">
-                              {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
-                            </span>
-                            <Badge variant="secondary" className="text-xs">
-                              {language === 'jp' && '医療'}
-                              {language === 'ko' && '의료'}
-                              {language === 'en' && 'Medical'}
-                              {language === 'zh' && '医疗'}
-                            </Badge>
-                          </div>
-                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-green-600 transition-colors">
-                            {getMultiLanguageContent(article.title, language)}
-                          </h3>
-                        </div>
-                        <FileText className="h-5 w-5 text-slate-400 flex-shrink-0" />
-                      </div>
-                    </div>
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              {/* General Announcements */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-slate-900">
+                    {language === 'jp' && 'お知らせ'}
+                    {language === 'ko' && '공지사항'}
+                    {language === 'en' && 'Announcements'}
+                    {language === 'zh' && '公告'}
+                  </h3>
+                  <Link href={getLanguageRoute('/news')}>
+                    <Button variant="ghost" size="sm" className="text-sm text-slate-600 hover:text-corporate-blue">
+                      {language === 'jp' && 'お知らせ一覧'}
+                      {language === 'ko' && '공지사항 목록'}
+                      {language === 'en' && 'View All'}
+                      {language === 'zh' && '查看全部'}
+                    </Button>
                   </Link>
-                ))}
+                </div>
+                
+                <div className="space-y-3 bg-slate-50 rounded-lg p-4">
+                  {news?.filter(article => article.category === 'announcement').slice(0, 3).map((article) => (
+                    <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
+                      <div className="bg-white p-3 rounded border hover:border-corporate-blue hover:shadow-sm transition-all duration-200 cursor-pointer">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs text-slate-500">
+                            {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
+                          </span>
+                          <FileText className="h-3 w-3 text-slate-400" />
+                        </div>
+                        <h4 className="text-sm font-medium text-slate-900 line-clamp-2 hover:text-corporate-blue transition-colors">
+                          {getMultiLanguageContent(article.title, language)}
+                        </h4>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Medical Professionals Announcements */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-slate-900 leading-tight">
+                    {language === 'jp' && '医療関係者の皆様へのお知らせ'}
+                    {language === 'ko' && '의료진 여러분께 안내'}
+                    {language === 'en' && 'For Medical Professionals'}
+                    {language === 'zh' && '致医疗专业人员'}
+                  </h3>
+                  <Link href={getLanguageRoute('/news')}>
+                    <Button variant="ghost" size="sm" className="text-sm text-slate-600 hover:text-green-600">
+                      {language === 'jp' && '一覧を見る'}
+                      {language === 'ko' && '목록 보기'}
+                      {language === 'en' && 'View All'}
+                      {language === 'zh' && '查看全部'}
+                    </Button>
+                  </Link>
+                </div>
+                
+                <div className="space-y-3 bg-green-50 rounded-lg p-4">
+                  {news?.filter(article => article.category === 'medical').slice(0, 3).map((article) => (
+                    <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
+                      <div className="bg-white p-3 rounded border hover:border-green-500 hover:shadow-sm transition-all duration-200 cursor-pointer">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs text-slate-500">
+                            {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
+                          </span>
+                          <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                            {language === 'jp' && '医療'}
+                            {language === 'ko' && '의료'}
+                            {language === 'en' && 'Medical'}
+                            {language === 'zh' && '医疗'}
+                          </Badge>
+                        </div>
+                        <h4 className="text-sm font-medium text-slate-900 line-clamp-2 hover:text-green-600 transition-colors">
+                          {getMultiLanguageContent(article.title, language)}
+                        </h4>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
