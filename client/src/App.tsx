@@ -44,7 +44,7 @@ function Router() {
       {/* Default language routes */}
       <Route path="/about" component={About} />
       <Route path="/anniversary" component={Anniversary} />
-      <Route path="/business" component={Business} />
+      <Route path="/business" component={Business} /> 
       <Route path="/careers" component={Careers} />
       <Route path="/contact" component={Contact} />
       <Route path="/gallery" component={Gallery} />

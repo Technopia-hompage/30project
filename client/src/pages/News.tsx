@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getMultiLanguageContent } from "@/lib/i18n";
 import { NewsArticle } from "@shared/schema";
+import { newsData, newsCategories } from "@/lib/newsData";
 import { useState } from "react";
 import { useParams, Link } from "wouter";
 import { 
@@ -25,27 +26,17 @@ export function News() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  // Fetch single article if ID is provided
-  const { data: article, isLoading: articleLoading } = useQuery<NewsArticle>({
-    queryKey: ['/api/news', articleId, language],
-    enabled: !!articleId,
-  });
+  // Use static data instead of API calls during database connection issues
+  const article = articleId ? newsData.find(item => item.id === parseInt(articleId)) : null;
+  const articleLoading = false;
+  
+  const allArticles = newsData.filter(item => 
+    selectedCategory === 'all' || item.category === selectedCategory
+  );
+  const articles = allArticles;
+  const articlesLoading = false;
 
-  // Fetch all articles for listing
-  const { data: articles, isLoading: articlesLoading } = useQuery<NewsArticle[]>({
-    queryKey: ['/api/news', language, { 
-      category: selectedCategory !== 'all' ? selectedCategory : undefined 
-    }],
-    enabled: !articleId,
-  });
-
-  const categories = [
-    { key: 'all', label: { jp: 'すべて', ko: '전체', en: 'All', zh: '全部' }},
-    { key: 'announcement', label: { jp: 'お知らせ', ko: '공지사항', en: 'Announcements', zh: '公告' }},
-    { key: 'press', label: { jp: 'プレスリリース', ko: '보도자료', en: 'Press Releases', zh: '新闻稿' }},
-    { key: 'events', label: { jp: 'イベント', ko: '이벤트', en: 'Events', zh: '活动' }},
-    { key: 'awards', label: { jp: '受賞', ko: '수상', en: 'Awards', zh: '获奖' }},
-  ];
+  const categories = newsCategories;
 
   // Filter articles based on search query
   const filteredArticles = articles?.filter(article => {
@@ -153,9 +144,12 @@ export function News() {
             <div className="text-lg text-slate-600 mb-8">
               {getMultiLanguageContent(article.excerpt, language)}
             </div>
-            <div className="text-slate-800 leading-relaxed">
-              {getMultiLanguageContent(article.content, language)}
-            </div>
+            <div 
+              className="text-slate-800 leading-relaxed"
+              dangerouslySetInnerHTML={{ 
+                __html: getMultiLanguageContent(article.content, language) 
+              }}
+            />
           </div>
 
           {/* Share buttons */}

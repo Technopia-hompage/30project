@@ -4,17 +4,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation, getMultiLanguageContent } from "@/lib/i18n";
+import { newsData } from "@/lib/newsData";
 import { Link } from "wouter";
 import { NewsArticle, GalleryImage } from "@shared/schema";
-import { Play, ChevronDown, Target, Eye, Heart, Award, Stethoscope, Car, Lightbulb } from "lucide-react";
+import { Play, ChevronDown, Target, Eye, Heart, Award, Stethoscope, Car, Lightbulb, Calendar, FileText } from "lucide-react";
 import homeBgImage from "@assets/ChatGPT Image 2025年6月6日 11_50_37.png";
 
 export function Home() {
   const { language, getLanguageRoute } = useLanguage();
 
-  const { data: news } = useQuery<NewsArticle[]>({
-    queryKey: ['/api/news', language, { limit: 3 }],
-  });
+  // Use static news data with filtering for recent articles
+  const news = newsData.slice(0, 3);
 
   const { data: featuredImages } = useQuery<GalleryImage[]>({
     queryKey: ['/api/gallery', language, { featured: true, limit: 6 }],
@@ -196,40 +196,99 @@ export function Home() {
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* お知らせ Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              {getTranslation('nav.news', language)}
-            </h2>
-            <Link href={getLanguageRoute('/news')}>
-              <Button variant="outline">
-                {language === 'jp' && 'すべて見る'}
-                {language === 'ko' && '모두 보기'}
-                {language === 'en' && 'View All'}
-                {language === 'zh' && '查看全部'}
-              </Button>
-            </Link>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* General Announcements */}
+            <div>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                  {language === 'jp' && 'お知らせ'}
+                  {language === 'ko' && '공지사항'}
+                  {language === 'en' && 'Announcements'}
+                  {language === 'zh' && '公告'}
+                </h2>
+                <Link href={getLanguageRoute('/news')}>
+                  <Button variant="outline" size="sm">
+                    {language === 'jp' && 'お知らせ一覧'}
+                    {language === 'ko' && '공지사항 목록'}
+                    {language === 'en' && 'All Announcements'}
+                    {language === 'zh' && '所有公告'}
+                  </Button>
+                </Link>
+              </div>
+              
+              <div className="space-y-4">
+                {news?.filter(article => article.category === 'announcement').slice(0, 3).map((article) => (
+                  <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
+                    <div className="p-4 border border-slate-200 rounded-lg hover:border-corporate-blue hover:shadow-md transition-all duration-200 cursor-pointer">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-sm text-slate-500">
+                              {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
+                            </span>
+                          </div>
+                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-corporate-blue transition-colors">
+                            {getMultiLanguageContent(article.title, language)}
+                          </h3>
+                        </div>
+                        <FileText className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {news?.map((article) => (
-              <Card key={article.id} className="hover:shadow-lg transition-shadow duration-200">
-                <CardContent className="p-6">
-                  <Badge className="mb-4">{article.category}</Badge>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-3 line-clamp-2">
-                    {getMultiLanguageContent(article.title, language)}
-                  </h3>
-                  <p className="text-slate-600 mb-4 line-clamp-3">
-                    {getMultiLanguageContent(article.excerpt, language)}
-                  </p>
-                  <div className="text-sm text-slate-500">
-                    {article.publishedAt && new Date(article.publishedAt).toLocaleDateString()}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            {/* Medical Professionals Announcements */}
+            <div>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                  {language === 'jp' && '医療関係者の皆様へのお知らせ'}
+                  {language === 'ko' && '의료진 여러분께 안내'}
+                  {language === 'en' && 'For Medical Professionals'}
+                  {language === 'zh' && '致医疗专业人员'}
+                </h2>
+                <Link href={getLanguageRoute('/news')}>
+                  <Button variant="outline" size="sm">
+                    {language === 'jp' && '一覧を見る'}
+                    {language === 'ko' && '목록 보기'}
+                    {language === 'en' && 'View All'}
+                    {language === 'zh' && '查看全部'}
+                  </Button>
+                </Link>
+              </div>
+              
+              <div className="space-y-4">
+                {news?.filter(article => article.category === 'medical').slice(0, 3).map((article) => (
+                  <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
+                    <div className="p-4 border border-slate-200 rounded-lg hover:border-green-500 hover:shadow-md transition-all duration-200 cursor-pointer">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-sm text-slate-500">
+                              {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
+                            </span>
+                            <Badge variant="secondary" className="text-xs">
+                              {language === 'jp' && '医療'}
+                              {language === 'ko' && '의료'}
+                              {language === 'en' && 'Medical'}
+                              {language === 'zh' && '医疗'}
+                            </Badge>
+                          </div>
+                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-green-600 transition-colors">
+                            {getMultiLanguageContent(article.title, language)}
+                          </h3>
+                        </div>
+                        <FileText className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
