@@ -250,6 +250,99 @@ export function Home() {
                   </div>
                 </div>
               </div>
+
+              {/* Business Divisions - Restored */}
+              <div className="mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12">
+                  {language === 'jp' && '事業部紹介'}
+                  {language === 'ko' && '사업부 소개'}
+                  {language === 'en' && 'Business Divisions'}
+                  {language === 'zh' && '事业部介绍'}
+                </h2>
+                
+                <div className="grid md:grid-cols-3 gap-8">
+                  {/* Medical Division */}
+                  <Card className="hover:shadow-lg transition-shadow duration-200">
+                    <CardContent className="p-6">
+                      <div className="flex items-center mb-4">
+                        <Stethoscope className="h-8 w-8 text-green-600 mr-3" />
+                        <h3 className="text-xl font-semibold text-slate-900">
+                          {language === 'jp' && 'メディカル事業部'}
+                          {language === 'ko' && '메디컬 사업부'}
+                          {language === 'en' && 'Medical Division'}
+                          {language === 'zh' && '医疗事业部'}
+                        </h3>
+                      </div>
+                      <p className="text-slate-600 mb-4">
+                        {language === 'jp' && '各種眼科用の手術機械、検査機械、眼内レンズ、コンタクトレンズ等の製造販売'}
+                        {language === 'ko' && '각종 안과용 수술기계, 검사기계, 안내렌즈, 콘택트렌즈 등의 제조·판매'}
+                        {language === 'en' && 'Manufacturing and sales of various ophthalmic surgical equipment, examination equipment, intraocular lenses, contact lenses, etc.'}
+                        {language === 'zh' && '各种眼科手术设备、检查设备、眼内镜、隐形眼镜等的制造销售'}
+                      </p>
+                      <Button variant="outline" size="sm">
+                        {language === 'jp' && '詳しく見る'}
+                        {language === 'ko' && '자세히 보기'}
+                        {language === 'en' && 'Learn More'}
+                        {language === 'zh' && '了解更多'}
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* Auto Division */}
+                  <Card className="hover:shadow-lg transition-shadow duration-200">
+                    <CardContent className="p-6">
+                      <div className="flex items-center mb-4">
+                        <Car className="h-8 w-8 text-blue-600 mr-3" />
+                        <h3 className="text-xl font-semibold text-slate-900">
+                          {language === 'jp' && 'AUTO事業部'}
+                          {language === 'ko' && 'AUTO 사업부'}
+                          {language === 'en' && 'AUTO Division'}
+                          {language === 'zh' && 'AUTO事业部'}
+                        </h3>
+                      </div>
+                      <p className="text-slate-600 mb-4">
+                        {language === 'jp' && 'アルミホイールの製造、販売'}
+                        {language === 'ko' && '알루미늄 휠의 제조·판매'}
+                        {language === 'en' && 'Manufacturing and sales of aluminum wheels'}
+                        {language === 'zh' && '铝轮毂的制造·销售'}
+                      </p>
+                      <Button variant="outline" size="sm">
+                        {language === 'jp' && '詳しく見る'}
+                        {language === 'ko' && '자세히 보기'}
+                        {language === 'en' && 'Learn More'}
+                        {language === 'zh' && '了解更多'}
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* New Business Division */}
+                  <Card className="hover:shadow-lg transition-shadow duration-200">
+                    <CardContent className="p-6">
+                      <div className="flex items-center mb-4">
+                        <Lightbulb className="h-8 w-8 text-purple-600 mr-3" />
+                        <h3 className="text-xl font-semibold text-slate-900">
+                          {language === 'jp' && '新規事業部'}
+                          {language === 'ko' && '신규 사업부'}
+                          {language === 'en' && 'New Business Division'}
+                          {language === 'zh' && '新业务事业部'}
+                        </h3>
+                      </div>
+                      <p className="text-slate-600 mb-4">
+                        {language === 'jp' && 'AI顔認証検温測定器「TOLLGATE」の製造・販売'}
+                        {language === 'ko' && 'AI 안면인식 검온기 "TOLLGATE"의 제조·판매'}
+                        {language === 'en' && 'Manufacturing and sales of AI facial recognition thermometer "TOLLGATE"'}
+                        {language === 'zh' && 'AI人脸识别测温仪"TOLLGATE"的制造·销售'}
+                      </p>
+                      <Button variant="outline" size="sm">
+                        {language === 'jp' && '詳しく見る'}
+                        {language === 'ko' && '자세히 보기'}
+                        {language === 'en' && 'Learn More'}
+                        {language === 'zh' && '了解更多'}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </div>
 
             {/* Sidebar */}
