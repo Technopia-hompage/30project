@@ -1,111 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<svg width="700" height="450" viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .text-title { font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
-      .text-dept { font-family: 'Noto Sans JP', sans-serif; font-size: 10px; fill: #1e293b; }
-      .box-executive { fill: #3b82f6; stroke: #2563eb; stroke-width: 1; }
+      .text-title { font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .text-dept { font-family: 'Noto Sans JP', sans-serif; font-size: 12px; fill: #1e293b; }
+      .text-sub { font-family: 'Noto Sans JP', sans-serif; font-size: 10px; fill: #1e293b; }
+      .box-executive { fill: #3b82f6; stroke: #2563eb; stroke-width: 2; }
       .box-management { fill: #dbeafe; stroke: #3b82f6; stroke-width: 1; }
       .box-dept { fill: #f1f5f9; stroke: #64748b; stroke-width: 1; }
       .box-medical { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1; }
       .box-auto { fill: #d1fae5; stroke: #10b981; stroke-width: 1; }
       .box-advisor { fill: #e0e7ff; stroke: #6366f1; stroke-width: 1; }
-      .line { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .line { stroke: #64748b; stroke-width: 2; fill: none; }
       .text-white { fill: white; }
     </style>
   </defs>
   
   <!-- Advisor -->
-  <rect x="20" y="20" width="100" height="30" rx="3" class="box-advisor"/>
-  <text x="70" y="37" text-anchor="middle" class="text-dept">社内理事、監査</text>
+  <rect x="40" y="30" width="120" height="35" rx="5" class="box-advisor"/>
+  <text x="100" y="50" text-anchor="middle" class="text-dept">社内理事、監査</text>
   
   <!-- Representative Director -->
-  <rect x="250" y="60" width="100" height="30" rx="3" class="box-executive"/>
-  <text x="300" y="77" text-anchor="middle" class="text-title text-white">代表取締役社長</text>
+  <rect x="290" y="80" width="120" height="40" rx="5" class="box-executive"/>
+  <text x="350" y="103" text-anchor="middle" class="text-title text-white">代表取締役社長</text>
   
   <!-- Audit Office -->
-  <rect x="450" y="20" width="100" height="30" rx="3" class="box-dept"/>
-  <text x="500" y="32" text-anchor="middle" class="text-dept">医療・法律顧問</text>
+  <rect x="540" y="30" width="120" height="35" rx="5" class="box-dept"/>
+  <text x="600" y="50" text-anchor="middle" class="text-dept">医療・法律顧問</text>
   
   <!-- Department Level -->
-  <rect x="50" y="130" width="100" height="30" rx="3" class="box-dept"/>
-  <text x="100" y="147" text-anchor="middle" class="text-dept">メディカル事業部</text>
+  <rect x="50" y="180" width="120" height="35" rx="5" class="box-dept"/>
+  <text x="110" y="200" text-anchor="middle" class="text-dept">メディカル事業部</text>
   
-  <rect x="175" y="130" width="100" height="30" rx="3" class="box-auto"/>
-  <text x="225" y="147" text-anchor="middle" class="text-dept">AUTO事業部</text>
+  <rect x="190" y="180" width="120" height="35" rx="5" class="box-auto"/>
+  <text x="250" y="200" text-anchor="middle" class="text-dept">AUTO事業部</text>
   
-  <rect x="300" y="130" width="100" height="30" rx="3" class="box-medical"/>
-  <text x="350" y="147" text-anchor="middle" class="text-dept">管理本部</text>
+  <rect x="330" y="180" width="120" height="35" rx="5" class="box-medical"/>
+  <text x="390" y="200" text-anchor="middle" class="text-dept">管理本部</text>
   
-  <rect x="425" y="130" width="100" height="30" rx="3" class="box-dept"/>
-  <text x="475" y="147" text-anchor="middle" class="text-dept">営業企画本部</text>
+  <rect x="470" y="180" width="120" height="35" rx="5" class="box-dept"/>
+  <text x="530" y="200" text-anchor="middle" class="text-dept">営業企画本部</text>
   
   <!-- Sub-departments -->
   <!-- Medical Department Subdivisions -->
-  <rect x="20" y="200" width="60" height="50" rx="3" class="box-dept"/>
-  <text x="35" y="218" text-anchor="middle" class="text-dept">メディカル</text>
-  <text x="35" y="230" text-anchor="middle" class="text-dept">営業</text>
+  <rect x="20" y="260" width="80" height="55" rx="4" class="box-dept"/>
+  <text x="60" y="280" text-anchor="middle" class="text-sub">メディカル</text>
+  <text x="60" y="295" text-anchor="middle" class="text-sub">営業部</text>
   
-  <rect x="90" y="200" width="60" height="50" rx="3" class="box-dept"/>
-  <text x="105" y="218" text-anchor="middle" class="text-dept">メディカル</text>
-  <text x="105" y="230" text-anchor="middle" class="text-dept">管理部</text>
+  <rect x="110" y="260" width="80" height="55" rx="4" class="box-dept"/>
+  <text x="150" y="280" text-anchor="middle" class="text-sub">メディカル</text>
+  <text x="150" y="295" text-anchor="middle" class="text-sub">管理部</text>
   
   <!-- AUTO Department Subdivisions -->
-  <rect x="160" y="200" width="60" height="50" rx="3" class="box-auto"/>
-  <text x="175" y="218" text-anchor="middle" class="text-dept">ホイール</text>
-  <text x="175" y="230" text-anchor="middle" class="text-dept">事業部</text>
+  <rect x="210" y="260" width="80" height="55" rx="4" class="box-auto"/>
+  <text x="250" y="280" text-anchor="middle" class="text-sub">ホイール</text>
+  <text x="250" y="295" text-anchor="middle" class="text-sub">事業部</text>
   
-  <rect x="230" y="200" width="60" height="50" rx="3" class="box-auto"/>
-  <text x="245" y="218" text-anchor="middle" class="text-dept">カー</text>
-  <text x="245" y="230" text-anchor="middle" class="text-dept">用品部</text>
+  <rect x="300" y="260" width="80" height="55" rx="4" class="box-auto"/>
+  <text x="340" y="280" text-anchor="middle" class="text-sub">カー</text>
+  <text x="340" y="295" text-anchor="middle" class="text-sub">用品部</text>
   
   <!-- Management Department Subdivisions -->
-  <rect x="300" y="200" width="60" height="50" rx="3" class="box-medical"/>
-  <text x="315" y="218" text-anchor="middle" class="text-dept">会計部</text>
+  <rect x="390" y="260" width="80" height="55" rx="4" class="box-medical"/>
+  <text x="430" y="290" text-anchor="middle" class="text-sub">会計部</text>
   
-  <rect x="370" y="200" width="60" height="50" rx="3" class="box-medical"/>
-  <text x="385" y="218" text-anchor="middle" class="text-dept">総務部</text>
+  <rect x="480" y="260" width="80" height="55" rx="4" class="box-medical"/>
+  <text x="520" y="290" text-anchor="middle" class="text-sub">総務部</text>
   
   <!-- Sales Planning Department Subdivisions -->
-  <rect x="440" y="200" width="60" height="50" rx="3" class="box-dept"/>
-  <text x="455" y="218" text-anchor="middle" class="text-dept">営業企画部</text>
+  <rect x="570" y="260" width="80" height="55" rx="4" class="box-dept"/>
+  <text x="610" y="280" text-anchor="middle" class="text-sub">営業企画部</text>
   
-  <rect x="510" y="200" width="60" height="50" rx="3" class="box-dept"/>
-  <text x="525" y="218" text-anchor="middle" class="text-dept">新規開発部</text>
+  <rect x="570" y="325" width="80" height="55" rx="4" class="box-dept"/>
+  <text x="610" y="345" text-anchor="middle" class="text-sub">新規開発部</text>
   
   <!-- Connecting Lines -->
   <!-- From Representative to departments -->
-  <line x1="300" y1="90" x2="300" y2="115" class="line"/>
-  <line x1="100" y1="115" x2="500" y2="115" class="line"/>
-  <line x1="100" y1="115" x2="100" y2="130" class="line"/>
-  <line x1="225" y1="115" x2="225" y2="130" class="line"/>
-  <line x1="350" y1="115" x2="350" y2="130" class="line"/>
-  <line x1="475" y1="115" x2="475" y2="130" class="line"/>
+  <line x1="350" y1="120" x2="350" y2="160" class="line"/>
+  <line x1="110" y1="160" x2="530" y2="160" class="line"/>
+  <line x1="110" y1="160" x2="110" y2="180" class="line"/>
+  <line x1="250" y1="160" x2="250" y2="180" class="line"/>
+  <line x1="390" y1="160" x2="390" y2="180" class="line"/>
+  <line x1="530" y1="160" x2="530" y2="180" class="line"/>
   
   <!-- From departments to subdivisions -->
-  <line x1="100" y1="160" x2="100" y2="185" class="line"/>
-  <line x1="55" y1="185" x2="125" y2="185" class="line"/>
-  <line x1="55" y1="185" x2="55" y2="200" class="line"/>
-  <line x1="125" y1="185" x2="125" y2="200" class="line"/>
+  <!-- Medical Department -->
+  <line x1="110" y1="215" x2="110" y2="240" class="line"/>
+  <line x1="60" y1="240" x2="150" y2="240" class="line"/>
+  <line x1="60" y1="240" x2="60" y2="260" class="line"/>
+  <line x1="150" y1="240" x2="150" y2="260" class="line"/>
   
-  <line x1="225" y1="160" x2="225" y2="185" class="line"/>
-  <line x1="190" y1="185" x2="260" y2="185" class="line"/>
-  <line x1="190" y1="185" x2="190" y2="200" class="line"/>
-  <line x1="260" y1="185" x2="260" y2="200" class="line"/>
+  <!-- AUTO Department -->
+  <line x1="250" y1="215" x2="250" y2="240" class="line"/>
+  <line x1="250" y1="240" x2="340" y2="240" class="line"/>
+  <line x1="250" y1="240" x2="250" y2="260" class="line"/>
+  <line x1="340" y1="240" x2="340" y2="260" class="line"/>
   
-  <line x1="350" y1="160" x2="350" y2="185" class="line"/>
-  <line x1="330" y1="185" x2="400" y2="185" class="line"/>
-  <line x1="330" y1="185" x2="330" y2="200" class="line"/>
-  <line x1="400" y1="185" x2="400" y2="200" class="line"/>
+  <!-- Management Department -->
+  <line x1="390" y1="215" x2="390" y2="240" class="line"/>
+  <line x1="430" y1="240" x2="520" y2="240" class="line"/>
+  <line x1="430" y1="240" x2="430" y2="260" class="line"/>
+  <line x1="520" y1="240" x2="520" y2="260" class="line"/>
   
-  <line x1="475" y1="160" x2="475" y2="185" class="line"/>
-  <line x1="470" y1="185" x2="540" y2="185" class="line"/>
-  <line x1="470" y1="185" x2="470" y2="200" class="line"/>
-  <line x1="540" y1="185" x2="540" y2="200" class="line"/>
+  <!-- Sales Planning Department -->
+  <line x1="530" y1="215" x2="530" y2="240" class="line"/>
+  <line x1="610" y1="240" x2="610" y2="260" class="line"/>
+  <line x1="530" y1="240" x2="610" y2="240" class="line"/>
+  <line x1="610" y1="315" x2="610" y2="325" class="line"/>
   
   <!-- Advisor connection -->
-  <line x1="120" y1="35" x2="250" y2="75" class="line"/>
+  <line x1="160" y1="47" x2="290" y2="100" class="line"/>
   
   <!-- Audit office connection -->
-  <line x1="350" y1="75" x2="450" y2="35" class="line"/>
+  <line x1="410" y1="100" x2="540" y2="47" class="line"/>
 </svg>
