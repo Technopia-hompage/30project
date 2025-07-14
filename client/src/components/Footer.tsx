@@ -26,7 +26,7 @@ export function Footer() {
                 <img 
                   src={technopiaLogo} 
                   alt="Technopia Logo" 
-                  className="h-8 w-auto mr-3"
+                  className="h-12 w-auto mr-3"
                 />
                 <h2 className="text-2xl font-bold text-white">
                   Technopia
