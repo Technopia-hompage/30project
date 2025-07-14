@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock, Printer } from "lucide-react";
+import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Clock, Printer } from "lucide-react";
 import technopiaLogo from "@assets/technopia-logo_1752479241220.png";
 
 export function Footer() {
@@ -45,9 +45,6 @@ export function Footer() {
               </a>
               <a href="https://x.com/ortho_MyEmerald" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
                 <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
-                <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://www.instagram.com/technopia_co_ltd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
                 <Instagram className="h-5 w-5" />
