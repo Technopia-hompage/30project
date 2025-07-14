@@ -17,10 +17,16 @@ export function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              {getTranslation('company.title', language)}
+              {language === 'jp' && 'テクノピアについて'}
+              {language === 'ko' && '회사 소개'}
+              {language === 'en' && 'About Our Company'}
+              {language === 'zh' && '关于我们公司'}
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {getTranslation('company.subtitle', language)}
+              {language === 'jp' && '革新的な技術ソリューションで社会に貢献し、お客様と共に成長し続ける企業です。'}
+              {language === 'ko' && '글로벌하게 전개하는 우리의 기업 이념과 고객, 사회에 대한 약속을 소개합니다.'}
+              {language === 'en' && 'Introducing our global corporate philosophy and promises to customers and society.'}
+              {language === 'zh' && '介绍我们全球展开的企业理念以及对客户和社会的承诺。'}
             </p>
           </div>
 
@@ -28,19 +34,39 @@ export function About() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">30</div>
-              <div className="text-slate-600">{getTranslation('company.stats.years', language)}</div>
+              <div className="text-slate-600">
+                {language === 'jp' && '年の歴史'}
+                {language === 'ko' && '년'}
+                {language === 'en' && 'Years'}
+                {language === 'zh' && '年'}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">25</div>
-              <div className="text-slate-600">{getTranslation('company.stats.employees', language)}</div>
+              <div className="text-slate-600">
+                {language === 'jp' && '従業員数'}
+                {language === 'ko' && '직원 수'}
+                {language === 'en' && 'Employees'}
+                {language === 'zh' && '员工数'}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">10+</div>
-              <div className="text-slate-600">{getTranslation('company.stats.locations', language)}</div>
+              <div className="text-slate-600">
+                {language === 'jp' && '事業拠点'}
+                {language === 'ko' && '글로벌 거점'}
+                {language === 'en' && 'Global Locations'}
+                {language === 'zh' && '全球据点'}
+              </div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">1000+</div>
-              <div className="text-slate-600">{getTranslation('company.stats.partners', language)}</div>
+              <div className="text-slate-600">
+                {language === 'jp' && 'パートナー企業'}
+                {language === 'ko' && '파트너 기업'}
+                {language === 'en' && 'Partner Companies'}
+                {language === 'zh' && '合作伙伴企业'}
+              </div>
             </div>
           </div>
         </div>
@@ -71,10 +97,16 @@ export function About() {
                   <Target className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('company.mission.title', language)}
+                  {language === 'jp' && 'ミッション'}
+                  {language === 'ko' && '미션'}
+                  {language === 'en' && 'Mission'}
+                  {language === 'zh' && '使命'}
                 </h3>
                 <p className="text-slate-600 text-lg">
-                  {getTranslation('company.mission.content', language)}
+                  {language === 'jp' && '最先端の技術ソリューションを通じて、お客様のビジネス成功を支援し、社会の持続的発展に貢献します。'}
+                  {language === 'ko' && '기술 혁신과 서비스 향상을 통해 고객의 성공과 사회 발전에 기여하고 지속 가능한 미래를 창조합니다.'}
+                  {language === 'en' && 'Through technological innovation and service improvement, we contribute to customer success and social development, creating a sustainable future.'}
+                  {language === 'zh' && '通过技术创新和服务改进，为客户成功和社会发展做出贡献，创造可持续的未来。'}
                 </p>
               </CardContent>
             </Card>
@@ -86,10 +118,16 @@ export function About() {
                   <Eye className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('company.vision.title', language)}
+                  {language === 'jp' && 'ビジョン'}
+                  {language === 'ko' && '비전'}
+                  {language === 'en' && 'Vision'}
+                  {language === 'zh' && '愿景'}
                 </h3>
                 <p className="text-slate-600 text-lg">
-                  {getTranslation('company.vision.content', language)}
+                  {language === 'jp' && '技術革新のリーディングカンパニーとして、世界中のお客様に信頼される企業になります。'}
+                  {language === 'ko' && '글로벌 리더로서 업계 변혁을 이끌고 모든 이해관계자로부터 신뢰받는 기업을 목표로 합니다.'}
+                  {language === 'en' && 'As a global leader, we aim to drive industry transformation and become a company trusted by all stakeholders.'}
+                  {language === 'zh' && '作为全球领导者，我们致力于推动行业变革，成为所有利益相关者信赖的企业。'}
                 </p>
               </CardContent>
             </Card>
@@ -101,10 +139,16 @@ export function About() {
                   <Heart className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('company.values.title', language)}
+                  {language === 'jp' && '価値観'}
+                  {language === 'ko' && '핵심 가치'}
+                  {language === 'en' && 'Core Values'}
+                  {language === 'zh' && '核心价值'}
                 </h3>
                 <p className="text-slate-600 text-lg">
-                  {getTranslation('company.values.content', language)}
+                  {language === 'jp' && '誠実、革新、品質、お客様第一の精神で、長期的なパートナーシップを築きます。'}
+                  {language === 'ko' && '성실성, 혁신성, 협력성을 축으로 고객 우선의 정신으로 고품질 솔루션을 제공합니다.'}
+                  {language === 'en' && 'Based on integrity, innovation, and collaboration, we provide high-quality solutions with a customer-first mindset.'}
+                  {language === 'zh' && '以诚信、创新、协作为核心，以客户至上的精神提供高质量的解决方案。'}
                 </p>
               </CardContent>
             </Card>
