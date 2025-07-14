@@ -99,6 +99,10 @@ export function Footer() {
                 <span className="text-slate-300 text-sm">03-3221-4761</span>
               </li>
               <li className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-slate-400" />
+                <span className="text-slate-300 text-sm">FAX: 03-3221-4775</span>
+              </li>
+              <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-slate-400" />
                 <span className="text-slate-300 text-sm">info@technopia.co.jp</span>
               </li>
