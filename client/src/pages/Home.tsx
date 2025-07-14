@@ -376,14 +376,17 @@ export function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={getLanguageRoute('/careers')}>
-              <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
+              <Button 
+                size="lg" 
+                className="bg-white text-corporate-blue hover:bg-slate-100 border-2 border-white transition-all duration-200"
+              >
                 {getTranslation('cta.careers', language)}
               </Button>
             </Link>
             <Link href={getLanguageRoute('/contact')}>
               <Button 
                 size="lg" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-corporate-blue transition-all duration-200"
+                className="bg-white text-corporate-blue hover:bg-slate-100 border-2 border-white transition-all duration-200"
               >
                 {getTranslation('cta.contact', language)}
               </Button>
