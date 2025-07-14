@@ -3,6 +3,200 @@ export const newsData = [
   {
     id: 1,
     title: {
+      jp: "夏期休業のお知らせ",
+      ko: "하계 휴가 안내", 
+      en: "Summer Holiday Notice",
+      zh: "暑假休息通知"
+    },
+    excerpt: {
+      jp: "2025年8月13日～15日の期間、夏期休業とさせていただきます。",
+      ko: "2025년 8월 13일~15일 기간 동안 하계 휴가로 운영을 중단합니다.",
+      en: "We will be closed for summer holidays from August 13-15, 2025.",
+      zh: "2025年8月13日至15日期间暑假休息。"
+    },
+    content: {
+      jp: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">夏期休業のお知らせ</h2>
+          
+          <p>平素は格別のお引き立てを賜り、厚く御礼申上げます。</p>
+          
+          <p>弊社では誠に勝手ながら、下記期間を夏期休業とさせていただきます。</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">夏期休業期間</h3>
+            <p class="text-lg font-bold text-blue-600">2025年8月13日（水）～ 2025年8月15日（金）</p>
+          </div>
+          
+          <p><strong>※8月16日（土）より通常営業いたします。</strong></p>
+          
+          <p>期間中は何かとご不便をお掛けいたしますが、何卒ご理解の程よろしくお願い申し上げます。</p>
+        </div>
+      `,
+      ko: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">하계 휴가 안내</h2>
+          
+          <p>평소 각별한 관심을 가져주셔서 깊이 감사드립니다.</p>
+          
+          <p>저희 회사에서는 아래 기간을 하계 휴가로 정하여 운영을 중단합니다.</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">하계 휴가 기간</h3>
+            <p class="text-lg font-bold text-blue-600">2025년 8월 13일(수) ~ 2025년 8월 15일(금)</p>
+          </div>
+          
+          <p><strong>※8월 16일(토)부터 정상 영업합니다.</strong></p>
+          
+          <p>기간 중 불편을 끼쳐드려 죄송하며, 양해해 주시기 바랍니다.</p>
+        </div>
+      `,
+      en: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">Summer Holiday Notice</h2>
+          
+          <p>We sincerely thank you for your continued support.</p>
+          
+          <p>We will be closed for summer holidays during the following period:</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">Summer Holiday Period</h3>
+            <p class="text-lg font-bold text-blue-600">August 13, 2025 (Wed) - August 15, 2025 (Fri)</p>
+          </div>
+          
+          <p><strong>※Normal business will resume from August 16, 2025 (Sat).</strong></p>
+          
+          <p>We apologize for any inconvenience during this period and appreciate your understanding.</p>
+        </div>
+      `,
+      zh: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">暑假休息通知</h2>
+          
+          <p>感谢您一直以来的大力支持。</p>
+          
+          <p>我公司将在以下期间进行暑假休息：</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">暑假休息期间</h3>
+            <p class="text-lg font-bold text-blue-600">2025年8月13日(周三) - 2025年8月15日(周五)</p>
+          </div>
+          
+          <p><strong>※8月16日(周六)开始正常营业。</strong></p>
+          
+          <p>期间内给您带来不便，敬请谅解。</p>
+        </div>
+      `
+    },
+    category: "announcement",
+    published: true,
+    publishedAt: "2025-07-11",
+    createdAt: "2025-07-11"
+  },
+  {
+    id: 2,
+    title: {
+      jp: "第40回JSCRS学術総会 ランチョンセミナー開催のお知らせ",
+      ko: "제40회 JSCRS 학술총회 런천 세미나 개최 안내",
+      en: "40th JSCRS Academic Conference Luncheon Seminar Notice", 
+      zh: "第40届JSCRS学术大会午餐研讨会举办通知"
+    },
+    excerpt: {
+      jp: "第40回JSCRS学術総会でランチョンセミナーを開催いたします。",
+      ko: "제40회 JSCRS 학술총회에서 런천 세미나를 개최합니다.",
+      en: "Luncheon seminar to be held at the 40th JSCRS Academic Conference.",
+      zh: "将在第40届JSCRS学术大会上举办午餐研讨会。"
+    },
+    content: {
+      jp: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">第40回JSCRS学術総会 ランチョンセミナー開催のお知らせ</h2>
+          
+          <p>この度、第40回JSCRS学術総会において、ランチョンセミナーを開催いたします。</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">開催概要</h3>
+            <div class="space-y-2">
+              <p><strong>日時：</strong>2025年6月14日（土） 12:00-13:00</p>
+              <p><strong>会場：</strong>パシフィコ横浜 ノース</p>
+              <p><strong>演題：</strong>「最新の眼内レンズ技術と臨床応用」</p>
+              <p><strong>座長：</strong>山田太郎 先生（○○大学眼科学教室）</p>
+              <p><strong>演者：</strong>田中花子 先生（△△病院眼科）</p>
+            </div>
+          </div>
+          
+          <p>多くの皆様のご参加をお待ちしております。</p>
+        </div>
+      `,
+      ko: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">제40회 JSCRS 학술총회 런천 세미나 개최 안내</h2>
+          
+          <p>이번 제40회 JSCRS 학술총회에서 런천 세미나를 개최합니다.</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">개최 개요</h3>
+            <div class="space-y-2">
+              <p><strong>일시:</strong> 2025년 6월 14일(토) 12:00-13:00</p>
+              <p><strong>장소:</strong> 퍼시피코 요코하마 노스</p>
+              <p><strong>연제:</strong> "최신 안내렌즈 기술과 임상 응용"</p>
+              <p><strong>좌장:</strong> 야마다 타로 선생님(○○대학 안과학교실)</p>
+              <p><strong>연자:</strong> 타나카 하나코 선생님(△△병원 안과)</p>
+            </div>
+          </div>
+          
+          <p>많은 분들의 참가를 기다리고 있습니다.</p>
+        </div>
+      `,
+      en: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">40th JSCRS Academic Conference Luncheon Seminar Notice</h2>
+          
+          <p>We will be holding a luncheon seminar at the 40th JSCRS Academic Conference.</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">Event Overview</h3>
+            <div class="space-y-2">
+              <p><strong>Date:</strong> June 14, 2025 (Sat) 12:00-13:00</p>
+              <p><strong>Venue:</strong> Pacifico Yokohama North</p>
+              <p><strong>Title:</strong> "Latest Intraocular Lens Technology and Clinical Applications"</p>
+              <p><strong>Chairperson:</strong> Dr. Taro Yamada (Department of Ophthalmology, ○○ University)</p>
+              <p><strong>Speaker:</strong> Dr. Hanako Tanaka (Department of Ophthalmology, △△ Hospital)</p>
+            </div>
+          </div>
+          
+          <p>We look forward to your participation.</p>
+        </div>
+      `,
+      zh: `
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-slate-900">第40届JSCRS学术大会午餐研讨会举办通知</h2>
+          
+          <p>我们将在第40届JSCRS学术大会上举办午餐研讨会。</p>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">举办概要</h3>
+            <div class="space-y-2">
+              <p><strong>日期：</strong>2025年6月14日(周六) 12:00-13:00</p>
+              <p><strong>地点：</strong>横浜太平洋会展中心北馆</p>
+              <p><strong>题目：</strong>"最新人工晶状体技术与临床应用"</p>
+              <p><strong>主席：</strong>山田太郎 医师（○○大学眼科学教室）</p>
+              <p><strong>演讲者：</strong>田中花子 医师（△△医院眼科）</p>
+            </div>
+          </div>
+          
+          <p>期待大家的参与。</p>
+        </div>
+      `
+    },
+    category: "announcement",
+    published: true,
+    publishedAt: "2025-05-26",
+    createdAt: "2025-05-26"
+  },
+  {
+    id: 3,
+    title: {
       jp: "ゴールデンウィーク期間の休業のお知らせ",
       ko: "골든위크 기간 휴업 안내",
       en: "Golden Week Holiday Notice",
@@ -45,7 +239,7 @@ export const newsData = [
     createdAt: "2025-04-08"
   },
   {
-    id: 2,
+    id: 4,
     title: {
       jp: "年末年始休業のお知らせ",
       ko: "연말연시 휴업 안내",
@@ -90,12 +284,12 @@ export const newsData = [
     createdAt: "2024-11-11"
   },
   {
-    id: 3,
+    id: 5,
     title: {
-      jp: "夏期休業のお知らせ",
-      ko: "하계 휴업 안내",
-      en: "Summer Holiday Notice",
-      zh: "夏季休业通知"
+      jp: "夏期休業のお知らせ（2024年）",
+      ko: "하계 휴업 안내 (2024년)",
+      en: "Summer Holiday Notice (2024)",
+      zh: "夏季休业通知 (2024年)"
     },
     excerpt: {
       jp: "2024年夏期休業期間についてお知らせいたします。",
@@ -134,12 +328,12 @@ export const newsData = [
     createdAt: "2024-07-16"
   },
   {
-    id: 4,
+    id: 6,
     title: {
-      jp: "第40回JSCRS学術総会 ランチョンセミナー開催のお知らせ",
-      ko: "제40회 JSCRS 학술총회 런천 세미나 개최 안내",
-      en: "40th JSCRS Annual Meeting Luncheon Seminar Notice",
-      zh: "第40届JSCRS学术大会午餐研讨会举办通知"
+      jp: "第39回JSCRS学術総会 イブニングセミナー開催のお知らせ",
+      ko: "제39회 JSCRS 학술총회 이브닝 세미나 개최 안내",
+      en: "39th JSCRS Annual Meeting Evening Seminar Notice",
+      zh: "第39届JSCRS学术大会晚间研讨会举办通知"
     },
     excerpt: {
       jp: "第40回日本白内障屈折矯正手術学会学術総会でのランチョンセミナー開催についてお知らせいたします。",
@@ -185,7 +379,7 @@ export const newsData = [
     featured: true
   },
   {
-    id: 5,
+    id: 7,
     title: {
       jp: "第17回 日中韓ジョイントミーティングのご案内",
       ko: "제17회 한중일 조인트 미팅 안내",
@@ -237,7 +431,7 @@ export const newsData = [
     createdAt: "2024-11-06"
   },
   {
-    id: 6,
+    id: 8,
     title: {
       jp: "第39回JSCRS学術総会 イブニングセミナー開催のお知らせ",
       ko: "제39회 JSCRS 학술총회 이브닝 세미나 개최 안내",
