@@ -620,6 +620,10 @@ export function About() {
                   <div className="bg-white rounded-lg p-6 border border-slate-200">
                     <h4 className="font-semibold text-slate-900 mb-2">株式会社メニテック</h4>
                     <p className="text-slate-600 text-sm">(Tokyo)</p>
+                    <div className="mt-2 text-xs text-slate-500">
+                      <p>TEL: 03-3221-4862</p>
+                      <p>FAX: 03-3221-4764</p>
+                    </div>
                   </div>
                   <div className="bg-white rounded-lg p-6 border border-slate-200">
                     <h4 className="font-semibold text-slate-900 mb-2">株式会社プライスドットコム</h4>
