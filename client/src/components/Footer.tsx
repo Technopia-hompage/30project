@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock, Printer } from "lucide-react";
 
 export function Footer() {
   const { language, getLanguageRoute } = useLanguage();
@@ -99,8 +99,8 @@ export function Footer() {
                 <span className="text-slate-300 text-sm">03-3221-4761</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">FAX: 03-3221-4775</span>
+                <Printer className="h-5 w-5 text-slate-400" />
+                <span className="text-slate-300 text-sm">03-3221-4775</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-slate-400" />
