@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock, Printer } from "lucide-react";
-import technopiaLogo from "@assets/technopia_logo.png";
+import technopiaLogo from "@assets/technopia-logo-1980x599.jpg";
 
 export function Footer() {
   const { language, getLanguageRoute } = useLanguage();
