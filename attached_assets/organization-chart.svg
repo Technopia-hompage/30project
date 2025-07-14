@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="700" height="450" viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg">
+<svg width="750" height="450" viewBox="0 0 750 450" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .text-title { font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
@@ -69,10 +69,12 @@
   
   <!-- Sales Planning Department Subdivisions -->
   <rect x="540" y="260" width="80" height="55" rx="4" class="box-dept"/>
-  <text x="580" y="280" text-anchor="middle" class="text-sub">営業企画部</text>
+  <text x="580" y="280" text-anchor="middle" class="text-sub">営業</text>
+  <text x="580" y="295" text-anchor="middle" class="text-sub">企画部</text>
   
   <rect x="630" y="260" width="80" height="55" rx="4" class="box-dept"/>
-  <text x="670" y="280" text-anchor="middle" class="text-sub">新規開発部</text>
+  <text x="670" y="280" text-anchor="middle" class="text-sub">新規</text>
+  <text x="670" y="295" text-anchor="middle" class="text-sub">開発部</text>
   
   <!-- Connecting Lines -->
   <!-- From Representative to departments -->
