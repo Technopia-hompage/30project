@@ -381,7 +381,10 @@ export function Home() {
               </Button>
             </Link>
             <Link href={getLanguageRoute('/contact')}>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-corporate-blue focus:text-corporate-blue active:text-corporate-blue [&>span]:text-white hover:[&>span]:text-corporate-blue">
+              <Button 
+                size="lg" 
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-corporate-blue transition-all duration-200"
+              >
                 {getTranslation('cta.contact', language)}
               </Button>
             </Link>
