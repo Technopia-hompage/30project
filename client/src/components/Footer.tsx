@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Clock, Printer } from "lucide-react";
+import technopiaLogo from "@assets/technopia_logo.png";
 
 export function Footer() {
   const { language, getLanguageRoute } = useLanguage();
@@ -23,7 +24,7 @@ export function Footer() {
             <Link href={getLanguageRoute('/')}>
               <div className="flex items-center mb-6 hover:opacity-80 transition-opacity duration-200">
                 <img 
-                  src="/assets/technopia-logo_1749111397772.png" 
+                  src={technopiaLogo} 
                   alt="Technopia Logo" 
                   className="h-8 w-auto mr-3"
                 />
