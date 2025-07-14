@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getMultiLanguageContent } from "@/lib/i18n";
 import { BusinessDivision } from "@shared/schema";
+import { Link } from "wouter";
 import { 
   Cog, 
   Leaf, 
@@ -210,13 +211,15 @@ export function Business() {
                       <span>• {language === 'jp' ? 'フェムトセカンドレーザー' : language === 'ko' ? '펨토세컨드 레이저' : language === 'en' ? 'Femtosecond Laser' : '飞秒激光'}</span>
                     </div>
                   </div>
-                  <Button variant="ghost" className="text-red-600 hover:text-red-700 p-0">
-                    {language === 'jp' && '詳細を見る'}
-                    {language === 'ko' && '자세히 보기'}
-                    {language === 'en' && 'Learn More'}
-                    {language === 'zh' && '了解更多'}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href={`/${language}/medical`}>
+                    <Button variant="ghost" className="text-red-600 hover:text-red-700 p-0">
+                      {language === 'jp' && '詳細を見る'}
+                      {language === 'ko' && '자세히 보기'}
+                      {language === 'en' && 'Learn More'}
+                      {language === 'zh' && '了解更多'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
 
