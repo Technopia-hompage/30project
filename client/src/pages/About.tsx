@@ -326,7 +326,73 @@ export function About() {
                     {language === 'en' && 'Licenses & Certifications'}
                     {language === 'zh' && '业务许可及认证'}
                   </h3>
-                  <div className="bg-slate-100 rounded-lg p-8 min-h-[200px] flex items-center justify-center">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* JAWA 인증서 */}
+                    <div className="bg-white rounded-lg p-4 border border-slate-200 hover:shadow-lg transition-shadow duration-200">
+                      <div className="aspect-[4/5] overflow-hidden rounded-lg mb-4">
+                        <img 
+                          src="/attached_assets/ninsyou10_1752453924698.jpg" 
+                          alt="JAWA 団体PL保険加入証 - Japan Light Alloy Wheel Association PL Insurance Certificate"
+                          className="w-full h-full object-contain bg-gray-50 cursor-pointer hover:scale-105 transition-transform duration-200"
+                          onClick={() => window.open('/attached_assets/ninsyou10_1752453924698.jpg', '_blank')}
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h4 className="font-semibold text-slate-900 mb-2">
+                          {language === 'jp' && 'JAWA 団体PL保険加入証'}
+                          {language === 'ko' && 'JAWA 단체PL보험가입증'}
+                          {language === 'en' && 'JAWA Group PL Insurance Certificate'}
+                          {language === 'zh' && 'JAWA团体PL保险加入证'}
+                        </h4>
+                        <p className="text-slate-600 text-sm">
+                          {language === 'jp' && '日本軽合金ホイール協会'}
+                          {language === 'ko' && '일본경합금휠협회'}
+                          {language === 'en' && 'Japan Light Alloy Wheel Association'}
+                          {language === 'zh' && '日本轻合金轮毂协会'}
+                        </p>
+                        <p className="text-slate-500 text-xs mt-1">
+                          {language === 'jp' && '証券番号: NL13362701'}
+                          {language === 'ko' && '증권번호: NL13362701'}
+                          {language === 'en' && 'Certificate No: NL13362701'}
+                          {language === 'zh' && '证券号码: NL13362701'}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* 機械工具商 인증서 */}
+                    <div className="bg-white rounded-lg p-4 border border-slate-200 hover:shadow-lg transition-shadow duration-200">
+                      <div className="aspect-[4/5] overflow-hidden rounded-lg mb-4">
+                        <img 
+                          src="/attached_assets/ninsyou6_s_1752453933654.jpg" 
+                          alt="機械工具商 認定証 - Machinery and Tools Dealer Certification"
+                          className="w-full h-full object-contain bg-gray-50 cursor-pointer hover:scale-105 transition-transform duration-200"
+                          onClick={() => window.open('/attached_assets/ninsyou6_s_1752453933654.jpg', '_blank')}
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h4 className="font-semibold text-slate-900 mb-2">
+                          {language === 'jp' && '機械工具商 認定証'}
+                          {language === 'ko' && '기계공구상 인정증'}
+                          {language === 'en' && 'Machinery & Tools Dealer Certificate'}
+                          {language === 'zh' && '机械工具商认定证'}
+                        </h4>
+                        <p className="text-slate-600 text-sm">
+                          {language === 'jp' && '東京都認定'}
+                          {language === 'ko' && '도쿄도 인정'}
+                          {language === 'en' && 'Tokyo Metropolitan Government Certified'}
+                          {language === 'zh' && '东京都认定'}
+                        </p>
+                        <p className="text-slate-500 text-xs mt-1">
+                          {language === 'jp' && '登録番号: 30100990745'}
+                          {language === 'ko' && '등록번호: 30100990745'}
+                          {language === 'en' && 'Registration No: 30100990745'}
+                          {language === 'zh' && '登记号码: 30100990745'}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 text-center">
                     <p className="text-slate-500 text-sm">
                       {language === 'jp' && '画像をクリックすると、拡大することができます。'}
                       {language === 'ko' && '이미지를 클릭하면 확대할 수 있습니다.'}
