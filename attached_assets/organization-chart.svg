@@ -98,7 +98,8 @@
   
   <!-- Management Department -->
   <line x1="390" y1="215" x2="390" y2="240" class="line"/>
-  <line x1="430" y1="240" x2="520" y2="240" class="line"/>
+  <line x1="390" y1="240" x2="430" y2="240" class="line"/>
+  <line x1="390" y1="240" x2="520" y2="240" class="line"/>
   <line x1="430" y1="240" x2="430" y2="260" class="line"/>
   <line x1="520" y1="240" x2="520" y2="260" class="line"/>
   
