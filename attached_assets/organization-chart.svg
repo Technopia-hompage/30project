@@ -68,11 +68,11 @@
   <text x="520" y="290" text-anchor="middle" class="text-sub">総務部</text>
   
   <!-- Sales Planning Department Subdivisions -->
-  <rect x="570" y="260" width="80" height="55" rx="4" class="box-dept"/>
-  <text x="610" y="280" text-anchor="middle" class="text-sub">営業企画部</text>
+  <rect x="540" y="260" width="80" height="55" rx="4" class="box-dept"/>
+  <text x="580" y="280" text-anchor="middle" class="text-sub">営業企画部</text>
   
-  <rect x="570" y="325" width="80" height="55" rx="4" class="box-dept"/>
-  <text x="610" y="345" text-anchor="middle" class="text-sub">新規開発部</text>
+  <rect x="630" y="260" width="80" height="55" rx="4" class="box-dept"/>
+  <text x="670" y="280" text-anchor="middle" class="text-sub">新規開発部</text>
   
   <!-- Connecting Lines -->
   <!-- From Representative to departments -->
@@ -105,9 +105,9 @@
   
   <!-- Sales Planning Department -->
   <line x1="530" y1="215" x2="530" y2="240" class="line"/>
-  <line x1="610" y1="240" x2="610" y2="260" class="line"/>
-  <line x1="530" y1="240" x2="610" y2="240" class="line"/>
-  <line x1="610" y1="315" x2="610" y2="325" class="line"/>
+  <line x1="530" y1="240" x2="670" y2="240" class="line"/>
+  <line x1="580" y1="240" x2="580" y2="260" class="line"/>
+  <line x1="670" y1="240" x2="670" y2="260" class="line"/>
   
   <!-- Advisor connection -->
   <line x1="160" y1="47" x2="290" y2="100" class="line"/>
