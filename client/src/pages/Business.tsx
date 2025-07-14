@@ -236,31 +236,35 @@ export function Business() {
                     {language === 'zh' && 'AUTO事业部'}
                   </h3>
                   <p className="text-slate-600 mb-6">
-                    {language === 'jp' && 'アルミホイールの製造、販売を行っています。高品質で耐久性に優れたアルミホイールを提供し、自動車業界のニーズに応えています。'}
-                    {language === 'ko' && '알루미늄 휠의 제조, 판매를 하고 있습니다. 고품질이고 내구성이 뛰어난 알루미늄 휠을 제공하여 자동차 업계의 니즈에 부응하고 있습니다.'}
-                    {language === 'en' && 'We manufacture and sell aluminum wheels. We provide high-quality and durable aluminum wheels to meet the needs of the automotive industry.'}
-                    {language === 'zh' && '进行铝合金轮毂的制造、销售。提供高质量、耐久性优秀的铝合金轮毂，满足汽车行业的需求。'}
+                    {language === 'jp' && 'アルミホイールの企画・開発・販売を行っています。KASHINA、ARTEMIS、APHRODITE、MUD CLIFF、CHARITESなど多彩なブランドを展開し、様々な車種に対応した高品質なアルミホイールを提供しています。'}
+                    {language === 'ko' && '알루미늄 휠 기획·개발·판매를 하고 있습니다. KASHINA, ARTEMIS, APHRODITE, MUD CLIFF, CHARITES 등 다양한 브랜드를 전개하여 여러 차종에 대응한 고품질 알루미늄 휠을 제공하고 있습니다.'}
+                    {language === 'en' && 'Planning, development and sales of aluminum wheels. We develop various brands including KASHINA, ARTEMIS, APHRODITE, MUD CLIFF, CHARITES, providing high-quality aluminum wheels for various vehicle types.'}
+                    {language === 'zh' && '进行铝轮毂策划·开发·销售。展开KASHINA、ARTEMIS、APHRODITE、MUD CLIFF、CHARITES等多样化品牌，提供适应各种车型的高质量铝轮毂。'}
                   </p>
                   <div className="mb-6">
                     <h4 className="font-semibold text-slate-800 mb-2">
-                      {language === 'jp' && '特徴:'}
-                      {language === 'ko' && '특징:'}
-                      {language === 'en' && 'Features:'}
-                      {language === 'zh' && '特点:'}
+                      {language === 'jp' && '主要ブランド:'}
+                      {language === 'ko' && '주요 브랜드:'}
+                      {language === 'en' && 'Main Brands:'}
+                      {language === 'zh' && '主要品牌:'}
                     </h4>
                     <div className="text-sm text-slate-600 grid grid-cols-1 gap-1">
-                      <span>• {language === 'jp' ? '高品質アルミニウム素材' : language === 'ko' ? '고품질 알루미늄 소재' : language === 'en' ? 'High-quality aluminum material' : '高质量铝合金材料'}</span>
-                      <span>• {language === 'jp' ? '優れた耐久性と軽量性' : language === 'ko' ? '뛰어난 내구성과 경량성' : language === 'en' ? 'Excellent durability and lightweight' : '优秀的耐久性和轻量性'}</span>
-                      <span>• {language === 'jp' ? 'カスタムデザイン対応' : language === 'ko' ? '커스텀 디자인 대응' : language === 'en' ? 'Custom design support' : '定制设计对应'}</span>
+                      <span>• <strong>KASHINA</strong> (カシーナ) - {language === 'jp' ? 'プレミアムシリーズ' : language === 'ko' ? '프리미엄 시리즈' : language === 'en' ? 'Premium Series' : '高级系列'}</span>
+                      <span>• <strong>ARTEMIS</strong> (アルテミス) - {language === 'jp' ? 'スポーツシリーズ' : language === 'ko' ? '스포츠 시리즈' : language === 'en' ? 'Sports Series' : '运动系列'}</span>
+                      <span>• <strong>APHRODITE</strong> (アフロディーテ) - {language === 'jp' ? 'エレガントシリーズ' : language === 'ko' ? '엘레간트 시리즈' : language === 'en' ? 'Elegant Series' : '优雅系列'}</span>
+                      <span>• <strong>MUD CLIFF</strong> (マッドクリフ) - {language === 'jp' ? 'オフロードシリーズ' : language === 'ko' ? '오프로드 시리즈' : language === 'en' ? 'Off-road Series' : '越野系列'}</span>
+                      <span>• <strong>CHARITES</strong> (カリテス) - {language === 'jp' ? 'スタンダードシリーズ' : language === 'ko' ? '스탠더드 시리즈' : language === 'en' ? 'Standard Series' : '标准系列'}</span>
                     </div>
                   </div>
-                  <Button variant="ghost" className="text-blue-600 hover:text-blue-700 p-0">
-                    {language === 'jp' && '詳細を見る'}
-                    {language === 'ko' && '자세히 보기'}
-                    {language === 'en' && 'Learn More'}
-                    {language === 'zh' && '了解更多'}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href={`/${language}/auto`}>
+                    <Button variant="ghost" className="text-blue-600 hover:text-blue-700 p-0">
+                      {language === 'jp' && '詳細を見る'}
+                      {language === 'ko' && '자세히 보기'}
+                      {language === 'en' && 'Learn More'}
+                      {language === 'zh' && '了解更多'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
 

@@ -13,6 +13,7 @@ import { About } from "@/pages/About";
 import { Anniversary } from "@/pages/Anniversary";
 import { Business } from "@/pages/Business";
 import { Medical } from "@/pages/Medical";
+import { Auto } from "@/pages/Auto";
 import { Careers } from "@/pages/Careers";
 import { Contact } from "@/pages/Contact";
 
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/:lang/anniversary" component={Anniversary} />
       <Route path="/:lang/business" component={Business} />
       <Route path="/:lang/medical" component={Medical} />
+      <Route path="/:lang/auto" component={Auto} />
       <Route path="/:lang/careers" component={Careers} />
       <Route path="/:lang/contact" component={Contact} />
 
@@ -48,6 +50,7 @@ function Router() {
       <Route path="/anniversary" component={Anniversary} />
       <Route path="/business" component={Business} />
       <Route path="/medical" component={Medical} />
+      <Route path="/auto" component={Auto} />
       <Route path="/careers" component={Careers} />
       <Route path="/contact" component={Contact} />
 
