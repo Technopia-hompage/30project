@@ -14,7 +14,7 @@ import { Anniversary } from "@/pages/Anniversary";
 import { Business } from "@/pages/Business";
 import { Careers } from "@/pages/Careers";
 import { Contact } from "@/pages/Contact";
-import { Gallery } from "@/pages/Gallery";
+
 import { News } from "@/pages/News";
 import { Admin } from "@/pages/Admin";
 import { Privacy } from "@/pages/Privacy";
@@ -33,7 +33,7 @@ function Router() {
       <Route path="/:lang/business" component={Business} />
       <Route path="/:lang/careers" component={Careers} />
       <Route path="/:lang/contact" component={Contact} />
-      <Route path="/:lang/gallery" component={Gallery} />
+
       <Route path="/:lang/news" component={News} />
       <Route path="/:lang/news/:id" component={News} />
       <Route path="/:lang/admin" component={Admin} />
@@ -47,7 +47,7 @@ function Router() {
       <Route path="/business" component={Business} /> 
       <Route path="/careers" component={Careers} />
       <Route path="/contact" component={Contact} />
-      <Route path="/gallery" component={Gallery} />
+
       <Route path="/news" component={News} />
       <Route path="/news/:id" component={News} />
       <Route path="/admin" component={Admin} />

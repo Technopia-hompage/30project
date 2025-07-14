@@ -1,7 +1,6 @@
 import { 
   users, 
   newsArticles, 
-  galleryImages, 
   jobOpenings, 
   contactMessages, 
   companyTimeline,
@@ -10,8 +9,6 @@ import {
   type InsertUser,
   type NewsArticle,
   type InsertNewsArticle,
-  type GalleryImage,
-  type InsertGalleryImage,
   type JobOpening,
   type InsertJobOpening,
   type ContactMessage,
@@ -41,15 +38,7 @@ export interface IStorage {
   getNewsArticleById(id: number, language?: string): Promise<NewsArticle | undefined>;
   createNewsArticle(article: InsertNewsArticle): Promise<NewsArticle>;
 
-  // Gallery methods
-  getGalleryImages(filters?: {
-    language?: string;
-    category?: string;
-    year?: number;
-    featured?: boolean;
-    limit?: number;
-  }): Promise<GalleryImage[]>;
-  createGalleryImage(image: InsertGalleryImage): Promise<GalleryImage>;
+
 
   // Job methods
   getJobOpenings(filters?: {
@@ -77,7 +66,6 @@ export interface IStorage {
   // Statistics
   getWebsiteStats(): Promise<{
     totalNews: number;
-    totalImages: number;
     totalJobs: number;
     totalMessages: number;
   }>;
@@ -151,49 +139,7 @@ export class DatabaseStorage implements IStorage {
     return newArticle;
   }
 
-  async getGalleryImages(filters?: {
-    language?: string;
-    category?: string;
-    year?: number;
-    featured?: boolean;
-    limit?: number;
-  }): Promise<GalleryImage[]> {
-    let query = db.select().from(galleryImages);
 
-    const conditions = [];
-
-    if (filters?.category) {
-      conditions.push(eq(galleryImages.category, filters.category));
-    }
-
-    if (filters?.year) {
-      conditions.push(eq(galleryImages.year, filters.year));
-    }
-
-    if (filters?.featured !== undefined) {
-      conditions.push(eq(galleryImages.featured, filters.featured));
-    }
-
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
-    }
-
-    query = query.orderBy(desc(galleryImages.createdAt));
-
-    if (filters?.limit) {
-      query = query.limit(filters.limit);
-    }
-
-    return await query;
-  }
-
-  async createGalleryImage(image: InsertGalleryImage): Promise<GalleryImage> {
-    const [newImage] = await db
-      .insert(galleryImages)
-      .values(image)
-      .returning();
-    return newImage;
-  }
 
   async getJobOpenings(filters?: {
     language?: string;
@@ -301,18 +247,15 @@ export class DatabaseStorage implements IStorage {
 
   async getWebsiteStats(): Promise<{
     totalNews: number;
-    totalImages: number;
     totalJobs: number;
     totalMessages: number;
   }> {
     const [newsCount] = await db.select({ count: newsArticles.id }).from(newsArticles);
-    const [imagesCount] = await db.select({ count: galleryImages.id }).from(galleryImages);
     const [jobsCount] = await db.select({ count: jobOpenings.id }).from(jobOpenings);
     const [messagesCount] = await db.select({ count: contactMessages.id }).from(contactMessages);
 
     return {
       totalNews: newsCount?.count || 0,
-      totalImages: imagesCount?.count || 0,
       totalJobs: jobsCount?.count || 0,
       totalMessages: messagesCount?.count || 0,
     };

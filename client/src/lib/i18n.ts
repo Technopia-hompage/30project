@@ -15,7 +15,7 @@ export const translations = {
     business: { jp: '事業紹介', ko: '사업 소개', en: 'Business', zh: '业务介绍' },
     careers: { jp: '採用情報', ko: '채용 정보', en: 'Careers', zh: '招聘信息' },
     contact: { jp: 'お問い合わせ', ko: '문의', en: 'Contact', zh: '联系我们' },
-    gallery: { jp: 'ギャラリー', ko: '갤러리', en: 'Gallery', zh: '画廊' },
+
     news: { jp: 'ニュース', ko: '뉴스', en: 'News', zh: '新闻' },
     admin: { jp: '管理', ko: '관리', en: 'Admin', zh: '管理' }
   },

@@ -23,16 +23,7 @@ export const newsArticles = pgTable("news_articles", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-export const galleryImages = pgTable("gallery_images", {
-  id: serial("id").primaryKey(),
-  title: jsonb("title").notNull(), // Multi-language titles
-  description: jsonb("description"), // Multi-language descriptions
-  imageUrl: text("image_url").notNull(),
-  category: text("category").notNull().default("general"),
-  year: integer("year").notNull(),
-  featured: boolean("featured").notNull().default(false),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
+
 
 export const jobOpenings = pgTable("job_openings", {
   id: serial("id").primaryKey(),
@@ -83,9 +74,7 @@ export const newsArticlesRelations = relations(newsArticles, ({ many }) => ({
   // Add relations if needed
 }));
 
-export const galleryImagesRelations = relations(galleryImages, ({ many }) => ({
-  // Add relations if needed
-}));
+
 
 export const jobOpeningsRelations = relations(jobOpenings, ({ many }) => ({
   // Add relations if needed
@@ -103,10 +92,7 @@ export const insertNewsArticleSchema = createInsertSchema(newsArticles).omit({
   updatedAt: true,
 });
 
-export const insertGalleryImageSchema = createInsertSchema(galleryImages).omit({
-  id: true,
-  createdAt: true,
-});
+
 
 export const insertJobOpeningSchema = createInsertSchema(jobOpenings).omit({
   id: true,
@@ -133,8 +119,7 @@ export type InsertUser = z.infer<typeof insertUserSchema>;
 export type NewsArticle = typeof newsArticles.$inferSelect;
 export type InsertNewsArticle = z.infer<typeof insertNewsArticleSchema>;
 
-export type GalleryImage = typeof galleryImages.$inferSelect;
-export type InsertGalleryImage = z.infer<typeof insertGalleryImageSchema>;
+
 
 export type JobOpening = typeof jobOpenings.$inferSelect;
 export type InsertJobOpening = z.infer<typeof insertJobOpeningSchema>;

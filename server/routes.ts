@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
   insertNewsArticleSchema, 
-  insertGalleryImageSchema, 
+ 
   insertJobOpeningSchema, 
   insertContactMessageSchema,
   insertCompanyTimelineSchema,
@@ -49,31 +49,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Gallery Routes
-  app.get("/api/gallery", async (req, res) => {
-    try {
-      const { lang = 'jp', category, year, featured } = req.query;
-      const images = await storage.getGalleryImages({
-        language: lang as string,
-        category: category as string,
-        year: year ? parseInt(year as string) : undefined,
-        featured: featured === 'true'
-      });
-      res.json(images);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch gallery images" });
-    }
-  });
 
-  app.post("/api/gallery", async (req, res) => {
-    try {
-      const validatedData = insertGalleryImageSchema.parse(req.body);
-      const image = await storage.createGalleryImage(validatedData);
-      res.status(201).json(image);
-    } catch (error) {
-      res.status(400).json({ message: "Invalid image data" });
-    }
-  });
 
   // Job Openings Routes
   app.get("/api/jobs", async (req, res) => {

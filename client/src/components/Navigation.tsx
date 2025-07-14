@@ -20,7 +20,6 @@ export function Navigation() {
     { key: 'business', path: '/business' },
     { key: 'careers', path: '/careers' },
     { key: 'contact', path: '/contact' },
-    { key: 'gallery', path: '/gallery' },
     { key: 'news', path: '/news' },
   ];
 
