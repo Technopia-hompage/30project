@@ -3,7 +3,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Target, Eye, Heart, Building, Users, Globe, Award } from "lucide-react";
 import ceoImage from "@assets/スクリーンショット 2025-06-04 150711.png";
-import organizationChart from "@assets/organization-chart.svg";
+import organizationChart from "@assets/organization-chart-vertical.svg";
 import jawaCertificate from "@assets/ninsyou10_1752453924698.jpg";
 import machineCertificate from "@assets/ninsyou6_s_1752453933654.jpg";
 
