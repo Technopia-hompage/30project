@@ -37,117 +37,11 @@ export function Careers() {
             {language === 'zh' && '对申请者的要求和人物形象'}
           </h2>
 
-          <div className="mb-12 text-center">
-            <p className="text-lg text-slate-600 max-w-4xl mx-auto">
-              {language === 'jp' && 'ポジティブな思考、新たな価値を創造したいという意欲、これを実現する様々な能力が集まった結果だと思います。このような能力を備えた方々と共に弊社は新たな価値を創造し、お客様を支える企業を目指し成長していきたいと考えております。'}
-              {language === 'ko' && '긍정적인 사고, 새로운 가치를 창조하고자 하는 의욕, 이를 실현하는 다양한 능력이 모인 결과라고 생각합니다. 이러한 능력을 갖춘 분들과 함께 저희 회사는 새로운 가치를 창조하고, 고객을 지원하는 기업을 목표로 성장해 나가고 싶습니다.'}
-              {language === 'en' && 'We believe this is the result of gathering positive thinking, the desire to create new value, and various abilities to realize this. We want to grow with people who have these abilities, aiming to be a company that creates new value and supports customers.'}
-              {language === 'zh' && '我们认为这是积极思维、创造新价值的意愿以及实现这一目标的各种能力汇聚的结果。我们希望与具备这些能力的人才共同成长，致力于成为创造新价值、支持客户的企业。'}
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <Target className="h-8 w-8 text-corporate-blue mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                      {language === 'jp' && '1. 自発的な行動力'}
-                      {language === 'ko' && '1. 자발적인 행동력'}
-                      {language === 'en' && '1. Self-Motivated Action'}
-                      {language === 'zh' && '1. 自发的行动力'}
-                    </h3>
-                    <p className="text-slate-600">
-                      {language === 'jp' && '情報を収集分析してビジネスを構築するための能力'}
-                      {language === 'ko' && '정보를 수집 분석하여 비즈니스를 구축하기 위한 능력'}
-                      {language === 'en' && 'Ability to gather and analyze information to build business'}
-                      {language === 'zh' && '收集分析信息并构建业务的能力'}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <Lightbulb className="h-8 w-8 text-corporate-blue mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                      {language === 'jp' && '2. 論理的思考能力'}
-                      {language === 'ko' && '2. 논리적 사고능력'}
-                      {language === 'en' && '2. Logical Thinking'}
-                      {language === 'zh' && '2. 逻辑思维能力'}
-                    </h3>
-                    <p className="text-slate-600">
-                      {language === 'jp' && '物事のストーリーを整理して分析し説明するための能力'}
-                      {language === 'ko' && '사물의 스토리를 정리하여 분석하고 설명하기 위한 능력'}
-                      {language === 'en' && 'Ability to organize, analyze and explain the story of things'}
-                      {language === 'zh' && '整理、分析和解释事物故事的能力'}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <Users className="h-8 w-8 text-corporate-blue mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                      {language === 'jp' && '3. リーダーシップ'}
-                      {language === 'ko' && '3. 리더십'}
-                      {language === 'en' && '3. Leadership'}
-                      {language === 'zh' && '3. 领导力'}
-                    </h3>
-                    <p className="text-slate-600">
-                      {language === 'jp' && '関係者のやる気を引き出し、チームをまとめあげる能力'}
-                      {language === 'ko' && '관계자의 의욕을 끌어내고, 팀을 결속시키는 능력'}
-                      {language === 'en' && 'Ability to motivate stakeholders and bring teams together'}
-                      {language === 'zh' && '激发相关人员积极性并团结团队的能力'}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <MessageCircle className="h-8 w-8 text-corporate-blue mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                      {language === 'jp' && '4. コミュニケーション能力'}
-                      {language === 'ko' && '4. 커뮤니케이션 능력'}
-                      {language === 'en' && '4. Communication Skills'}
-                      {language === 'zh' && '4. 沟通能力'}
-                    </h3>
-                    <p className="text-slate-600">
-                      {language === 'jp' && '相手の伝えたいことを理解し、こちらの伝えたいことを確実に相手に理解させる能力'}
-                      {language === 'ko' && '상대방이 전하고자 하는 바를 이해하고, 이쪽에서 전하고자 하는 바를 확실히 상대방에게 이해시키는 능력'}
-                      {language === 'en' && 'Ability to understand what others want to convey and ensure others understand what you want to convey'}
-                      {language === 'zh' && '理解对方想要传达的内容，并确保对方理解自己想要传达的内容的能力'}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
           {/* CEO Message to Candidates */}
-          <div className="mt-16">
+          <div>
             <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-corporate-blue">
               <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-                    {language === 'jp' && '応募者に求める志向性・人物像'}
-                    {language === 'ko' && '지원자에게 요구하는 성향과 인물상'}
-                    {language === 'en' && 'Required Qualities & Character'}
-                    {language === 'zh' && '对申请者的要求和人物形象'}
-                  </h3>
-                </div>
+
                 
                 <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
                   <p className="text-base md:text-lg mb-6">
