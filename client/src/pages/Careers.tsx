@@ -142,10 +142,10 @@ export function Careers() {
               <CardContent className="p-8">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-semibold text-slate-900 mb-4">
-                    {language === 'jp' && '代表からのメッセージ'}
-                    {language === 'ko' && '대표 메시지'}
-                    {language === 'en' && 'Message from CEO'}
-                    {language === 'zh' && '来自CEO的信息'}
+                    {language === 'jp' && '応募者に求める志向性・人物像'}
+                    {language === 'ko' && '지원자에게 요구하는 성향과 인물상'}
+                    {language === 'en' && 'Required Qualities & Character'}
+                    {language === 'zh' && '对申请者的要求和人物形象'}
                   </h3>
                 </div>
                 
