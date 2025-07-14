@@ -60,6 +60,12 @@ export const translations = {
       message: { jp: 'メッセージ', ko: '메시지', en: 'Message', zh: '信息' },
       submit: { jp: '送信する', ko: '전송', en: 'Send Message', zh: '发送消息' }
     }
+  },
+  cta: {
+    title: { jp: 'あなたの可能性を一緒に実現しませんか', ko: '당신의 가능성을 함께 실현해보세요', en: 'Let\'s Realize Your Potential Together', zh: '让我们一起实现您的潜力' },
+    subtitle: { jp: 'テクノピアでは、革新的な技術と創造性で未来を切り開く仲間を募集しています。', ko: '테크노피아에서는 혁신적인 기술과 창의성으로 미래를 개척할 동료를 모집하고 있습니다.', en: 'At Technopia, we are recruiting colleagues who will pioneer the future with innovative technology and creativity.', zh: '在技术乌托邦，我们正在招聘用创新技术和创造力开拓未来的同事。' },
+    careers: { jp: '採用情報', ko: '채용 정보', en: 'Career Opportunities', zh: '招聘信息' },
+    contact: { jp: 'お問い合わせ', ko: '문의하기', en: 'Contact Us', zh: '联系我们' }
   }
 };
 
