@@ -1,7 +1,7 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Eye, Heart, Shield, CheckCircle, ExternalLink, Moon, Sun, Users, Globe, Award } from "lucide-react";
+import { Eye, Heart, Shield, CheckCircle, ExternalLink, Moon, Sun, Users, Globe, Award, Calendar, FileCheck, MapPin } from "lucide-react";
 import { Link } from "wouter";
 
 export function Medical() {
@@ -460,8 +460,278 @@ export function Medical() {
         </div>
       </section>
 
-      {/* Academic and Conference Information */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-slate-50">
+      {/* Academic Conference Schedule */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Calendar className="h-16 w-16 text-corporate-blue mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              {language === 'jp' && '学会情報'}
+              {language === 'ko' && '학회 정보'}
+              {language === 'en' && 'Academic Conference Information'}
+              {language === 'zh' && '学会信息'}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              {language === 'jp' && '日本眼科学会の主要学術集会の情報を掲載しております'}
+              {language === 'ko' && '일본안과학회의 주요 학술 집회 정보를 게재하고 있습니다'}
+              {language === 'en' && 'Information on major academic conferences of the Japanese Ophthalmological Society'}
+              {language === 'zh' && '刊登日本眼科学会主要学术集会的信息'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* 2025 Conferences */}
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-6">
+                  <Calendar className="h-8 w-8 text-corporate-blue mr-3" />
+                  <h3 className="text-2xl font-bold text-slate-900">
+                    {language === 'jp' && '2025年 主要学会'}
+                    {language === 'ko' && '2025년 주요 학회'}
+                    {language === 'en' && '2025 Major Conferences'}
+                    {language === 'zh' && '2025年主要学会'}
+                  </h3>
+                </div>
+                
+                <div className="space-y-4 max-h-96 overflow-y-auto">
+                  {[
+                    {
+                      date: { jp: '4月17日～20日', ko: '4월 17일~20일', en: 'April 17-20', zh: '4月17日~20日' },
+                      name: { jp: '日本眼科学会総会', ko: '일본안과학회 총회', en: 'Japanese Ophthalmological Society Annual Meeting', zh: '日本眼科学会总会' },
+                      location: { jp: '東京国際フォーラム', ko: '도쿄국제포럼', en: 'Tokyo International Forum', zh: '东京国际论坛' }
+                    },
+                    {
+                      date: { jp: '6月20日～22日', ko: '6월 20일~22일', en: 'June 20-22', zh: '6月20日~22日' },
+                      name: { jp: 'JSCRS学術総会', ko: 'JSCRS 학술총회', en: 'JSCRS Annual Meeting', zh: 'JSCRS学术总会' },
+                      location: { jp: '福岡国際会議場', ko: '후쿠오카국제회의장', en: 'Fukuoka International Conference Hall', zh: '福冈国际会议场' }
+                    },
+                    {
+                      date: { jp: '7月11日～13日', ko: '7월 11일~13일', en: 'July 11-13', zh: '7月11日~13日' },
+                      name: { jp: '日本コンタクトレンズ学会総会', ko: '일본콘택트렌즈학회 총회', en: 'Japanese Contact Lens Society', zh: '日本隐形眼镜学会总会' },
+                      location: { jp: 'パシフィコ横浜', ko: '퍼시피코 요코하마', en: 'Pacifico Yokohama', zh: '横滨太平洋会展中心' }
+                    },
+                    {
+                      date: { jp: '9月12日～14日', ko: '9월 12일~14일', en: 'September 12-14', zh: '9月12日~14日' },
+                      name: { jp: '日本緑内障学会', ko: '일본녹내장학회', en: 'Japanese Glaucoma Society', zh: '日本青光眼学会' },
+                      location: { jp: '神戸ポートピアホテル', ko: '고베 포트피아호텔', en: 'Kobe Portopia Hotel', zh: '神户港岛酒店' }
+                    },
+                    {
+                      date: { jp: '10月9日～12日', ko: '10월 9일~12일', en: 'October 9-12', zh: '10月9日~12日' },
+                      name: { jp: '日本臨床眼科学会', ko: '일본임상안과학회', en: 'Japanese Clinical Ophthalmology Society', zh: '日本临床眼科学会' },
+                      location: { jp: '大阪府立国際会議場', ko: '오사카부립국제회의장', en: 'Osaka International Convention Center', zh: '大阪府立国际会议场' }
+                    }
+                  ].map((conference, index) => (
+                    <div key={index} className="border-l-4 border-corporate-blue bg-blue-50 p-4 rounded-r-lg">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="text-sm font-semibold text-corporate-blue mb-1">
+                            {conference.date[language]}
+                          </div>
+                          <h4 className="font-semibold text-slate-900 mb-2">
+                            {conference.name[language]}
+                          </h4>
+                          <div className="flex items-center text-sm text-slate-600">
+                            <MapPin className="h-4 w-4 mr-1" />
+                            {conference.location[language]}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 2026 Conferences */}
+            <Card className="hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-6">
+                  <Calendar className="h-8 w-8 text-corporate-blue mr-3" />
+                  <h3 className="text-2xl font-bold text-slate-900">
+                    {language === 'jp' && '2026年 主要学会'}
+                    {language === 'ko' && '2026년 주요 학회'}
+                    {language === 'en' && '2026 Major Conferences'}
+                    {language === 'zh' && '2026年主要学会'}
+                  </h3>
+                </div>
+                
+                <div className="space-y-4 max-h-96 overflow-y-auto">
+                  {[
+                    {
+                      date: { jp: '4月9日～12日', ko: '4월 9일~12일', en: 'April 9-12', zh: '4月9日~12日' },
+                      name: { jp: '日本眼科学会総会', ko: '일본안과학회 총회', en: 'Japanese Ophthalmological Society Annual Meeting', zh: '日本眼科学会总会' },
+                      location: { jp: '福岡国際会議場', ko: '후쿠오카국제회의장', en: 'Fukuoka International Conference Hall', zh: '福冈国际会议场' }
+                    },
+                    {
+                      date: { jp: '5月29日～31日', ko: '5월 29일~31일', en: 'May 29-31', zh: '5月29日~31日' },
+                      name: { jp: '日本コンタクトレンズ学会総会', ko: '일본콘택트렌즈학회 총회', en: 'Japanese Contact Lens Society', zh: '日本隐形眼镜学会总会' },
+                      location: { jp: '高輪ゲートウェイコンベンションセンター', ko: '다카나와 게이트웨이 컨벤션센터', en: 'Takanawa Gateway Convention Center', zh: '高轮网关会议中心' }
+                    },
+                    {
+                      date: { jp: '6月26日～28日', ko: '6월 26일~28일', en: 'June 26-28', zh: '6月26日~28日' },
+                      name: { jp: 'JSCRS学術総会', ko: 'JSCRS 학술총회', en: 'JSCRS Annual Meeting', zh: 'JSCRS学术总会' },
+                      location: { jp: '東京国際フォーラム', ko: '도쿄국제포럼', en: 'Tokyo International Forum', zh: '东京国际论坛' }
+                    },
+                    {
+                      date: { jp: '10月2日～4日', ko: '10월 2일~4일', en: 'October 2-4', zh: '10月2日~4日' },
+                      name: { jp: '日本緑内障学会', ko: '일본녹내장학회', en: 'Japanese Glaucoma Society', zh: '日本青光眼学会' },
+                      location: { jp: '静岡県グランシップ', ko: '시즈오카현 그랜십', en: 'Shizuoka Granship', zh: '静冈县大船' }
+                    },
+                    {
+                      date: { jp: '10月29日～11月1日', ko: '10월 29일~11월 1일', en: 'Oct 29 - Nov 1', zh: '10月29日~11月1日' },
+                      name: { jp: '日本臨床眼科学会', ko: '일본임상안과학회', en: 'Japanese Clinical Ophthalmology Society', zh: '日本临床眼科学会' },
+                      location: { jp: '国立京都国際会館', ko: '국립교토국제회관', en: 'Kyoto International Conference Center', zh: '国立京都国际会馆' }
+                    }
+                  ].map((conference, index) => (
+                    <div key={index} className="border-l-4 border-green-500 bg-green-50 p-4 rounded-r-lg">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="text-sm font-semibold text-green-600 mb-1">
+                            {conference.date[language]}
+                          </div>
+                          <h4 className="font-semibold text-slate-900 mb-2">
+                            {conference.name[language]}
+                          </h4>
+                          <div className="flex items-center text-sm text-slate-600">
+                            <MapPin className="h-4 w-4 mr-1" />
+                            {conference.location[language]}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications and Licenses */}
+      <section className="py-16 bg-gradient-to-r from-slate-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <FileCheck className="h-16 w-16 text-corporate-blue mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              {language === 'jp' && '取得認証一覧'}
+              {language === 'ko' && '취득 인증 일람'}
+              {language === 'en' && 'Certifications & Licenses'}
+              {language === 'zh' && '取得认证一览'}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              {language === 'jp' && '医療機器の製造・販売に必要な各種認証を取得しています'}
+              {language === 'ko' && '의료기기 제조·판매에 필요한 각종 인증을 취득하고 있습니다'}
+              {language === 'en' && 'We have obtained various certifications required for medical device manufacturing and sales'}
+              {language === 'zh' && '已取得医疗器械制造销售所需的各种认证'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: {
+                  jp: '高度管理医療機器等販売業許可書',
+                  ko: '고도관리의료기기등 판매업 허가서',
+                  en: 'Advanced Medical Device Sales License',
+                  zh: '高度管理医疗器械等销售业许可证'
+                },
+                icon: Shield,
+                color: 'text-blue-600'
+              },
+              {
+                title: {
+                  jp: '医療機器製造業登録証',
+                  ko: '의료기기 제조업 등록증',
+                  en: 'Medical Device Manufacturing Registration',
+                  zh: '医疗器械制造业登记证'
+                },
+                icon: CheckCircle,
+                color: 'text-green-600'
+              },
+              {
+                title: {
+                  jp: '第一種医療機器製造販売業許可証',
+                  ko: '제1종 의료기기 제조판매업 허가증',
+                  en: 'Class I Medical Device Manufacturing & Sales License',
+                  zh: '第一类医疗器械制造销售业许可证'
+                },
+                icon: Award,
+                color: 'text-purple-600'
+              },
+              {
+                title: {
+                  jp: 'マイエメラルド承認書',
+                  ko: '마이에메랄드 승인서',
+                  en: 'My Emerald Approval Certificate',
+                  zh: 'My Emerald批准证书'
+                },
+                icon: Eye,
+                color: 'text-emerald-600'
+              },
+              {
+                title: {
+                  jp: 'AQUACEL承認書',
+                  ko: 'AQUACEL 승인서',
+                  en: 'AQUACEL Approval Certificate',
+                  zh: 'AQUACEL批准证书'
+                },
+                icon: Heart,
+                color: 'text-red-600'
+              },
+              {
+                title: {
+                  jp: '日本コンタクトレンズ協会会員証',
+                  ko: '일본콘택트렌즈협회 회원증',
+                  en: 'Japan Contact Lens Association Membership',
+                  zh: '日本隐形眼镜协会会员证'
+                },
+                icon: Users,
+                color: 'text-orange-600'
+              }
+            ].map((cert, index) => (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-200">
+                <CardContent className="p-6">
+                  <cert.icon className={`h-12 w-12 ${cert.color} mx-auto mb-4`} />
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4">
+                    {cert.title[language]}
+                  </h3>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span className="text-sm text-green-600 font-medium">
+                      {language === 'jp' && '取得済み'}
+                      {language === 'ko' && '취득 완료'}
+                      {language === 'en' && 'Certified'}
+                      {language === 'zh' && '已取得'}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Card className="max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                  {language === 'jp' && '品質と安全性への取り組み'}
+                  {language === 'ko' && '품질과 안전성에 대한 노력'}
+                  {language === 'en' && 'Commitment to Quality and Safety'}
+                  {language === 'zh' && '对品质和安全性的承诺'}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {language === 'jp' && '当社は医療機器の製造・販売において、厚生労働省が定める厳格な品質基準をクリアし、必要な許可・認証をすべて取得しています。患者様の安全と治療効果を最優先に考え、継続的な品質改善に取り組んでおります。'}
+                  {language === 'ko' && '저희는 의료기기 제조·판매에 있어서 후생노동성이 정한 엄격한 품질 기준을 통과하고 필요한 허가·인증을 모두 취득하고 있습니다. 환자의 안전과 치료 효과를 최우선으로 생각하며 지속적인 품질 개선에 노력하고 있습니다.'}
+                  {language === 'en' && 'In the manufacturing and sales of medical devices, we have cleared the strict quality standards set by the Ministry of Health, Labour and Welfare and obtained all necessary permits and certifications. We prioritize patient safety and treatment effectiveness, working on continuous quality improvement.'}
+                  {language === 'zh' && '在医疗器械的制造和销售方面，我们通过了厚生劳动省制定的严格质量标准，获得了所有必要的许可和认证。我们以患者安全和治疗效果为最优先考虑，致力于持续的质量改进。'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Academic and Research Activities */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Award className="h-16 w-16 text-corporate-blue mx-auto mb-6" />
