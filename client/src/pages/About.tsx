@@ -4,6 +4,8 @@ import { getTranslation } from "@/lib/i18n";
 import { Target, Eye, Heart, Building, Users, Globe, Award } from "lucide-react";
 import ceoImage from "@assets/スクリーンショット 2025-06-04 150711.png";
 import organizationChart from "@assets/organization-chart.svg";
+import jawaCertificate from "@assets/ninsyou10_1752453924698.jpg";
+import machineCertificate from "@assets/ninsyou6_s_1752453933654.jpg";
 
 export function About() {
   const { language } = useLanguage();
@@ -331,10 +333,10 @@ export function About() {
                     <div className="bg-white rounded-lg p-4 border border-slate-200 hover:shadow-lg transition-shadow duration-200">
                       <div className="aspect-[4/5] overflow-hidden rounded-lg mb-4">
                         <img 
-                          src="/attached_assets/ninsyou10_1752453924698.jpg" 
+                          src={jawaCertificate} 
                           alt="JAWA 団体PL保険加入証 - Japan Light Alloy Wheel Association PL Insurance Certificate"
                           className="w-full h-full object-contain bg-gray-50 cursor-pointer hover:scale-105 transition-transform duration-200"
-                          onClick={() => window.open('/attached_assets/ninsyou10_1752453924698.jpg', '_blank')}
+                          onClick={() => window.open(jawaCertificate, '_blank')}
                         />
                       </div>
                       <div className="text-center">
@@ -363,10 +365,10 @@ export function About() {
                     <div className="bg-white rounded-lg p-4 border border-slate-200 hover:shadow-lg transition-shadow duration-200">
                       <div className="aspect-[4/5] overflow-hidden rounded-lg mb-4">
                         <img 
-                          src="/attached_assets/ninsyou6_s_1752453933654.jpg" 
+                          src={machineCertificate} 
                           alt="機械工具商 認定証 - Machinery and Tools Dealer Certification"
                           className="w-full h-full object-contain bg-gray-50 cursor-pointer hover:scale-105 transition-transform duration-200"
-                          onClick={() => window.open('/attached_assets/ninsyou6_s_1752453933654.jpg', '_blank')}
+                          onClick={() => window.open(machineCertificate, '_blank')}
                         />
                       </div>
                       <div className="text-center">
