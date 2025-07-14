@@ -300,13 +300,15 @@ export function Business() {
                       <span>• {language === 'jp' ? 'リアルタイム監視機能' : language === 'ko' ? '실시간 모니터링 기능' : language === 'en' ? 'Real-time monitoring function' : '实时监控功能'}</span>
                     </div>
                   </div>
-                  <Button variant="ghost" className="text-green-600 hover:text-green-700 p-0">
-                    {language === 'jp' && '詳細を見る'}
-                    {language === 'ko' && '자세히 보기'}
-                    {language === 'en' && 'Learn More'}
-                    {language === 'zh' && '了解更多'}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href={`/${language}/newbusiness`}>
+                    <Button variant="ghost" className="text-green-600 hover:text-green-700 p-0">
+                      {language === 'jp' && '詳細を見る'}
+                      {language === 'ko' && '자세히 보기'}
+                      {language === 'en' && 'Learn More'}
+                      {language === 'zh' && '了解更多'}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
 
