@@ -1,7 +1,7 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Eye, Heart, Shield, CheckCircle, ExternalLink } from "lucide-react";
+import { Eye, Heart, Shield, CheckCircle, ExternalLink, Moon, Sun, Users, Globe, Award } from "lucide-react";
 import { Link } from "wouter";
 
 export function Medical() {
@@ -53,15 +53,15 @@ export function Medical() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              {language === 'jp' && '主要取扱品目'}
-              {language === 'ko' && '주요 취급 품목'}
-              {language === 'en' && 'Main Products'}
-              {language === 'zh' && '主要经营品目'}
+              {language === 'jp' && 'メディカル事業部　取扱品目'}
+              {language === 'ko' && '메디컬 사업부 취급 품목'}
+              {language === 'en' && 'Medical Division Products'}
+              {language === 'zh' && '医疗事业部经营品目'}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {/* Product List */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* Extended Product List */}
             {[
               {
                 jp: 'オルソケラトロジーレンズ',
@@ -72,14 +72,44 @@ export function Medical() {
               {
                 jp: '白内障用眼内レンズ',
                 ko: '백내장용 안내 렌즈',
-                en: 'Intraocular Lenses for Cataract',
+                en: 'Cataract Intraocular Lenses',
                 zh: '白内障用眼内晶状体'
+              },
+              {
+                jp: '眼内挿入レンズ',
+                ko: '안내 삽입 렌즈',
+                en: 'Intraocular Insert Lenses',
+                zh: '眼内插入晶状体'
+              },
+              {
+                jp: 'テンションリング',
+                ko: '텐션 링',
+                en: 'Tension Ring',
+                zh: '张力环'
+              },
+              {
+                jp: '各種眼科用医療機器',
+                ko: '각종 안과용 의료기기',
+                en: 'Various Ophthalmic Medical Devices',
+                zh: '各种眼科医疗设备'
               },
               {
                 jp: 'IPL（インテンス・パルス・ライト）',
                 ko: 'IPL (인텐스 펄스 라이트)',
                 en: 'IPL (Intense Pulsed Light)',
                 zh: 'IPL (强脉冲光)'
+              },
+              {
+                jp: 'コンタクトレンズ洗浄液',
+                ko: '콘택트렌즈 세정액',
+                en: 'Contact Lens Cleaning Solution',
+                zh: '隐形眼镜清洗液'
+              },
+              {
+                jp: 'トポグラフィー',
+                ko: '토포그래피',
+                en: 'Topography',
+                zh: '地形图检查'
               },
               {
                 jp: 'エキシマレーザー',
@@ -94,17 +124,29 @@ export function Medical() {
                 zh: '飞秒激光器'
               },
               {
-                jp: '各種眼科用医療機器',
-                ko: '각종 안과용 의료기기',
-                en: 'Various Ophthalmic Medical Devices',
-                zh: '各种眼科医疗设备'
+                jp: '体温計',
+                ko: '체온계',
+                en: 'Thermometer',
+                zh: '体温计'
+              },
+              {
+                jp: '消毒ディスペンサー',
+                ko: '소독 디스펜서',
+                en: 'Disinfection Dispenser',
+                zh: '消毒分配器'
+              },
+              {
+                jp: '消毒スプレー',
+                ko: '소독 스프레이',
+                en: 'Disinfection Spray',
+                zh: '消毒喷雾'
               }
             ].map((product, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <CheckCircle className="h-6 w-6 text-corporate-blue mr-3" />
-                    <h3 className="text-lg font-semibold text-slate-900">
+                <CardContent className="p-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-corporate-blue mr-3 flex-shrink-0" />
+                    <h3 className="text-sm font-semibold text-slate-900">
                       {product[language]}
                     </h3>
                   </div>
@@ -139,7 +181,42 @@ export function Medical() {
                   {language === 'zh' && '这是一种新的近视矫正方法，晚上睡前佩戴角膜塑形镜"My Emerald"，早上起床时取下镜片，白天就可以用"裸眼"生活。'}
                 </p>
 
+                <div className="mb-6">
+                  <h4 className="font-semibold text-slate-800 mb-3">
+                    {language === 'jp' && 'オルソケラトロジーの仕組み'}
+                    {language === 'ko' && '오르토케라톨로지의 원리'}
+                    {language === 'en' && 'How Orthokeratology Works'}
+                    {language === 'zh' && '角膜塑形术的原理'}
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div className="flex items-center">
+                      <Moon className="h-5 w-5 text-blue-600 mr-2" />
+                      <span className="text-sm text-slate-600">
+                        {language === 'jp' ? '夜間装用' : language === 'ko' ? '야간 착용' : language === 'en' ? 'Overnight Wear' : '夜间佩戴'}
+                      </span>
+                    </div>
+                    <div className="flex items-center">
+                      <Sun className="h-5 w-5 text-yellow-600 mr-2" />
+                      <span className="text-sm text-slate-600">
+                        {language === 'jp' ? '日中裸眼' : language === 'ko' ? '낮에는 맨눈' : language === 'en' ? 'Daytime Naked Eye' : '白天裸眼'}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-slate-600 mb-4">
+                    {language === 'jp' && 'ギリシャ語で「オルソ」とは矯正、「ケラト」は角膜、「ロジー」は療法、つまりオルソケラトロジーとはその語源のとおり視力を改善させる近視矯正法を意味します。'}
+                    {language === 'ko' && '그리스어로 "오르토"는 교정, "케라토"는 각막, "로지"는 요법을 의미하며, 오르토케라톨로지는 그 어원 그대로 시력을 개선시키는 근시 교정법을 의미합니다.'}
+                    {language === 'en' && 'In Greek, "Ortho" means correction, "Kerato" means cornea, and "logy" means therapy. Thus, orthokeratology means a myopia correction method that improves vision as its etymology suggests.'}
+                    {language === 'zh' && '希腊语中"Ortho"意为矫正，"Kerato"意为角膜，"logy"意为疗法，因此角膜塑形术正如其词源所示，是一种改善视力的近视矫正方法。'}
+                  </p>
+                </div>
+
                 <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                  <p className="text-sm text-slate-600 mb-2">
+                    {language === 'jp' && '2010年9月1日製造販売承認取得'}
+                    {language === 'ko' && '2010년 9월 1일 제조판매 승인 취득'}
+                    {language === 'en' && 'Manufacturing and Sales Approval Obtained September 1, 2010'}
+                    {language === 'zh' && '2010年9月1日获得制造销售许可'}
+                  </p>
                   <p className="text-sm text-slate-600">
                     {language === 'jp' && '医療機器承認番号：22200BZX00790000'}
                     {language === 'ko' && '의료기기 승인번호：22200BZX00790000'}
@@ -269,6 +346,209 @@ export function Medical() {
                   {language === 'ko' && '야간 착용으로 먼지 등의 걱정이 없어 편안'}
                   {language === 'en' && 'Comfortable overnight wear without worry about dust'}
                   {language === 'zh' && '夜间佩戴无需担心灰尘等问题，舒适便利'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Medical Device Manufacturers */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Globe className="h-16 w-16 text-corporate-blue mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              {language === 'jp' && '世界の医療機器メーカー'}
+              {language === 'ko' && '세계의 의료기기 제조사'}
+              {language === 'en' && 'Global Medical Device Manufacturers'}
+              {language === 'zh' && '世界医疗器械制造商'}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto">
+              {language === 'jp' && '弊社は、眼科領域に関して常にお客様のニーズと要望に注目し、世界中の最先端の製品をサポートをさせていただいております。'}
+              {language === 'ko' && '저희는 안과 영역에 관해 항상 고객의 니즈와 요망에 주목하여 세계 최첨단 제품을 지원해 드리고 있습니다.'}
+              {language === 'en' && 'We always focus on customer needs and requirements in the ophthalmic field, supporting cutting-edge products from around the world.'}
+              {language === 'zh' && '我们始终关注眼科领域客户的需求和要求，为世界各地的尖端产品提供支持。'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                country: { jp: 'アメリカ', ko: '미국', en: 'USA', zh: '美国' },
+                company: 'Euclid System',
+                product: { jp: 'オルソケラトロジー', ko: '오르토케라톨로지', en: 'Orthokeratology', zh: '角膜塑形术' },
+                url: 'https://euclidsys.com/'
+              },
+              {
+                country: { jp: 'アメリカ', ko: '미국', en: 'USA', zh: '美国' },
+                company: 'Lacrimedics',
+                product: { jp: '涙点プラグ', ko: '누점 플러그', en: 'Punctal Plugs', zh: '泪点栓' },
+                url: 'http://www.lacrimedics.com/'
+              },
+              {
+                country: { jp: 'ドイツ', ko: '독일', en: 'Germany', zh: '德国' },
+                company: 'HumanOptics AG',
+                product: { jp: '人工虹彩、IOL', ko: '인공 홍채, IOL', en: 'Artificial Iris, IOL', zh: '人工虹膜, IOL' },
+                url: 'https://www.humanoptics.com/en/'
+              },
+              {
+                country: { jp: 'ドイツ', ko: '독일', en: 'Germany', zh: '德国' },
+                company: 'Bausch+Lomb Surgical',
+                product: { jp: 'エキシマレーザー、フェムトセカンドレーザー', ko: '엑시머 레이저, 펨토초 레이저', en: 'Excimer Laser, Femtosecond Laser', zh: '准分子激光, 飞秒激光' },
+                url: 'https://www.bauschsurgical.eu/products/laser/'
+              },
+              {
+                country: { jp: 'カナダ', ko: '캐나다', en: 'Canada', zh: '加拿大' },
+                company: 'INNOVATIVE EXCIMER SOLUTIONS',
+                product: { jp: 'アモイルブラシ', ko: '아모일 브러시', en: 'Amoils Brush', zh: '阿莫伊尔刷' },
+                url: 'http://www.innovativexcimer.com/node/2'
+              },
+              {
+                country: { jp: '韓国', ko: '한국', en: 'South Korea', zh: '韩国' },
+                company: 'Jeisys',
+                product: { jp: 'IPL', ko: 'IPL', en: 'IPL', zh: 'IPL' },
+                url: 'https://www.jeisys.com/'
+              },
+              {
+                country: { jp: 'イタリア', ko: '이탈리아', en: 'Italy', zh: '意大利' },
+                company: 'SIFI',
+                product: { jp: 'IOL', ko: 'IOL', en: 'IOL', zh: 'IOL' },
+                url: 'https://www.sifigroup.com/'
+              },
+              {
+                country: { jp: 'フランス', ko: '프랑스', en: 'France', zh: '法国' },
+                company: 'LCS',
+                product: { jp: 'Eyebrid', ko: 'Eyebrid', en: 'Eyebrid', zh: 'Eyebrid' },
+                url: 'https://www.laboratoire-lcs.com/en/'
+              },
+              {
+                country: { jp: 'イスラエル', ko: '이스라엘', en: 'Israel', zh: '以色列' },
+                company: 'Hanita Lenses',
+                product: { jp: 'Intensity', ko: 'Intensity', en: 'Intensity', zh: 'Intensity' },
+                url: 'https://www.hanitalenses.com/'
+              }
+            ].map((manufacturer, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-200">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <div className="text-sm text-corporate-blue font-semibold mb-1">
+                        {manufacturer.country[language]}
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">
+                        {manufacturer.company}
+                      </h3>
+                      <p className="text-slate-600 text-sm">
+                        {manufacturer.product[language]}
+                      </p>
+                    </div>
+                    <ExternalLink className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={manufacturer.url} target="_blank" rel="noopener noreferrer">
+                      {language === 'jp' && '詳細を見る'}
+                      {language === 'ko' && '자세히 보기'}
+                      {language === 'en' && 'Visit Website'}
+                      {language === 'zh' && '访问网站'}
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Academic and Conference Information */}
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Award className="h-16 w-16 text-corporate-blue mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              {language === 'jp' && '学会・研究活動'}
+              {language === 'ko' && '학회·연구 활동'}
+              {language === 'en' && 'Academic & Research Activities'}
+              {language === 'zh' && '学会·研究活动'}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              {language === 'jp' && '最新の眼科医療技術の普及と発展に貢献しています'}
+              {language === 'ko' && '최신 안과 의료 기술의 보급과 발전에 기여하고 있습니다'}
+              {language === 'en' && 'Contributing to the advancement and dissemination of cutting-edge ophthalmic medical technology'}
+              {language === 'zh' && '为最新眼科医疗技术的普及和发展做出贡献'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-6">
+                <Users className="h-12 w-12 text-blue-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  {language === 'jp' && '日本眼科学会'}
+                  {language === 'ko' && '일본안과학회'}
+                  {language === 'en' && 'Japanese Ophthalmological Society'}
+                  {language === 'zh' && '日本眼科学会'}
+                </h3>
+                <p className="text-slate-600 text-sm">
+                  {language === 'jp' && '最新の眼科医療技術に関する研究発表'}
+                  {language === 'ko' && '최신 안과 의료 기술에 관한 연구 발표'}
+                  {language === 'en' && 'Research presentations on cutting-edge ophthalmic technology'}
+                  {language === 'zh' && '关于最新眼科医疗技术的研究发表'}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-6">
+                <Globe className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  {language === 'jp' && '国際眼科学会'}
+                  {language === 'ko' && '국제안과학회'}
+                  {language === 'en' && 'International Ophthalmology Congress'}
+                  {language === 'zh' && '国际眼科学会'}
+                </h3>
+                <p className="text-slate-600 text-sm">
+                  {language === 'jp' && 'オルソケラトロジーの国際的な普及活動'}
+                  {language === 'ko' && '오르토케라톨로지의 국제적 보급 활동'}
+                  {language === 'en' && 'International dissemination of orthokeratology'}
+                  {language === 'zh' && '角膜塑形术的国际推广活动'}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
+              <CardContent className="p-6">
+                <Award className="h-12 w-12 text-purple-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                  {language === 'jp' && '医療機器学会'}
+                  {language === 'ko' && '의료기기학회'}
+                  {language === 'en' && 'Medical Device Society'}
+                  {language === 'zh' && '医疗器械学会'}
+                </h3>
+                <p className="text-slate-600 text-sm">
+                  {language === 'jp' && '最新医療機器の安全性と有効性の研究'}
+                  {language === 'ko' && '최신 의료기기의 안전성과 유효성 연구'}
+                  {language === 'en' && 'Research on safety and efficacy of latest medical devices'}
+                  {language === 'zh' && '最新医疗器械安全性和有效性研究'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Card className="max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                  {language === 'jp' && '30年以上の研究実績'}
+                  {language === 'ko' && '30년 이상의 연구 실적'}
+                  {language === 'en' && 'Over 30 Years of Research Excellence'}
+                  {language === 'zh' && '30年以上的研究实绩'}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {language === 'jp' && 'オルソケラトロジーはアメリカで30年以上前から研究・施術され、現在、アメリカ・ヨーロッパを中心に、世界各国でその安全性と効果が認められ、実地されております。当社では最新の臨床データと学術研究に基づいて、より安全で効果的な治療法の提供に努めています。'}
+                  {language === 'ko' && '오르토케라톨로지는 미국에서 30년 이상 전부터 연구·시술되어 현재 미국·유럽을 중심으로 세계 각국에서 그 안전성과 효과가 인정받아 실시되고 있습니다. 저희는 최신 임상 데이터와 학술 연구를 바탕으로 더욱 안전하고 효과적인 치료법 제공에 힘쓰고 있습니다.'}
+                  {language === 'en' && 'Orthokeratology has been researched and practiced in the United States for over 30 years, and its safety and effectiveness are now recognized and implemented worldwide, particularly in the US and Europe. We strive to provide safer and more effective treatments based on the latest clinical data and academic research.'}
+                  {language === 'zh' && '角膜塑形术在美国已有30多年的研究和实践历史，目前在以美国和欧洲为中心的世界各国，其安全性和有效性得到认可并得以实施。我们致力于基于最新临床数据和学术研究提供更安全、更有效的治疗方法。'}
                 </p>
               </CardContent>
             </Card>
