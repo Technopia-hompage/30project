@@ -49,6 +49,28 @@ export const translations = {
       content: { jp: '誠実、革新、品質、お客様第一の精神で、長期的なパートナーシップを築きます。', ko: '성실성, 혁신성, 협력성을 축으로 고객 우선의 정신으로 고품질 솔루션을 제공합니다.', en: 'Based on integrity, innovation, and collaboration, we provide high-quality solutions with a customer-first mindset.', zh: '以诚信、创新、协作为核心，以客户至上的精神提供高质量的解决方案。' }
     }
   },
+  values: {
+    title: { jp: '企業理念', ko: '기업 이념', en: 'Our Philosophy', zh: '企业理念' },
+    subtitle: { jp: 'テクノピアの使命、ビジョン、価値観をご紹介します', ko: '테크노피아의 사명, 비전, 가치관을 소개합니다', en: 'Introducing Technopia\'s mission, vision, and values', zh: '介绍Technopia的使命、愿景和价值观' },
+    mission: {
+      title: { jp: 'ミッション', ko: '미션', en: 'Mission', zh: '使命' },
+      description: { jp: '最先端の技術ソリューションを通じて、お客様のビジネス成功を支援し、社会の持続的発展に貢献します。', ko: '최첨단 기술 솔루션을 통해 고객의 비즈니스 성공을 지원하고, 사회의 지속적 발전에 기여합니다.', en: 'Through cutting-edge technology solutions, we support our customers\' business success and contribute to sustainable social development.', zh: '通过尖端技术解决方案，支持客户的业务成功，为社会的可持续发展做出贡献。' }
+    },
+    vision: {
+      title: { jp: 'ビジョン', ko: '비전', en: 'Vision', zh: '愿景' },
+      description: { jp: '技術革新のリーディングカンパニーとして、世界中のお客様に信頼される企業になります。', ko: '기술 혁신의 선도 기업으로서, 전 세계 고객에게 신뢰받는 기업이 됩니다.', en: 'As a leading company in technological innovation, we aim to become a company trusted by customers worldwide.', zh: '作为技术创新的领先企业，我们致力于成为全世界客户信赖的企业。' }
+    },
+    values: {
+      title: { jp: '価値観', ko: '가치관', en: 'Values', zh: '价值观' },
+      description: { jp: '誠実、革新、品質、お客様第一の精神で、長期的なパートナーシップを築きます。', ko: '성실, 혁신, 품질, 고객 우선의 정신으로 장기적인 파트너십을 구축합니다.', en: 'We build long-term partnerships with integrity, innovation, quality, and a customer-first spirit.', zh: '以诚信、创新、质量、客户至上的精神构建长期合作伙伴关系。' }
+    }
+  },
+  cta: {
+    title: { jp: 'テクノピアと共に未来を創造しませんか', ko: '테크노피아와 함께 미래를 창조하지 않으시겠습니까', en: 'Create the Future with Technopia', zh: '与Technopia一起创造未来' },
+    subtitle: { jp: 'お客様のビジネス成功をサポートするパートナーとして、共に成長していきましょう。', ko: '고객의 비즈니스 성공을 지원하는 파트너로서, 함께 성장해 나갑시다.', en: 'Let\'s grow together as a partner supporting your business success.', zh: '作为支持您业务成功的合作伙伴，让我们共同成长。' },
+    careers: { jp: '採用情報', ko: '채용 정보', en: 'Careers', zh: '招聘信息' },
+    contact: { jp: 'お問い合わせ', ko: '문의하기', en: 'Contact Us', zh: '联系我们' }
+  },
   contact: {
     title: { jp: 'お問い合わせ', ko: '문의', en: 'Contact Us', zh: '联系我们' },
     subtitle: { jp: 'ご質問やご相談がございましたら、お気軽にお問い合わせください。', ko: '질문이나 상담이 있으시면 언제든지 문의해 주세요.', en: 'If you have any questions or consultations, please feel free to contact us.', zh: '如果您有任何问题或咨询，请随时联系我们。' },
