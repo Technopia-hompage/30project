@@ -44,12 +44,12 @@
   <!-- Sub-departments with vertical text -->
   <!-- Medical Department Subdivisions -->
   <rect x="30" y="260" width="60" height="65" rx="4" class="box-dept"/>
-  <text x="60" y="285" text-anchor="middle" class="text-sub">
-    <tspan x="60" dy="0">メ</tspan>
-    <tspan x="60" dy="12">デ</tspan>
-    <tspan x="60" dy="12">ィ</tspan>
-    <tspan x="60" dy="12">カ</tspan>
-    <tspan x="60" dy="12">ル</tspan>
+  <text x="55" y="275" text-anchor="middle" class="text-sub">
+    <tspan x="55" dy="0">メ</tspan>
+    <tspan x="55" dy="12">デ</tspan>
+    <tspan x="55" dy="12">ィ</tspan>
+    <tspan x="55" dy="12">カ</tspan>
+    <tspan x="55" dy="12">ル</tspan>
   </text>
   <text x="70" y="275" text-anchor="middle" class="text-sub">
     <tspan x="70" dy="0">営</tspan>
@@ -58,12 +58,12 @@
   </text>
   
   <rect x="120" y="260" width="60" height="65" rx="4" class="box-dept"/>
-  <text x="150" y="285" text-anchor="middle" class="text-sub">
-    <tspan x="150" dy="0">メ</tspan>
-    <tspan x="150" dy="12">デ</tspan>
-    <tspan x="150" dy="12">ィ</tspan>
-    <tspan x="150" dy="12">カ</tspan>
-    <tspan x="150" dy="12">ル</tspan>
+  <text x="145" y="275" text-anchor="middle" class="text-sub">
+    <tspan x="145" dy="0">メ</tspan>
+    <tspan x="145" dy="12">デ</tspan>
+    <tspan x="145" dy="12">ィ</tspan>
+    <tspan x="145" dy="12">カ</tspan>
+    <tspan x="145" dy="12">ル</tspan>
   </text>
   <text x="160" y="275" text-anchor="middle" class="text-sub">
     <tspan x="160" dy="0">管</tspan>
