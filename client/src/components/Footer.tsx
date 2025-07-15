@@ -18,29 +18,30 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <Link href={getLanguageRoute('/')}>
-              <div className="flex items-center mb-6 hover:opacity-80 transition-opacity duration-200">
-                <img 
-                  src={technopiaLogo} 
-                  alt="Technopia Logo" 
-                  className="h-12 w-auto mr-3"
-                />
-                <h2 className="text-2xl font-bold text-white">
-                  Technopia
-                </h2>
-              </div>
-            </Link>
-            
-            {/* Company Address and Contact */}
-            <div className="mb-6 space-y-2">
-              <div className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-slate-400 mt-1 flex-shrink-0" />
+        {/* Company Logo */}
+        <div className="text-center mb-12">
+          <Link href={getLanguageRoute('/')}>
+            <div className="flex items-center justify-center mb-2 hover:opacity-80 transition-opacity duration-200">
+              <img 
+                src={technopiaLogo} 
+                alt="Technopia Logo" 
+                className="h-12 w-auto mr-3"
+              />
+              <h2 className="text-2xl font-bold text-white">
+                Technopia
+              </h2>
+            </div>
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Left: Company Contact Info */}
+          <div>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <MapPin className="h-4 w-4 text-slate-400 flex-shrink-0" />
                 <span className="text-slate-300 text-sm">
-                  〒101-0065 東京都千代田区西神田3-1-2<br />
-                  ウインド西神田ビル3F
+                  〒101-0065 東京都千代田区西神田3-1-2 ウインド西神田ビル3F
                 </span>
               </div>
               <div className="flex items-center space-x-2">
@@ -48,10 +49,18 @@ export function Footer() {
                 <span className="text-slate-300 text-sm">03-3221-4761</span>
               </div>
               <div className="flex items-center space-x-2">
+                <Printer className="h-4 w-4 text-slate-400" />
+                <span className="text-slate-300 text-sm">03-3221-4775</span>
+              </div>
+              <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-slate-400" />
                 <span className="text-slate-300 text-sm">info@technopia.co.jp</span>
               </div>
             </div>
+          </div>
+
+          {/* Center: Social Media */}
+          <div className="flex justify-center">
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/technopia.co.jp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
                 <Facebook className="h-5 w-5" />
@@ -65,7 +74,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Right: Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-6">
               {language === 'jp' && 'クイックリンク'}
@@ -83,40 +92,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            {language !== 'jp' && (
-              <h4 className="text-lg font-semibold mb-6">
-                {language === 'ko' && '연락처'}
-                {language === 'en' && 'Contact Info'}
-                {language === 'zh' && '联系信息'}
-              </h4>
-            )}
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-slate-400 mt-0.5" />
-                <span className="text-slate-300 text-sm whitespace-pre-line">
-                  {language === 'jp' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
-                  {language === 'ko' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
-                  {language === 'en' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
-                  {language === 'zh' && '〒101-0065\n東京都千代田区西神田3-1-2\nウインド西神田ビル3F'}
-                </span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">03-3221-4761</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Printer className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">03-3221-4775</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-slate-400" />
-                <span className="text-slate-300 text-sm">info@technopia.co.jp</span>
-              </li>
             </ul>
           </div>
         </div>
