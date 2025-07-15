@@ -32,6 +32,40 @@
   --success-green: 158 64% 52%;
 }
 
+/* Custom scrollbar styles for photo gallery */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom photo carousel scrollbar */
+.photo-carousel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--corporate-blue)) hsl(var(--muted));
+}
+
+.photo-carousel-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.photo-carousel-scroll::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+.photo-carousel-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--corporate-blue));
+  border-radius: 4px;
+}
+
+.photo-carousel-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--corporate-light));
+}
+
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
