@@ -16,8 +16,10 @@ import {
   Send,
   MessageSquare,
   FileText,
-  Users
+  Users,
+  ChevronRight
 } from "lucide-react";
+import { Link } from "wouter";
 
 export function Contact() {
   const { language } = useLanguage();
@@ -68,28 +70,56 @@ export function Contact() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Hero Section - Career and Contact */}
+      <section className="py-20 lg:py-28 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              {language === 'jp' && 'お問い合わせ'}
-              {language === 'ko' && '문의'}
-              {language === 'en' && 'Contact Us'}
-              {language === 'zh' && '联系我们'}
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-8">
+              {language === 'jp' && 'あなたの可能性を一緒に実現しませんか'}
+              {language === 'ko' && '당신의 가능성을 함께 실현해 보지 않으시겠습니까'}
+              {language === 'en' && 'Let\'s realize your potential together'}
+              {language === 'zh' && '让我们一起实现你的可能性'}
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {language === 'jp' && 'ご質問やご相談がございましたら、お気軽にお問い合わせください。'}
-              {language === 'ko' && '질문이나 상담이 있으시면 언제든지 문의해 주세요.'}
-              {language === 'en' && 'If you have any questions or consultations, please feel free to contact us.'}
-              {language === 'zh' && '如果您有任何问题或咨询，请随时联系我们。'}
+            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto">
+              {language === 'jp' && 'テクノピアでは、革新的な技術と創造性で未来を切り拓く仲間を募集しています。'}
+              {language === 'ko' && '테크노피아에서는 혁신적인 기술과 창조성으로 미래를 개척할 동료를 모집하고 있습니다.'}
+              {language === 'en' && 'Technopia is recruiting colleagues who will pioneer the future with innovative technology and creativity.'}
+              {language === 'zh' && '技术乌托邦正在招募用创新技术和创造力开拓未来的伙伴。'}
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link href={`/${language}/careers`}>
+                <Button 
+                  size="lg" 
+                  className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 text-lg font-semibold min-w-[200px]"
+                >
+                  {language === 'jp' && '採用情報'}
+                  {language === 'ko' && '채용정보'}
+                  {language === 'en' && 'Career Info'}
+                  {language === 'zh' && '招聘信息'}
+                </Button>
+              </Link>
+              
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-blue-700 px-8 py-4 text-lg font-semibold min-w-[200px]"
+                onClick={() => {
+                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                {language === 'jp' && 'お問い合わせ'}
+                {language === 'ko' && '문의하기'}
+                {language === 'en' && 'Contact Us'}
+                {language === 'zh' && '联系我们'}
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Form and Information */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section id="contact-form" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
