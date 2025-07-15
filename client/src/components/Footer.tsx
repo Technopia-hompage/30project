@@ -33,12 +33,25 @@ export function Footer() {
                 </h2>
               </div>
             </Link>
-            <p className="text-slate-300 mb-6 max-w-md">
-              {language === 'jp' && '30年の経験と信頼で、グローバルに革新的なソリューションを提供し続けています。'}
-              {language === 'ko' && '30년의 경험과 신뢰로 글로벌하게 혁신적인 솔루션을 지속적으로 제공하고 있습니다.'}
-              {language === 'en' && 'With 30 years of experience and trust, we continue to provide innovative solutions globally.'}
-              {language === 'zh' && '凭借30年的经验和信任，我们持续在全球范围内提供创新解决方案。'}
-            </p>
+            
+            {/* Company Address and Contact */}
+            <div className="mb-6 space-y-2">
+              <div className="flex items-start space-x-2">
+                <MapPin className="h-4 w-4 text-slate-400 mt-1 flex-shrink-0" />
+                <span className="text-slate-300 text-sm">
+                  〒101-0065 東京都千代田区西神田3-1-2<br />
+                  ウインド西神田ビル3F
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-slate-400" />
+                <span className="text-slate-300 text-sm">03-3221-4761</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="h-4 w-4 text-slate-400" />
+                <span className="text-slate-300 text-sm">info@technopia.co.jp</span>
+              </div>
+            </div>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/technopia.co.jp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
                 <Facebook className="h-5 w-5" />
