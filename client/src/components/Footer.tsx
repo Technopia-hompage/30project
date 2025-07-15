@@ -75,24 +75,26 @@ export function Footer() {
           </div>
 
           {/* Right: Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6">
-              {language === 'jp' && 'クイックリンク'}
-              {language === 'ko' && '빠른 링크'}
-              {language === 'en' && 'Quick Links'}
-              {language === 'zh' && '快速链接'}
-            </h4>
-            <ul className="space-y-3">
-              {quickLinks.map((item) => (
-                <li key={item.key}>
-                  <Link href={getLanguageRoute(item.path)}>
-                    <span className="text-slate-300 hover:text-white transition-colors duration-200">
-                      {getTranslation(`nav.${item.key}`, language)}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="flex justify-end">
+            <div>
+              <h4 className="text-lg font-semibold mb-6">
+                {language === 'jp' && 'クイックリンク'}
+                {language === 'ko' && '빠른 링크'}
+                {language === 'en' && 'Quick Links'}
+                {language === 'zh' && '快速链接'}
+              </h4>
+              <ul className="space-y-3">
+                {quickLinks.map((item) => (
+                  <li key={item.key}>
+                    <Link href={getLanguageRoute(item.path)}>
+                      <span className="text-slate-300 hover:text-white transition-colors duration-200">
+                        {getTranslation(`nav.${item.key}`, language)}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
