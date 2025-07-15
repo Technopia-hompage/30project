@@ -443,10 +443,10 @@ export function About() {
                           {language === 'zh' && '东京都认定'}
                         </p>
                         <p className="text-slate-500 text-xs mt-1">
-                          {language === 'jp' && '登録番号: 30100990745'}
-                          {language === 'ko' && '등록번호: 30100990745'}
-                          {language === 'en' && 'Registration No: 30100990745'}
-                          {language === 'zh' && '登记号码: 30100990745'}
+                          {language === 'jp' && '登録番号: 301009907451'}
+                          {language === 'ko' && '등록번호: 301009907451'}
+                          {language === 'en' && 'Registration No: 301009907451'}
+                          {language === 'zh' && '登记号码: 301009907451'}
                         </p>
                       </div>
                     </div>
