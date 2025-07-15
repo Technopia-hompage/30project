@@ -18,30 +18,30 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Company Logo */}
-        <div className="text-center mb-12">
-          <Link href={getLanguageRoute('/')}>
-            <div className="flex items-center justify-center mb-2 hover:opacity-80 transition-opacity duration-200">
-              <img 
-                src={technopiaLogo} 
-                alt="Technopia Logo" 
-                className="h-12 w-auto mr-3"
-              />
-              <h2 className="text-2xl font-bold text-white">
-                Technopia
-              </h2>
-            </div>
-          </Link>
-        </div>
-
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Left: Company Contact Info */}
+          {/* Left: Company Logo and Contact Info */}
           <div>
+            {/* Company Logo */}
+            <Link href={getLanguageRoute('/')}>
+              <div className="flex items-center mb-6 hover:opacity-80 transition-opacity duration-200">
+                <img 
+                  src={technopiaLogo} 
+                  alt="Technopia Logo" 
+                  className="h-12 w-auto mr-3"
+                />
+                <h2 className="text-2xl font-bold text-white">
+                  Technopia
+                </h2>
+              </div>
+            </Link>
+            
+            {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-slate-400 flex-shrink-0" />
+              <div className="flex items-start space-x-2">
+                <MapPin className="h-4 w-4 text-slate-400 mt-1 flex-shrink-0" />
                 <span className="text-slate-300 text-sm">
-                  〒101-0065 東京都千代田区西神田3-1-2 ウインド西神田ビル3F
+                  〒101-0065<br />
+                  東京都千代田区西神田3-1-2 ウインド西神田ビル3F
                 </span>
               </div>
               <div className="flex items-center space-x-2">
