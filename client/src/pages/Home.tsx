@@ -113,58 +113,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-16 lg:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              {getTranslation('values.title', language)}
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              {getTranslation('values.subtitle', language)}
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-8">
-                <Target className="h-12 w-12 text-corporate-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('values.mission.title', language)}
-                </h3>
-                <p className="text-slate-600">
-                  {getTranslation('values.mission.description', language)}
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-8">
-                <Eye className="h-12 w-12 text-corporate-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('values.vision.title', language)}
-                </h3>
-                <p className="text-slate-600">
-                  {getTranslation('values.vision.description', language)}
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center hover:shadow-lg transition-shadow duration-200">
-              <CardContent className="p-8">
-                <Heart className="h-12 w-12 text-corporate-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">
-                  {getTranslation('values.values.title', language)}
-                </h3>
-                <p className="text-slate-600">
-                  {getTranslation('values.values.description', language)}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Business Divisions */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
