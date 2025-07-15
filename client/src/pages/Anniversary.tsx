@@ -129,16 +129,24 @@ export function Anniversary() {
       </section>
 
       {/* Company Timeline */}
-      <section className="py-16 lg:py-24 bg-slate-50">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          {/* Enhanced Header with Visual Elements */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-corporate-blue to-blue-600 rounded-full mb-8">
+              <Trophy className="text-white h-10 w-10" />
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
               {language === 'jp' && '30年のあゆみ'}
               {language === 'ko' && '30년의 발걸음'}
               {language === 'en' && '30 Years Journey'}
               {language === 'zh' && '30年历程'}
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            
+            <div className="w-24 h-1 bg-gradient-to-r from-corporate-blue to-blue-600 mx-auto mb-6"></div>
+            
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               {language === 'jp' && '1995年の創立から現在まで、私たちの成長の軌跡をご覧ください。'}
               {language === 'ko' && '1995년 창립부터 현재까지 우리의 성장 궤적을 보시기 바랍니다.'}
               {language === 'en' && 'Please see our growth trajectory from our founding in 1995 to the present.'}
@@ -146,14 +154,83 @@ export function Anniversary() {
             </p>
           </div>
 
-          {/* Detailed Company History Timeline */}
-          <div className="bg-white">
-            <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">1995 - 2025</h3>
-              <h4 className="text-xl font-semibold text-corporate-blue mb-8">Technopia's History</h4>
+          {/* Timeline Period Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block bg-white rounded-lg shadow-lg px-8 py-6 border-2 border-corporate-blue">
+              <h3 className="text-3xl font-bold text-slate-900 mb-2">1995 - 2025</h3>
+              <div className="w-16 h-1 bg-gradient-to-r from-corporate-blue to-blue-600 mx-auto mb-2"></div>
+              <h4 className="text-xl font-semibold text-corporate-blue">Technopia's History</h4>
             </div>
+          </div>
 
-            <div className="space-y-12">
+          {/* Photo Gallery Placeholder */}
+          <div className="mb-16">
+            <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-2 border-corporate-blue/20">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    {language === 'jp' && '思い出のフォトギャラリー'}
+                    {language === 'ko' && '추억의 포토 갤러리'}
+                    {language === 'en' && 'Memory Photo Gallery'}
+                    {language === 'zh' && '回忆照片画廊'}
+                  </h3>
+                  <p className="text-slate-600">
+                    {language === 'jp' && '30年間の歩みを写真でご紹介します'}
+                    {language === 'ko' && '30년간의 발걸음을 사진으로 소개합니다'}
+                    {language === 'en' && 'Introducing our 30-year journey through photos'}
+                    {language === 'zh' && '通过照片介绍我们30年的历程'}
+                  </p>
+                </div>
+                
+                {/* Photo Grid Placeholder */}
+                <div className="grid md:grid-cols-3 gap-6 mb-6">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="aspect-[4/3] bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg border-2 border-dashed border-slate-300 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-12 h-12 bg-slate-300 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <svg className="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                        <p className="text-sm text-slate-500">Photo {i}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="text-center">
+                  <span className="text-sm text-slate-500 italic">
+                    {language === 'jp' && '※写真は順次追加予定です'}
+                    {language === 'ko' && '※사진은 순차적으로 추가 예정입니다'}
+                    {language === 'en' && '※Photos will be added sequentially'}
+                    {language === 'zh' && '※照片将陆续添加'}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Enhanced Timeline Container */}
+          <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-corporate-blue to-blue-600 text-white p-8">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold mb-2">
+                  {language === 'jp' && '詳細な歴史タイムライン'}
+                  {language === 'ko' && '상세한 역사 타임라인'}
+                  {language === 'en' && 'Detailed History Timeline'}
+                  {language === 'zh' && '详细历史时间线'}
+                </h3>
+                <p className="text-blue-100">
+                  {language === 'jp' && '主要な出来事と発展の軌跡'}
+                  {language === 'ko' && '주요 사건과 발전 궤적'}
+                  {language === 'en' && 'Major events and development trajectory'}
+                  {language === 'zh' && '主要事件和发展轨迹'}
+                </p>
+              </div>
+            </div>
+            
+            <div className="p-8">
+              <div className="space-y-12">
               {/* 2023~ */}
               <div className="timeline-section">
                 <h4 className="text-xl font-bold text-slate-900 mb-6 border-b-2 border-corporate-blue pb-2">2023~</h4>
@@ -381,6 +458,7 @@ export function Anniversary() {
                     <span className="font-bold text-anniversary-red">株式会社テクノピア 設立（東京都豊島区池袋2-43-1）</span>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
