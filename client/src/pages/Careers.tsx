@@ -419,10 +419,10 @@ export function Careers() {
                       {language === 'zh' && '选拔方式'}
                     </h4>
                     <p className="text-slate-600">
-                      {language === 'jp' && '書類審査後面接選考'}
-                      {language === 'ko' && '서류 심사 후 면접 선발'}
-                      {language === 'en' && 'Interview selection after document screening'}
-                      {language === 'zh' && '文件审查后面试选拔'}
+                      {language === 'jp' && '応募 → 書類審査 → 面接選考 → 内定'}
+                      {language === 'ko' && '지원 → 서류 심사 → 면접 선발 → 내정'}
+                      {language === 'en' && 'Application → Document Screening → Interview Selection → Job Offer'}
+                      {language === 'zh' && '申请 → 文件审查 → 面试选拔 → 内定'}
                     </p>
                   </div>
                   
