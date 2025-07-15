@@ -150,12 +150,14 @@ export function Home() {
                   {language === 'en' && 'Manufacturing and sales of various ophthalmic surgical equipment, examination equipment, intraocular lenses, contact lenses, etc.'}
                   {language === 'zh' && '各种眼科手术设备、检查设备、眼内镜、隐形眼镜等的制造销售'}
                 </p>
-                <Button variant="outline" size="sm">
-                  {language === 'jp' && '詳しく見る'}
-                  {language === 'ko' && '자세히 보기'}
-                  {language === 'en' && 'Learn More'}
-                  {language === 'zh' && '了解更多'}
-                </Button>
+                <Link href={getLanguageRoute('/medical')}>
+                  <Button variant="outline" size="sm">
+                    {language === 'jp' && '詳しく見る'}
+                    {language === 'ko' && '자세히 보기'}
+                    {language === 'en' && 'Learn More'}
+                    {language === 'zh' && '了解更多'}
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -177,12 +179,14 @@ export function Home() {
                   {language === 'en' && 'Manufacturing and sales of aluminum wheels'}
                   {language === 'zh' && '铝轮毂的制造·销售'}
                 </p>
-                <Button variant="outline" size="sm">
-                  {language === 'jp' && '詳しく見る'}
-                  {language === 'ko' && '자세히 보기'}
-                  {language === 'en' && 'Learn More'}
-                  {language === 'zh' && '了解更多'}
-                </Button>
+                <Link href={getLanguageRoute('/auto')}>
+                  <Button variant="outline" size="sm">
+                    {language === 'jp' && '詳しく見る'}
+                    {language === 'ko' && '자세히 보기'}
+                    {language === 'en' && 'Learn More'}
+                    {language === 'zh' && '了解更多'}
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -204,12 +208,14 @@ export function Home() {
                   {language === 'en' && 'Manufacturing and sales of AI facial recognition thermometer "TOLLGATE"'}
                   {language === 'zh' && 'AI人脸识别测温仪"TOLLGATE"的制造·销售'}
                 </p>
-                <Button variant="outline" size="sm">
-                  {language === 'jp' && '詳しく見る'}
-                  {language === 'ko' && '자세히 보기'}
-                  {language === 'en' && 'Learn More'}
-                  {language === 'zh' && '了解更多'}
-                </Button>
+                <Link href={getLanguageRoute('/new-business')}>
+                  <Button variant="outline" size="sm">
+                    {language === 'jp' && '詳しく見る'}
+                    {language === 'ko' && '자세히 보기'}
+                    {language === 'en' && 'Learn More'}
+                    {language === 'zh' && '了解更多'}
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
