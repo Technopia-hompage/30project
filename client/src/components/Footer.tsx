@@ -8,11 +8,96 @@ export function Footer() {
   const { language, getLanguageRoute } = useLanguage();
 
   const quickLinks = [
-    { key: 'about', path: '/about' },
-    { key: 'anniversary', path: '/anniversary' },
-    { key: 'business', path: '/business' },
-    { key: 'careers', path: '/careers' },
-    { key: 'contact', path: '/contact' },
+    { 
+      key: 'about', 
+      path: '/about',
+      title: {
+        jp: '会社紹介',
+        ko: '회사소개',
+        en: 'About Us',
+        zh: '公司介绍'
+      }
+    },
+    { 
+      key: 'anniversary', 
+      path: '/anniversary',
+      title: {
+        jp: '30周年',
+        ko: '30주년',
+        en: '30th Anniversary',
+        zh: '30周年'
+      }
+    },
+    { 
+      key: 'business', 
+      path: '/business',
+      title: {
+        jp: '事業紹介',
+        ko: '사업소개',
+        en: 'Business',
+        zh: '业务介绍'
+      }
+    },
+    { 
+      key: 'medical', 
+      path: '/medical',
+      title: {
+        jp: '－メディカル事業部',
+        ko: '－메디컬 사업부',
+        en: '－Medical Division',
+        zh: '－医疗事业部'
+      }
+    },
+    { 
+      key: 'auto', 
+      path: '/auto',
+      title: {
+        jp: '－AUTO事業部',
+        ko: '－AUTO 사업부',
+        en: '－AUTO Division',
+        zh: '－汽车事业部'
+      }
+    },
+    { 
+      key: 'newbusiness', 
+      path: '/newbusiness',
+      title: {
+        jp: '－新規事業部',
+        ko: '－신규사업부',
+        en: '－New Business Division',
+        zh: '－新业务部'
+      }
+    },
+    { 
+      key: 'careers', 
+      path: '/careers',
+      title: {
+        jp: '採用情報',
+        ko: '채용정보',
+        en: 'Careers',
+        zh: '招聘信息'
+      }
+    },
+    { 
+      key: 'contact', 
+      path: '/contact',
+      title: {
+        jp: 'お問い合わせ',
+        ko: '문의하기',
+        en: 'Contact',
+        zh: '联系我们'
+      }
+    },
+    { 
+      key: 'news', 
+      path: '/news',
+      title: {
+        jp: 'ニュース',
+        ko: '뉴스',
+        en: 'News',
+        zh: '新闻'
+      }
+    }
   ];
 
   return (
@@ -88,7 +173,7 @@ export function Footer() {
                   <li key={item.key}>
                     <Link href={getLanguageRoute(item.path)}>
                       <span className="text-slate-300 hover:text-white transition-colors duration-200">
-                        {getTranslation(`nav.${item.key}`, language)}
+                        {item.title[language]}
                       </span>
                     </Link>
                   </li>
