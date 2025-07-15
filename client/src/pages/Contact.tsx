@@ -102,8 +102,7 @@ export function Contact() {
               
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-700 px-8 py-4 text-lg font-semibold min-w-[200px]"
+                className="bg-white/20 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-blue-700 px-8 py-4 text-lg font-semibold min-w-[200px] transition-all duration-200"
                 onClick={() => {
                   document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
                 }}
