@@ -122,7 +122,7 @@ export function Footer() {
                   className="h-12 w-auto mr-3 transition-transform duration-300 group-hover:rotate-3"
                 />
                 <h2 className="text-2xl font-bold text-white transition-all duration-300 group-hover:text-blue-400">
-                  Technopia
+                  株式会社テクノピア
                 </h2>
               </div>
             </Link>
