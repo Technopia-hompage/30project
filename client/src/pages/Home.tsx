@@ -145,10 +145,10 @@ export function Home() {
                   </h3>
                 </div>
                 <p className="text-slate-600 mb-4">
-                  {language === 'jp' && '各種眼科用の手術機械、検査機械、眼内レンズ、コンタクトレンズ等の製造販売'}
-                  {language === 'ko' && '각종 안과용 수술기계, 검사기계, 안내렌즈, 콘택트렌즈 등의 제조·판매'}
-                  {language === 'en' && 'Manufacturing and sales of various ophthalmic surgical equipment, examination equipment, intraocular lenses, contact lenses, etc.'}
-                  {language === 'zh' && '各种眼科手术设备、检查设备、眼内镜、隐形眼镜等的制造销售'}
+                  {language === 'jp' && '視力矯正、視力回復が期待できるオルソケラトロジーレンズや眼内レンズ、目の周りの血流改善を促すIPL機器等を取扱っております。'}
+                  {language === 'ko' && '시력교정, 시력회복이 기대되는 오르소케라톨로지 렌즈와 안내렌즈, 눈 주변의 혈류 개선을 촉진하는 IPL 기기 등을 취급하고 있습니다.'}
+                  {language === 'en' && 'We handle orthokeratology lenses and intraocular lenses that can be expected to correct and improve vision, as well as IPL devices that promote blood flow improvement around the eyes.'}
+                  {language === 'zh' && '我们处理可以期待矫正和改善视力的角膜塑形镜和眼内镜，以及促进眼部周围血液循环改善的IPL设备等。'}
                 </p>
                 <Link href={getLanguageRoute('/medical')}>
                   <Button variant="outline" size="sm">
@@ -174,10 +174,10 @@ export function Home() {
                   </h3>
                 </div>
                 <p className="text-slate-600 mb-4">
-                  {language === 'jp' && 'アルミホイールの製造、販売'}
-                  {language === 'ko' && '알루미늄 휠의 제조·판매'}
-                  {language === 'en' && 'Manufacturing and sales of aluminum wheels'}
-                  {language === 'zh' && '铝轮毂的制造·销售'}
+                  {language === 'jp' && '自社内でアルミホイールのデザインや設計を行い、工場をもたずに中国の生産工場にて委託製造を行っております。'}
+                  {language === 'ko' && '자사 내에서 알루미늄 휠의 디자인과 설계를 진행하며, 공장을 보유하지 않고 중국의 생산공장에서 위탁제조를 진행하고 있습니다.'}
+                  {language === 'en' && 'We design and engineer aluminum wheels in-house, and conduct contract manufacturing at production facilities in China without owning factories.'}
+                  {language === 'zh' && '我们在公司内部进行铝轮毂的设计和工程设计，不拥有工厂，而是在中国的生产工厂进行委托制造。'}
                 </p>
                 <Link href={getLanguageRoute('/auto')}>
                   <Button variant="outline" size="sm">
@@ -203,10 +203,10 @@ export function Home() {
                   </h3>
                 </div>
                 <p className="text-slate-600 mb-4">
-                  {language === 'jp' && 'AI顔認証検温測定器「TOLLGATE」の製造・販売'}
-                  {language === 'ko' && 'AI 안면인식 검온기 "TOLLGATE"의 제조·판매'}
-                  {language === 'en' && 'Manufacturing and sales of AI facial recognition thermometer "TOLLGATE"'}
-                  {language === 'zh' && 'AI人脸识别测温仪"TOLLGATE"的制造·销售'}
+                  {language === 'jp' && 'AI顔認証検温測定機「TOLLGATE」は、AI顔認証と発熱チェックの2つの機能を合わせ持ち、現在の情勢に合った最先端の出入りコントロールシステムです。非接触AI顔認証技術とサーモグラフィックカメラを利用して、発熱者識別、マスク着用識別と警告、通勤記録確認（AI顔認証）、部外者識別と警告などが可能な安全チェックシステムであります。'}
+                  {language === 'ko' && 'AI 안면인식 검온기 "TOLLGATE"는 AI 안면인식과 발열 체크 2가지 기능을 함께 가지고 있으며, 현재 상황에 맞는 최첨단 출입 통제 시스템입니다. 비접촉 AI 안면인식 기술과 열화상 카메라를 이용하여 발열자 식별, 마스크 착용 식별과 경고, 출근 기록 확인(AI 안면인식), 외부인 식별과 경고 등이 가능한 안전 체크 시스템입니다.'}
+                  {language === 'en' && 'The AI facial recognition thermometer "TOLLGATE" combines two functions: AI facial recognition and fever detection, making it a cutting-edge access control system suited to current circumstances. It is a safety check system that uses non-contact AI facial recognition technology and thermographic cameras to enable fever detection, mask wearing identification and warnings, attendance record verification (AI facial recognition), and outsider identification and warnings.'}
+                  {language === 'zh' && 'AI人脸识别测温仪"TOLLGATE"结合了AI人脸识别和发热检测两种功能，是适合当前形势的最先进的出入控制系统。这是一个安全检查系统，利用非接触式AI人脸识别技术和热成像摄像头，能够进行发热者识别、口罩佩戴识别和警告、出勤记录确认（AI人脸识别）、外来人员识别和警告等功能。'}
                 </p>
                 <Link href={getLanguageRoute('/newbusiness')}>
                   <Button variant="outline" size="sm">
