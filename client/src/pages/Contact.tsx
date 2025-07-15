@@ -436,25 +436,43 @@ export function Contact() {
                       {language === 'en' && 'Nearest Station:'}
                       {language === 'zh' && '最近车站:'}
                     </h5>
-                    <div className="space-y-1">
-                      <p>
-                        {language === 'jp' && '東京メトロ半蔵門線・都営新宿線「神保町」駅 徒歩 3 分'}
-                        {language === 'ko' && '도쿄메트로 한조몬선·도영 신주쿠선「진보초」역 도보 3분'}
-                        {language === 'en' && 'Tokyo Metro Hanzomon Line / Toei Shinjuku Line "Jimbocho" Station - 3 min walk'}
-                        {language === 'zh' && '东京地铁半蔵门线·都营新宿线「神保町」站 步行3分钟'}
-                      </p>
-                      <p>
-                        {language === 'jp' && '東京メトロ半蔵門線・東西線・都営新宿線「九段下」駅 徒歩 3 分'}
-                        {language === 'ko' && '도쿄메트로 한조몬선·도자이선·도영 신주쿠선「구단시타」역 도보 3분'}
-                        {language === 'en' && 'Tokyo Metro Hanzomon Line / Tozai Line / Toei Shinjuku Line "Kudanshita" Station - 3 min walk'}
-                        {language === 'zh' && '东京地铁半蔵门线·东西线·都营新宿线「九段下」站 步行3分钟'}
-                      </p>
-                      <p>
-                        {language === 'jp' && 'JR 総武線「水道橋」駅 徒歩 7 分'}
-                        {language === 'ko' && 'JR 소부선「스이도바시」역 도보 7분'}
-                        {language === 'en' && 'JR Sobu Line "Suidobashi" Station - 7 min walk'}
-                        {language === 'zh' && 'JR总武线「水道桥」站 步行7分钟'}
-                      </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-3">
+                        <div className="flex space-x-1">
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#8f76d6' }} title="半蔵門線"></div>
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#6cbb5a' }} title="新宿線"></div>
+                        </div>
+                        <p>
+                          {language === 'jp' && '東京メトロ半蔵門線・都営新宿線「神保町」駅 徒歩 3 分'}
+                          {language === 'ko' && '도쿄메트로 한조몬선·도영 신주쿠선「진보초」역 도보 3분'}
+                          {language === 'en' && 'Tokyo Metro Hanzomon Line / Toei Shinjuku Line "Jimbocho" Station - 3 min walk'}
+                          {language === 'zh' && '东京地铁半蔵门线·都营新宿线「神保町」站 步行3分钟'}
+                        </p>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="flex space-x-1">
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#8f76d6' }} title="半蔵門線"></div>
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#009bbf' }} title="東西線"></div>
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#6cbb5a' }} title="新宿線"></div>
+                        </div>
+                        <p>
+                          {language === 'jp' && '東京メトロ半蔵門線・東西線・都営新宿線「九段下」駅 徒歩 3 分'}
+                          {language === 'ko' && '도쿄메트로 한조몬선·도자이선·도영 신주쿠선「구단시타」역 도보 3분'}
+                          {language === 'en' && 'Tokyo Metro Hanzomon Line / Tozai Line / Toei Shinjuku Line "Kudanshita" Station - 3 min walk'}
+                          {language === 'zh' && '东京地铁半蔵门线·东西线·都营新宿线「九段下」站 步行3분钟'}
+                        </p>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="flex space-x-1">
+                          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#ffd400' }} title="総武線"></div>
+                        </div>
+                        <p>
+                          {language === 'jp' && 'JR 総武線「水道橋」駅 徒歩 7 分'}
+                          {language === 'ko' && 'JR 소부선「스이도바시」역 도보 7분'}
+                          {language === 'en' && 'JR Sobu Line "Suidobashi" Station - 7 min walk'}
+                          {language === 'zh' && 'JR总武线「水道桥」站 步행7분钟'}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
