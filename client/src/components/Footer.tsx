@@ -3,9 +3,16 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Clock, Printer } from "lucide-react";
 import technopiaLogo from "@assets/technopia-logo_1752479241220.png";
+import { useState } from "react";
 
 export function Footer() {
   const { language, getLanguageRoute } = useLanguage();
+  const [clickedLink, setClickedLink] = useState<string | null>(null);
+
+  const handleLinkClick = (linkKey: string) => {
+    setClickedLink(linkKey);
+    setTimeout(() => setClickedLink(null), 300);
+  };
 
   const quickLinks = [
     { 
@@ -108,13 +115,13 @@ export function Footer() {
           <div>
             {/* Company Logo */}
             <Link href={getLanguageRoute('/')}>
-              <div className="flex items-center mb-6 hover:opacity-80 transition-opacity duration-200">
+              <div className="flex items-center mb-6 hover:opacity-90 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer group">
                 <img 
                   src={technopiaLogo} 
                   alt="Technopia Logo" 
-                  className="h-12 w-auto mr-3"
+                  className="h-12 w-auto mr-3 transition-transform duration-300 group-hover:rotate-3"
                 />
-                <h2 className="text-2xl font-bold text-white">
+                <h2 className="text-2xl font-bold text-white transition-all duration-300 group-hover:text-blue-400">
                   Technopia
                 </h2>
               </div>
@@ -122,39 +129,60 @@ export function Footer() {
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-slate-400 mt-1 flex-shrink-0" />
-                <span className="text-slate-300 text-sm">
+              <div className="flex items-start space-x-2 group cursor-pointer transition-all duration-300 hover:translate-x-1 hover:bg-slate-800/30 p-2 rounded-md -ml-2">
+                <MapPin className="h-4 w-4 text-slate-400 mt-1 flex-shrink-0 transition-all duration-300 group-hover:text-blue-400 group-hover:scale-110" />
+                <span className="text-slate-300 text-sm transition-colors duration-300 group-hover:text-white">
                   〒101-0065<br />
                   東京都千代田区西神田3-1-2 ウインド西神田ビル3F
                 </span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-slate-400" />
-                <span className="text-slate-300 text-sm">03-3221-4761</span>
+              <a href="tel:03-3221-4761" className="flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:translate-x-1 hover:bg-slate-800/30 p-2 rounded-md -ml-2">
+                <Phone className="h-4 w-4 text-slate-400 transition-all duration-300 group-hover:text-green-400 group-hover:scale-110" />
+                <span className="text-slate-300 text-sm transition-colors duration-300 group-hover:text-white">03-3221-4761</span>
+              </a>
+              <div className="flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:translate-x-1 hover:bg-slate-800/30 p-2 rounded-md -ml-2">
+                <Printer className="h-4 w-4 text-slate-400 transition-all duration-300 group-hover:text-orange-400 group-hover:scale-110" />
+                <span className="text-slate-300 text-sm transition-colors duration-300 group-hover:text-white">03-3221-4775</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Printer className="h-4 w-4 text-slate-400" />
-                <span className="text-slate-300 text-sm">03-3221-4775</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-slate-400" />
-                <span className="text-slate-300 text-sm">info@technopia.co.jp</span>
-              </div>
+              <a href="mailto:info@technopia.co.jp" className="flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:translate-x-1 hover:bg-slate-800/30 p-2 rounded-md -ml-2">
+                <Mail className="h-4 w-4 text-slate-400 transition-all duration-300 group-hover:text-purple-400 group-hover:scale-110" />
+                <span className="text-slate-300 text-sm transition-colors duration-300 group-hover:text-white">info@technopia.co.jp</span>
+              </a>
             </div>
           </div>
 
           {/* Center: Social Media */}
           <div className="flex justify-center">
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/technopia.co.jp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
-                <Facebook className="h-5 w-5" />
+              <a 
+                href="https://www.facebook.com/technopia.co.jp" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="relative w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all duration-300 transform hover:scale-110 hover:rotate-6 active:scale-95 hover:shadow-lg hover:shadow-blue-500/30 group overflow-hidden"
+              >
+                <Facebook className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                <span className="absolute inset-0 bg-blue-400 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                <span className="absolute w-full h-full bg-blue-400 rounded-full opacity-0 group-active:opacity-30 scale-0 group-active:scale-150 transition-all duration-200"></span>
               </a>
-              <a href="https://x.com/ortho_MyEmerald" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
-                <Twitter className="h-5 w-5" />
+              <a 
+                href="https://x.com/ortho_MyEmerald" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="relative w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-sky-600 transition-all duration-300 transform hover:scale-110 hover:rotate-6 active:scale-95 hover:shadow-lg hover:shadow-sky-500/30 group overflow-hidden"
+              >
+                <Twitter className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                <span className="absolute inset-0 bg-sky-400 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                <span className="absolute w-full h-full bg-sky-400 rounded-full opacity-0 group-active:opacity-30 scale-0 group-active:scale-150 transition-all duration-200"></span>
               </a>
-              <a href="https://www.instagram.com/technopia_co_ltd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-200">
-                <Instagram className="h-5 w-5" />
+              <a 
+                href="https://www.instagram.com/technopia_co_ltd/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="relative w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-110 hover:rotate-6 active:scale-95 hover:shadow-lg hover:shadow-purple-500/30 group overflow-hidden"
+              >
+                <Instagram className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                <span className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                <span className="absolute w-full h-full bg-purple-400 rounded-full opacity-0 group-active:opacity-30 scale-0 group-active:scale-150 transition-all duration-200"></span>
               </a>
             </div>
           </div>
@@ -162,7 +190,7 @@ export function Footer() {
           {/* Right: Quick Links */}
           <div className="flex justify-end">
             <div>
-              <h4 className="text-lg font-semibold mb-6">
+              <h4 className="text-lg font-semibold mb-6 footer-shimmer">
                 {language === 'jp' && 'クイックリンク'}
                 {language === 'ko' && '빠른 링크'}
                 {language === 'en' && 'Quick Links'}
@@ -172,8 +200,16 @@ export function Footer() {
                 {quickLinks.map((item) => (
                   <li key={item.key}>
                     <Link href={getLanguageRoute(item.path)}>
-                      <span className="text-slate-300 hover:text-white transition-colors duration-200">
-                        {item.title[language]}
+                      <span 
+                        onClick={() => handleLinkClick(item.key)}
+                        className={`relative text-slate-300 hover:text-white transition-all duration-300 cursor-pointer group inline-block transform hover:translate-x-2 hover:scale-105 active:scale-95 ${
+                          clickedLink === item.key ? 'footer-bounce' : ''
+                        }`}
+                      >
+                        <span className="relative z-10">{item.title[language]}</span>
+                        <span className="absolute inset-0 w-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 transition-all duration-300 group-hover:w-full rounded-md -z-10"></span>
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"></span>
                       </span>
                     </Link>
                   </li>
