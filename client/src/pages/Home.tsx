@@ -208,7 +208,7 @@ export function Home() {
                   {language === 'en' && 'Manufacturing and sales of AI facial recognition thermometer "TOLLGATE"'}
                   {language === 'zh' && 'AI人脸识别测温仪"TOLLGATE"的制造·销售'}
                 </p>
-                <Link href={getLanguageRoute('/new-business')}>
+                <Link href={getLanguageRoute('/newbusiness')}>
                   <Button variant="outline" size="sm">
                     {language === 'jp' && '詳しく見る'}
                     {language === 'ko' && '자세히 보기'}
