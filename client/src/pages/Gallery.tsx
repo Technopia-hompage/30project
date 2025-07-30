@@ -5,12 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getMultiLanguageContent } from "@/lib/i18n";
 import { GalleryImage } from "@shared/schema";
+import { AnimatedCard } from "@/components/AnimatedCard";
 import { useState } from "react";
 import { 
   Camera, 
   Calendar, 
   Filter, 
-  Grid,
+  LayoutGrid,
   X,
   ChevronLeft,
   ChevronRight

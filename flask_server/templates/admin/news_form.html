@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ '뉴스 편집' if action == 'edit' else '새 뉴스 추가' }} - Technopia 관리자</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #4a90e2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .form-header h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group .required {
+            color: #dc3545;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="url"],
+        .form-group input[type="date"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .file-input-group {
+            position: relative;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .file-input-label:hover {
+            background: #e9ecef;
+            border-color: #2c5aa0;
+        }
+
+        .file-input-label.has-file {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .current-image {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .current-image img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .form-actions {
+            background: #f8f9fa;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #2c5aa0;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3d6f;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .flash-messages {
+            margin-bottom: 2rem;
+        }
+
+        .flash-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .flash-message.error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .flash-message.success {
+            background: #efe;
+            color: #363;
+            border: 1px solid #cfc;
+        }
+
+        .flash-message.info {
+            background: #eef;
+            color: #336;
+            border: 1px solid #ccf;
+        }
+
+        .form-help {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .form-body {
+                padding: 1.5rem;
+            }
+            
+            .form-actions {
+                padding: 1rem;
+                flex-direction: column;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body data-action="{{ action }}">
+    <div class="header">
+        <div class="header-content">
+            <h1>テクノピア 뉴스 관리 시스템</h1>
+            <div class="breadcrumb">
+                <a href="{{ url_for('admin_index') }}">📋 관리자</a>
+                <span>›</span>
+                <span>{{ '뉴스 편집' if action == 'edit' else '새 뉴스 추가' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="form-card">
+            <div class="form-header">
+                <h2>
+                    {% if action == 'edit' %}
+                        ✏️ 뉴스 편집
+                    {% else %}
+                        ➕ 새 뉴스 추가
+                    {% endif %}
+                </h2>
+                <p>
+                    {% if action == 'edit' %}
+                        뉴스 정보를 수정하고 저장하세요.
+                    {% else %}
+                        새로운 뉴스를 추가합니다. 제목은 필수 입력 항목입니다.
+                    {% endif %}
+                </p>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label for="title">
+                            제목 <span class="required">*</span>
+                        </label>
+                        <input type="text" 
+                               id="title" 
+                               name="title" 
+                               value="{{ news.title if news else '' }}" 
+                               required 
+                               placeholder="뉴스 제목을 입력하세요">
+                        <div class="form-help">뉴스의 제목을 입력하세요. (필수)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">날짜</label>
+                        <input type="date" 
+                               id="date" 
+                               name="date" 
+                               value="{{ news.date if news else '' }}">
+                        <div class="form-help">뉴스 발행 날짜를 선택하세요. (선택사항)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="link">링크</label>
+                        <input type="url" 
+                               id="link" 
+                               name="link" 
+                               value="{{ news.link if news else '' }}" 
+                               placeholder="https://example.com">
+                        <div class="form-help">뉴스 상세 페이지 링크를 입력하세요. (선택사항)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">이미지</label>
+                        <div class="file-input-group">
+                            <input type="file" 
+                                   id="image" 
+                                   name="image" 
+                                   class="file-input" 
+                                   accept="image/*">
+                            <label for="image" class="file-input-label" id="file-label">
+                                📁 이미지 파일 선택 (JPG, PNG, GIF, WebP)
+                            </label>
+                        </div>
+                        
+                        {% if news and news.image %}
+                            <div class="current-image">
+                                <strong>현재 이미지:</strong><br>
+                                <img src="{{ url_for('static', filename='news_images/' + news.image) }}" 
+                                     alt="현재 뉴스 이미지">
+                                <div class="image-info">파일명: {{ news.image }}</div>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="form-help">
+                            뉴스와 관련된 이미지를 업로드하세요. 
+                            {% if action == 'edit' %}새 이미지를 선택하면 기존 이미지가 교체됩니다.{% endif %} 
+                            (선택사항)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="{{ url_for('admin_index') }}" class="btn btn-secondary">
+                        ❌ 취소
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        {% if action == 'edit' %}
+                            💾 수정 완료
+                        {% else %}
+                            ➕ 추가하기
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 파일 선택 시 라벨 업데이트
+        document.getElementById('image').addEventListener('change', function(e) {
+            const label = document.getElementById('file-label');
+            const file = e.target.files[0];
+            
+            if (file) {
+                label.textContent = `📁 선택됨: ${file.name}`;
+                label.classList.add('has-file');
+            } else {
+                label.textContent = '📁 이미지 파일 선택 (JPG, PNG, GIF, WebP)';
+                label.classList.remove('has-file');
+            }
+        });
+
+        // 폼 제출 시 확인
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const title = document.getElementById('title').value.trim();
+            
+            if (!title) {
+                alert('제목을 입력해주세요.');
+                e.preventDefault();
+                return false;
+            }
+            
+            const isEdit = document.body.getAttribute('data-action') === 'edit';
+            const confirmMessage = isEdit ? '뉴스를 수정하시겠습니까?' : '새 뉴스를 추가하시겠습니까?';
+            
+            if (!confirm(confirmMessage)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html> 

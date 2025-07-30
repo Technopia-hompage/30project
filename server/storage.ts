@@ -5,6 +5,9 @@ import {
   contactMessages, 
   companyTimeline,
   businessDivisions,
+  wheelBrands,
+  wheelModels,
+  wheelSpecs,
   type User, 
   type InsertUser,
   type NewsArticle,
@@ -16,10 +19,16 @@ import {
   type CompanyTimelineEvent,
   type InsertCompanyTimelineEvent,
   type BusinessDivision,
-  type InsertBusinessDivision
+  type InsertBusinessDivision,
+  type WheelBrand,
+  type InsertWheelBrand,
+  type WheelModel,
+  type InsertWheelModel,
+  type WheelSpec,
+  type InsertWheelSpec
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc, and, or, like } from "drizzle-orm";
+import { eq, desc, and, or, like, count } from "drizzle-orm";
 
 // Enhanced storage interface with all CRUD methods
 export interface IStorage {
@@ -62,6 +71,25 @@ export interface IStorage {
   // Business division methods
   getBusinessDivisions(language?: string): Promise<BusinessDivision[]>;
   createBusinessDivision(division: InsertBusinessDivision): Promise<BusinessDivision>;
+
+  // Wheel methods
+  getWheelBrands(active?: boolean): Promise<WheelBrand[]>;
+  getWheelBrandById(id: number): Promise<WheelBrand | undefined>;
+  createWheelBrand(brand: InsertWheelBrand): Promise<WheelBrand>;
+  updateWheelBrand(id: number, brand: Partial<InsertWheelBrand>): Promise<WheelBrand>;
+  deleteWheelBrand(id: number): Promise<void>;
+
+  getWheelModels(brandId?: number, status?: string): Promise<WheelModel[]>;
+  getWheelModelById(id: number): Promise<WheelModel | undefined>;
+  createWheelModel(model: InsertWheelModel): Promise<WheelModel>;
+  updateWheelModel(id: number, model: Partial<InsertWheelModel>): Promise<WheelModel>;
+  deleteWheelModel(id: number): Promise<void>;
+
+  getWheelSpecs(modelId?: number, brandId?: number): Promise<WheelSpec[]>;
+  getWheelSpecById(id: number): Promise<WheelSpec | undefined>;
+  createWheelSpec(spec: InsertWheelSpec): Promise<WheelSpec>;
+  updateWheelSpec(id: number, spec: Partial<InsertWheelSpec>): Promise<WheelSpec>;
+  deleteWheelSpec(id: number): Promise<void>;
 
   // Statistics
   getWebsiteStats(): Promise<{
@@ -250,15 +278,155 @@ export class DatabaseStorage implements IStorage {
     totalJobs: number;
     totalMessages: number;
   }> {
-    const [newsCount] = await db.select({ count: newsArticles.id }).from(newsArticles);
-    const [jobsCount] = await db.select({ count: jobOpenings.id }).from(jobOpenings);
-    const [messagesCount] = await db.select({ count: contactMessages.id }).from(contactMessages);
+    const [newsCount] = await db.select({ count: count() }).from(newsArticles);
+    const [jobsCount] = await db.select({ count: count() }).from(jobOpenings);
+    const [messagesCount] = await db.select({ count: count() }).from(contactMessages);
 
     return {
       totalNews: newsCount?.count || 0,
       totalJobs: jobsCount?.count || 0,
       totalMessages: messagesCount?.count || 0,
     };
+  }
+
+  // Wheel Brand methods
+  async getWheelBrands(active?: boolean): Promise<WheelBrand[]> {
+    let query = db.select().from(wheelBrands);
+
+    if (active !== undefined) {
+      query = query.where(eq(wheelBrands.active, active));
+    }
+
+    return await query.orderBy(wheelBrands.sortOrder, wheelBrands.name);
+  }
+
+  async getWheelBrandById(id: number): Promise<WheelBrand | undefined> {
+    const [brand] = await db
+      .select()
+      .from(wheelBrands)
+      .where(eq(wheelBrands.id, id));
+    return brand || undefined;
+  }
+
+  async createWheelBrand(brand: InsertWheelBrand): Promise<WheelBrand> {
+    const [newBrand] = await db
+      .insert(wheelBrands)
+      .values(brand)
+      .returning();
+    return newBrand;
+  }
+
+  async updateWheelBrand(id: number, brand: Partial<InsertWheelBrand>): Promise<WheelBrand> {
+    const [updatedBrand] = await db
+      .update(wheelBrands)
+      .set({ ...brand, updatedAt: new Date() })
+      .where(eq(wheelBrands.id, id))
+      .returning();
+    return updatedBrand;
+  }
+
+  async deleteWheelBrand(id: number): Promise<void> {
+    await db.delete(wheelBrands).where(eq(wheelBrands.id, id));
+  }
+
+  // Wheel Model methods
+  async getWheelModels(brandId?: number, status?: string): Promise<WheelModel[]> {
+    let query = db.select().from(wheelModels);
+
+    const conditions = [];
+
+    if (brandId) {
+      conditions.push(eq(wheelModels.brandId, brandId));
+    }
+
+    if (status) {
+      conditions.push(eq(wheelModels.status, status));
+    }
+
+    if (conditions.length > 0) {
+      query = query.where(and(...conditions));
+    }
+
+    return await query.orderBy(wheelModels.sortOrder, wheelModels.name);
+  }
+
+  async getWheelModelById(id: number): Promise<WheelModel | undefined> {
+    const [model] = await db
+      .select()
+      .from(wheelModels)
+      .where(eq(wheelModels.id, id));
+    return model || undefined;
+  }
+
+  async createWheelModel(model: InsertWheelModel): Promise<WheelModel> {
+    const [newModel] = await db
+      .insert(wheelModels)
+      .values(model)
+      .returning();
+    return newModel;
+  }
+
+  async updateWheelModel(id: number, model: Partial<InsertWheelModel>): Promise<WheelModel> {
+    const [updatedModel] = await db
+      .update(wheelModels)
+      .set({ ...model, updatedAt: new Date() })
+      .where(eq(wheelModels.id, id))
+      .returning();
+    return updatedModel;
+  }
+
+  async deleteWheelModel(id: number): Promise<void> {
+    await db.delete(wheelModels).where(eq(wheelModels.id, id));
+  }
+
+  // Wheel Spec methods
+  async getWheelSpecs(modelId?: number, brandId?: number): Promise<WheelSpec[]> {
+    let query = db.select().from(wheelSpecs);
+
+    const conditions = [];
+
+    if (modelId) {
+      conditions.push(eq(wheelSpecs.modelId, modelId));
+    }
+
+    if (brandId) {
+      conditions.push(eq(wheelSpecs.brandId, brandId));
+    }
+
+    if (conditions.length > 0) {
+      query = query.where(and(...conditions));
+    }
+
+    return await query.orderBy(wheelSpecs.id);
+  }
+
+  async getWheelSpecById(id: number): Promise<WheelSpec | undefined> {
+    const [spec] = await db
+      .select()
+      .from(wheelSpecs)
+      .where(eq(wheelSpecs.id, id));
+    return spec || undefined;
+  }
+
+  async createWheelSpec(spec: InsertWheelSpec): Promise<WheelSpec> {
+    const [newSpec] = await db
+      .insert(wheelSpecs)
+      .values(spec)
+      .returning();
+    return newSpec;
+  }
+
+  async updateWheelSpec(id: number, spec: Partial<InsertWheelSpec>): Promise<WheelSpec> {
+    const [updatedSpec] = await db
+      .update(wheelSpecs)
+      .set({ ...spec, updatedAt: new Date() })
+      .where(eq(wheelSpecs.id, id))
+      .returning();
+    return updatedSpec;
+  }
+
+  async deleteWheelSpec(id: number): Promise<void> {
+    await db.delete(wheelSpecs).where(eq(wheelSpecs.id, id));
   }
 }
 

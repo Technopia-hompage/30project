@@ -237,6 +237,12 @@ export function Footer() {
               {language === 'en' && 'Privacy Policy'}
               {language === 'zh' && '隐私政策'}
             </Link>
+            <Link href={getLanguageRoute('/sitemap')} className="text-slate-400 hover:text-white text-sm transition-colors duration-200">
+              {language === 'jp' && 'サイトマップ'}
+              {language === 'ko' && '사이트맵'}
+              {language === 'en' && 'Sitemap'}
+              {language === 'zh' && '网站地图'}
+            </Link>
           </div>
         </div>
       </div>

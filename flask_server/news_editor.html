@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technopia 뉴스 편집기</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; background: #f4f7f9; color: #333; padding: 2rem; }
+        .container { max-width: 1200px; margin: auto; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { color: #2c5aa0; }
+        .instructions { background: #e3f2fd; color: #1e88e5; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border-left: 5px solid #1e88e5; }
+        .editor-container { display: flex; gap: 2rem; }
+        .editor-panel { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); flex: 1; }
+        .preview-panel { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); flex: 1.2; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; }
+        .btn { background: #2c5aa0; color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 4px; cursor: pointer; margin-right: 0.5rem; }
+        .btn:hover { background: #1e3d6f; }
+        .btn-danger { background: #e53935; }
+        .btn-danger:hover { background: #c62828; }
+        .json-output { background: #222; color: #0f0; padding: 1rem; border-radius: 4px; margin-top: 1rem; max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
+        .preview-image { max-width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; }
+        .news-list-item { padding: 1rem; border: 1px solid #eee; border-radius: 4px; margin-bottom: 0.5rem; cursor: pointer; }
+        .news-list-item:hover { background: #f0f0f0; }
+        .news-list-item.selected { background: #e3f2fd; border-left: 5px solid #1e88e5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Technopia 뉴스 편집기</h1>
+        </div>
+
+        <div class="instructions">
+            <h3>사용 방법</h3>
+            <p>1. 왼쪽 목록에서 편집할 뉴스를 클릭하거나, '새 뉴스 작성' 버튼을 누르세요.</p>
+            <p>2. 오른쪽 폼에서 내용을 수정하고 '저장' 버튼을 클릭하세요.</p>
+            <p>3. 이미지 파일명은 `static/news_images/` 폴더에 있는 파일명을 정확히 입력해주세요. (예: `2025jscrs.jpg`)</p>
+            <p>4. 수정이 완료되면 'JSON 출력' 버튼을 눌러 생성된 코드를 복사하고, `flask_server/news_data.json` 파일에 붙여넣으세요.</p>
+        </div>
+
+        <div class="editor-container">
+            <div class="editor-panel">
+                <h2>뉴스 목록</h2>
+                <button class="btn" onclick="createNewNews()">새 뉴스 작성</button>
+                <div id="newsList" style="margin-top: 1rem; max-height: 400px; overflow-y: auto;"></div>
+            </div>
+
+            <div class="preview-panel">
+                <h2 id="form-title">뉴스 편집</h2>
+                <form id="newsForm">
+                    <input type="hidden" id="newsId">
+                    <div class="form-group">
+                        <label for="title">제목</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">날짜</label>
+                        <input type="date" id="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="link">링크</label>
+                        <input type="url" id="link">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">이미지 파일명</label>
+                        <input type="text" id="image" oninput="updateImagePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label for="body">본문 (HTML 가능)</label>
+                        <textarea id="body" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn">저장</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteNews()" id="deleteBtn" style="display: none;">삭제</button>
+                </form>
+
+                <h3>이미지 미리보기</h3>
+                <img id="imagePreview" class="preview-image" src="" alt="이미지 미리보기" style="display: none;">
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; background:white; padding: 2rem; border-radius: 8px;">
+            <h2>JSON 출력</h2>
+            <button class="btn" onclick="generateJSON()">JSON 출력</button>
+            <div id="jsonPanel" class="json-output" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        let newsData = [];
+        let selectedNewsId = null;
+
+        const newsForm = document.getElementById('newsForm');
+        const newsListEl = document.getElementById('newsList');
+
+        async function loadInitialData() {
+            try {
+                // news_data.json 파일이 같은 디렉토리에 있다고 가정
+                const response = await fetch('news_data.json');
+                if (response.ok) {
+                    newsData = await response.json();
+                } else {
+                    // 파일이 없을 경우, 기본 데이터 사용
+                    newsData = [
+                        { "id": 4, "title": "第40回JSCRS学術総会 ランチョンセミナー開催のお知らせ", "date": "2025-05-26", "link": "https://technopia.co.jp/info/news/4", "image": "2025jscrs.jpg", "body": "この度、第40回日本白内障屈折矯正手術学会学術総会におきまして、弊社主催のランチョンセミナーを開催させていただくことになりました。", "crawled_at": "2025-07-18T13:00:00" },
+                        { "id": 3, "title": "夏期休業のお知らせ", "date": "2025-07-11", "link": "https://technopia.co.jp/info/news/", "image": null, "body": "", "crawled_at": "2025-07-18T12:30:00" },
+                        { "id": 2, "title": "ゴールデンウィーク期間の休業のお知らせ", "date": "2025-04-08", "link": "https://technopia.co.jp/info/news/", "image": null, "body": "", "crawled_at": "2025-07-18T12:30:00" },
+                        { "id": 1, "title": "年末年始休業のお知らせ", "date": "2024-11-11", "link": "https://technopia.co.jp/info/news/", "image": null, "body": "", "crawled_at": "2025-07-18T12:30:00" }
+                    ];
+                }
+            } catch (error) {
+                console.error("news_data.json 로드 실패, 기본 데이터 사용:", error);
+                // 기본 데이터 사용
+                newsData = [
+                    { "id": 4, "title": "第40回JSCRS学術総会 ランチョンセミナー開催のお知らせ", "date": "2025-05-26", "link": "https://technopia.co.jp/info/news/4", "image": "2025jscrs.jpg", "body": "この度、第40回日本白内障屈折矯正手術学会学術総会におきまして、弊社主催のランチョンセミナーを開催させていただくことになりました。", "crawled_at": "2025-07-18T13:00:00" },
+                    { "id": 3, "title": "夏期休業のお知らせ", "date": "2025-07-11", "link": "https://technopia.co.jp/info/news/", "image": null, "body": "", "crawled_at": "2025-07-18T12:30:00" }
+                ];
+            }
+            renderNewsList();
+            if (newsData.length > 0) {
+                selectNews(newsData[0].id);
+            }
+        }
+
+        function renderNewsList() {
+            newsListEl.innerHTML = '';
+            const sortedData = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            sortedData.forEach(news => {
+                const item = document.createElement('div');
+                item.className = 'news-list-item';
+                item.textContent = `${news.date}: ${news.title}`;
+                item.onclick = () => selectNews(news.id);
+                if (news.id === selectedNewsId) {
+                    item.classList.add('selected');
+                }
+                newsListEl.appendChild(item);
+            });
+        }
+
+        function selectNews(id) {
+            selectedNewsId = id;
+            const news = newsData.find(n => n.id === id);
+            if (news) {
+                document.getElementById('form-title').textContent = '뉴스 편집';
+                document.getElementById('newsId').value = news.id;
+                document.getElementById('title').value = news.title;
+                document.getElementById('date').value = news.date;
+                document.getElementById('link').value = news.link || '';
+                document.getElementById('image').value = news.image || '';
+                document.getElementById('body').value = news.body || '';
+                document.getElementById('deleteBtn').style.display = 'inline-block';
+                updateImagePreview();
+            }
+            renderNewsList();
+        }
+        
+        function createNewNews() {
+            newsForm.reset();
+            document.getElementById('form-title').textContent = '새 뉴스 작성';
+            document.getElementById('newsId').value = '';
+            document.getElementById('deleteBtn').style.display = 'none';
+            selectedNewsId = null;
+            updateImagePreview();
+            renderNewsList();
+        }
+        
+        function updateImagePreview() {
+            const imageName = document.getElementById('image').value;
+            const preview = document.getElementById('imagePreview');
+            if (imageName) {
+                // 로컬 파일 경로에 직접 접근할 수 없으므로, static 폴더를 기준으로 경로를 구성
+                preview.src = `static/news_images/${imageName}`;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        newsForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = document.getElementById('newsId').value;
+            const newItem = {
+                id: id ? parseInt(id) : Math.max(...newsData.map(n => n.id), 0) + 1,
+                title: document.getElementById('title').value,
+                date: document.getElementById('date').value,
+                link: document.getElementById('link').value,
+                image: document.getElementById('image').value,
+                body: document.getElementById('body').value,
+                crawled_at: new Date().toISOString()
+            };
+
+            if (id) {
+                const index = newsData.findIndex(n => n.id === parseInt(id));
+                newsData[index] = newItem;
+                alert('뉴스가 수정되었습니다.');
+            } else {
+                newsData.push(newItem);
+                alert('뉴스가 추가되었습니다.');
+                selectNews(newItem.id);
+            }
+            renderNewsList();
+        });
+
+        function deleteNews() {
+            const id = parseInt(document.getElementById('newsId').value);
+            if (id && confirm('정말 이 뉴스를 삭제하시겠습니까?')) {
+                newsData = newsData.filter(n => n.id !== id);
+                createNewNews();
+                renderNewsList();
+                alert('뉴스가 삭제되었습니다.');
+            }
+        }
+
+        function generateJSON() {
+            const panel = document.getElementById('jsonPanel');
+            panel.textContent = JSON.stringify(newsData, null, 2);
+            panel.style.display = 'block';
+            alert('JSON 데이터가 생성되었습니다. 아래 텍스트를 복사하세요.');
+        }
+
+        window.onload = loadInitialData;
+    </script>
+</body>
+</html> 

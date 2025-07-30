@@ -149,32 +149,27 @@ export const newsData = [
     },
     content: {
       jp: `
-        <div class="space-y-4">
-          <h2 class="text-2xl font-bold text-slate-900">第40回JSCRS学術総会 ランチョンセミナー開催のお知らせ</h2>
-          
-          <p>この度、第40回日本白内障屈折矯正手術学会学術総会におきまして、弊社主催のランチョンセミナーを開催させていただくことになりました。</p>
-          
-          <div class="bg-green-50 border-l-4 border-green-400 p-4 my-4">
-            <h3 class="text-lg font-semibold text-slate-900 mb-3">開催概要</h3>
-            <ul class="space-y-2">
-              <li><strong>日時：</strong>2025年6月14日（土）12:00～13:00</li>
-              <li><strong>会場：</strong>パシフィコ横浜</li>
-              <li><strong>テーマ：</strong>オルソケラトロジーの最新動向と臨床応用</li>
-              <li><strong>演者：</strong>慶應義塾大学医学部眼科学教室 教授</li>
-            </ul>
+        <div class="space-y-6">
+          <div class="text-center">
+            <img src="/images/2025 jscrs.jpg" alt="JSCRS 2025" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-bottom: 2rem;" />
           </div>
           
-          <p>最新のオルソケラトロジー技術について詳しくご紹介いたします。</p>
-          <p>多くの皆様のご参加をお待ちしております。</p>
-          
-          <div class="bg-slate-100 p-4 rounded-lg">
-            <h3 class="text-lg font-semibold text-slate-900 mb-2">お問い合わせ</h3>
-            <p>株式会社テクノピア メディカル事業部<br>
-            TEL: 03-5577-2266</p>
+          <div class="text-center">
+            <img src="/images/2025 jscrs2.jpg" alt="JSCRS 2025 - 2" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);" />
           </div>
         </div>
       `,
-      ko: "JSCRS 학술총회 세미나 내용",
+      ko: `
+        <div class="space-y-6">
+          <div class="text-center">
+            <img src="/images/2025 jscrs.jpg" alt="JSCRS 2025" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-bottom: 2rem;" />
+          </div>
+          
+          <div class="text-center">
+            <img src="/images/2025 jscrs2.jpg" alt="JSCRS 2025 - 2" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);" />
+          </div>
+        </div>
+      `,
       en: "JSCRS meeting seminar content",
       zh: "JSCRS学术大会研讨会内容"
     },
@@ -182,7 +177,8 @@ export const newsData = [
     published: true,
     publishedAt: "2025-05-26",
     createdAt: "2025-05-26",
-    featured: true
+    featured: true,
+    imageUrl: "/images/2025 jscrs.jpg"
   },
   {
     id: 5,
@@ -198,8 +194,11 @@ export const newsData = [
       en: "Information about participation in the 17th Japan-China-Korea Joint Meeting.",
       zh: "关于参加第17届日中韩联合会议的信息。"
     },
+    
     content: {
       jp: `
+
+      
         <div class="space-y-4">
           <h2 class="text-2xl font-bold text-slate-900">第17回 日中韓ジョイントミーティングのご案内</h2>
           
@@ -208,24 +207,23 @@ export const newsData = [
           <div class="bg-green-50 border-l-4 border-green-400 p-4 my-4">
             <h3 class="text-lg font-semibold text-slate-900 mb-3">開催概要</h3>
             <ul class="space-y-2">
-              <li><strong>日時：</strong>2024年11月15日（金）～17日（日）</li>
-              <li><strong>会場：</strong>ソウル国際会議場（韓国）</li>
-              <li><strong>テーマ：</strong>アジア地域における眼科医療の発展</li>
+              <li><strong>日時：</strong>2024年11月9日（土）13：00～13：50</li>
+              <li><strong>会場：</strong>コングレスクエア羽田　ROOM3（京浜急行電鉄空港線、東京モノレール羽田空港線「天空橋駅」直結）</li>
+
             </ul>
           </div>
+
+          <div class="space-y-6">
+          <div class="text-center">
+            <img src="/images/2024.jpg" alt="2024" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-bottom: 2rem;" />
+          </div>
+
+
           
           <p>弊社ブースでは最新のオルソケラトロジーレンズ「マイエメラルド」をご紹介いたします。</p>
           <p>多くの先生方のお越しをお待ちしております。</p>
           
-          <div class="bg-blue-50 p-4 rounded-lg mt-4">
-            <h3 class="text-lg font-semibold text-slate-900 mb-3">展示内容</h3>
-            <ul class="list-disc list-inside space-y-1">
-              <li>オルソケラトロジーレンズ マイエメラルド</li>
-              <li>アクアセル 涙液補充療法</li>
-              <li>各種検査機器</li>
-            </ul>
-          </div>
-        </div>
+          
       `,
       ko: "한중일 조인트 미팅 내용",
       en: "Japan-China-Korea joint meeting content",
@@ -234,7 +232,9 @@ export const newsData = [
     category: "medical",
     published: true,
     publishedAt: "2024-11-06",
-    createdAt: "2024-11-06"
+    createdAt: "2024-11-06",
+    featured: true,
+    imageUrl: "/images/2024.jpg"
   },
   {
     id: 6,
@@ -252,30 +252,13 @@ export const newsData = [
     },
     content: {
       jp: `
-        <div class="space-y-4">
-          <h2 class="text-2xl font-bold text-slate-900">第39回JSCRS学術総会 イブニングセミナー開催のお知らせ</h2>
-          
-          <p>第39回日本白内障屈折矯正手術学会学術総会におきまして、弊社主催のイブニングセミナーを開催いたします。</p>
-          
-          <div class="bg-green-50 border-l-4 border-green-400 p-4 my-4">
-            <h3 class="text-lg font-semibold text-slate-900 mb-3">開催概要</h3>
-            <ul class="space-y-2">
-              <li><strong>日時：</strong>2024年6月15日（土）18:00～19:00</li>
-              <li><strong>会場：</strong>京都国際会館</li>
-              <li><strong>テーマ：</strong>近視進行抑制における新たなアプローチ</li>
-              <li><strong>座長：</strong>京都府立医科大学眼科学教室 教授</li>
-            </ul>
+        <div class="space-y-6">
+          <div class="text-center">
+            <img src="/images/2023jscrs.jpg" alt="2023jscrs" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-bottom: 2rem;" />
           </div>
           
-          <p>近視進行抑制の最新研究について討議いたします。</p>
-          <p>軽食をご用意してお待ちしております。</p>
-          
-          <div class="bg-blue-50 p-4 rounded-lg mt-4">
-            <h3 class="text-lg font-semibold text-slate-900 mb-3">プログラム</h3>
-            <ul class="list-disc list-inside space-y-1">
-              <li>18:00-18:30 オルソケラトロジーによる近視進行抑制効果</li>
-              <li>18:30-19:00 症例検討とディスカッション</li>
-            </ul>
+          <div class="text-center">
+            <img src="/images/2023jscrs2.jpg" alt="2023jscrs - 2" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);" />
           </div>
         </div>
       `,

@@ -8,7 +8,8 @@ export function Careers() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-corporate-blue text-white py-16 lg:py-24">
+      <section className="text-white py-16 lg:py-24" style={{ backgroundImage: `url('/images/shin3.png')`,
+         backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
@@ -18,7 +19,7 @@ export function Careers() {
               {language === 'zh' && '新人·中途录用信息'}
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              {language === 'jp' && '1995年創立以来、失敗を恐れず常にチャレンジを続けてきました。顧客に感動と喜びを与え、社会に貢献できる企業を目指しています。'}
+              {language === 'jp' && 'テクノピアでは、革新的な技術と創造性で未来を切り拓く仲間を募集しています。'}
               {language === 'ko' && '1995년 창립 이래, 실패를 두려워하지 않고 항상 도전을 계속해왔습니다. 고객에게 감동과 기쁨을 주고, 사회에 공헌할 수 있는 기업을 목표로 하고 있습니다.'}
               {language === 'en' && 'Since our founding in 1995, we have continued to challenge ourselves without fear of failure. We aim to be a company that brings excitement and joy to customers and contributes to society.'}
               {language === 'zh' && '自1995年创立以来，我们不惧怕失败，持续挑战。我们致力于成为一家能给客户带来感动和喜悦，为社会做出贡献的企业。'}

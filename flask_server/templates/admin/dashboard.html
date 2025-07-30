@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technopia 관리자 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.3s;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+        .modal-overlay {
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="app" class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-6">
+                    <div class="flex items-center">
+                        <h1 class="text-2xl font-bold text-gray-900">Technopia 관리자 대시보드</h1>
+                        <span class="ml-4 px-3 py-1 bg-red-100 text-red-800 text-sm font-medium rounded-full">관리자 모드</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500">언어: {{ currentLanguage }}</span>
+                        <button @click="toggleLanguage" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                            {{ currentLanguage === 'jp' ? '한국어' : '日本語' }}
+                        </button>
+                        <button @click="exportData" class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600">
+                            데이터 내보내기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">뉴스 기사</dt>
+                                    <dd class="text-lg font-medium text-gray-900">{{ stats.news }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">채용 공고</dt>
+                                    <dd class="text-lg font-medium text-gray-900">{{ stats.jobs }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">휠 모델</dt>
+                                    <dd class="text-lg font-medium text-gray-900">{{ stats.wheels }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">휠 브랜드</dt>
+                                    <dd class="text-lg font-medium text-gray-900">{{ stats.brands }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="bg-white shadow rounded-lg">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-8 px-6">
+                        <button 
+                            @click="activeTab = 'brands'"
+                            :class="activeTab === 'brands' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                            휠 브랜드 관리
+                        </button>
+                        <button 
+                            @click="activeTab = 'models'"
+                            :class="activeTab === 'models' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                            휠 모델 관리
+                        </button>
+                        <button 
+                            @click="activeTab = 'data'"
+                            :class="activeTab === 'data' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                            데이터 관리
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Brands Tab -->
+                <div v-if="activeTab === 'brands'" class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-medium text-gray-900">휠 브랜드 관리</h2>
+                        <button @click="showBrandForm = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            새 브랜드 추가
+                        </button>
+                    </div>
+
+                    <!-- Brands Table -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">브랜드명</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">일본어명</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">상태</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">작업</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr v-for="brand in brands" :key="brand.id">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ brand.id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ brand.name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ brand.nameJp }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span :class="brand.active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
+                                            {{ brand.active ? '활성' : '비활성' }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button @click="editBrand(brand)" class="text-blue-600 hover:text-blue-900 mr-3">편집</button>
+                                        <button @click="deleteBrand(brand.id)" class="text-red-600 hover:text-red-900">삭제</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Models Tab -->
+                <div v-if="activeTab === 'models'" class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-medium text-gray-900">휠 모델 관리</h2>
+                        <button @click="showModelForm = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            새 모델 추가
+                        </button>
+                    </div>
+
+                    <!-- Filter -->
+                    <div class="mb-6 flex space-x-4">
+                        <select v-model="selectedBrand" @change="loadModels" class="border border-gray-300 rounded px-3 py-2">
+                            <option value="">모든 브랜드</option>
+                            <option v-for="brand in brands" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
+                        </select>
+                        <select v-model="selectedStatus" @change="loadModels" class="border border-gray-300 rounded px-3 py-2">
+                            <option value="">모든 상태</option>
+                            <option value="active">활성</option>
+                            <option value="inactive">비활성</option>
+                        </select>
+                    </div>
+
+                    <!-- Models Table -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">브랜드</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">모델명</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">일본어명</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">상태</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">작업</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr v-for="model in models" :key="model.id">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ model.id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ getBrandName(model.brandId) }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ model.name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ model.nameJp }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span :class="model.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
+                                            {{ model.status === 'active' ? '활성' : '비활성' }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button @click="editModel(model)" class="text-blue-600 hover:text-blue-900 mr-3">편집</button>
+                                        <button @click="deleteModel(model.id)" class="text-red-600 hover:text-red-900">삭제</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Data Management Tab -->
+                <div v-if="activeTab === 'data'" class="p-6">
+                    <div class="mb-6">
+                        <h2 class="text-lg font-medium text-gray-900 mb-4">데이터 관리</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="text-md font-medium text-gray-900 mb-3">현재 데이터 상태</h3>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">총 브랜드 수:</span>
+                                        <span class="text-sm font-medium">{{ brands.length }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">총 모델 수:</span>
+                                        <span class="text-sm font-medium">{{ models.length }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">활성 모델:</span>
+                                        <span class="text-sm font-medium">{{ models.filter(m => m.status === 'active').length }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">비활성 모델:</span>
+                                        <span class="text-sm font-medium">{{ models.filter(m => m.status === 'inactive').length }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="text-md font-medium text-gray-900 mb-3">데이터 작업</h3>
+                                <div class="space-y-3">
+                                    <button @click="exportData" class="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                                        데이터 내보내기
+                                    </button>
+                                    <button @click="importData" class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                        데이터 가져오기
+                                    </button>
+                                    <button @click="resetData" class="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                                        데이터 초기화
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Brand Form Modal -->
+        <div v-if="showBrandForm" class="fixed inset-0 bg-gray-600 bg-opacity-50 modal-overlay overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white">
+                <div class="mt-3">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">{{ editingBrand ? '브랜드 편집' : '새 브랜드 추가' }}</h3>
+                    <form @submit.prevent="saveBrand">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">브랜드명 *</label>
+                                <input v-model="brandForm.name" type="text" required class="w-full border border-gray-300 rounded px-3 py-2">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">일본어명 *</label>
+                                <input v-model="brandForm.nameJp" type="text" required class="w-full border border-gray-300 rounded px-3 py-2">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">설명 (한국어)</label>
+                            <textarea v-model="brandForm.description.ko" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">설명 (일본어)</label>
+                            <textarea v-model="brandForm.description.jp" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">설명 (영어)</label>
+                            <textarea v-model="brandForm.description.en" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">설명 (중국어)</label>
+                            <textarea v-model="brandForm.description.zh" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="flex items-center">
+                                <input v-model="brandForm.active" type="checkbox" class="mr-2">
+                                <span class="text-sm font-medium text-gray-700">활성</span>
+                            </label>
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                            <button type="button" @click="showBrandForm = false" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">
+                                취소
+                            </button>
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                {{ editingBrand ? '업데이트' : '추가' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Model Form Modal -->
+        <div v-if="showModelForm" class="fixed inset-0 bg-gray-600 bg-opacity-50 modal-overlay overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-full max-w-4xl shadow-lg rounded-md bg-white">
+                <div class="mt-3">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">{{ editingModel ? '모델 편집' : '새 모델 추가' }}</h3>
+                    <form @submit.prevent="saveModel">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">브랜드 *</label>
+                                <select v-model="modelForm.brandId" required class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="">브랜드 선택</option>
+                                    <option v-for="brand in brands" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">모델명 *</label>
+                                <input v-model="modelForm.name" type="text" required class="w-full border border-gray-300 rounded px-3 py-2">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">일본어명 *</label>
+                                <input v-model="modelForm.nameJp" type="text" required class="w-full border border-gray-300 rounded px-3 py-2">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">이미지 URL *</label>
+                            <input v-model="modelForm.imageUrl" type="text" required class="w-full border border-gray-300 rounded px-3 py-2">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">스펙 (한국어)</label>
+                                <textarea v-model="modelForm.specs.ko" rows="2" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">스펙 (일본어)</label>
+                                <textarea v-model="modelForm.specs.jp" rows="2" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">스펙 (영어)</label>
+                                <textarea v-model="modelForm.specs.en" rows="2" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">스펙 (중국어)</label>
+                                <textarea v-model="modelForm.specs.zh" rows="2" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">설명 (한국어)</label>
+                                <textarea v-model="modelForm.description.ko" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">설명 (일본어)</label>
+                                <textarea v-model="modelForm.description.jp" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">설명 (영어)</label>
+                                <textarea v-model="modelForm.description.en" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">설명 (중국어)</label>
+                                <textarea v-model="modelForm.description.zh" rows="3" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">상태 *</label>
+                            <select v-model="modelForm.status" required class="w-full border border-gray-300 rounded px-3 py-2">
+                                <option value="active">활성</option>
+                                <option value="inactive">비활성</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex justify-end space-x-3">
+                            <button type="button" @click="showModelForm = false" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">
+                                취소
+                            </button>
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                {{ editingModel ? '업데이트' : '추가' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div v-if="message" :class="messageType === 'success' ? 'bg-green-100 border-green-400 text-green-700' : 'bg-red-100 border-red-400 text-red-700'" class="fixed top-4 right-4 p-4 border rounded shadow-lg z-50">
+            {{ message }}
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    currentLanguage: 'jp',
+                    activeTab: 'brands',
+                    stats: {
+                        news: 0,
+                        jobs: 0,
+                        wheels: 0,
+                        brands: 0
+                    },
+                    brands: [],
+                    models: [],
+                    selectedBrand: '',
+                    selectedStatus: '',
+                    showBrandForm: false,
+                    showModelForm: false,
+                    editingBrand: null,
+                    editingModel: null,
+                    message: '',
+                    messageType: 'success',
+                    brandForm: {
+                        name: '',
+                        nameJp: '',
+                        description: {
+                            jp: '',
+                            ko: '',
+                            en: '',
+                            zh: ''
+                        },
+                        active: true
+                    },
+                    modelForm: {
+                        brandId: '',
+                        name: '',
+                        nameJp: '',
+                        imageUrl: '',
+                        specs: {
+                            jp: '',
+                            ko: '',
+                            en: '',
+                            zh: ''
+                        },
+                        description: {
+                            jp: '',
+                            ko: '',
+                            en: '',
+                            zh: ''
+                        },
+                        status: 'active'
+                    }
+                }
+            },
+            mounted() {
+                this.loadDashboardData();
+                this.loadBrands();
+                this.loadModels();
+            },
+            methods: {
+                showMessage(text, type = 'success') {
+                    this.message = text;
+                    this.messageType = type;
+                    setTimeout(() => {
+                        this.message = '';
+                    }, 3000);
+                },
+                async loadDashboardData() {
+                    try {
+                        const response = await axios.get('/api/admin/dashboard');
+                        this.stats = response.data.stats;
+                    } catch (error) {
+                        console.error('Failed to load dashboard data:', error);
+                        this.showMessage('대시보드 데이터 로드 실패', 'error');
+                    }
+                },
+                async loadBrands() {
+                    try {
+                        const response = await axios.get('/api/wheels/brands');
+                        this.brands = response.data;
+                    } catch (error) {
+                        console.error('Failed to load brands:', error);
+                        this.showMessage('브랜드 로드 실패', 'error');
+                    }
+                },
+                async loadModels() {
+                    try {
+                        const params = {};
+                        if (this.selectedBrand) params.brandId = this.selectedBrand;
+                        if (this.selectedStatus) params.status = this.selectedStatus;
+                        
+                        const response = await axios.get('/api/wheels/models', { params });
+                        this.models = response.data;
+                    } catch (error) {
+                        console.error('Failed to load models:', error);
+                        this.showMessage('모델 로드 실패', 'error');
+                    }
+                },
+                getBrandName(brandId) {
+                    const brand = this.brands.find(b => b.id === brandId);
+                    return brand ? brand.name : '';
+                },
+                toggleLanguage() {
+                    this.currentLanguage = this.currentLanguage === 'jp' ? 'ko' : 'jp';
+                },
+                editBrand(brand) {
+                    this.editingBrand = brand;
+                    this.brandForm = JSON.parse(JSON.stringify(brand));
+                    this.showBrandForm = true;
+                },
+                editModel(model) {
+                    this.editingModel = model;
+                    this.modelForm = JSON.parse(JSON.stringify(model));
+                    this.showModelForm = true;
+                },
+                async saveBrand() {
+                    try {
+                        if (this.editingBrand) {
+                            await axios.put(`/api/wheels/brands/${this.editingBrand.id}`, this.brandForm);
+                            this.showMessage('브랜드가 성공적으로 업데이트되었습니다.');
+                        } else {
+                            await axios.post('/api/wheels/brands', this.brandForm);
+                            this.showMessage('브랜드가 성공적으로 추가되었습니다.');
+                        }
+                        this.showBrandForm = false;
+                        this.editingBrand = null;
+                        this.resetBrandForm();
+                        this.loadBrands();
+                        this.loadDashboardData();
+                    } catch (error) {
+                        console.error('Failed to save brand:', error);
+                        this.showMessage('브랜드 저장에 실패했습니다.', 'error');
+                    }
+                },
+                async saveModel() {
+                    try {
+                        if (this.editingModel) {
+                            await axios.put(`/api/wheels/models/${this.editingModel.id}`, this.modelForm);
+                            this.showMessage('모델이 성공적으로 업데이트되었습니다.');
+                        } else {
+                            await axios.post('/api/wheels/models', this.modelForm);
+                            this.showMessage('모델이 성공적으로 추가되었습니다.');
+                        }
+                        this.showModelForm = false;
+                        this.editingModel = null;
+                        this.resetModelForm();
+                        this.loadModels();
+                        this.loadDashboardData();
+                    } catch (error) {
+                        console.error('Failed to save model:', error);
+                        this.showMessage('모델 저장에 실패했습니다.', 'error');
+                    }
+                },
+                async deleteBrand(id) {
+                    if (!confirm('정말로 이 브랜드를 삭제하시겠습니까?')) return;
+                    
+                    try {
+                        await axios.delete(`/api/wheels/brands/${id}`);
+                        this.showMessage('브랜드가 성공적으로 삭제되었습니다.');
+                        this.loadBrands();
+                        this.loadDashboardData();
+                    } catch (error) {
+                        console.error('Failed to delete brand:', error);
+                        this.showMessage('브랜드 삭제에 실패했습니다.', 'error');
+                    }
+                },
+                async deleteModel(id) {
+                    if (!confirm('정말로 이 모델을 삭제하시겠습니까?')) return;
+                    
+                    try {
+                        await axios.delete(`/api/wheels/models/${id}`);
+                        this.showMessage('모델이 성공적으로 삭제되었습니다.');
+                        this.loadModels();
+                        this.loadDashboardData();
+                    } catch (error) {
+                        console.error('Failed to delete model:', error);
+                        this.showMessage('모델 삭제에 실패했습니다.', 'error');
+                    }
+                },
+                exportData() {
+                    const data = {
+                        brands: this.brands,
+                        models: this.models,
+                        exportDate: new Date().toISOString()
+                    };
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `technopia-wheel-data-${new Date().toISOString().split('T')[0]}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    this.showMessage('데이터가 성공적으로 내보내기되었습니다.');
+                },
+                importData() {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = '.json';
+                    input.onchange = (e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                try {
+                                    const data = JSON.parse(e.target.result);
+                                    console.log('Imported data:', data);
+                                    this.showMessage('데이터 가져오기 기능은 개발 중입니다.');
+                                } catch (error) {
+                                    this.showMessage('파일 형식이 올바르지 않습니다.', 'error');
+                                }
+                            };
+                            reader.readAsText(file);
+                        }
+                    };
+                    input.click();
+                },
+                resetData() {
+                    if (!confirm('정말로 모든 데이터를 초기화하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) return;
+                    this.showMessage('데이터 초기화 기능은 개발 중입니다.');
+                },
+                resetBrandForm() {
+                    this.brandForm = {
+                        name: '',
+                        nameJp: '',
+                        description: {
+                            jp: '',
+                            ko: '',
+                            en: '',
+                            zh: ''
+                        },
+                        active: true
+                    };
+                },
+                resetModelForm() {
+                    this.modelForm = {
+                        brandId: '',
+                        name: '',
+                        nameJp: '',
+                        imageUrl: '',
+                        specs: {
+                            jp: '',
+                            ko: '',
+                            en: '',
+                            zh: ''
+                        },
+                        description: {
+                            jp: '',
+                            ko: '',
+                            en: '',
+                            zh: ''
+                        },
+                        status: 'active'
+                    };
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html> 

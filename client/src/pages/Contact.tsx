@@ -71,48 +71,23 @@ export function Contact() {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Career and Contact */}
-      <section className="py-20 lg:py-28 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-8">
-              {language === 'jp' && 'あなたの可能性を一緒に実現しませんか'}
-              {language === 'ko' && '당신의 가능성을 함께 실현해 보지 않으시겠습니까'}
-              {language === 'en' && 'Let\'s realize your potential together'}
-              {language === 'zh' && '让我们一起实现你的可能性'}
+              {language === 'jp' && 'テクノピアへのご連絡をお待ちしております。'}
+              {language === 'ko' && '모두의 연락을 기다리고 있습니다.'}
+              {language === 'en' && 'We are waiting for your contact with all our hearts.'}
+              {language === 'zh' && '我们期待您的联系。'}
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto">
-              {language === 'jp' && 'テクノピアでは、革新的な技術と創造性で未来を切り拓く仲間を募集しています。'}
-              {language === 'ko' && '테크노피아에서는 혁신적인 기술과 창조성으로 미래를 개척할 동료를 모집하고 있습니다.'}
-              {language === 'en' && 'Technopia is recruiting colleagues who will pioneer the future with innovative technology and creativity.'}
-              {language === 'zh' && '技术乌托邦正在招募用创新技术和创造力开拓未来的伙伴。'}
+              {language === 'jp' && 'ご質問やご相談がございましたら、お気軽にお問い合わせください。'}
+              {language === 'ko' && '테크노피아는 모두의 연락을 기다리고 있습니다.'}
+              {language === 'en' && 'We are waiting for your contact with all our hearts.'}
+              {language === 'zh' && '我们期待您的联系。'}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href={`/${language}/careers`}>
-                <Button 
-                  size="lg" 
-                  className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 text-lg font-semibold min-w-[200px] transition-all duration-200"
-                >
-                  {language === 'jp' && '採用情報'}
-                  {language === 'ko' && '채용정보'}
-                  {language === 'en' && 'Career Info'}
-                  {language === 'zh' && '招聘信息'}
-                </Button>
-              </Link>
-              
-              <Button 
-                size="lg" 
-                className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 text-lg font-semibold min-w-[200px] transition-all duration-200"
-                onClick={() => {
-                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                {language === 'jp' && 'お問い合わせ'}
-                {language === 'ko' && '문의하기'}
-                {language === 'en' && 'Contact Us'}
-                {language === 'zh' && '联系我们'}
-              </Button>
-            </div>
+            
           </div>
         </div>
       </section>

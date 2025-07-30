@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせ詳細</title>
+    <style>
+        body { font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif; background: #f8f9fa; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 2rem auto; background: white; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 2.5rem; }
+        .news-title { font-size: 2.2rem; font-weight: bold; color: #2c5aa0; margin-bottom: 1rem; }
+        .news-date { color: #6c757d; font-size: 1rem; margin-bottom: 2rem; }
+        .news-image-section { margin-bottom: 2rem; } /* 이미지와 본문 사이 간격 */
+        .news-image-section img { max-width: 100%; height: auto; border-radius: 12px; }
+        .news-body { font-size: 1.15rem; color: #333; line-height: 1.8; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #2c5aa0; text-decoration: none; font-size: 1rem; border: 1px solid #2c5aa0; border-radius: 6px; padding: 0.5rem 1.2rem; transition: background 0.2s, color 0.2s; }
+        .back-link:hover { background: #2c5aa0; color: white; }
+        .loading { text-align: center; padding: 3rem; font-size: 1.2rem; color: #666; }
+    </style>
+</head>
+<body>
+    <div id="news-container" class="container" style="display: none;">
+        <h1 id="news-title" class="news-title"></h1>
+        <div id="news-date" class="news-date"></div>
+        <div id="news-image-section" class="news-image-section"></div>
+        <div id="news-body" class="news-body"></div>
+        <a href="index.html" class="back-link">← ニュース一覧に戻る</a>
+    </div>
+    <div id="loading" class="loading">
+        <p>読み込み中...</p>
+    </div>
+
+    <script>
+        async function fetchNewsDetail() {
+            const container = document.getElementById('news-container');
+            const loading = document.getElementById('loading');
+
+            // URL에서 news id를 가져옵니다.
+            const params = new URLSearchParams(window.location.search);
+            const newsId = parseInt(params.get('id'));
+
+            if (!newsId) {
+                loading.innerHTML = '<p>ニュースIDが見つかりません。</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('news_data.json');
+                if (!response.ok) {
+                    throw new Error('news_data.json 파일을 찾을 수 없습니다.');
+                }
+                const newsList = await response.json();
+                
+                const news = newsList.find(item => item.id === newsId);
+
+                if (news) {
+                    document.title = news.title;
+                    document.getElementById('news-title').textContent = news.title;
+                    document.getElementById('news-date').textContent = news.date;
+                    
+                    // HTML 태그를 포함할 수 있는 body 내용을 innerHTML로 설정
+                    const newsBody = document.getElementById('news-body');
+                    newsBody.innerHTML = news.body || '';
+
+                    const imageSection = document.getElementById('news-image-section');
+                    if (news.image) {
+                        imageSection.innerHTML = `<img src="static/news_images/${news.image}" alt="${news.title}">`;
+                    }
+
+                    loading.style.display = 'none';
+                    container.style.display = 'block';
+                } else {
+                    loading.innerHTML = '<p>指定されたニュースが見つかりませんでした。</p>';
+                }
+            } catch (error) {
+                console.error('뉴스 상세 정보를 불러오는 중 오류 발생:', error);
+                loading.innerHTML = `<p>ニュース情報の読み込みに失敗しました。</p>`;
+            }
+        }
+
+        fetchNewsDetail();
+    </script>
+</body>
+</html> 

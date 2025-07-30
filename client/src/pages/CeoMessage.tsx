@@ -120,9 +120,9 @@ export function CeoMessage() {
                   )}
 
                   <div className="mt-12 pt-8 border-t border-slate-200 text-right">
-                    <p className="text-xl font-bold text-slate-900 mb-2">朴 栽世</p>
+                  
                     <p className="text-slate-600">株式会社テクノピア</p>
-                    <p className="text-slate-600">代表取締役社長</p>
+                    <p className="text-slate-600">代表取締役社長 朴 栽世</p>
                   </div>
                 </div>
               </CardContent>

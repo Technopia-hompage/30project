@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation } from "@/lib/i18n";
-import { Target, Eye, Heart, Building, Users, Globe, Award } from "lucide-react";
+import { Eye, Building, Globe, Award, Crosshair } from "lucide-react";
 import ceoImage from "@assets/スクリーンショット 2025-06-04 150711.png";
-import organizationChart from "@assets/organization-chart-final.svg";
+const organizationChartJpg = "/images/soshikizu2.jpg";
 import jawaCertificate from "@assets/ninsyou10_1752453924698.jpg";
-import machineCertificate from "@assets/ninsyou6_s_1752453933654.jpg";
+import machineCertificate from "/images/md/ninsyou6.jpg";
 
 export function About() {
   const { language } = useLanguage();
@@ -13,16 +13,16 @@ export function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {language === 'jp' && 'テクノピアについて'}
               {language === 'ko' && '회사 소개'}
               {language === 'en' && 'About Our Company'}
               {language === 'zh' && '关于我们公司'}
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               {language === 'jp' && '革新的な技術ソリューションで社会に貢献し、お客様と共に成長し続ける企業です。'}
               {language === 'ko' && '글로벌하게 전개하는 우리의 기업 이념과 고객, 사회에 대한 약속을 소개합니다.'}
               {language === 'en' && 'Introducing our global corporate philosophy and promises to customers and society.'}
@@ -33,8 +33,8 @@ export function About() {
           {/* Company Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">30</div>
-              <div className="text-slate-600">
+              <div className="text-4xl md:text-5xl font-bold text-blue-300 mb-2">30</div>
+              <div className="text-blue-100">
                 {language === 'jp' && '年の歴史'}
                 {language === 'ko' && '년'}
                 {language === 'en' && 'Years'}
@@ -42,30 +42,31 @@ export function About() {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">25</div>
-              <div className="text-slate-600">
+              <div className="text-4xl md:text-5xl font-bold text-blue-300 mb-2">25</div>
+              <div className="text-blue-100">
                 {language === 'jp' && '従業員数'}
                 {language === 'ko' && '직원 수'}
                 {language === 'en' && 'Employees'}
                 {language === 'zh' && '员工数'}
               </div>
             </div>
+           
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">10+</div>
-              <div className="text-slate-600">
-                {language === 'jp' && '事業拠点'}
-                {language === 'ko' && '글로벌 거점'}
-                {language === 'en' && 'Global Locations'}
-                {language === 'zh' && '全球据点'}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-corporate-blue mb-2">1000+</div>
-              <div className="text-slate-600">
+              <div className="text-4xl md:text-5xl font-bold text-blue-300 mb-2">1000+</div>
+              <div className="text-blue-100">
                 {language === 'jp' && 'パートナー企業'}
                 {language === 'ko' && '파트너 기업'}
                 {language === 'en' && 'Partner Companies'}
                 {language === 'zh' && '合作伙伴企业'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-blue-300 mb-2">∞</div>
+              <div className="text-blue-100">
+                {language === 'jp' && '成長可能性'}
+                {language === 'ko' && '성장 가능성'}
+                {language === 'en' && 'Growth Potential'}
+                {language === 'zh' && '成长可能性'}
               </div>
             </div>
           </div>
@@ -94,7 +95,7 @@ export function About() {
             <Card className="hover:shadow-xl transition-shadow duration-200">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
-                  <Target className="text-white h-8 w-8" />
+                  <Crosshair className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
                   {language === 'jp' && 'ミッション'}
@@ -136,7 +137,7 @@ export function About() {
             <Card className="hover:shadow-xl transition-shadow duration-200">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
-                  <Heart className="text-white h-8 w-8" />
+                  <Award className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
                   {language === 'jp' && '価値観'}
@@ -369,10 +370,10 @@ export function About() {
                   </h3>
                   <div className="bg-white rounded-lg p-4 border border-slate-200">
                     <img 
-                      src={organizationChart} 
+                      src={organizationChartJpg} 
                       alt="Technopia Organizational Chart"
                       className="w-full h-auto rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
-                      onClick={() => window.open(organizationChart, '_blank')}
+                      onClick={() => window.open(organizationChartJpg, '_blank')}
                     />
                   </div>
                 </CardContent>
@@ -499,7 +500,7 @@ export function About() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <Users className="h-5 w-5 text-corporate-blue mt-1" />
+                  <Building className="h-5 w-5 text-corporate-blue mt-1" />
                   <div>
                     <div className="font-medium text-slate-900">
                       {language === 'jp' && '創業'}
@@ -511,7 +512,7 @@ export function About() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <Users className="h-5 w-5 text-corporate-blue mt-1" />
+                  <Building className="h-5 w-5 text-corporate-blue mt-1" />
                   <div>
                     <div className="font-medium text-slate-900">
                       {language === 'jp' && '代表取締役社長'}
@@ -592,10 +593,10 @@ export function About() {
                 <li className="flex items-center space-x-3">
                   <Award className="h-4 w-4 text-corporate-blue" />
                   <span>
-                    {language === 'jp' && 'AI顔認証検温測定器「TOLLGATE」の製造・販売'}
-                    {language === 'ko' && 'AI 안면인증 체온측정기「TOLLGATE」제조·판매'}
-                    {language === 'en' && 'AI Face Recognition Temperature Measurement Device "TOLLGATE" Manufacturing & Sales'}
-                    {language === 'zh' && 'AI人脸识别体温测量设备「TOLLGATE」制造·销售'}
+                    {language === 'jp' && 'クレジットカード端末決済サービス'}
+                    {language === 'ko' && '신용카드 단말기 결제 서비스'}
+                    {language === 'en' && 'Credit Card Terminal Payment Services'}
+                    {language === 'zh' && '信用卡终端支付服务'}
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -605,15 +606,6 @@ export function About() {
                     {language === 'ko' && '부동산 임대 취급'}
                     {language === 'en' && 'Real Estate Rental Services'}
                     {language === 'zh' && '房地产租赁服务'}
-                  </span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Award className="h-4 w-4 text-corporate-blue" />
-                  <span>
-                    {language === 'jp' && 'クレジットカード端末決済サービス'}
-                    {language === 'ko' && '신용카드 단말기 결제 서비스'}
-                    {language === 'en' && 'Credit Card Terminal Payment Services'}
-                    {language === 'zh' && '信用卡终端支付服务'}
                   </span>
                 </li>
               </ul>
@@ -691,7 +683,7 @@ export function About() {
             <Card className="hover:shadow-lg transition-shadow duration-200">
               <CardContent className="p-8">
                 <h3 className="text-xl font-semibold text-slate-900 mb-6 flex items-center">
-                  <Users className="h-5 w-5 text-corporate-blue mr-2" />
+                  <Building className="h-5 w-5 text-corporate-blue mr-2" />
                   {language === 'jp' && '主要取引先'}
                   {language === 'ko' && '주요 거래처'}
                   {language === 'en' && 'Major Clients'}
@@ -720,12 +712,11 @@ export function About() {
                   {language === 'zh' && '产品与服务'}
                 </h3>
                 <ul className="space-y-2 text-slate-600">
+                  <li>オルソケラトロジーレンズの製造・販売</li>
                   <li>自動車用アルミホイール製造及び販売</li>
-                  <li>コンタクトレンズの製造販売(オルソケラトロジーレンズ)</li>
                   <li>医療機器の製造販売</li>
-                  <li>TOLLGATEの販売</li>
-                  <li>コロナ関連製品の販売</li>
-                  <li>不動産賃貸</li>
+                  <li>クレジットカード端末決済サービス</li>
+                  <li>不動産賃貸の取り扱い</li>
                 </ul>
               </CardContent>
             </Card>

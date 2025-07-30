@@ -7,17 +7,16 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getMultiLanguageContent } from "@/lib/i18n";
 import { NewsArticle } from "@shared/schema";
 import { newsData, newsCategories } from "@/lib/newsData";
+import { AnimatedCard } from "@/components/AnimatedCard";
 import { useState } from "react";
 import { useParams, Link } from "wouter";
 import { 
   Calendar, 
-  Search, 
   FileText, 
   ArrowLeft,
-  Clock,
-  User,
-  Share2
+  Clock
 } from "lucide-react";
+import { BiSearch, BiShare } from "react-icons/bi";
 
 export function News() {
   const { language, getLanguageRoute } = useLanguage();
@@ -113,15 +112,17 @@ export function News() {
       <div className="min-h-screen bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Back button */}
-          <Link href={getLanguageRoute('/news')}>
-            <Button variant="ghost" className="mb-8">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              {language === 'jp' && 'ニュース一覧に戻る'}
-              {language === 'ko' && '뉴스 목록으로 돌아가기'}
-              {language === 'en' && 'Back to News'}
-              {language === 'zh' && '返回新闻列表'}
-            </Button>
-          </Link>
+          <Button 
+            variant="ghost" 
+            className="mb-8"
+            onClick={() => window.location.href = getLanguageRoute('/news')}
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {language === 'jp' && 'ニュース一覧に戻る'}
+            {language === 'ko' && '뉴스 목록으로 돌아가기'}
+            {language === 'en' && 'Back to News'}
+            {language === 'zh' && '返回新闻列表'}
+          </Button>
 
           {/* Article header */}
           <header className="mb-8">
@@ -162,11 +163,11 @@ export function News() {
                 {language === 'zh' && '分享这篇文章:'}
               </span>
               <Button variant="outline" size="sm">
-                <Share2 className="mr-2 h-4 w-4" />
+                <BiShare className="mr-2 h-4 w-4" />
                 {language === 'jp' && 'シェア'}
                 {language === 'ko' && '공유'}
                 {language === 'en' && 'Share'}
-                {language === 'zh' && '分享'}
+                {language === 'zh' && '분享'}
               </Button>
             </div>
           </div>
@@ -179,16 +180,16 @@ export function News() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {language === 'jp' && 'ニュース'}
               {language === 'ko' && '뉴스'}
               {language === 'en' && 'News'}
               {language === 'zh' && '新闻'}
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               {language === 'jp' && '最新のニュースやお知らせをご覧ください。'}
               {language === 'ko' && '최신 뉴스와 공지사항을 확인하세요.'}
               {language === 'en' && 'Stay updated with our latest news and announcements.'}
@@ -204,7 +205,7 @@ export function News() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             {/* Search */}
             <div className="relative max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <BiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder={
                   language === 'jp' ? 'ニュースを検索...' :

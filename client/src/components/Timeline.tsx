@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getMultiLanguageContent } from "@/lib/i18n";
 import { CompanyTimelineEvent } from "@shared/schema";
+import { AnimatedCard } from "@/components/AnimatedCard";
 
 export function Timeline() {
   const { language } = useLanguage();
@@ -55,36 +56,41 @@ export function Timeline() {
       {timelineEvents.map((event, index) => (
         <div key={event.id} className="relative flex items-center justify-between mb-16 animate-fade-in">
           <div className={`w-5/12 ${index % 2 === 0 ? '' : 'order-2'}`}>
-            <Card className="hover:shadow-xl transition-shadow duration-200">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="secondary" className="text-corporate-blue font-bold">
-                    {event.year}年
-                  </Badge>
-                  {event.featured && (
-                    <Badge className="bg-anniversary-red">
-                      {language === 'jp' && '重要'}
-                      {language === 'ko' && '중요'}
-                      {language === 'en' && 'Important'}
-                      {language === 'zh' && '重要'}
+            <AnimatedCard 
+              className="hover:shadow-xl transition-shadow duration-200"
+              delay={index * 0.1}
+            >
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge variant="secondary" className="text-corporate-blue font-bold">
+                      {event.year}年
                     </Badge>
+                    {event.featured && (
+                      <Badge className="bg-anniversary-red">
+                        {language === 'jp' && '重要'}
+                        {language === 'ko' && '중요'}
+                        {language === 'en' && 'Important'}
+                        {language === 'zh' && '重要'}
+                      </Badge>
+                    )}
+                  </div>
+                  <h4 className="text-xl font-semibold text-slate-900 mb-3">
+                    {getMultiLanguageContent(event.title, language)}
+                  </h4>
+                  <p className="text-slate-600">
+                    {getMultiLanguageContent(event.description, language)}
+                  </p>
+                  {event.imageUrl && (
+                    <img 
+                      src={event.imageUrl} 
+                      alt={getMultiLanguageContent(event.title, language)}
+                      className="w-full h-32 object-cover rounded-lg mt-4"
+                    />
                   )}
-                </div>
-                <h4 className="text-xl font-semibold text-slate-900 mb-3">
-                  {getMultiLanguageContent(event.title, language)}
-                </h4>
-                <p className="text-slate-600">
-                  {getMultiLanguageContent(event.description, language)}
-                </p>
-                {event.imageUrl && (
-                  <img 
-                    src={event.imageUrl} 
-                    alt={getMultiLanguageContent(event.title, language)}
-                    className="w-full h-32 object-cover rounded-lg mt-4"
-                  />
-                )}
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
           </div>
           <div className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-lg ${
             event.featured ? 'bg-anniversary-red animate-pulse' : 'bg-corporate-blue'
