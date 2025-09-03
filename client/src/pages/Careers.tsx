@@ -8,22 +8,43 @@ export function Careers() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="text-white py-16 lg:py-24" style={{ backgroundImage: `url('/images/shin3.png')`,
-         backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              {language === 'jp' && '新規・中途採用情報'}
-              {language === 'ko' && '신규·중도 채용 정보'}
-              {language === 'en' && 'New & Mid-Career Recruitment'}
-              {language === 'zh' && '新人·中途录用信息'}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              {language === 'jp' && 'テクノピアでは、革新的な技術と創造性で未来を切り拓く仲間を募集しています。'}
-              {language === 'ko' && '1995년 창립 이래, 실패를 두려워하지 않고 항상 도전을 계속해왔습니다. 고객에게 감동과 기쁨을 주고, 사회에 공헌할 수 있는 기업을 목표로 하고 있습니다.'}
-              {language === 'en' && 'Since our founding in 1995, we have continued to challenge ourselves without fear of failure. We aim to be a company that brings excitement and joy to customers and contributes to society.'}
-              {language === 'zh' && '自1995年创立以来，我们不惧怕失败，持续挑战。我们致力于成为一家能给客户带来感动和喜悦，为社会做出贡献的企业。'}
-            </p>
+      <section className="relative text-white py-16 lg:py-24 overflow-hidden" style={{ backgroundColor: '#186c84' }}>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg className="w-full h-full" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+              <circle cx="200" cy="100" r="150" fill="currentColor" opacity="0.1"/>
+              <circle cx="800" cy="400" r="200" fill="currentColor" opacity="0.1"/>
+              <circle cx="1000" cy="150" r="120" fill="currentColor" opacity="0.1"/>
+              <polygon points="100,500 200,400 300,500 200,600" fill="currentColor" opacity="0.1"/>
+              <polygon points="900,100 1000,50 1100,100 1000,150" fill="currentColor" opacity="0.1"/>
+            </svg>
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                {language === 'jp' && '新規・中途採用情報'}
+                {language === 'ko' && '신규·중도 채용 정보'}
+                {language === 'en' && 'New & Mid-Career Recruitment'}
+                {language === 'zh' && '新人·中途录用信息'}
+              </h1>
+              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                {language === 'jp' && 'テクノピアでは、革新的な技術と創造性で未来を切り拓く仲間を募集しています。'}
+                {language === 'ko' && '1995년 창립 이래, 실패를 두려워하지 않고 항상 도전을 계속해왔습니다. 고객에게 감동과 기쁨을 주고, 사회에 공헌할 수 있는 기업을 목표로 하고 있습니다.'}
+                {language === 'en' && 'Since our founding in 1995, we have continued to challenge ourselves without fear of failure. We aim to be a company that brings excitement and joy to customers and contributes to society.'}
+                {language === 'zh' && '自1995年创立以来，我们不惧怕失败，持续挑战。我们致力于成为一家能给客户带来感动和喜悦，为社会做出贡献的企业。'}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -442,7 +463,7 @@ export function Careers() {
                     </p>
                     <div className="bg-white p-4 rounded border-l-4 border-corporate-blue">
                       <p className="font-medium text-slate-900">株式会社テクノピア　人事部　採用担当</p>
-                      <p className="text-corporate-blue font-medium">E-mail: hk.lee@technopia.co.jp</p>
+                      <p className="text-corporate-accent font-medium">E-mail: hk.lee@technopia.co.jp</p>
                     </div>
                   </div>
                 </div>

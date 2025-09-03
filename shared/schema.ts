@@ -44,6 +44,7 @@ export const contactMessages = pgTable("contact_messages", {
   email: text("email").notNull(),
   company: text("company"),
   category: text("category").notNull(),
+  department: text("department").notNull(), // Which department to contact
   message: text("message").notNull(),
   status: text("status").notNull().default("new"), // new, read, replied
   createdAt: timestamp("created_at").defaultNow().notNull(),

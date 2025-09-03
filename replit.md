@@ -38,6 +38,7 @@ Preferred communication style: Simple, everyday language.
 - **Translation System**: Structured translation objects with fallback support
 - **URL Routing**: Language-prefixed routes (e.g., `/jp/about`, `/en/about`)
 - **Content Management**: JSONB fields in database for multi-language content
+- **Voice Narration**: Browser Speech Synthesis API with language-specific voice selection for Japanese, Korean, English, and Chinese
 
 ### Content Management System
 - **News Articles**: Multi-language news with categories and publishing workflow
@@ -52,6 +53,7 @@ Preferred communication style: Simple, everyday language.
 - **Component Library**: Comprehensive UI components using Radix UI
 - **Form Management**: React Hook Form with Zod validation
 - **Toast Notifications**: User feedback system
+- **Multilingual Voice Narration**: Text-to-speech functionality with language-specific voices and customizable settings
 
 ### Page Structure
 - **Home Page**: Hero section, company overview, latest news

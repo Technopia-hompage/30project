@@ -13,9 +13,11 @@ import {
 } from "@shared/schema";
 import path from "path";
 import fs from "fs/promises";
+import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 
 // 스펙 데이터 파일 경로
 const WHEEL_SPECS_FILE = path.join(process.cwd(), 'data', 'wheelSpecs.json');
+const WHEEL_DATA_FILE = path.join(process.cwd(), 'data', 'wheelData.json');
 
 // 스펙 데이터 로드 함수
 async function loadWheelSpecs() {
@@ -24,7 +26,7 @@ async function loadWheelSpecs() {
     return JSON.parse(data);
   } catch (error) {
     // 파일이 없으면 기본 데이터 사용
-    const { wheelSpecsData } = await import('../client/src/lib/wheelSpecsData.js');
+    const { wheelSpecsData } = await import('../client/src/lib/wheelSpecsData');
     return wheelSpecsData;
   }
 }
@@ -36,6 +38,28 @@ async function saveWheelSpecs(specs: any[]) {
     await fs.writeFile(WHEEL_SPECS_FILE, JSON.stringify(specs, null, 2));
   } catch (error) {
     console.error('Failed to save wheel specs:', error);
+  }
+}
+
+// 휠 데이터 로드 함수
+async function loadWheelData() {
+  try {
+    const data = await fs.readFile(WHEEL_DATA_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch (error) {
+    // 파일이 없으면 기본 데이터 사용
+    const { wheelModels } = await import('../client/src/lib/wheelData');
+    return wheelModels;
+  }
+}
+
+// 휠 데이터 저장 함수
+async function saveWheelData(models: any[]) {
+  try {
+    await fs.mkdir(path.dirname(WHEEL_DATA_FILE), { recursive: true });
+    await fs.writeFile(WHEEL_DATA_FILE, JSON.stringify(models, null, 2));
+  } catch (error) {
+    console.error('Failed to save wheel data:', error);
   }
 }
 
@@ -54,8 +78,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/admin/dashboard", async (req, res) => {
     try {
       const [newsCount, jobsCount, wheelsCount, brandsCount] = await Promise.all([
-        storage.getNewsArticles({ language: 'jp' }).then(articles => articles.length),
-        storage.getJobOpenings({ language: 'jp' }).then(jobs => jobs.length),
+        storage.getNewsArticles().then(articles => articles.length),
+        storage.getJobOpenings().then(jobs => jobs.length),
         storage.getWheelModels().then(models => models.length),
         storage.getWheelBrands().then(brands => brands.length)
       ]);
@@ -76,14 +100,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // News Articles Routes
   app.get("/api/news", async (req, res) => {
     try {
-      const { lang = 'jp', category, limit } = req.query;
-      const articles = await storage.getNewsArticles({
-        language: lang as string,
-        category: category as string,
-        limit: limit ? parseInt(limit as string) : undefined
-      });
-      res.json(articles);
+      // 메모리 스토리지에서 모든 뉴스 기사를 가져옴 (기본 데이터 포함)
+      const allArticles = storage.getAllNewsArticles();
+      
+      res.json(allArticles);
     } catch (error) {
+      console.error('Error fetching news articles:', error);
       res.status(500).json({ message: "Failed to fetch news articles" });
     }
   });
@@ -91,7 +113,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/news/:id", async (req, res) => {
     try {
       const { lang = 'jp' } = req.query;
-      const article = await storage.getNewsArticleById(parseInt(req.params.id), lang as string);
+      
+      // 먼저 메모리 스토리지에서 검색
+      let article = await storage.getNewsArticleById(parseInt(req.params.id));
+      
+      // 메모리에서 찾지 못한 경우 기본 뉴스 데이터에서 검색
+      if (!article) {
+        const { newsData } = await import('../shared/newsData');
+        article = newsData.find(item => item.id === parseInt(req.params.id));
+      }
+      
       if (!article) {
         return res.status(404).json({ message: "Article not found" });
       }
@@ -103,11 +134,93 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/news", async (req, res) => {
     try {
-      const validatedData = insertNewsArticleSchema.parse(req.body);
-      const article = await storage.createNewsArticle(validatedData);
-      res.status(201).json(article);
+      const result = insertNewsArticleSchema.safeParse(req.body);
+      if (!result.success) {
+        return res.status(400).json({ message: "Invalid article data" });
+      }
+
+      const newArticle = await storage.createNewsArticle(result.data);
+      
+      console.log('New article created:', newArticle);
+      res.status(201).json(newArticle);
     } catch (error) {
+      console.error('Error creating news article:', error);
       res.status(400).json({ message: "Invalid article data" });
+    }
+  });
+
+  app.put("/api/news/:id", async (req, res) => {
+    try {
+      const { newsData } = await import('../shared/newsData');
+      const articleIndex = newsData.findIndex(item => item.id === parseInt(req.params.id));
+      
+      if (articleIndex === -1) {
+        return res.status(404).json({ message: "News article not found" });
+      }
+      
+      const updatedArticle = {
+        ...newsData[articleIndex],
+        ...req.body,
+        id: parseInt(req.params.id),
+        updatedAt: new Date().toISOString(),
+        publishedAt: req.body.published ? (newsData[articleIndex].publishedAt || new Date().toISOString()) : null,
+        // Preserve imageUrl if it exists in original article and not explicitly changed
+        imageUrl: req.body.imageUrl !== undefined ? req.body.imageUrl : newsData[articleIndex].imageUrl
+      };
+      
+      // 실제로는 데이터베이스에 업데이트해야 하지만, 임시로 성공 응답만 반환
+      console.log('Article updated:', updatedArticle);
+      res.json(updatedArticle);
+    } catch (error) {
+      console.error('Error updating news article:', error);
+      res.status(400).json({ message: "Invalid article data" });
+    }
+  });
+
+  app.delete("/api/news/:id", async (req, res) => {
+    try {
+      const { newsData } = await import('../shared/newsData');
+      const articleIndex = newsData.findIndex(item => item.id === parseInt(req.params.id));
+      
+      if (articleIndex === -1) {
+        return res.status(404).json({ message: "News article not found" });
+      }
+      
+      // 실제로는 데이터베이스에서 삭제해야 하지만, 임시로 성공 응답만 반환
+      console.log('Article deleted:', req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      console.error('Error deleting news article:', error);
+      res.status(500).json({ message: "Failed to delete news article" });
+    }
+  });
+
+  // Object Storage Routes
+  app.get("/objects/:objectPath(*)", async (req, res) => {
+    const objectStorageService = new ObjectStorageService();
+    try {
+      const objectFile = await objectStorageService.getObjectEntityFile(
+        req.path,
+      );
+      objectStorageService.downloadObject(objectFile, res);
+    } catch (error) {
+      console.error("Error checking object access:", error);
+      if (error instanceof ObjectNotFoundError) {
+        return res.sendStatus(404);
+      }
+      return res.sendStatus(500);
+    }
+  });
+
+  app.post("/api/objects/upload", async (req, res) => {
+    try {
+      const objectStorageService = new ObjectStorageService();
+      const { filename } = req.body;
+      const uploadURL = await objectStorageService.getObjectEntityUploadURL(filename);
+      res.json({ uploadURL });
+    } catch (error) {
+      console.error('Error getting upload URL:', error);
+      res.status(500).json({ error: "Failed to get upload URL" });
     }
   });
 
@@ -198,7 +311,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/divisions", async (req, res) => {
     try {
       const { lang = 'jp' } = req.query;
-      const divisions = await storage.getBusinessDivisions(lang as string);
+      const divisions = await storage.getBusinessDivisions();
       res.json(divisions);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch business divisions" });
@@ -234,7 +347,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/wheels/brands", async (req, res) => {
     try {
       // 임시로 wheelData.ts의 데이터 사용
-      const { wheelBrands } = await import('../client/src/lib/wheelData.js');
+      const { wheelBrands } = await import('../client/src/lib/wheelData');
       const { active } = req.query;
       
       let brands = wheelBrands;
@@ -264,7 +377,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/wheels/brands", async (req, res) => {
     try {
       // 임시로 메모리에 저장 (실제로는 데이터베이스에 저장해야 함)
-      const { wheelBrands } = await import('../client/src/lib/wheelData.js');
+      const { wheelBrands } = await import('../client/src/lib/wheelData');
       
       const newBrand = {
         id: Math.max(...wheelBrands.map(b => b.id)) + 1,
@@ -307,7 +420,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/wheels/models", async (req, res) => {
     try {
       // 임시로 wheelData.ts의 데이터 사용
-      const { wheelModels } = await import('../client/src/lib/wheelData.js');
+      const { wheelModels } = await import('../client/src/lib/wheelData');
       const { brandId, status } = req.query;
       
       let models = wheelModels;
@@ -342,7 +455,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/wheels/models", async (req, res) => {
     try {
       // 임시로 메모리에 저장
-      const { wheelModels } = await import('../client/src/lib/wheelData.js');
+      const { wheelModels } = await import('../client/src/lib/wheelData');
       
       const newModel = {
         id: Math.max(...wheelModels.map(m => m.id)) + 1,
@@ -520,6 +633,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error('Error deleting wheel spec:', error);
       res.status(500).json({ message: "Failed to delete wheel spec" });
+    }
+  });
+
+  // 特徴 업데이트 API
+  app.put("/api/wheels/models/:id/features", async (req, res) => {
+    try {
+      // 기존 데이터 로드
+      const wheelModels = await loadWheelData();
+      
+      const modelId = parseInt(req.params.id);
+      const existingModel = wheelModels.find((m: any) => m.id === modelId);
+      
+      if (!existingModel) {
+        return res.status(404).json({ message: "Wheel model not found" });
+      }
+      
+      // 特徴 업데이트
+      const updatedModel = {
+        ...existingModel,
+        description: {
+          jp: req.body.description.jp || existingModel.description.jp,
+          ko: req.body.description.ko || existingModel.description.ko,
+          en: req.body.description.en || existingModel.description.en,
+          zh: req.body.description.zh || existingModel.description.zh
+        },
+        features: req.body.features ? {
+          jp: req.body.features.jp || "",
+          ko: req.body.features.ko || "",
+          en: req.body.features.en || "",
+          zh: req.body.features.zh || ""
+        } : existingModel.features
+      };
+      
+      // 배열에서 기존 항목을 업데이트된 항목으로 교체
+      const modelIndex = wheelModels.findIndex((m: any) => m.id === modelId);
+      if (modelIndex !== -1) {
+        wheelModels[modelIndex] = updatedModel;
+      }
+      
+      // 파일에 저장
+      await saveWheelData(wheelModels);
+      
+      console.log('Model features updated:', updatedModel);
+      res.json(updatedModel);
+    } catch (error) {
+      console.error('Error updating model features:', error);
+      res.status(400).json({ message: "Invalid features data" });
     }
   });
 

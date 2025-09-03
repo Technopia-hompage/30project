@@ -111,9 +111,9 @@ export function Admin() {
     });
   };
 
-  const formatDate = (dateString: string | null) => {
-    if (!dateString) return '';
-    return new Date(dateString).toLocaleDateString();
+  const formatDate = (date: string | Date | null) => {
+    if (!date) return '';
+    return new Date(date).toLocaleDateString();
   };
 
   return (
@@ -205,7 +205,7 @@ export function Admin() {
                         {language === 'en' && 'Total News'}
                         {language === 'zh' && '新闻总数'}
                       </p>
-                      <p className="text-2xl font-bold text-slate-900">{stats?.totalNews || 0}</p>
+                      <p className="text-2xl font-bold text-slate-900">{(stats as any)?.news || 0}</p>
                     </div>
                     <FileText className="h-8 w-8 text-corporate-blue" />
                   </div>
@@ -222,7 +222,7 @@ export function Admin() {
                         {language === 'en' && 'Total Images'}
                         {language === 'zh' && '图片总数'}
                       </p>
-                      <p className="text-2xl font-bold text-slate-900">{stats?.totalImages || 0}</p>
+                      <p className="text-2xl font-bold text-slate-900">{(gallery || []).length}</p>
                     </div>
                     <Image className="h-8 w-8 text-success-green" />
                   </div>
@@ -239,7 +239,7 @@ export function Admin() {
                         {language === 'en' && 'Total Jobs'}
                         {language === 'zh' && '招聘总数'}
                       </p>
-                      <p className="text-2xl font-bold text-slate-900">{stats?.totalJobs || 0}</p>
+                      <p className="text-2xl font-bold text-slate-900">{(jobs || []).length}</p>
                     </div>
                     <Briefcase className="h-8 w-8 text-purple-500" />
                   </div>
@@ -256,7 +256,7 @@ export function Admin() {
                         {language === 'en' && 'Total Messages'}
                         {language === 'zh' && '消息总数'}
                       </p>
-                      <p className="text-2xl font-bold text-slate-900">{stats?.totalMessages || 0}</p>
+                      <p className="text-2xl font-bold text-slate-900">{(messages || []).length}</p>
                     </div>
                     <MessageSquare className="h-8 w-8 text-orange-500" />
                   </div>
@@ -389,7 +389,7 @@ export function Admin() {
                     <div className="p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge variant="secondary">{image.category}</Badge>
-                        <Badge variant="outline">{image.year}年</Badge>
+                        <Badge variant="outline">{new Date(image.createdAt).getFullYear()}年</Badge>
                         {image.featured && (
                           <Badge className="bg-anniversary-red">
                             {language === 'jp' && '注目'}

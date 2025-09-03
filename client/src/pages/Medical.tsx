@@ -16,7 +16,7 @@ export function Medical() {
             <div className="w-20 h-20 bg-corporate-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Eye className="text-white h-10 w-10" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
               {language === 'jp' && 'メディカル事業部'}
               {language === 'ko' && '메디컬 사업부'}
               {language === 'en' && 'Medical Division'}
@@ -199,8 +199,8 @@ export function Medical() {
                   </ul>
                 </div>
 
-                <Button className="w-full" asChild>
-                  <a href="https://www.emeraldlens.com/" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full" asChild >
+                  <a href="https://www.emeraldlens.com/" target="_blank" rel="noopener noreferrer" >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     {language === 'jp' && '詳しく見る'}
                     {language === 'ko' && '자세히 보기'}
@@ -212,11 +212,11 @@ export function Medical() {
             </Card>
 
             {/* AQUA CEL */}
-            <Card className="border-2 border-corporate-blue/20 hover:shadow-xl transition-shadow duration-200">
+            <Card className="border-2 border-corporate-blue/20  hover:shadow-xl transition-shadow duration-200">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
                   <Eye className="h-8 w-8 text-corporate-blue mr-3" />
-                  <h3 className="text-2xl font-bold text-slate-900">
+                  <h3 className="text-2xl font-bold text-slate-900 ">
                     {language === 'jp' && 'AQUA CEL'}
                     {language === 'ko' && 'AQUA CEL'}
                     {language === 'en' && 'AQUA CEL'}
@@ -239,7 +239,7 @@ export function Medical() {
                 </p>
 
                 <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm  text-slate-600">
                     {language === 'jp' && '医療機器認証番号：303ADBZX00049000'}
                     {language === 'ko' && '의료기기 인증번호：303ADBZX00049000'}
                     {language === 'en' && 'Medical Device Certification Number: 303ADBZX00049000'}
@@ -249,7 +249,7 @@ export function Medical() {
 
                 <Button className="w-full" asChild>
                   <a href="https://aquacel.jp/" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4 mr-2" />
+                    <ExternalLink className="h-4 w-4 mr-2 text-white" />
                     {language === 'jp' && '詳しく見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}

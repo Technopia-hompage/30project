@@ -49,9 +49,14 @@ export function Navigation() {
               <Link key={item.key} href={getLanguageRoute(item.path)}>
                 <span className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActivePath(item.path)
-                    ? 'text-corporate-blue font-semibold'
-                    : 'text-slate-700 hover:text-corporate-blue'
-                }`}>
+                    ? 'font-semibold'
+                    : 'text-slate-700'
+                }`}
+                style={{
+                  color: isActivePath(item.path) ? '#186c84' : undefined
+                }}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#186c84'}
+                onMouseLeave={(e) => !isActivePath(item.path) && ((e.target as HTMLElement).style.color = '')}>
                   {getTranslation(`nav.${item.key}`, language)}
                 </span>
               </Link>

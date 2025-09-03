@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getTranslation, getMultiLanguageContent } from "@/lib/i18n";
-import { newsData } from "@/lib/newsData";
+
 import { Link } from "wouter";
 import { NewsArticle, GalleryImage } from "@shared/schema";
 import { ChevronDown, Eye, Award, Activity, Car, Calendar, FileText, Building } from "lucide-react";
@@ -13,8 +13,15 @@ import homeBgImage from "@assets/ChatGPT Image 2025年6月6日 11_50_37.png";
 export function Home() {
   const { language, getLanguageRoute } = useLanguage();
 
-  // Use static news data with filtering for recent articles
-  const news = newsData.slice(0, 6);
+  // Fetch latest news from API
+  const { data: news = [] } = useQuery({
+    queryKey: ['/api/news'],
+    queryFn: async () => {
+      const response = await fetch('http://localhost:5000/api/news');
+      if (!response.ok) throw new Error('Failed to fetch news');
+      return response.json();
+    }
+  });
 
   const { data: featuredImages } = useQuery<GalleryImage[]>({
     queryKey: ['/api/gallery', language, { featured: true, limit: 6 }],
@@ -27,7 +34,7 @@ export function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-corporate-blue to-blue-700 overflow-hidden min-h-[60vh]">
+      <section className="relative overflow-hidden min-h-[60vh]" style={{background: 'linear-gradient(135deg, #186c84 0%, #1f7a94 50%, #2a8da5 100%)'}}>
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
@@ -46,13 +53,13 @@ export function Home() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up mt-8">
               <Link href={getLanguageRoute('/ceo-message')}>
-                <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
+                <Button size="lg" className="bg-white hover:bg-slate-100" style={{color: '#186c84'}}>
                   <Eye className="mr-2 h-5 w-5" />
                   {getTranslation('hero.ceoMessage', language)}
                 </Button>
               </Link>
               <Link href={getLanguageRoute('/about')}>
-                <Button size="lg" className="bg-white text-corporate-blue hover:bg-slate-100">
+                <Button size="lg" className="bg-white hover:bg-slate-100" style={{color: '#186c84'}}>
                   {language === 'jp' && '会社紹介'}
                   {language === 'ko' && '회사 소개'}
                   {language === 'en' && 'About Us'}
@@ -70,20 +77,20 @@ export function Home() {
       </section>
 
       {/* Company Stats */}
-      <section className="py-16 bg-white">
+      <section className="py-16 corporate-accent-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-corporate-blue mb-2">30</div>
+              <div className="text-4xl font-bold mb-2" style={{color: '#186c84'}}>30</div>
               <div className="text-slate-600 font-medium">
-                {language === 'jp' && '周年記念'}
+                {language === 'jp' && '周年'}
                 {language === 'ko' && '주년 기념'}
                 {language === 'en' && 'Years Anniversary'}
                 {language === 'zh' && '周年纪念'}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-corporate-blue mb-2">3</div>
+              <div className="text-4xl font-bold mb-2" style={{color: '#186c84'}}>3</div>
               <div className="text-slate-600 font-medium">
                 {language === 'jp' && '事業部'}
                 {language === 'ko' && '사업부'}
@@ -92,7 +99,7 @@ export function Home() {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-corporate-blue mb-2">11</div>
+              <div className="text-4xl font-bold mb-2" style={{color: '#186c84'}}>12</div>
               <div className="text-slate-600 font-medium">
                 {language === 'jp' && '貿易国'}
                 {language === 'ko' && '무역국'}
@@ -101,7 +108,7 @@ export function Home() {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-corporate-blue mb-2">25000+</div>
+              <div className="text-4xl font-bold mb-2" style={{color: '#186c84'}}>25000+</div>
               <div className="text-slate-600 font-medium">
                 {language === 'jp' && '取り扱い製品数'}
                 {language === 'ko' && '취급 제품 수'}
@@ -136,7 +143,7 @@ export function Home() {
             {/* Medical Division */}
             <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{backgroundColor: '#186c84'}}>
                   <Eye className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
@@ -179,7 +186,7 @@ export function Home() {
             {/* Auto Division */}
             <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{backgroundColor: '#186c84'}}>
                   <Car className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
@@ -223,7 +230,7 @@ export function Home() {
             {/* New Business Division */}
             <Card className="hover:shadow-xl transition-shadow duration-200 bg-white">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{backgroundColor: '#186c84'}}>
                   <Building className="text-white h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
@@ -287,9 +294,10 @@ export function Home() {
                   </Button>
                 </Link>
               </div>
-              
+
+
               <div className="space-y-4">
-                {news?.filter(article => article.category === 'announcement').slice(0, 3).map((article) => (
+                {news?.filter(article => article.category === 'announcement' || article.category === 'general').slice(0, 3).map((article) => (
                   <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
                     <div className="p-4 bg-white border border-slate-200 rounded-lg hover:border-corporate-blue hover:shadow-md transition-all duration-200 cursor-pointer">
                       <div className="flex items-start justify-between gap-4">
@@ -299,7 +307,10 @@ export function Home() {
                               {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
                             </span>
                           </div>
-                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-corporate-blue transition-colors">
+
+                        
+                        
+                        00 line-clamp-2 hover:text-corporate-blue transition-colors">
                             {getMultiLanguageContent(article.title, language)}
                           </h3>
                         </div>
@@ -333,7 +344,7 @@ export function Home() {
               <div className="space-y-4">
                 {news?.filter(article => article.category === 'medical').slice(0, 3).map((article) => (
                   <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
-                    <div className="p-4 bg-white border border-slate-200 rounded-lg hover:border-green-500 hover:shadow-md transition-all duration-200 cursor-pointer">
+                    <div className="p-4 bg-white border border-slate-200 rounded-lg hover:border-corporate-blue hover:shadow-md transition-all duration-200 cursor-pointer">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
@@ -347,7 +358,7 @@ export function Home() {
                               {language === 'zh' && '医疗'}
                             </Badge>
                           </div>
-                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-green-600 transition-colors">
+                          <h3 className="font-medium text-slate-900 line-clamp-2 hover:text-corporate-accent transition-colors">
                             {getMultiLanguageContent(article.title, language)}
                           </h3>
                         </div>
@@ -362,8 +373,9 @@ export function Home() {
         </div>
       </section>
 
+
       {/* Call to Action */}
-      <section className="py-16 lg:py-24 bg-corporate-blue">
+      <section className="py-16 lg:py-24 corporate-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {getTranslation('cta.title', language)}

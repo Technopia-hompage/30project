@@ -68,7 +68,7 @@ export function Gallery() {
       <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
               {language === 'jp' && 'ギャラリー'}
               {language === 'ko' && '갤러리'}
               {language === 'en' && 'Gallery'}
@@ -196,14 +196,9 @@ export function Gallery() {
                         {getMultiLanguageContent(image.title, language)}
                       </h3>
                       <div className="flex items-center justify-between text-sm text-slate-500">
-                        <span>{image.year}年</span>
+                        <span>{new Date(image.createdAt).getFullYear()}年</span>
                         <span className="capitalize">{image.category}</span>
                       </div>
-                      {image.description && (
-                        <p className="text-sm text-slate-600 mt-2 line-clamp-2">
-                          {getMultiLanguageContent(image.description, language)}
-                        </p>
-                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -212,7 +207,7 @@ export function Gallery() {
           ) : (
             <Card>
               <CardContent className="p-12 text-center">
-                <Grid className="h-16 w-16 text-slate-300 mx-auto mb-4" />
+                <LayoutGrid className="h-16 w-16 text-slate-300 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   {language === 'jp' && '画像が見つかりません'}
                   {language === 'ko' && '이미지를 찾을 수 없습니다'}
@@ -285,17 +280,12 @@ export function Gallery() {
                 {getMultiLanguageContent(lightboxImage.title, language)}
               </h3>
               <div className="flex items-center gap-4 text-white text-sm opacity-80">
-                <span>{lightboxImage.year}年</span>
+                <span>{new Date(lightboxImage.createdAt).getFullYear()}年</span>
                 <span className="capitalize">{lightboxImage.category}</span>
                 {filteredImages.length > 1 && (
                   <span>{lightboxIndex + 1} / {filteredImages.length}</span>
                 )}
               </div>
-              {lightboxImage.description && (
-                <p className="text-white text-sm mt-2 opacity-90">
-                  {getMultiLanguageContent(lightboxImage.description, language)}
-                </p>
-              )}
             </div>
           </div>
         </div>

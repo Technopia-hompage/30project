@@ -14,7 +14,7 @@ export function CeoMessage() {
           <div className="w-16 h-16 bg-corporate-blue rounded-xl flex items-center justify-center mx-auto mb-6">
             <Quote className="text-white h-8 w-8" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
             {language === 'jp' && '社長メッセージ｜創業30周年に寄せて'}
             {language === 'ko' && '사장 메시지｜창업 30주년을 맞이하여'}
             {language === 'en' && 'CEO Message | On Our 30th Anniversary'}

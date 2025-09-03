@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ArrowLeft, Plus, Edit, Trash2, Upload, Save, X, Settings } from 'lucide-react';
+import { ArrowLeft, Plus, Edit, Trash2, Upload, Save, X, Settings, FileText } from 'lucide-react';
 import { Link } from 'wouter';
 import { toast } from '@/hooks/use-toast';
 
@@ -560,7 +560,7 @@ export function AutoAdmin() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-b-corporate-blue mx-auto"></div>
           <p className="mt-4 text-lg">
             {language === 'jp' ? '読み込み中...' : 
              language === 'ko' ? '로딩 중...' : 
@@ -574,7 +574,7 @@ export function AutoAdmin() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Header */}
-      <section className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 text-white py-8">
+      <section className="corporate-gradient text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6">
             <Link href="/auto">
@@ -607,6 +607,14 @@ export function AutoAdmin() {
                   {language === 'ko' && '휠 스펙 관리'}
                   {language === 'en' && 'Wheel Specs Management'}
                   {language === 'zh' && '轮毂规格管理'}
+                </Button>
+              </Link>
+              <Link href="/features-editor">
+                <Button variant="outline" className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100">
+                  {language === 'jp' && '特徴編集'}
+                  {language === 'ko' && '특징 편집'}
+                  {language === 'en' && 'Features Editor'}
+                  {language === 'zh' && '特征编辑'}
                 </Button>
               </Link>
             </div>
@@ -970,12 +978,12 @@ export function AutoAdmin() {
                      language === 'ko' ? '설명 (일본어)' : 
                      language === 'en' ? 'Description (Japanese)' : '描述 (日文)'}
                   </label>
-                                      <Textarea
-                      value={editingBrand.description?.jp || ''}
-                      onChange={(e) => setEditingBrand({
-                        ...editingBrand, 
-                        description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), jp: e.target.value}
-                      })}
+                  <Textarea
+                    value={editingBrand.description?.jp || ''}
+                    onChange={(e) => setEditingBrand({
+                      ...editingBrand, 
+                      description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), jp: e.target.value}
+                    })}
                     />
                 </div>
 
@@ -985,12 +993,12 @@ export function AutoAdmin() {
                      language === 'ko' ? '설명 (한국어)' : 
                      language === 'en' ? 'Description (Korean)' : '描述 (韩文)'}
                   </label>
-                                      <Textarea
-                      value={editingBrand.description?.ko || ''}
-                      onChange={(e) => setEditingBrand({
-                        ...editingBrand, 
-                        description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), ko: e.target.value}
-                      })}
+                  <Textarea
+                    value={editingBrand.description?.ko || ''}
+                    onChange={(e) => setEditingBrand({
+                      ...editingBrand, 
+                      description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), ko: e.target.value}
+                    })}
                     />
                 </div>
 
@@ -1000,12 +1008,12 @@ export function AutoAdmin() {
                      language === 'ko' ? '설명 (영어)' : 
                      language === 'en' ? 'Description (English)' : '描述 (英文)'}
                   </label>
-                                      <Textarea
-                      value={editingBrand.description?.en || ''}
-                      onChange={(e) => setEditingBrand({
-                        ...editingBrand, 
-                        description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), en: e.target.value}
-                      })}
+                  <Textarea
+                    value={editingBrand.description?.en || ''}
+                    onChange={(e) => setEditingBrand({
+                      ...editingBrand, 
+                      description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), en: e.target.value}
+                    })}
                     />
                 </div>
 
@@ -1015,12 +1023,12 @@ export function AutoAdmin() {
                      language === 'ko' ? '설명 (중국어)' : 
                      language === 'en' ? 'Description (Chinese)' : '描述 (中文)'}
                   </label>
-                                      <Textarea
-                      value={editingBrand.description?.zh || ''}
-                      onChange={(e) => setEditingBrand({
-                        ...editingBrand, 
-                        description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), zh: e.target.value}
-                      })}
+                  <Textarea
+                    value={editingBrand.description?.zh || ''}
+                    onChange={(e) => setEditingBrand({
+                      ...editingBrand, 
+                      description: {...(editingBrand.description || { jp: '', ko: '', en: '', zh: '' }), zh: e.target.value}
+                    })}
                     />
                 </div>
 

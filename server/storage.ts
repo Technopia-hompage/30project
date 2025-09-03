@@ -44,6 +44,7 @@ export interface IStorage {
     limit?: number; 
     published?: boolean;
   }): Promise<NewsArticle[]>;
+  getAllNewsArticles(): NewsArticle[];
   getNewsArticleById(id: number, language?: string): Promise<NewsArticle | undefined>;
   createNewsArticle(article: InsertNewsArticle): Promise<NewsArticle>;
 
@@ -100,6 +101,12 @@ export interface IStorage {
 }
 
 export class DatabaseStorage implements IStorage {
+  private memStorage: MemStorage;
+
+  constructor() {
+    this.memStorage = new MemStorage();
+  }
+
   async getUser(id: number): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.id, id));
     return user || undefined;
@@ -124,8 +131,6 @@ export class DatabaseStorage implements IStorage {
     limit?: number; 
     published?: boolean;
   }): Promise<NewsArticle[]> {
-    let query = db.select().from(newsArticles);
-
     const conditions = [];
     
     if (filters?.published !== undefined) {
@@ -138,17 +143,23 @@ export class DatabaseStorage implements IStorage {
       conditions.push(eq(newsArticles.category, filters.category));
     }
 
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
+    if (conditions.length > 0 && filters?.limit) {
+      return await db.select().from(newsArticles)
+        .where(and(...conditions))
+        .orderBy(desc(newsArticles.publishedAt))
+        .limit(filters.limit);
+    } else if (conditions.length > 0) {
+      return await db.select().from(newsArticles)
+        .where(and(...conditions))
+        .orderBy(desc(newsArticles.publishedAt));
+    } else if (filters?.limit) {
+      return await db.select().from(newsArticles)
+        .orderBy(desc(newsArticles.publishedAt))
+        .limit(filters.limit);
     }
 
-    query = query.orderBy(desc(newsArticles.publishedAt));
-
-    if (filters?.limit) {
-      query = query.limit(filters.limit);
-    }
-
-    return await query;
+    return await db.select().from(newsArticles)
+      .orderBy(desc(newsArticles.publishedAt));
   }
 
   async getNewsArticleById(id: number, language?: string): Promise<NewsArticle | undefined> {
@@ -160,11 +171,18 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createNewsArticle(article: InsertNewsArticle): Promise<NewsArticle> {
-    const [newArticle] = await db
-      .insert(newsArticles)
-      .values(article)
-      .returning();
-    return newArticle;
+    try {
+      // 데이터베이스에 저장 시도
+      const [newArticle] = await db
+        .insert(newsArticles)
+        .values(article)
+        .returning();
+      return newArticle;
+    } catch (error) {
+      // 데이터베이스 저장 실패 시 메모리 스토리지에 저장
+      console.log('Database save failed, using memory storage:', error);
+      return await this.memStorage.createNewsArticle(article);
+    }
   }
 
 
@@ -176,8 +194,6 @@ export class DatabaseStorage implements IStorage {
     type?: string;
     active?: boolean;
   }): Promise<JobOpening[]> {
-    let query = db.select().from(jobOpenings);
-
     const conditions = [];
 
     if (filters?.active !== undefined) {
@@ -199,12 +215,13 @@ export class DatabaseStorage implements IStorage {
     }
 
     if (conditions.length > 0) {
-      query = query.where(and(...conditions));
+      return await db.select().from(jobOpenings)
+        .where(and(...conditions))
+        .orderBy(desc(jobOpenings.createdAt));
     }
 
-    query = query.orderBy(desc(jobOpenings.createdAt));
-
-    return await query;
+    return await db.select().from(jobOpenings)
+      .orderBy(desc(jobOpenings.createdAt));
   }
 
   async getJobOpeningById(id: number, language?: string): Promise<JobOpening | undefined> {
@@ -232,15 +249,14 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getContactMessages(status?: string): Promise<ContactMessage[]> {
-    let query = db.select().from(contactMessages);
-
     if (status) {
-      query = query.where(eq(contactMessages.status, status));
+      return await db.select().from(contactMessages)
+        .where(eq(contactMessages.status, status))
+        .orderBy(desc(contactMessages.createdAt));
     }
 
-    query = query.orderBy(desc(contactMessages.createdAt));
-
-    return await query;
+    return await db.select().from(contactMessages)
+      .orderBy(desc(contactMessages.createdAt));
   }
 
   async getCompanyTimeline(language?: string): Promise<CompanyTimelineEvent[]> {
@@ -291,13 +307,14 @@ export class DatabaseStorage implements IStorage {
 
   // Wheel Brand methods
   async getWheelBrands(active?: boolean): Promise<WheelBrand[]> {
-    let query = db.select().from(wheelBrands);
-
     if (active !== undefined) {
-      query = query.where(eq(wheelBrands.active, active));
+      return await db.select().from(wheelBrands)
+        .where(eq(wheelBrands.active, active))
+        .orderBy(wheelBrands.sortOrder, wheelBrands.name);
     }
-
-    return await query.orderBy(wheelBrands.sortOrder, wheelBrands.name);
+    
+    return await db.select().from(wheelBrands)
+      .orderBy(wheelBrands.sortOrder, wheelBrands.name);
   }
 
   async getWheelBrandById(id: number): Promise<WheelBrand | undefined> {
@@ -331,8 +348,6 @@ export class DatabaseStorage implements IStorage {
 
   // Wheel Model methods
   async getWheelModels(brandId?: number, status?: string): Promise<WheelModel[]> {
-    let query = db.select().from(wheelModels);
-
     const conditions = [];
 
     if (brandId) {
@@ -344,10 +359,13 @@ export class DatabaseStorage implements IStorage {
     }
 
     if (conditions.length > 0) {
-      query = query.where(and(...conditions));
+      return await db.select().from(wheelModels)
+        .where(and(...conditions))
+        .orderBy(wheelModels.sortOrder, wheelModels.name);
     }
 
-    return await query.orderBy(wheelModels.sortOrder, wheelModels.name);
+    return await db.select().from(wheelModels)
+      .orderBy(wheelModels.sortOrder, wheelModels.name);
   }
 
   async getWheelModelById(id: number): Promise<WheelModel | undefined> {
@@ -381,8 +399,6 @@ export class DatabaseStorage implements IStorage {
 
   // Wheel Spec methods
   async getWheelSpecs(modelId?: number, brandId?: number): Promise<WheelSpec[]> {
-    let query = db.select().from(wheelSpecs);
-
     const conditions = [];
 
     if (modelId) {
@@ -394,10 +410,12 @@ export class DatabaseStorage implements IStorage {
     }
 
     if (conditions.length > 0) {
-      query = query.where(and(...conditions));
+      return await db.select().from(wheelSpecs)
+        .where(and(...conditions))
+        .orderBy(wheelSpecs.id);
     }
 
-    return await query.orderBy(wheelSpecs.id);
+    return await db.select().from(wheelSpecs).orderBy(wheelSpecs.id);
   }
 
   async getWheelSpecById(id: number): Promise<WheelSpec | undefined> {
@@ -428,6 +446,134 @@ export class DatabaseStorage implements IStorage {
   async deleteWheelSpec(id: number): Promise<void> {
     await db.delete(wheelSpecs).where(eq(wheelSpecs.id, id));
   }
+
+  getAllNewsArticles(): NewsArticle[] {
+    // 동기적으로 데이터베이스에서 조회할 수 없으므로, 
+    // 기본 뉴스 데이터와 메모리 스토리지의 추가 뉴스를 합쳐서 반환
+    const { newsData } = require('../shared/newsData');
+    const memArticles = this.memStorage.getAllNewsArticles();
+    
+    // 기본 데이터와 메모리 데이터를 합치되, 중복 제거 (ID 기준)
+    const allArticles = [...newsData];
+    const existingIds = new Set(newsData.map(article => article.id));
+    
+    // 메모리에만 있는 새로운 뉴스 추가
+    memArticles.forEach(article => {
+      if (!existingIds.has(article.id)) {
+        allArticles.push(article);
+      }
+    });
+    
+    return allArticles;
+  }
 }
 
-export const storage = new DatabaseStorage();
+// 임시 메모리 스토리지 추가
+class MemStorage implements IStorage {
+  private newsArticles: NewsArticle[] = [];
+  private users: User[] = [];
+  private jobOpenings: JobOpening[] = [];
+  private contactMessages: ContactMessage[] = [];
+  private companyTimeline: CompanyTimelineEvent[] = [];
+  private businessDivisions: BusinessDivision[] = [];
+  private wheelBrands: WheelBrand[] = [];
+  private wheelModels: WheelModel[] = [];
+  private wheelSpecs: WheelSpec[] = [];
+  private nextNewsId = 1;
+
+  constructor() {
+    // 기본 뉴스 데이터를 메모리에 로드
+    this.loadDefaultNewsData();
+  }
+
+  private async loadDefaultNewsData() {
+    try {
+      const { newsData } = await import('../shared/newsData');
+      // 기본 데이터의 ID와 충돌하지 않도록 nextNewsId 설정
+      this.nextNewsId = Math.max(...newsData.map(article => article.id)) + 1;
+      // 기본 뉴스 데이터를 메모리에 추가
+      this.newsArticles.push(...newsData);
+    } catch (error) {
+      console.error('Failed to load default news data:', error);
+    }
+  }
+
+  // News methods
+  async getNewsArticles(filters?: any): Promise<NewsArticle[]> {
+    return this.newsArticles.filter(article => {
+      if (filters?.published !== undefined && article.published !== filters.published) {
+        return false;
+      }
+      if (filters?.category && article.category !== filters.category) {
+        return false;
+      }
+      return true;
+    });
+  }
+
+  getAllNewsArticles(): NewsArticle[] {
+    return this.newsArticles;
+  }
+
+  async getNewsArticleById(id: number): Promise<NewsArticle | undefined> {
+    return this.newsArticles.find(article => article.id === id);
+  }
+
+  async createNewsArticle(article: InsertNewsArticle): Promise<NewsArticle> {
+    const newArticle: NewsArticle = {
+      ...article,
+      id: this.nextNewsId++,
+      category: article.category || 'general',
+      published: article.published || false,
+      excerpt: article.excerpt || null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      publishedAt: article.published ? new Date() : null
+    };
+    this.newsArticles.push(newArticle);
+    return newArticle;
+  }
+
+  // 다른 메소드들은 임시로 빈 구현
+  async getUser(id: number): Promise<User | undefined> { return undefined; }
+  async getUserByUsername(username: string): Promise<User | undefined> { return undefined; }
+  async createUser(user: InsertUser): Promise<User> { throw new Error('Not implemented'); }
+  
+  async getJobOpenings(filters?: { language?: string; department?: string; location?: string; type?: string; active?: boolean; }): Promise<JobOpening[]> { return []; }
+  async getJobOpeningById(id: number, language?: string): Promise<JobOpening | undefined> { return undefined; }
+  async createJobOpening(job: InsertJobOpening): Promise<JobOpening> { throw new Error('Not implemented'); }
+  
+  async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> { throw new Error('Not implemented'); }
+  async getContactMessages(status?: string): Promise<ContactMessage[]> { return []; }
+  
+  async getCompanyTimeline(language?: string): Promise<CompanyTimelineEvent[]> { return []; }
+  async createTimelineEvent(event: InsertCompanyTimelineEvent): Promise<CompanyTimelineEvent> { throw new Error('Not implemented'); }
+  
+  async getBusinessDivisions(language?: string): Promise<BusinessDivision[]> { return []; }
+  async createBusinessDivision(division: InsertBusinessDivision): Promise<BusinessDivision> { throw new Error('Not implemented'); }
+  
+  async getWheelBrands(active?: boolean): Promise<WheelBrand[]> { return []; }
+  async getWheelBrandById(id: number): Promise<WheelBrand | undefined> { return undefined; }
+  async createWheelBrand(brand: InsertWheelBrand): Promise<WheelBrand> { throw new Error('Not implemented'); }
+  async updateWheelBrand(id: number, brand: Partial<InsertWheelBrand>): Promise<WheelBrand> { throw new Error('Not implemented'); }
+  async deleteWheelBrand(id: number): Promise<void> {}
+  
+  async getWheelModels(brandId?: number, status?: string): Promise<WheelModel[]> { return []; }
+  async getWheelModelById(id: number): Promise<WheelModel | undefined> { return undefined; }
+  async createWheelModel(model: InsertWheelModel): Promise<WheelModel> { throw new Error('Not implemented'); }
+  async updateWheelModel(id: number, model: Partial<InsertWheelModel>): Promise<WheelModel> { throw new Error('Not implemented'); }
+  async deleteWheelModel(id: number): Promise<void> {}
+  
+  async getWheelSpecs(modelId?: number, brandId?: number): Promise<WheelSpec[]> { return []; }
+  async getWheelSpecById(id: number): Promise<WheelSpec | undefined> { return undefined; }
+  async createWheelSpec(spec: InsertWheelSpec): Promise<WheelSpec> { throw new Error('Not implemented'); }
+  async updateWheelSpec(id: number, spec: Partial<InsertWheelSpec>): Promise<WheelSpec> { throw new Error('Not implemented'); }
+  async deleteWheelSpec(id: number): Promise<void> {}
+  
+  async getWebsiteStats(): Promise<{ totalNews: number; totalJobs: number; totalMessages: number; }> {
+    return { totalNews: this.newsArticles.length, totalJobs: 0, totalMessages: 0 };
+  }
+}
+
+// 임시로 메모리 스토리지 사용
+export const storage = new MemStorage();

@@ -150,7 +150,7 @@ export function ConferenceInfo() {
             <div className="w-20 h-20 bg-corporate-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Calendar className="text-white h-10 w-10" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
               {language === 'jp' && '学会情報'}
               {language === 'ko' && '학회 정보'}
               {language === 'en' && 'Conference Information'}

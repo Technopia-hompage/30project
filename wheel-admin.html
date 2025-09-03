@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>휠 관리 화면 - Technopia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(to right, #1e293b, #1e40af, #1e293b);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .header-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .tab-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #f9fafb;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-btn:hover {
+            background: #2563eb;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: #6b7280;
+            margin: 0.5rem 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge.active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge.inactive {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn:hover {
+            background: #f9fafb;
+        }
+
+        .btn.danger {
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        .btn.danger:hover {
+            background: #fef2f2;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .table tr:hover {
+            background: #f9fafb;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 2px solid #e5e7eb;
+            border-top: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .select {
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background: white;
+            min-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .tab-navigation {
+                flex-direction: column;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .form-grid,
+            .form-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <a href="/auto" class="back-btn">
+                    ← Auto 페이지로 돌아가기
+                </a>
+                <h1 class="header-title">휠 관리 화면</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('brands')">브랜드・모델 관리</button>
+            <button class="tab-btn" onclick="switchTab('specs')">스펙 관리</button>
+        </div>
+
+        <!-- Brands & Models Tab -->
+        <div id="brands-tab" class="tab-content">
+            <div class="section-header">
+                <h2 class="section-title">휠 브랜드 관리</h2>
+                <button class="add-btn" onclick="openBrandModal()">
+                    + 브랜드 추가
+                </button>
+            </div>
+
+            <div id="brands-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specs Management Tab -->
+        <div id="specs-tab" class="tab-content" style="display: none;">
+            <div class="section-header">
+                <h2 class="section-title">휠 스펙 관리</h2>
+                <button class="add-btn" onclick="openSpecModal()">
+                    + 스펙 추가
+                </button>
+            </div>
+
+            <div class="filters">
+                <select class="select" id="brand-filter" onchange="filterSpecs()">
+                    <option value="-1">모든 브랜드</option>
+                </select>
+                <select class="select" id="model-filter" onchange="filterSpecs()">
+                    <option value="-1">모든 모델</option>
+                </select>
+            </div>
+
+            <div id="specs-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brand Modal -->
+    <div id="brand-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="brand-modal-title">브랜드 추가</h3>
+            </div>
+            <form id="brand-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">브랜드명 (영어)</label>
+                        <input type="text" class="form-input" id="brand-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">브랜드명 (일본어)</label>
+                        <input type="text" class="form-input" id="brand-name-jp" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">설명 (일본어)</label>
+                    <textarea class="form-textarea" id="brand-desc-jp"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">설명 (한국어)</label>
+                    <textarea class="form-textarea" id="brand-desc-ko"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">설명 (영어)</label>
+                    <textarea class="form-textarea" id="brand-desc-en"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">설명 (중국어)</label>
+                    <textarea class="form-textarea" id="brand-desc-zh"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn" onclick="closeBrandModal()">취소</button>
+                    <button type="submit" class="add-btn">저장</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Spec Modal -->
+    <div id="spec-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="spec-modal-title">스펙 추가</h3>
+            </div>
+            <form id="spec-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">브랜드명</label>
+                        <input type="text" class="form-input" id="spec-brand-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">모델명</label>
+                        <input type="text" class="form-input" id="spec-model-name" required>
+                    </div>
+                </div>
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label class="form-label">사이즈</label>
+                        <input type="text" class="form-input" id="spec-size" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">H-PCD</label>
+                        <input type="text" class="form-input" id="spec-pcd" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">구멍 수</label>
+                        <input type="text" class="form-input" id="spec-holes" required>
+                    </div>
+                </div>
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label class="form-label">인셋</label>
+                        <input type="text" class="form-input" id="spec-inset" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">디스크 돌출</label>
+                        <input type="text" class="form-input" id="spec-disc-protrusion" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">허브 높이</label>
+                        <input type="text" class="form-input" id="spec-hub-height" required>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">가격</label>
+                        <input type="number" class="form-input" id="spec-price" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">무게</label>
+                        <input type="text" class="form-input" id="spec-weight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">컬러</label>
+                    <input type="text" class="form-input" id="spec-color" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">액세서리</label>
+                    <textarea class="form-textarea" id="spec-accessories"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn" onclick="closeSpecModal()">취소</button>
+                    <button type="submit" class="add-btn">저장</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentTab = 'brands';
+        let wheelBrands = [];
+        let wheelModels = [];
+        let wheelSpecs = [];
+        let editingBrand = null;
+        let editingSpec = null;
+        let selectedBrandId = -1;
+        let selectedModelId = -1;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBrands();
+            loadSpecs();
+            setupEventListeners();
+        });
+
+        // Tab switching
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show/hide tab content
+            document.getElementById('brands-tab').style.display = tab === 'brands' ? 'block' : 'none';
+            document.getElementById('specs-tab').style.display = tab === 'specs' ? 'block' : 'none';
+            
+            if (tab === 'specs') {
+                loadSpecs();
+            }
+        }
+
+        // API functions
+        async function fetchAPI(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                alert('오류가 발생했습니다: ' + error.message);
+                throw error;
+            }
+        }
+
+        // Load brands
+        async function loadBrands() {
+            try {
+                wheelBrands = await fetchAPI('/api/wheels/brands');
+                renderBrands();
+                updateBrandFilter();
+            } catch (error) {
+                document.getElementById('brands-container').innerHTML = 
+                    '<div class="empty-state">브랜드 데이터를 불러오는데 실패했습니다.</div>';
+            }
+        }
+
+        // Load specs
+        async function loadSpecs() {
+            try {
+                wheelSpecs = await fetchAPI('/api/wheels/specs');
+                renderSpecs();
+            } catch (error) {
+                document.getElementById('specs-container').innerHTML = 
+                    '<div class="empty-state">스펙 데이터를 불러오는데 실패했습니다.</div>';
+            }
+        }
+
+        // Render brands
+        function renderBrands() {
+            const container = document.getElementById('brands-container');
+            
+            if (wheelBrands.length === 0) {
+                container.innerHTML = '<div class="empty-state">등록된 브랜드가 없습니다.</div>';
+                return;
+            }
+
+            container.innerHTML = wheelBrands.map(brand => `
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">${brand.name} (${brand.nameJp})</h3>
+                            <p class="card-description">${brand.description?.jp || ''}</p>
+                            <span class="badge ${brand.active ? 'active' : 'inactive'}">
+                                ${brand.active ? '활성' : '비활성'}
+                            </span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn" onclick="editBrand(${brand.id})">
+                                편집
+                            </button>
+                            <button class="btn danger" onclick="deleteBrand(${brand.id})">
+                                삭제
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render specs
+        function renderSpecs() {
+            const container = document.getElementById('specs-container');
+            const filteredSpecs = filterSpecsData();
+            
+            if (filteredSpecs.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>표시할 스펙 데이터가 없습니다.</p>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">필터를 변경하거나 새로운 스펙을 추가하세요.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>브랜드</th>
+                            <th>모델</th>
+                            <th>사이즈</th>
+                            <th>인셋</th>
+                            <th>H-PCD</th>
+                            <th>허브직경(Φ)</th>
+                            <th>허브높이(mm)</th>
+                            <th>디스크볼록(mm)</th>
+                            <th>무게</th>
+                            <th>가격</th>
+                            <th>작업</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${filteredSpecs.map(spec => `
+                            <tr>
+                                <td>${spec.brandName}</td>
+                                <td>${spec.modelName}</td>
+                                <td>${spec.size}</td>
+                                <td>${spec.inset}</td>
+                                <td>${spec.pcd}</td>
+                                <td>${spec.hubDiameter || "67.1"}</td>
+                                <td>${spec.hubHeight}</td>
+                                <td>${spec.discProtrusion}</td>
+                                <td>${spec.weight || "-"}</td>
+                                <td>¥${spec.price.toLocaleString()}</td>
+                                <td>
+                                    <div class="card-actions">
+                                        <button class="btn" onclick="editSpec(${spec.id})">
+                                            편집
+                                        </button>
+                                        <button class="btn danger" onclick="deleteSpec(${spec.id})">
+                                            삭제
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Filter specs data
+        function filterSpecsData() {
+            return wheelSpecs.filter(spec => {
+                if (selectedBrandId > 0 && spec.brandId !== selectedBrandId) return false;
+                if (selectedModelId > 0 && spec.modelId !== selectedModelId) return false;
+                return true;
+            });
+        }
+
+        // Update brand filter
+        function updateBrandFilter() {
+            const select = document.getElementById('brand-filter');
+            select.innerHTML = '<option value="-1">모든 브랜드</option>' +
+                wheelBrands.map(brand => 
+                    `<option value="${brand.id}">${brand.name} (${brand.nameJp})</option>`
+                ).join('');
+        }
+
+        // Filter specs
+        function filterSpecs() {
+            selectedBrandId = parseInt(document.getElementById('brand-filter').value);
+            selectedModelId = parseInt(document.getElementById('model-filter').value);
+            renderSpecs();
+        }
+
+        // Modal functions
+        function openBrandModal(brand = null) {
+            editingBrand = brand;
+            const modal = document.getElementById('brand-modal');
+            const title = document.getElementById('brand-modal-title');
+            const form = document.getElementById('brand-form');
+
+            title.textContent = brand ? '브랜드 편집' : '브랜드 추가';
+            
+            if (brand) {
+                document.getElementById('brand-name').value = brand.name;
+                document.getElementById('brand-name-jp').value = brand.nameJp;
+                document.getElementById('brand-desc-jp').value = brand.description?.jp || '';
+                document.getElementById('brand-desc-ko').value = brand.description?.ko || '';
+                document.getElementById('brand-desc-en').value = brand.description?.en || '';
+                document.getElementById('brand-desc-zh').value = brand.description?.zh || '';
+            } else {
+                form.reset();
+            }
+
+            modal.classList.add('show');
+        }
+
+        function closeBrandModal() {
+            document.getElementById('brand-modal').classList.remove('show');
+            editingBrand = null;
+        }
+
+        function openSpecModal(spec = null) {
+            editingSpec = spec;
+            const modal = document.getElementById('spec-modal');
+            const title = document.getElementById('spec-modal-title');
+            const form = document.getElementById('spec-form');
+
+            title.textContent = spec ? '스펙 편집' : '스펙 추가';
+            
+            if (spec) {
+                document.getElementById('spec-brand-name').value = spec.brandName;
+                document.getElementById('spec-model-name').value = spec.modelName;
+                document.getElementById('spec-size').value = spec.size;
+                document.getElementById('spec-pcd').value = spec.pcd;
+                document.getElementById('spec-holes').value = spec.holes;
+                document.getElementById('spec-inset').value = spec.inset;
+                document.getElementById('spec-disc-protrusion').value = spec.discProtrusion;
+                document.getElementById('spec-hub-height').value = spec.hubHeight;
+                document.getElementById('spec-price').value = spec.price;
+                document.getElementById('spec-weight').value = spec.weight || '';
+                document.getElementById('spec-color').value = spec.color;
+                document.getElementById('spec-accessories').value = spec.accessories;
+            } else {
+                form.reset();
+            }
+
+            modal.classList.add('show');
+        }
+
+        function closeSpecModal() {
+            document.getElementById('spec-modal').classList.remove('show');
+            editingSpec = null;
+        }
+
+        // CRUD operations
+        async function saveBrand(formData) {
+            try {
+                if (editingBrand) {
+                    await fetchAPI(`/api/wheels/brands/${editingBrand.id}`, {
+                        method: 'PUT',
+                        body: JSON.stringify(formData)
+                    });
+                } else {
+                    await fetchAPI('/api/wheels/brands', {
+                        method: 'POST',
+                        body: JSON.stringify(formData)
+                    });
+                }
+                
+                closeBrandModal();
+                loadBrands();
+                alert(editingBrand ? '브랜드가 업데이트되었습니다.' : '브랜드가 생성되었습니다.');
+            } catch (error) {
+                console.error('Failed to save brand:', error);
+            }
+        }
+
+        async function saveSpec(formData) {
+            try {
+                if (editingSpec) {
+                    await fetchAPI(`/api/wheels/specs/${editingSpec.id}`, {
+                        method: 'PUT',
+                        body: JSON.stringify(formData)
+                    });
+                } else {
+                    await fetchAPI('/api/wheels/specs', {
+                        method: 'POST',
+                        body: JSON.stringify(formData)
+                    });
+                }
+                
+                closeSpecModal();
+                loadSpecs();
+                alert(editingSpec ? '스펙이 업데이트되었습니다.' : '스펙이 생성되었습니다.');
+            } catch (error) {
+                console.error('Failed to save spec:', error);
+            }
+        }
+
+        async function deleteBrand(id) {
+            if (!confirm('이 브랜드를 삭제하시겠습니까?')) return;
+            
+            try {
+                await fetchAPI(`/api/wheels/brands/${id}`, { method: 'DELETE' });
+                loadBrands();
+                alert('브랜드가 삭제되었습니다.');
+            } catch (error) {
+                console.error('Failed to delete brand:', error);
+            }
+        }
+
+        async function deleteSpec(id) {
+            if (!confirm('이 스펙을 삭제하시겠습니까?')) return;
+            
+            try {
+                await fetchAPI(`/api/wheels/specs/${id}`, { method: 'DELETE' });
+                loadSpecs();
+                alert('스펙이 삭제되었습니다.');
+            } catch (error) {
+                console.error('Failed to delete spec:', error);
+            }
+        }
+
+        // Edit functions
+        function editBrand(id) {
+            const brand = wheelBrands.find(b => b.id === id);
+            if (brand) {
+                openBrandModal(brand);
+            }
+        }
+
+        function editSpec(id) {
+            const spec = wheelSpecs.find(s => s.id === id);
+            if (spec) {
+                openSpecModal(spec);
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Brand form
+            document.getElementById('brand-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = {
+                    name: document.getElementById('brand-name').value,
+                    nameJp: document.getElementById('brand-name-jp').value,
+                    description: {
+                        jp: document.getElementById('brand-desc-jp').value,
+                        ko: document.getElementById('brand-desc-ko').value,
+                        en: document.getElementById('brand-desc-en').value,
+                        zh: document.getElementById('brand-desc-zh').value
+                    },
+                    active: true,
+                    sortOrder: 0
+                };
+                saveBrand(formData);
+            });
+
+            // Spec form
+            document.getElementById('spec-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = {
+                    brandId: editingSpec ? editingSpec.brandId : selectedBrandId,
+                    modelId: editingSpec ? editingSpec.modelId : selectedModelId,
+                    brandName: document.getElementById('spec-brand-name').value,
+                    modelName: document.getElementById('spec-model-name').value,
+                    size: document.getElementById('spec-size').value,
+                    pcd: document.getElementById('spec-pcd').value,
+                    holes: document.getElementById('spec-holes').value,
+                    inset: document.getElementById('spec-inset').value,
+                    discProtrusion: document.getElementById('spec-disc-protrusion').value,
+                    hubHeight: document.getElementById('spec-hub-height').value,
+                    price: parseInt(document.getElementById('spec-price').value),
+                    color: document.getElementById('spec-color').value,
+                    accessories: document.getElementById('spec-accessories').value,
+                    weight: document.getElementById('spec-weight').value
+                };
+                saveSpec(formData);
+            });
+
+            // Close modals when clicking outside
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('show');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html> 

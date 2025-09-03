@@ -15,23 +15,7 @@ export function Business() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="py-16 lg:py-24 relative"
-        style={{
-          background: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
-          backgroundImage: `
-            radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 60% 30%, rgba(14, 165, 233, 0.3) 0%, transparent 50%)
-          `,
-          backgroundSize: '100% 100%',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
+      <section className="py-16 lg:py-24 corporate-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/40"></div>
         {/* Network pattern overlay */}
         <div className="absolute inset-0 opacity-20">
@@ -134,7 +118,7 @@ export function Business() {
                   </div>
                 </div>
                 <Link href={`/${language}/medical`}>
-                  <Button variant="ghost" className="text-red-600 hover:text-red-700 p-0">
+                  <Button variant="ghost" className="text-corporate-accent hover:text-corporate-accent p-0">
                     {language === 'jp' && '詳細を見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}
@@ -179,7 +163,7 @@ export function Business() {
                   </div>
                 </div>
                 <Link href={`/${language}/auto`}>
-                  <Button variant="ghost" className="text-blue-600 hover:text-blue-700 p-0">
+                  <Button variant="ghost" className="text-corporate-accent hover:text-corporate-accent p-0">
                     {language === 'jp' && '詳細を見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}
@@ -222,7 +206,7 @@ export function Business() {
                   </div>
                 </div>
                 <Link href={`/${language}/newbusiness`}>
-                  <Button variant="ghost" className="text-green-600 hover:text-green-700 p-0">
+                  <Button variant="ghost" className="text-corporate-accent hover:text-corporate-accent p-0">
                     {language === 'jp' && '詳細を見る'}
                     {language === 'ko' && '자세히 보기'}
                     {language === 'en' && 'Learn More'}

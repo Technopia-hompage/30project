@@ -5,8 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getMultiLanguageContent } from "@/lib/i18n";
+// formatDate function is defined locally
 import { NewsArticle } from "@shared/schema";
-import { newsData, newsCategories } from "@/lib/newsData";
+import { newsCategories } from "@/lib/newsData";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { useState } from "react";
 import { useParams, Link } from "wouter";
@@ -17,6 +18,7 @@ import {
   Clock
 } from "lucide-react";
 import { BiSearch, BiShare } from "react-icons/bi";
+import { VoiceNarrationButton } from '@/components/VoiceNarrationButton';
 
 export function News() {
   const { language, getLanguageRoute } = useLanguage();
@@ -25,20 +27,36 @@ export function News() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  // Use static data instead of API calls during database connection issues
-  const article = articleId ? newsData.find(item => item.id === parseInt(articleId)) : null;
-  const articleLoading = false;
-  
-  const allArticles = newsData.filter(item => 
+  // Fetch news articles from API
+  const { data: articles = [], isLoading: articlesLoading } = useQuery({
+    queryKey: ['/api/news'],
+    queryFn: async () => {
+      const response = await fetch('http://localhost:5000/api/news');
+      if (!response.ok) throw new Error('Failed to fetch news');
+      return response.json();
+    }
+  });
+
+  // Fetch single article if articleId is provided
+  const { data: article, isLoading: articleLoading } = useQuery({
+    queryKey: ['/api/news', articleId],
+    queryFn: async () => {
+      if (!articleId) return null;
+      const response = await fetch(`http://localhost:5000/api/news/${articleId}`);
+      if (!response.ok) throw new Error('Failed to fetch article');
+      return response.json();
+    },
+    enabled: !!articleId
+  });
+
+  const allArticles = articles.filter(item => 
     selectedCategory === 'all' || item.category === selectedCategory
   );
-  const articles = allArticles;
-  const articlesLoading = false;
 
   const categories = newsCategories;
 
   // Filter articles based on search query
-  const filteredArticles = articles?.filter(article => {
+  const filteredArticles = allArticles?.filter(article => {
     const title = getMultiLanguageContent(article.title, language).toLowerCase();
     const excerpt = getMultiLanguageContent(article.excerpt, language).toLowerCase();
     const query = searchQuery.toLowerCase();
@@ -126,18 +144,38 @@ export function News() {
 
           {/* Article header */}
           <header className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <Badge>{article.category}</Badge>
-              {article.publishedAt && (
-                <div className="flex items-center text-sm text-slate-500">
-                  <Calendar className="mr-1 h-4 w-4" />
-                  {formatDate(article.publishedAt)}
-                </div>
-              )}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Badge>{article.category}</Badge>
+                {article.publishedAt && (
+                  <div className="flex items-center text-sm text-slate-500">
+                    <Calendar className="mr-1 h-4 w-4" />
+                    {formatDate(article.publishedAt)}
+                  </div>
+                )}
+              </div>
+              {/* Voice Narration Button */}
+              <VoiceNarrationButton
+                text={`${getMultiLanguageContent(article.title, language)}. ${getMultiLanguageContent(article.excerpt, language)}. ${getMultiLanguageContent(article.content, language)}`}
+                language={language}
+                variant="outline"
+                size="sm"
+              />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
               {getMultiLanguageContent(article.title, language)}
             </h1>
+            
+            {/* Article Image */}
+            {article.imageUrl && (
+              <div className="mb-8">
+                <img 
+                  src={article.imageUrl} 
+                  alt={getMultiLanguageContent(article.title, language)}
+                  className="w-full h-auto max-h-96 object-cover rounded-lg shadow-lg"
+                />
+              </div>
+            )}
           </header>
 
           {/* Article content */}
@@ -152,6 +190,34 @@ export function News() {
               }}
             />
           </div>
+
+          {/* Attached Files */}
+          {(article as any).attachedFiles && (article as any).attachedFiles.length > 0 && (
+            <div className="mt-8 p-4 bg-gray-50 rounded-lg border">
+              <h3 className="text-lg font-semibold mb-4">
+                {language === 'jp' && '添付ファイル'}
+                {language === 'ko' && '첨부 파일'}
+                {language === 'en' && 'Attached Files'}
+                {language === 'zh' && '附件'}
+              </h3>
+              <div className="space-y-2">
+                {(article as any).attachedFiles.map((file: any, index: number) => (
+                  <a 
+                    key={index}
+                    href={file.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center p-3 bg-white rounded-lg border hover:bg-gray-50 transition-colors"
+                  >
+                    <FileText className="mr-3 h-5 w-5 text-gray-500" />
+                    <span className="text-blue-600 hover:text-blue-800 font-medium">
+                      {file.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Share buttons */}
           <div className="mt-12 pt-8 border-t border-slate-200">
@@ -180,21 +246,36 @@ export function News() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900">
+      <section className="py-16 lg:py-24 corporate-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {language === 'jp' && 'ニュース'}
-              {language === 'ko' && '뉴스'}
-              {language === 'en' && 'News'}
-              {language === 'zh' && '新闻'}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              {language === 'jp' && '最新のニュースやお知らせをご覧ください。'}
-              {language === 'ko' && '최신 뉴스와 공지사항을 확인하세요.'}
-              {language === 'en' && 'Stay updated with our latest news and announcements.'}
-              {language === 'zh' && '查看最新新闻和公告。'}
-            </p>
+            <div className="flex justify-between items-start mb-8">
+              <div></div>
+              <div className="text-center flex-1">
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                  {language === 'jp' && 'ニュース'}
+                  {language === 'ko' && '뉴스'}
+                  {language === 'en' && 'News'}
+                  {language === 'zh' && '新闻'}
+                </h1>
+                <p className="text-xl text-white/80 max-w-3xl mx-auto">
+                  {language === 'jp' && '最新のニュースやお知らせをご覧ください。'}
+                  {language === 'ko' && '최신 뉴스와 공지사항을 확인하세요.'}
+                  {language === 'en' && 'Stay updated with our latest news and announcements.'}
+                  {language === 'zh' && '查看最新新闻和公告。'}
+                </p>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <Link href={getLanguageRoute('/news-admin')}>
+                  <Button variant="secondary" size="sm" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+                    {language === 'jp' && '管理者'}
+                    {language === 'ko' && '관리자'}
+                    {language === 'en' && 'Admin'}
+                    {language === 'zh' && '管理员'}
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -256,33 +337,60 @@ export function News() {
           ) : filteredArticles.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredArticles.map((article) => (
-                <Link key={article.id} href={getLanguageRoute(`/news/${article.id}`)}>
-                  <Card className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer">
+                <div key={article.id} className="group">
+                  <Card className="h-full hover:shadow-lg transition-shadow duration-200 overflow-hidden relative">
+                    {/* Article Image - Only show if imageUrl exists */}
+                    {article.imageUrl && (
+                      <Link href={getLanguageRoute(`/news/${article.id}`)}>
+                        <div className="aspect-video overflow-hidden cursor-pointer">
+                          <img 
+                            src={article.imageUrl} 
+                            alt={getMultiLanguageContent(article.title, language)}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      </Link>
+                    )}
                     <CardContent className="p-6 h-full flex flex-col">
                       <div className="flex items-center justify-between mb-3">
-                        <Badge variant="secondary">{article.category}</Badge>
-                        {article.publishedAt && (
-                          <div className="flex items-center text-xs text-slate-500">
-                            <Clock className="mr-1 h-3 w-3" />
-                            {formatDate(article.publishedAt)}
-                          </div>
-                        )}
+                        <div className="flex items-center gap-2">
+                          <Badge variant="secondary">{article.category}</Badge>
+                          {article.publishedAt && (
+                            <div className="flex items-center text-xs text-slate-500">
+                              <Clock className="mr-1 h-3 w-3" />
+                              {formatDate(article.publishedAt)}
+                            </div>
+                          )}
+                        </div>
+                        {/* Voice Narration Button */}
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" onClick={(e) => e.stopPropagation()}>
+                          <VoiceNarrationButton
+                            text={`${getMultiLanguageContent(article.title, language)}. ${getMultiLanguageContent(article.excerpt, language)}`}
+                            language={language}
+                            variant="ghost"
+                            size="sm"
+                          />
+                        </div>
                       </div>
-                      <h3 className="text-lg font-semibold text-slate-900 mb-3 line-clamp-2 flex-grow">
-                        {getMultiLanguageContent(article.title, language)}
-                      </h3>
+                      <Link href={getLanguageRoute(`/news/${article.id}`)}>
+                        <h3 className="text-lg font-semibold text-slate-900 mb-3 line-clamp-2 flex-grow cursor-pointer hover:text-corporate-blue transition-colors">
+                          {getMultiLanguageContent(article.title, language)}
+                        </h3>
+                      </Link>
                       <p className="text-slate-600 text-sm line-clamp-3 mb-4">
                         {getMultiLanguageContent(article.excerpt, language)}
                       </p>
-                      <div className="text-sm text-corporate-blue font-medium">
-                        {language === 'jp' && '続きを読む →'}
-                        {language === 'ko' && '더 읽기 →'}
-                        {language === 'en' && 'Read more →'}
-                        {language === 'zh' && '阅读更多 →'}
-                      </div>
+                      <Link href={getLanguageRoute(`/news/${article.id}`)}>
+                        <div className="text-sm text-corporate-blue font-medium cursor-pointer hover:text-blue-700 transition-colors">
+                          {language === 'jp' && '続きを読む →'}
+                          {language === 'ko' && '더 읽기 →'}
+                          {language === 'en' && 'Read more →'}
+                          {language === 'zh' && '阅读更多 →'}
+                        </div>
+                      </Link>
                     </CardContent>
                   </Card>
-                </Link>
+                </div>
               ))}
             </div>
           ) : (

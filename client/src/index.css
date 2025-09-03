@@ -13,23 +13,26 @@
   --card-foreground: 20 14.3% 4.1%;
   --border: 20 5.9% 90%;
   --input: 20 5.9% 90%;
-  --primary: 221 63% 35%;
-  --primary-foreground: 211 100% 99%;
-  --secondary: 60 4.8% 95.9%;
-  --secondary-foreground: 24 9.8% 10%;
-  --accent: 60 4.8% 95.9%;
-  --accent-foreground: 24 9.8% 10%;
+  --primary: 24 108 132;
+  --primary-foreground: 255 255 255;
+  --secondary: 194 30% 95%;
+  --secondary-foreground: 194 65% 15%;
+  --accent: 194 30% 92%;
+  --accent-foreground: 194 65% 20%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 20 14.3% 4.1%;
+  --ring: 194 65% 31%;
   --radius: 0.5rem;
   
-  /* Corporate colors */
-  --corporate-blue: 221 63% 35%;
-  --corporate-light: 221 63% 45%;
+  /* Corporate colors - Updated to #186c84 theme */
+  --corporate-blue: 194 65% 31%;     /* #186c84 */
+  --corporate-light: 194 65% 45%;    /* Lighter variant */
+  --corporate-dark: 194 65% 25%;     /* Darker variant */
   --corporate-gray: 215 13.8% 34.1%;
   --anniversary-red: 0 84.2% 60.2%;
   --success-green: 158 64% 52%;
+  --corporate-accent: 194 30% 88%;   /* Very light accent */
+  --corporate-hover: 194 65% 38%;
 }
 
 /* Custom scrollbar styles for photo gallery */
@@ -66,6 +69,32 @@
   background: hsl(var(--corporate-light));
 }
 
+/* Premium corporate shadows */
+.shadow-premium {
+  box-shadow: 
+    0 10px 50px -12px rgba(24, 108, 132, 0.25),
+    0 20px 40px -20px rgba(24, 108, 132, 0.15);
+}
+
+.shadow-premium-lg {
+  box-shadow: 
+    0 20px 80px -20px rgba(24, 108, 132, 0.3),
+    0 40px 60px -30px rgba(24, 108, 132, 0.2);
+}
+
+/* Corporate gradient backgrounds */
+.bg-corporate-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--corporate-blue)) 0%, 
+    hsl(var(--corporate-light)) 100%);
+}
+
+.bg-corporate-gradient-subtle {
+  background: linear-gradient(135deg, 
+    hsl(var(--corporate-blue) / 0.05) 0%, 
+    hsl(var(--corporate-light) / 0.1) 100%);
+}
+
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
@@ -77,15 +106,15 @@
   --card-foreground: 0 0% 98%;
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
-  --primary: 221 63% 35%;
-  --primary-foreground: 211 100% 99%;
+  --primary: 24 108 132;
+  --primary-foreground: 255 255 255;
   --secondary: 240 3.7% 15.9%;
   --secondary-foreground: 0 0% 98%;
   --accent: 240 3.7% 15.9%;
   --accent-foreground: 0 0% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 240 4.9% 83.9%;
+  --ring: 194 65% 31%;
   --radius: 0.5rem;
 }
 
@@ -96,33 +125,167 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Noto Sans JP', 'Noto Sans KR', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+    font-kerning: auto;
+    font-optical-sizing: auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Improve input and textarea rendering quality */
+  input, textarea, select {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  /* Improve button text quality */
+  button {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Improve label text quality */
+  label {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Force primary color override */
+  .btn-primary, 
+  .bg-primary,
+  button[data-primary="true"],
+  [role="button"].primary,
+  .primary {
+    background-color: #186c84 !important;
+    border-color: #186c84 !important;
+  }
+
+  .btn-primary:hover,
+  .bg-primary:hover,
+  button[data-primary="true"]:hover,
+  [role="button"].primary:hover,
+  .primary:hover {
+    background-color: #144f5c !important;
+  }
+
+  .text-primary,
+  .primary-text {
+    color: #186c84 !important;
   }
 }
 
 @layer components {
+  /* High-quality text rendering for all components */
+  .high-quality-text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1, "kern" 1;
+    font-variant-ligatures: common-ligatures;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+  }
+
+  /* Specific optimizations for Korean and Japanese text */
+  .cjk-text-optimize {
+    font-family: 'Inter', 'Noto Sans KR', 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "palt" 1, "halt" 1;
+    font-optical-sizing: auto;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  /* Enhanced Japanese text rendering */
+  .jp-text-optimize,
+  [lang="jp"],
+  .japanese-text {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', 'Meiryo', 'MS PGothic', 'Takao', 'IPAexGothic', 'IPAPGothic', 'VL PGothic', 'Koruri', sans-serif !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -moz-osx-font-smoothing: auto !important;
+    text-rendering: optimizeLegibility !important;
+    font-feature-settings: "palt" 1, "halt" 1, "vpal" 1, "vhal" 1 !important;
+    font-optical-sizing: auto !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.65 !important;
+    font-variant-east-asian: proportional-width !important;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.01) !important;
+  }
+
+  /* Force Japanese font for all text elements in Japanese mode */
+  html[lang="jp"] *,
+  .jp-mode *,
+  [data-lang="jp"] * {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', 'Meiryo', 'MS PGothic', sans-serif !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    -moz-osx-font-smoothing: auto !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
+  }
+
   .corporate-blue {
-    @apply text-blue-600;
+    color: #186c84;
   }
   
   .bg-corporate-blue {
-    background-color: hsl(var(--corporate-blue));
+    background-color: #186c84 !important;
+  }
+  
+  .border-corporate-blue {
+    border-color: #186c84 !important;
+  }
+  
+  .hover\:bg-corporate-light:hover {
+    background-color: #2a8da5 !important;
+  }
+  
+  .corporate-gradient {
+    background: linear-gradient(135deg, #186c84 0%, #1f7a94 50%, #2a8da5 100%) !important;
+  }
+  
+  .corporate-gradient-subtle {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2f0f3 100%);
+  }
+  
+  .corporate-accent-light {
+    background-color: #f0f9fb;
+  }
+  
+  .text-corporate-accent {
+    color: #186c84 !important;
+  }
+  
+  .border-corporate-accent {
+    border-color: #e6f4f6;
   }
   
   .text-corporate-blue {
-    color: hsl(var(--corporate-blue));
+    color: #186c84 !important;
   }
   
   .bg-corporate-light {
-    background-color: hsl(var(--corporate-light));
+    background-color: #2a8da5 !important;
   }
   
   .text-corporate-light {
-    color: hsl(var(--corporate-light));
+    color: #2a8da5 !important;
   }
   
   .bg-anniversary-red {
@@ -262,4 +425,28 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--corporate-light));
+}
+
+/* Custom scrollbar hiding */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* Additional utility classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

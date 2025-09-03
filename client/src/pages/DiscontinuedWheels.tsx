@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, RefreshCw, Trash, Eye, Edit } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { ArrowLeft, RefreshCw, Trash, Eye, Edit, Cog } from 'lucide-react';
 import { Link } from 'wouter';
 import { toast } from '@/hooks/use-toast';
 
@@ -85,6 +86,17 @@ export function DiscontinuedWheels() {
     queryFn: () => fetchDiscontinuedModels(selectedBrandId > 0 ? selectedBrandId : undefined),
   });
 
+  // Fetch wheel specifications
+  const { data: wheelSpecs = [], isLoading: specsLoading } = useQuery({
+    queryKey: ['wheelSpecs', 'discontinued'],
+    queryFn: async () => {
+      const response = await fetch('/api/wheels/specs');
+      if (!response.ok) throw new Error('Failed to fetch wheel specs');
+      const data = await response.json();
+      return data;
+    },
+  });
+
   // Mutations
   const reactivateMutation = useMutation({
     mutationFn: reactivateModel,
@@ -134,6 +146,18 @@ export function DiscontinuedWheels() {
     return brand ? `${brand.name} (${brand.nameJp})` : 'Unknown Brand';
   };
 
+  const getBrandById = (brandId: number) => {
+    return wheelBrands.find(b => b.id === brandId);
+  };
+
+  const getWheelSpecsByModelId = (modelId: number) => {
+    return wheelSpecs.filter((spec: any) => spec.modelId === modelId);
+  };
+
+  const formatPrice = (price: number) => {
+    return `¥${price.toLocaleString()}`;
+  };
+
   const handleReactivate = (id: number) => {
     if (confirm(language === 'jp' ? 'このモデルを再活性化しますか？' : 
                language === 'ko' ? '이 모델을 재활성화하시겠습니까?' : 
@@ -154,7 +178,7 @@ export function DiscontinuedWheels() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 mx-auto" style={{borderBottomColor: '#186c84'}}></div>
           <p className="mt-4 text-lg">
             {language === 'jp' ? '読み込み中...' : 
              language === 'ko' ? '로딩 중...' : 
@@ -180,7 +204,7 @@ export function DiscontinuedWheels() {
                 {language === 'zh' && '返回管理面板'}
               </Button>
             </Link>
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-4xl md:text-6xl font-bold">
               {language === 'jp' && '生産終了ホイール管理'}
               {language === 'ko' && '생산종료 휠 관리'}
               {language === 'en' && 'Discontinued Wheels Management'}
@@ -357,7 +381,7 @@ export function DiscontinuedWheels() {
 
       {/* 모델 상세 정보 다이얼로그 */}
       <Dialog open={showModelDetail} onOpenChange={setShowModelDetail}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {language === 'jp' ? 'モデル詳細情報' : 
@@ -366,50 +390,229 @@ export function DiscontinuedWheels() {
             </DialogTitle>
           </DialogHeader>
           {selectedModel && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium text-gray-500">
-                    {language === 'jp' ? 'モデル名' : 
-                     language === 'ko' ? '모델명' : 
-                     language === 'en' ? 'Model Name' : '型号名称'}
-                  </label>
-                  <p className="text-lg font-semibold">{selectedModel.name}</p>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* 기본 정보 */}
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium text-gray-500">
+                        {language === 'jp' ? 'モデル名' : 
+                         language === 'ko' ? '모델명' : 
+                         language === 'en' ? 'Model Name' : '型号名称'}
+                      </label>
+                      <p className="text-lg font-semibold">{selectedModel.name}</p>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-gray-500">
+                        {language === 'jp' ? 'ブランド' : 
+                         language === 'ko' ? '브랜드' : 
+                         language === 'en' ? 'Brand' : '品牌'}
+                      </label>
+                      <p className="text-lg">{getBrandName(selectedModel.brandId)}</p>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium text-gray-500">
+                      {language === 'jp' ? 'スペック' : 
+                       language === 'ko' ? '스펙' : 
+                       language === 'en' ? 'Specifications' : '规格'}
+                    </label>
+                    <p className="text-sm">{typeof selectedModel.specs === 'string' ? selectedModel.specs : (selectedModel.specs as any)?.jp || ''}</p>
+                  </div>
+                  
+                  {selectedModel.imageUrl && (
+                    <div>
+                      <label className="text-sm font-medium text-gray-500">
+                        {language === 'jp' ? '画像' : 
+                         language === 'ko' ? '이미지' : 
+                         language === 'en' ? 'Image' : '图片'}
+                      </label>
+                      <img 
+                        src={selectedModel.imageUrl} 
+                        alt={selectedModel.name}
+                        className="w-full max-w-sm h-48 object-cover rounded-lg mt-2"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
-                <div>
-                  <label className="text-sm font-medium text-gray-500">
-                    {language === 'jp' ? 'ブランド' : 
-                     language === 'ko' ? '브랜드' : 
-                     language === 'en' ? 'Brand' : '品牌'}
-                  </label>
-                  <p className="text-lg">{getBrandName(selectedModel.brandId)}</p>
+
+                {/* 상태 정보 */}
+                <div className="space-y-4">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h4 className="text-lg font-semibold text-red-800 mb-2 flex items-center">
+                      <Badge variant="destructive" className="mr-2">
+                        {language === 'jp' ? '生産終了' : 
+                         language === 'ko' ? '생산종료' : 
+                         language === 'en' ? 'Discontinued' : '停产'}
+                      </Badge>
+                      {language === 'jp' ? '生産終了製品' : 
+                       language === 'ko' ? '생산종료 제품' : 
+                       language === 'en' ? 'Discontinued Product' : '停产产品'}
+                    </h4>
+                    <p className="text-sm text-red-700">
+                      {language === 'jp' ? 'この製品は生産が終了しております。在庫がある場合のみ販売可能です。' : 
+                       language === 'ko' ? '이 제품은 생산이 종료되었습니다. 재고가 있는 경우에만 판매 가능합니다.' : 
+                       language === 'en' ? 'This product has been discontinued. Sales only when inventory is available.' : '该产品已停产。仅在有库存时可销售。'}
+                    </p>
+                  </div>
                 </div>
               </div>
-              
-              <div>
-                <label className="text-sm font-medium text-gray-500">
-                  {language === 'jp' ? 'スペック' : 
-                   language === 'ko' ? '스펙' : 
-                   language === 'en' ? 'Specifications' : '规格'}
-                </label>
-                                 <p className="text-sm">{typeof selectedModel.specs === 'string' ? selectedModel.specs : (selectedModel.specs as any)?.jp || ''}</p>
-              </div>
-              
-              {selectedModel.imageUrl && (
-                <div>
-                  <label className="text-sm font-medium text-gray-500">
-                    {language === 'jp' ? '画像' : 
-                     language === 'ko' ? '이미지' : 
-                     language === 'en' ? 'Image' : '图片'}
-                  </label>
-                  <img 
-                    src={selectedModel.imageUrl} 
-                    alt={selectedModel.name}
-                    className="w-full max-w-md h-auto rounded-lg"
-                  />
-                </div>
-              )}
-              
+
+              {/* 상세 스펙 테이블 */}
+              {(() => {
+                const modelSpecs = getWheelSpecsByModelId(selectedModel.id!);
+                const brand = getBrandById(selectedModel.brandId);
+                
+                if (specsLoading) {
+                  return (
+                    <div className="bg-slate-50 rounded-lg p-6">
+                      <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                        <Cog className="mr-2 h-5 w-5" />
+                        {language === 'jp' && '詳細スペック'}
+                        {language === 'ko' && '상세 스펙'}
+                        {language === 'en' && 'Detailed Specifications'}
+                        {language === 'zh' && '详细规格'}
+                      </h3>
+                      <div className="text-center py-8">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto mb-4" style={{borderBottomColor: '#186c84'}}></div>
+                        <p className="text-slate-600">
+                          {language === 'jp' ? 'スペックデータを読み込み中...' :
+                           language === 'ko' ? '스펙 데이터를 로딩 중...' :
+                           language === 'en' ? 'Loading specs data...' : '加载规格数据...'}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                }
+
+                if (modelSpecs.length > 0) {
+                  return (
+                    <div className="bg-slate-50 rounded-lg p-6">
+                      <h3 className="text-lg font-semibold text-slate-900 mb-6 flex items-center">
+                        <Cog className="mr-2 h-5 w-5" />
+                        {language === 'jp' && '詳細スペック（生産終了）'}
+                        {language === 'ko' && '상세 스펙（생산종료）'}
+                        {language === 'en' && 'Detailed Specifications (Discontinued)'}
+                        {language === 'zh' && '详细规格（停产）'}
+                      </h3>
+                      <div className="overflow-x-auto">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>SIZE</TableHead>
+                              {brand?.name === "MUD CLIFF" ? (
+                                <>
+                                  <TableHead>INSET</TableHead>
+                                  <TableHead>H-P.C.D</TableHead>
+                                  <TableHead>ハブ径(Φ)</TableHead>
+                                  <TableHead>ハブ高(mm)</TableHead>
+                                  <TableHead>ディスク凸(mm)</TableHead>
+                                </>
+                              ) : brand?.name === "ARTEMIS" || brand?.name === "APHRODITE" ? (
+                                <>
+                                  <TableHead>INSET</TableHead>
+                                  <TableHead>H-P.C.D</TableHead>
+                                  <TableHead>ハブ径(Φ)</TableHead>
+                                  <TableHead>ハブ高(mm)</TableHead>
+                                  <TableHead>ディスク凸(mm)</TableHead>
+                                  <TableHead>重量</TableHead>
+                                </>
+                              ) : (
+                                <>
+                                  <TableHead>INSET</TableHead>
+                                  <TableHead>H-P.C.D</TableHead>
+                                  <TableHead>ハブ径(Φ)</TableHead>
+                                  <TableHead>ハブ高 (mm)</TableHead>
+                                  <TableHead>ディスク凸 (mm)</TableHead>
+                                  <TableHead>重量</TableHead>
+                                </>
+                              )}
+                              <TableHead>参考価格</TableHead>
+                              <TableHead>カラー</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {modelSpecs.map((spec: any) => (
+                              <TableRow key={spec.id} className="bg-red-50">
+                                <TableCell className="font-medium">{spec.size}</TableCell>
+                                {brand?.name === "MUD CLIFF" ? (
+                                  <>
+                                    <TableCell>{spec.inset}</TableCell>
+                                    <TableCell>{spec.pcd}</TableCell>
+                                    <TableCell>{spec.holes}</TableCell>
+                                    <TableCell>{spec.hubHeight}</TableCell>
+                                    <TableCell>{spec.discProtrusion}</TableCell>
+                                  </>
+                                ) : brand?.name === "ARTEMIS" || brand?.name === "APHRODITE" ? (
+                                  <>
+                                    <TableCell>{spec.inset}</TableCell>
+                                    <TableCell>{spec.pcd}</TableCell>
+                                    <TableCell>{spec.holes}</TableCell>
+                                    <TableCell>{spec.hubHeight}</TableCell>
+                                    <TableCell>{spec.discProtrusion}</TableCell>
+                                    <TableCell>{spec.weight || "-"}</TableCell>
+                                  </>
+                                ) : (
+                                  <>
+                                    <TableCell>{spec.inset}</TableCell>
+                                    <TableCell>{spec.pcd}</TableCell>
+                                    <TableCell>{spec.hubDiameter || "67.1"}</TableCell>
+                                    <TableCell>{spec.hubHeight}</TableCell>
+                                    <TableCell>{spec.discProtrusion}</TableCell>
+                                    <TableCell>{spec.weight || "-"}</TableCell>
+                                  </>
+                                )}
+                                <TableCell className="font-bold text-red-600">
+                                  {formatPrice(spec.price)}
+                                </TableCell>
+                                <TableCell>{spec.color}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                      <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <p className="text-sm text-yellow-800">
+                          {language === 'jp' ? '※ 生産終了品のため、価格は参考価格です。在庫状況により価格が変動する場合があります。' :
+                           language === 'ko' ? '※ 생산종료 제품이므로 가격은 참고가격입니다. 재고 상황에 따라 가격이 변동될 수 있습니다.' :
+                           language === 'en' ? '※ Reference prices for discontinued products. Prices may vary depending on inventory status.' : '※ 停产产品的参考价格。价格可能因库存状况而变动。'}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="bg-slate-50 rounded-lg p-6">
+                      <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                        <Cog className="mr-2 h-5 w-5" />
+                        {language === 'jp' && '詳細スペック'}
+                        {language === 'ko' && '상세 스펙'}
+                        {language === 'en' && 'Detailed Specifications'}
+                        {language === 'zh' && '详细规格'}
+                      </h3>
+                      <div className="text-center py-8">
+                        <p className="text-slate-600 mb-2">
+                          {language === 'jp' ? 'このホイールのスペックデータが見つかりません' :
+                           language === 'ko' ? '이 휠의 스펙 데이터를 찾을 수 없습니다' :
+                           language === 'en' ? 'No specs data found for this wheel' : '未找到此轮毂的规格数据'}
+                        </p>
+                        <p className="text-sm text-slate-500">
+                          {language === 'jp' ? 'Model ID: ' + selectedModel.id :
+                           language === 'ko' ? '모델 ID: ' + selectedModel.id :
+                           language === 'en' ? 'Model ID: ' + selectedModel.id : '型号ID: ' + selectedModel.id}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                }
+              })()}
+
               <div className="flex justify-end space-x-2 pt-4">
                 <Button
                   variant="outline"
@@ -424,8 +627,9 @@ export function DiscontinuedWheels() {
                     handleReactivate(selectedModel.id!);
                     setShowModelDetail(false);
                   }}
+                  disabled={reactivateMutation.isPending}
                 >
-                                     <RefreshCw className="h-4 w-4 mr-2" />
+                  <RefreshCw className="h-4 w-4 mr-2" />
                   {language === 'jp' ? '再活性化' : 
                    language === 'ko' ? '재활성화' : 
                    language === 'en' ? 'Reactivate' : '重新激活'}
